@@ -6,7 +6,7 @@
 export default {
     "data": () => {
         return {
-            "pushNotifications": null,
+            "pushNotification": null,
         };
     },
 
@@ -18,7 +18,7 @@ export default {
 
     mounted () {
         if ( window.cordova ) {
-            document.addEventListener( "deviceready", this._onCordovaDeviceReady.bind( this ), false );
+            document.addEventListener( "deviceready", this._onDeviceReady.bind( this ), false );
         }
         else {
             this.createViewport();
@@ -26,10 +26,24 @@ export default {
     },
 
     "methods": {
-        _onCordovaDeviceReady () {
-            this.registerPushNotifications();
+        _onDeviceReady () {
+            // register cordova events, https://cordova.apache.org/docs/en/latest/cordova/events/events.html
+            document.addEventListener( "pause", this.onDevicePause.bind( this ), false );
+            document.addEventListener( "resume", this.onDeviceResume.bind( this ), false );
+            document.addEventListener( "backbutton", this.onDeviceBackButton.bind( this ), false );
+            document.addEventListener( "menubutton", this.onDeviceMenuButton.bind( this ), false );
+            document.addEventListener( "searchbutton", this.onDeviceSearchButton.bind( this ), false );
+            document.addEventListener( "startcallbutton", this.onDeviceStartCallButton.bind( this ), false );
+            document.addEventListener( "endcallbutton", this.onDeviceEndCallButton.bind( this ), false );
+            document.addEventListener( "volumedownbutton", this.onDeviceVolumeDownButton.bind( this ), false );
+            document.addEventListener( "volumeupbutton", this.onDeviceVolumeUpButton.bind( this ), false );
+            document.addEventListener( "activated", this.onDeviceActivated.bind( this ), false );
 
-            this.onCordovaDeviceReady();
+            window.onbeforeunload = this.onDeviceUnload.bind( this );
+
+            this.registerPushNotification();
+
+            this.onDeviceReady();
 
             this.createViewport();
         },
@@ -56,14 +70,62 @@ export default {
 
         onAuthChange () {},
 
-        // CORDOVA TEMPLATES
-        registerPushNotifications () {
-            const me = this;
+        // DEVICE HOOKS
+        onDeviceReady () {
+            this.$global.emit( "deviceReady" );
+        },
 
+        onDeviceUnload ( e ) {
+            // NOTE return true to prevent app unload
+            // e.returnValue = true;
+        },
+
+        onDevicePause () {
+            this.$global.emit( "devicePause" );
+        },
+
+        onDeviceResume () {
+            this.$global.emit( "deviceResume" );
+        },
+
+        onDeviceBackButton () {
+            this.$global.emit( "deviceBackButton" );
+        },
+
+        onDeviceMenuButton () {
+            this.$global.emit( "deviceMenuButton" );
+        },
+
+        onDeviceSearchButton () {
+            this.$global.emit( "deviceSearchButton" );
+        },
+
+        onDeviceStartCallButton () {
+            this.$global.emit( "deviceStartCallButton" );
+        },
+
+        onDeviceEndCallButton () {
+            this.$global.emit( "deviceEndCallButton" );
+        },
+
+        onDeviceVolumeDownButton () {
+            this.$global.emit( "deviceVolumeDownButton" );
+        },
+
+        onDeviceVolumeUpButton () {
+            this.$global.emit( "deviceVolumeUpButton" );
+        },
+
+        onDeviceActivated () {
+            this.$global.emit( "deviceActivated" );
+        },
+
+        // PUSH NOTIFICATIONS
+        registerPushNotification () {
             // push notification plugin is not present
             if ( !window.PushNotification ) return;
 
-            this.pushNotifications = window.PushNotification.init( {
+            this.pushNotification = window.PushNotification.init( {
                 "android": {
                     "sound": true,
                     "vibration": true,
@@ -80,48 +142,54 @@ export default {
                 "windows": {},
             } );
 
-            this.pushNotifications.on( "registration", function ( data ) {
-                // var oldRegId = localStorage.getItem('registrationId');
+            this.pushNotification.on( "registration", this.onPushNotificationRegistration.bind( this ) );
 
-                // if (oldRegId !== data.registrationId) {
+            this.pushNotification.on( "error", this.onPushNotificationError.bind( this ) );
 
-                // save new registration ID
-                // localStorage.setItem('registrationId', data.registrationId);
+            this.pushNotification.on( "notification", this.onPushNotification.bind( this ) );
+        },
 
-                // Post registrationId to your app server as the value has changed
-                // }
+        async pushNotificationUnsubscribe ( topic ) {
+            var me = this;
 
-                // unsubscribe from the topic
-                me.pushNotifications.unsubscribe( "all", function () {
-                    // subscribe to the topic
-                    me.pushNotifications.subscribe( "all",
-                        function () {
-                            // subscribed
-                        },
-                        function ( error ) {
-                            // subscription error
-                            alert( "push error: " + error );
-                        } );
-                } );
-            } );
-
-            this.pushNotifications.on( "error", function ( e ) {
-                alert( "push error: " + e.message );
-            } );
-
-            this.pushNotifications.on( "notification", function ( data ) {
-                me.onPushNotification( data );
-
-                // navigator.notification.alert(
-                // data.message, // message
-                // null, // callback
-                // data.title, // title
-                // 'Ok' // buttonName
-                // );
+            return new Promise( ( ready ) => {
+                me.pushNotifications.unsubscribe( topic, ready );
             } );
         },
 
-        onCordovaDeviceReady () {},
+        async pushNotificationSubscribe ( topic ) {
+            var me = this;
+
+            return new Promise( ( resolve, reject ) => {
+                me.pushNotification.subscribe( topic, resolve, reject );
+            } );
+        },
+
+        async onPushNotificationRegistration ( data ) {
+            // var oldRegId = localStorage.getItem('registrationId');
+            // if (oldRegId !== data.registrationId) {
+            // save new registration ID
+            // localStorage.setItem('registrationId', data.registrationId);
+            // Post registrationId to your app server as the value has changed
+            // }
+
+            // unsubscribe from the topic
+            await this.pushNotificationUnsubscribe( "all" );
+
+            // subscribe
+            await this.pushNotificationSubscribe( "all" )
+                .then( () => {
+                    // subscribed
+                } )
+                .catch( ( e ) => {
+                    // error
+                    alert( `Push notification error: ${e}` );
+                } );
+        },
+
+        onPushNotificationError ( e ) {
+            alert( `Push notification error: ${e.message}` );
+        },
 
         onPushNotification ( data ) {},
     },
