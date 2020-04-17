@@ -39,7 +39,8 @@ var config = {
         // aliases
         config.resolve.alias["#ext.js"] = "@softvisio/ext/lib/ext-" + process.env.EXT_VERSION + ".js";
         config.resolve.alias["#ewc.js"] = "@softvisio/ext/lib/ewc-" + process.env.EWC_VERSION + ".js";
-        config.resolve.alias["#swc"] = "@softvisio/web-components/lib";
+        config.resolve.alias["#sv"] = "@softvisio/vue/lib";
+        config.resolve.alias["#sve"] = "@softvisio/vue-ext/lib";
 
         // global vars
         // config.plugins.push( new webpack.ProvidePlugin( {
