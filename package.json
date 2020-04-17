@@ -1,0 +1,43 @@
+{
+    "author": "zdm <zdm@softvisio.net>",
+    "bugs": {
+        "email": "zdm@softvisio.net",
+        "url": "https://bitbucket.org/softvisio/softvisio-vue/issues"
+    },
+    "description": "Softisio Vue",
+    "devDependencies": {
+        "@softvisio/core": ">=0.7.0",
+        "@softvisio/eslint-plugin": ">=0.4.0",
+        "babel-eslint": ">=10.0.3",
+        "eslint": ">=6.8.0",
+        "eslint-plugin-babel": ">=5.3.0",
+        "eslint-plugin-vue": ">=6.1.2"
+    },
+    "exports": {
+        "./": "./lib/",
+        "./resources/": "./resources/"
+    },
+    "homepage": "https://bitbucket.org/softvisio/softvisio-vue",
+    "keywords": [
+        "softvisio",
+        "vue"
+    ],
+    "name": "@softvisio/vue",
+    "peerDependencies": {
+        "vue": ">=2.6.11",
+        "worker-loader": ">=2.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://bitbucket.org/softvisio/softvisio-vue.git"
+    },
+    "resolutions": {
+        "@softvisio/core": "portal:../softvisio-core",
+        "@softvisio/eslint-plugin": "portal:../softvisio-eslint-plugin"
+    },
+    "scripts": {
+        "lint": "eslint --fix --ext=.js,.vue lib"
+    },
+    "type": "commonjs",
+    "version": "0.1.0"
+}
