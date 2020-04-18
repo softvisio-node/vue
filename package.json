@@ -36,7 +36,8 @@
         "@softvisio/eslint-plugin": "portal:../softvisio-eslint-plugin"
     },
     "scripts": {
-        "lint": "eslint --fix --ext=.js,.vue lib"
+        "lint": "eslint --fix --ext=.js,.vue lib resources",
+        "publish": "yarn npm publish"
     },
     "type": "commonjs",
     "version": "0.1.0"
