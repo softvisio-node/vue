@@ -4,9 +4,11 @@
         "email": "zdm@softvisio.net",
         "url": "https://bitbucket.org/softvisio/softvisio-vue/issues"
     },
+    "dependencies": {
+        "@softvisio/core": ">=0.7.0"
+    },
     "description": "Softisio Vue",
     "devDependencies": {
-        "@softvisio/core": ">=0.7.0",
         "@softvisio/eslint-plugin": ">=0.4.0",
         "babel-eslint": ">=10.0.3",
         "eslint": ">=6.8.0",
@@ -40,5 +42,5 @@
         "publish": "yarn npm publish"
     },
     "type": "commonjs",
-    "version": "0.2.0"
+    "version": "0.3.0"
 }
