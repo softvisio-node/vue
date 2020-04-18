@@ -20,6 +20,8 @@ var config = {
         "stats": "none",
     },
 
+    "transpileDependencies": ["@softvisio"],
+
     "publicPath": "",
 
     "pluginOptions": {
