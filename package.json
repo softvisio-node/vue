@@ -42,5 +42,5 @@
         "publish": "yarn npm publish"
     },
     "type": "commonjs",
-    "version": "0.4.2"
+    "version": "0.4.3"
 }
