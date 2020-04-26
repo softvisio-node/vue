@@ -153,7 +153,7 @@ export default {
             var me = this;
 
             return new Promise( ( ready ) => {
-                me.pushNotifications.unsubscribe( topic, ready );
+                me.pushNotification.unsubscribe( topic, ready );
             } );
         },
 
