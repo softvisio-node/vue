@@ -56,7 +56,7 @@ export default {
             while ( 1 ) {
                 var res = await this.$store.dispatch( "session/signin" );
 
-                if ( res.isSuccess() ) break;
+                if ( res.isOk() ) break;
 
                 await this.onAppInitFailure();
             }
