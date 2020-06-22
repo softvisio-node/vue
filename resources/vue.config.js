@@ -18,7 +18,9 @@ var config = {
         "compress": false,
         "inline": true,
         "stats": "none",
-        "poll": process.env.DEVSERVER_POLL || false,
+        "watchOptions": {
+            "poll": !process.env.DEVSERVER_POLL ? false : process.env.DEVSERVER_POLL === "true" ? true : +process.env.DEVSERVER_POLL,
+        },
     },
 
     "transpileDependencies": ["@softvisio"],
@@ -26,6 +28,7 @@ var config = {
     "publicPath": "",
 
     "pluginOptions": {
+
         // WebpackBundleAnalyzer, https://github.com/webpack-contrib/webpack-bundle-analyzer#options-for-plugin
         "webpackBundleAnalyzer": {
             "openAnalyzer": false,
@@ -39,6 +42,7 @@ var config = {
     "productionSourceMap": false,
 
     "configureWebpack": ( config ) => {
+
         // aliases
         config.resolve.alias["#softvisio"] = "@softvisio/vue/lib";
 
@@ -49,6 +53,7 @@ var config = {
     },
 
     "chainWebpack": ( config ) => {
+
         // clear exclude for "babel-loader"
         // config.module
         //     .rule( "js" )
@@ -56,6 +61,7 @@ var config = {
         //     .end();
 
         if ( process.env.NODE_ENV === "development" || process.env.VUE_APP_BUILD_CORDOVA ) {
+
             // exclude ext from babel-loader
             config.module
                 .rule( "js" )
@@ -88,6 +94,7 @@ var config = {
             .loader( "worker-loader" );
 
         if ( process.env.NODE_ENV === "production" ) {
+
             // configure html minification, https://github.com/kangax/html-minifier#options-quick-reference
             config.plugin( "html" ).tap( ( args ) => {
                 args[0].minify.removeAttributeQuotes = false;
