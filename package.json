@@ -30,14 +30,9 @@
         "type": "git",
         "url": "https://bitbucket.org/softvisio/softvisio-vue.git"
     },
-    "resolutions": {
-        "@softvisio/core": "portal:../softvisio-core",
-        "@softvisio/eslint-plugin": "portal:../softvisio-eslint-plugin"
-    },
     "scripts": {
-        "lint": "eslint --fix --ext=.js,.vue lib resources",
-        "publish": "yarn npm publish"
+        "lint": "eslint --fix --ext=.js,.vue lib resources"
     },
     "type": "commonjs",
-    "version": "0.6.0"
+    "version": "0.7.0"
 }
