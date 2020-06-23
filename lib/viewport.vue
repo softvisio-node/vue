@@ -27,6 +27,7 @@ export default {
 
     "methods": {
         _onDeviceReady () {
+
             // register cordova events, https://cordova.apache.org/docs/en/latest/cordova/events/events.html
             document.addEventListener( "pause", this.onDevicePause.bind( this ), false );
             document.addEventListener( "resume", this.onDeviceResume.bind( this ), false );
@@ -76,6 +77,7 @@ export default {
         },
 
         onDeviceUnload ( e ) {
+
             // NOTE return true to prevent app unload
             // e.returnValue = true;
         },
@@ -122,6 +124,7 @@ export default {
 
         // PUSH NOTIFICATIONS
         registerPushNotification () {
+
             // push notification plugin is not present
             if ( !window.PushNotification ) return;
 
@@ -166,6 +169,7 @@ export default {
         },
 
         async onPushNotificationRegistration ( data ) {
+
             // var oldRegId = localStorage.getItem('registrationId');
             // if (oldRegId !== data.registrationId) {
             // save new registration ID
@@ -179,9 +183,11 @@ export default {
             // subscribe
             await this.pushNotificationSubscribe( "all" )
                 .then( () => {
+
                     // subscribed
                 } )
                 .catch( ( e ) => {
+
                     // error
                     alert( `Push notification error: ${e}` );
                 } );
