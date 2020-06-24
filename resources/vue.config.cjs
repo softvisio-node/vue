@@ -1,6 +1,6 @@
 // https://cli.vuejs.org/config/
 
-// const webpack = require( "webpack" );
+// import webpack from "webpack.js";
 
 process.env.VUE_APP_BUILD_CORDOVA = !!+process.env.VUE_APP_BUILD_CORDOVA || process.env.VUE_APP_BUILD_CORDOVA === "true" ? 1 : "";
 
