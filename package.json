@@ -25,7 +25,6 @@
         "softvisio",
         "vue"
     ],
-    "main": "./lib/index.js",
     "name": "@softvisio/vue",
     "peerDependencies": {
         "vue": ">=2.6.11",
