@@ -31,6 +31,7 @@ var config = {
 
         // WebpackBundleAnalyzer, https://github.com/webpack-contrib/webpack-bundle-analyzer#options-for-plugin
         "webpackBundleAnalyzer": {
+            "analyzerMode": process.env.NODE_ENV === "production" ? "static" : "server",
             "analyzerPort": process.env.DEVSERVER_ANALYZER_PORT || "8888",
             "openAnalyzer": false,
         },
