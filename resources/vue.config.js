@@ -6,7 +6,7 @@ process.env.VUE_APP_BUILD_CORDOVA = !!+process.env.VUE_APP_BUILD_CORDOVA || proc
 
 var config = {
     "filenameHashing": process.env.VUE_APP_BUILD_CORDOVA ? false : true,
-    "outputDir": process.env.VUE_APP_BUILD_CORDOVA ? "www" : "dist",
+    "outputDir": "www",
 
     "devServer": {
         "contentBase": "build",
