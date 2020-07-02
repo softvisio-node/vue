@@ -107,10 +107,10 @@ var config = {
 
                 return args;
             } );
-
-            // disable WebpackBundleAnalyzer
-            config.plugins.delete( "webpack-bundle-analyzer" );
         }
+
+        // disable WebpackBundleAnalyzer
+        if ( process.env.NODE_ENV === "production" || process.env.VUE_APP_BUILD_CORDOVA ) config.plugins.delete( "webpack-bundle-analyzer" );
     },
 };
 
