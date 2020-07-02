@@ -152,22 +152,6 @@ export default {
             this.pushNotification.on( "notification", this.onPushNotification.bind( this ) );
         },
 
-        async pushNotificationUnsubscribe ( topic ) {
-            var me = this;
-
-            return new Promise( ( ready ) => {
-                me.pushNotification.unsubscribe( topic, ready );
-            } );
-        },
-
-        async pushNotificationSubscribe ( topic ) {
-            var me = this;
-
-            return new Promise( ( resolve, reject ) => {
-                me.pushNotification.subscribe( topic, resolve, reject );
-            } );
-        },
-
         async onPushNotificationRegistration ( data ) {
 
             // var oldRegId = localStorage.getItem('registrationId');
@@ -177,20 +161,25 @@ export default {
             // Post registrationId to your app server as the value has changed
             // }
 
+            const topic = process.env.VUE_APP_PUSH_TOPIC;
+
+            if ( !topic ) return;
+
+            alert( topic );
+
             // unsubscribe from the topic
-            await this.pushNotificationUnsubscribe( "all" );
+            try {
+                await this._pushNotificationUnsubscribe( topic );
+            }
+            catch ( e ) {}
 
             // subscribe
-            await this.pushNotificationSubscribe( "all" )
-                .then( () => {
-
-                    // subscribed
-                } )
-                .catch( ( e ) => {
-
-                    // error
-                    alert( `Push notification error: ${e}` );
-                } );
+            try {
+                await this._pushNotificationSubscribe( topic );
+            }
+            catch ( e ) {
+                alert( `Push notification error: ${e}` );
+            }
         },
 
         onPushNotificationError ( e ) {
@@ -198,6 +187,18 @@ export default {
         },
 
         onPushNotification ( data ) {},
+
+        async _pushNotificationUnsubscribe ( topic ) {
+            return new Promise( ( resolve ) => {
+                this.pushNotification.unsubscribe( topic, resolve );
+            } );
+        },
+
+        async _pushNotificationSubscribe ( topic ) {
+            return new Promise( ( resolve, reject ) => {
+                this.pushNotification.subscribe( topic, resolve, reject );
+            } );
+        },
     },
 };
 </script>
