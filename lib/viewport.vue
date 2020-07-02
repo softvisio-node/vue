@@ -165,8 +165,6 @@ export default {
 
             if ( !topic ) return;
 
-            alert( topic );
-
             // unsubscribe from the topic
             try {
                 await this._pushNotificationUnsubscribe( topic );
