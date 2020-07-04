@@ -4,12 +4,6 @@
 
 <script>
 export default {
-    "data": () => {
-        return {
-            "pushNotification": null,
-        };
-    },
-
     "computed": {
         sessionIsAuthenticated () {
             return this.$store.getters["session/isAuthenticated"];
