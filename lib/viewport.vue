@@ -125,77 +125,24 @@ export default {
         // PUSH NOTIFICATIONS
         registerPushNotification () {
 
-            // push notification plugin is not present
-            if ( !window.PushNotification ) return;
-
-            this.pushNotification = window.PushNotification.init( {
-                "android": {
-                    "sound": true,
-                    "vibration": true,
-                    "forceShow": true, // show notification, if app is in foreground mode
-                    // topics: ['all-devel'],
-                },
-                "ios": {
-                    "fcmSandbox": false, // set to true, if app is signed with the development certificate
-                    "alert": true,
-                    "sound": true,
-                    "badge": true,
-                },
-                "browser": {},
-                "windows": {},
-            } );
-
-            this.pushNotification.on( "registration", this.onPushNotificationRegistration.bind( this ) );
-
-            this.pushNotification.on( "error", this.onPushNotificationError.bind( this ) );
-
-            this.pushNotification.on( "notification", this.onPushNotification.bind( this ) );
-        },
-
-        async onPushNotificationRegistration ( data ) {
-
-            // var oldRegId = localStorage.getItem('registrationId');
-            // if (oldRegId !== data.registrationId) {
-            // save new registration ID
-            // localStorage.setItem('registrationId', data.registrationId);
-            // Post registrationId to your app server as the value has changed
-            // }
+            // FirebasePlugin plugin is not present
+            if ( !window.FirebasePlugin ) return;
 
             const topic = process.env.VUE_APP_PUSH_TOPIC;
 
+            // push topic is not defined
             if ( !topic ) return;
 
-            // unsubscribe from the topic
-            try {
-                await this._pushNotificationUnsubscribe( topic );
-            }
-            catch ( e ) {}
-
             // subscribe
-            try {
-                await this._pushNotificationSubscribe( topic );
-            }
-            catch ( e ) {
-                alert( `Push notification error: ${e}` );
-            }
-        },
+            window.FirebasePlugin.subscribe( topic,
+                () => {},
+                ( error ) => {} );
 
-        onPushNotificationError ( e ) {
-            alert( `Push notification error: ${e.message}` );
-        },
-
-        onPushNotification ( data ) {},
-
-        async _pushNotificationUnsubscribe ( topic ) {
-            return new Promise( ( resolve ) => {
-                this.pushNotification.unsubscribe( topic, resolve );
-            } );
-        },
-
-        async _pushNotificationSubscribe ( topic ) {
-            return new Promise( ( resolve, reject ) => {
-                this.pushNotification.subscribe( topic, resolve, reject );
-            } );
+            // set event listener
+            window.FirebasePlugin.onMessageReceived( ( data ) => {
+                this.$global.$emit( "push", data );
+            },
+            ( error ) => {} );
         },
     },
 };
