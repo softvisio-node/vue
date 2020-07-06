@@ -43,7 +43,7 @@ var config = {
     // NOTE slow
     "productionSourceMap": false,
 
-    "configureWebpack": ( config ) => {
+    "configureWebpack": config => {
 
         // aliases
         config.resolve.alias["#softvisio"] = "@softvisio/vue/lib";
@@ -58,7 +58,7 @@ var config = {
         // } ) );
     },
 
-    "chainWebpack": ( config ) => {
+    "chainWebpack": config => {
 
         // clear exclude for "babel-loader"
         // config.module
@@ -102,7 +102,7 @@ var config = {
         if ( process.env.NODE_ENV === "production" ) {
 
             // configure html minification, https://github.com/kangax/html-minifier#options-quick-reference
-            config.plugin( "html" ).tap( ( args ) => {
+            config.plugin( "html" ).tap( args => {
                 args[0].minify.removeAttributeQuotes = false;
 
                 return args;
