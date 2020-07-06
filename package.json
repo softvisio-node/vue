@@ -1,21 +1,30 @@
 {
-    "author": "zdm <zdm@softvisio.net>",
-    "bugs": {
-        "email": "zdm@softvisio.net",
-        "url": "https://bitbucket.org/softvisio/softvisio-vue/issues"
-    },
+    "name": "@softvisio/vue",
+    "version": "0.20.2",
     "description": "Softisio Vue",
+    "keywords": [
+        "softvisio",
+        "vue"
+    ],
+    "homepage": "https://bitbucket.org/softvisio/softvisio-vue",
+    "bugs": {
+        "url": "https://bitbucket.org/softvisio/softvisio-vue/issues",
+        "email": "zdm@softvisio.net"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://bitbucket.org/softvisio/softvisio-vue.git"
+    },
+    "author": "zdm <zdm@softvisio.net>",
+    "type": "commonjs",
     "exports": {
         ".": "./lib/index.js",
         "./": "./lib/",
         "./resources/": "./resources/"
     },
-    "homepage": "https://bitbucket.org/softvisio/softvisio-vue",
-    "keywords": [
-        "softvisio",
-        "vue"
-    ],
-    "name": "@softvisio/vue",
+    "scripts": {
+        "lint": "eslint --fix --ext=.js,.vue lib resources"
+    },
     "peerDependencies": {
         "@babel/core": ">=7.10.4",
         "@softvisio/core": ">=0.23.0",
@@ -28,14 +37,5 @@
         "vuex": ">=3.5.1",
         "webpack-bundle-analyzer": ">=3.8.0",
         "worker-loader": ">=2.0.0"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://bitbucket.org/softvisio/softvisio-vue.git"
-    },
-    "scripts": {
-        "lint": "eslint --fix --ext=.js,.vue lib resources"
-    },
-    "type": "commonjs",
-    "version": "0.20.1"
+    }
 }
