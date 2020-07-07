@@ -1,6 +1,6 @@
 {
     "name": "@softvisio/vue",
-    "version": "0.20.5",
+    "version": "0.21.0",
     "description": "Softisio Vue",
     "keywords": [
         "softvisio",
@@ -23,7 +23,7 @@
         "./resources/": "./resources/"
     },
     "scripts": {
-        "lint": "eslint --fix --ext=.js,.vue lib resources"
+        "lint": "softvisio-cli lint *.* lib resources"
     },
     "peerDependencies": {
         "@babel/core": ">=7.10.4",

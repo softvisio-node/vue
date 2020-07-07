@@ -130,15 +130,15 @@ export default {
             // subscribe
             window.FirebasePlugin.subscribe( topic,
                 () => {},
-                ( error ) => {
+                error => {
                     console.log( `Unable to subscribe to the push notification topic "${topic}". ${error}` );
                 } );
 
             // set event listener
-            window.FirebasePlugin.onMessageReceived( ( data ) => {
+            window.FirebasePlugin.onMessageReceived( data => {
                 this.$global.$emit( "push", data );
             },
-            ( error ) => {
+            error => {
                 console.log( `Push notification error. ${error}` );
             } );
         },
