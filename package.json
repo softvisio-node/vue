@@ -23,7 +23,7 @@
         "./resources/": "./resources/"
     },
     "scripts": {
-        "lint": "softvisio-cli lint *.* lib resources"
+        "lint": "softvisio-cli lint"
     },
     "peerDependencies": {
         "@babel/core": ">=7.10.4",
@@ -37,5 +37,10 @@
         "vuex": ">=3.5.1",
         "webpack-bundle-analyzer": ">=3.8.0",
         "worker-loader": ">=2.0.0"
-    }
+    },
+    "lint": [
+        "*.*",
+        "lib",
+        "resources"
+    ]
 }
