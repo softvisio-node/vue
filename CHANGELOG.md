@@ -1,3 +1,7 @@
+## 0.22.3 (2020-07-16)
+
+-   user_name -> username
+
 ## 0.22.2 (2020-07-12)
 
 -   changelog format updated
