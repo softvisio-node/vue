@@ -1,3 +1,7 @@
+## 0.22.4 (2020-07-17)
+
+-   lint patterns updated
+
 ## 0.22.3 (2020-07-16)
 
 -   user_name -> username
