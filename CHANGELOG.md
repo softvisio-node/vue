@@ -1,3 +1,7 @@
+## 0.23.1 (2020-07-19)
+
+-   api client persistent replaced with onDemand
+
 ## 0.23.0 (2020-07-17)
 
 -   userName -> username
