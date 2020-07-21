@@ -1,3 +1,7 @@
+## 0.24.0 (2020-07-21)
+
+-   signin permissions added
+
 ## 0.23.1 (2020-07-19)
 
 -   api client persistent replaced with onDemand
