@@ -1,3 +1,7 @@
+## 0.25.0 (2020-07-21)
+
+-   session signin statuses added
+
 ## 0.24.0 (2020-07-21)
 
 -   signin permissions added
