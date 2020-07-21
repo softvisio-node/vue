@@ -48,11 +48,15 @@ export default {
         },
 
         async ready () {
+
+            // init session
             while ( 1 ) {
                 var res = await this.$store.dispatch( "session/signin" );
 
-                if ( res.ok ) break;
+                // connection ok
+                if ( res.ok || res.status === 401 || res.status === 403 ) break;
 
+                // connection error
                 await this.onAppInitFailure();
             }
 
