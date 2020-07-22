@@ -1,3 +1,7 @@
+## 0.25.1 (2020-07-22)
+
+-   signin permissions undefined value fixed
+
 ## 0.25.0 (2020-07-21)
 
 -   session signin statuses added
