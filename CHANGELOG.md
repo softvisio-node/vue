@@ -1,3 +1,7 @@
+## 0.26.0 (2020-07-30)
+
+-   session store action changePassword renamed to setPassword
+
 ## 0.25.1 (2020-07-22)
 
 -   signin permissions undefined value fixed
