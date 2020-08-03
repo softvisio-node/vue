@@ -1,3 +1,7 @@
+## 0.26.1 (2020-08-03)
+
+-   shrinkwrap added
+
 ## 0.26.0 (2020-07-30)
 
 -   session store action changePassword renamed to setPassword
