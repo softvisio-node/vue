@@ -1,3 +1,7 @@
+## 0.27.4 (2020-08-06)
+
+-   electron update timeout fixed
+
 ## 0.27.3 (2020-08-06)
 
 -   electron detect devel mode
