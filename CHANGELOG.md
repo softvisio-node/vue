@@ -1,3 +1,7 @@
+## 0.27.1 (2020-08-06)
+
+-   electron updates get version fixed
+
 ## 0.27.0 (2020-08-06)
 
 -   electron updates
