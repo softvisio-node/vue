@@ -1,3 +1,7 @@
+## 0.27.3 (2020-08-06)
+
+-   electron detect devel mode
+
 ## 0.27.2 (2020-08-06)
 
 -   debug log removed
