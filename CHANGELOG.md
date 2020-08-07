@@ -1,3 +1,7 @@
+## 0.27.5 (2020-08-07)
+
+-   .eslintrc.yaml removed
+
 ## 0.27.4 (2020-08-06)
 
 -   electron update timeout fixed
