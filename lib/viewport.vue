@@ -71,7 +71,7 @@ export default {
 
         // DEVICE HOOKS
         onDeviceReady () {
-            this.$global.$emit( "deviceReady" );
+            this.$global.$emit( "device-ready" );
         },
 
         onDeviceUnload ( e ) {
@@ -81,43 +81,43 @@ export default {
         },
 
         onDevicePause () {
-            this.$global.$emit( "devicePause" );
+            this.$global.$emit( "device-pause" );
         },
 
         onDeviceResume () {
-            this.$global.$emit( "deviceResume" );
+            this.$global.$emit( "device-resume" );
         },
 
         onDeviceBackButton () {
-            this.$global.$emit( "deviceBackButton" );
+            this.$global.$emit( "device-back-button" );
         },
 
         onDeviceMenuButton () {
-            this.$global.$emit( "deviceMenuButton" );
+            this.$global.$emit( "device-menu-button" );
         },
 
         onDeviceSearchButton () {
-            this.$global.$emit( "deviceSearchButton" );
+            this.$global.$emit( "device-search-button" );
         },
 
         onDeviceStartCallButton () {
-            this.$global.$emit( "deviceStartCallButton" );
+            this.$global.$emit( "device-start-call-button" );
         },
 
         onDeviceEndCallButton () {
-            this.$global.$emit( "deviceEndCallButton" );
+            this.$global.$emit( "device-end-call-button" );
         },
 
         onDeviceVolumeDownButton () {
-            this.$global.$emit( "deviceVolumeDownButton" );
+            this.$global.$emit( "device-volume-down-button" );
         },
 
         onDeviceVolumeUpButton () {
-            this.$global.$emit( "deviceVolumeUpButton" );
+            this.$global.$emit( "device-volume-up-button" );
         },
 
         onDeviceActivated () {
-            this.$global.$emit( "deviceActivated" );
+            this.$global.$emit( "device-activated" );
         },
 
         // PUSH NOTIFICATIONS
