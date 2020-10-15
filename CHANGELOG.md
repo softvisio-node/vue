@@ -1,3 +1,7 @@
+## 0.28.0 (2020-10-15)
+
+-   device events names changed to kebab case
+
 ## 0.27.5 (2020-08-07)
 
 -   .eslintrc.yaml removed
