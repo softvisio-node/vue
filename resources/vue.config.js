@@ -14,7 +14,7 @@ var config = {
         "historyApiFallback": true,
         "host": process.env.DEVSERVER_HOST || "0.0.0.0",
         "port": process.env.DEVSERVER_PORT || "80",
-        "disableHostCheck": false,
+        "disableHostCheck": true,
         "compress": false,
         "inline": true,
         "stats": "none",
