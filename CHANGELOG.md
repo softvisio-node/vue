@@ -1,3 +1,9 @@
+## 0.29.0 (2020-10-22)
+
+-   npm 7 reverted to 6
+-   deps updated
+-   webpack dev server disabled host check
+
 ## 0.28.0 (2020-10-15)
 
 -   device events names changed to kebab case
