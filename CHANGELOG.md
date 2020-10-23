@@ -1,3 +1,7 @@
+## 0.30.0 (2020-10-23)
+
+-   session store settings getter
+
 ## 0.29.0 (2020-10-22)
 
 -   npm 7 reverted to 6
