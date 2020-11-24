@@ -2,6 +2,14 @@ module.exports = function ( api ) {
     api.cache( true );
 
     return {
-        "presets": ["@vue/app"],
+        "presets": [
+            [
+                "@babel/preset-env",
+                {
+                    "shippedProposals": true,
+                },
+            ],
+            "@vue/app",
+        ],
     };
 };
