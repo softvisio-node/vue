@@ -1,3 +1,8 @@
+## 0.31.0 (2020-11-25)
+
+-   peer deps updated
+-   babel config updated
+
 ## 0.30.0 (2020-10-23)
 
 -   session store settings getter
