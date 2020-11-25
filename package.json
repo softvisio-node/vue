@@ -25,9 +25,7 @@
         "lint": "softvisio-cli lint"
     },
     "peerDependencies": {
-        "@babel/core": ">=7.10.4",
         "@softvisio/core": ">=0.23.0",
-        "@vue/babel-preset-app": ">=4.4.6",
         "@vue/cli-plugin-babel": ">=4.4.6",
         "@vue/cli-service": ">=4.4.6",
         "vue": ">=2.6.11",
