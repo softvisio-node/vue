@@ -1,3 +1,8 @@
+## 0.32.0 (2020-11-26)
+
+-   import events emitter from softvisio core
+-   global events hub replaced with EventEmitter
+
 ## 0.31.0 (2020-11-25)
 
 -   peer deps updated
