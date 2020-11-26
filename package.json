@@ -24,6 +24,9 @@
     "scripts": {
         "lint": "softvisio-cli lint"
     },
+    "dependencies": {
+        "eventemitter3": ">=4.0.7"
+    },
     "peerDependencies": {
         "@softvisio/core": ">=0.23.0",
         "@vue/cli-plugin-babel": ">=4.4.6",
