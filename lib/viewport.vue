@@ -6,7 +6,7 @@
 export default {
     "computed": {
         sessionIsAuthenticated () {
-            return this.$store.getters["session/isAuthenticated"];
+            return this.$store.state.session.isAuthenticated;
         },
     },
 
