@@ -1,3 +1,8 @@
+## 0.33.0 (2020-11-30)
+
+-   vuex store refactored
+-   babel config updated to use decorators stage 2
+
 ## 0.32.0 (2020-11-26)
 
 -   import events emitter from softvisio core
