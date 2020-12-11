@@ -6,7 +6,7 @@
 export default {
     "computed": {
         sessionIsAuthenticated () {
-            return this.$store.state.session.isAuthenticated;
+            return this.$store.session.isAuthenticated;
         },
     },
 
@@ -51,7 +51,7 @@ export default {
 
             // init session
             while ( 1 ) {
-                var res = await this.$store.dispatch( "session/signin" );
+                var res = await this.$store.session.signin();
 
                 // connection ok
                 if ( res.ok || res.status === 401 || res.status === 403 ) break;
