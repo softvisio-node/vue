@@ -1,3 +1,7 @@
+## 0.35.0 (2020-12-12)
+
+-   vuex store refactored
+
 ## 0.34.0 (2020-12-01)
 
 -   api class moved
