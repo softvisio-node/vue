@@ -1,3 +1,9 @@
+## 0.36.0 (2020-12-13)
+
+-   export default from reverted
+-   vuex store moved to own package
+-   typo
+
 ## 0.35.0 (2020-12-12)
 
 -   vuex store refactored
