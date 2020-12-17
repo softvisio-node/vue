@@ -1,3 +1,7 @@
+## 0.38.0 (2020-12-17)
+
+-   session title added
+
 ## 0.37.0 (2020-12-14)
 
 -   main store updated
