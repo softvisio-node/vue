@@ -1,3 +1,7 @@
+## 0.39.0 (2020-12-19)
+
+-   default stores refactored
+
 ## 0.38.0 (2020-12-17)
 
 -   session title added
