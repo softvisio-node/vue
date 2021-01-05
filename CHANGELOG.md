@@ -1,3 +1,8 @@
+## 0.39.1 (2021-01-05)
+
+-   bigint reverted to string
+-   session userId BigInt
+
 ## 0.39.0 (2020-12-19)
 
 -   default stores refactored
