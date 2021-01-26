@@ -18,15 +18,15 @@
     "author": "zdm <zdm@softvisio.net>",
     "exports": {
         ".": "./lib/index.js",
-        "./": "./lib/",
-        "./resources/": "./resources/"
+        "./*": "./lib/*.js",
+        "./resources/babel.config": "./resources/babel.config.js",
+        "./resources/vue.config": "./resources/vue.config.js"
     },
     "scripts": {
         "lint": "softvisio-cli lint"
     },
     "peerDependencies": {
-        "@softvisio/core": ">=0.23.0",
-        "@softvisio/vuex": ">=0.1.0",
+        "@softvisio/vuex": "*",
         "@vue/cli-plugin-babel": ">=4.4.6",
         "@vue/cli-service": ">=4.4.6",
         "vue": ">=2.6.12",
