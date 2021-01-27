@@ -25,7 +25,8 @@
     "scripts": {
         "lint": "softvisio-cli lint"
     },
-    "dependencies": {
+    "peerDependencies": {
+        "@softvisio/core": "^0.123.15",
         "@softvisio/vuex": "^0.3.2",
         "@vue/cli-plugin-babel": "^4.5.11",
         "@vue/cli-service": "^4.5.11",
