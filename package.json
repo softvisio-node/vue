@@ -25,15 +25,15 @@
     "scripts": {
         "lint": "softvisio-cli lint"
     },
-    "peerDependencies": {
-        "@softvisio/vuex": "*",
-        "@vue/cli-plugin-babel": ">=4.4.6",
-        "@vue/cli-service": ">=4.4.6",
-        "vue": ">=2.6.12",
-        "vue-cli-plugin-webpack-bundle-analyzer": ">=2.0.0",
-        "vue-template-compiler": ">=2.6.11",
-        "webpack-bundle-analyzer": ">=3.8.0",
-        "worker-loader": ">=2.0.0"
+    "dependencies": {
+        "@softvisio/vuex": "^0.3.2",
+        "@vue/cli-plugin-babel": "^4.5.11",
+        "@vue/cli-service": "^4.5.11",
+        "vue": "^2.6.12",
+        "vue-cli-plugin-webpack-bundle-analyzer": "^4.0.0",
+        "vue-template-compiler": "^2.6.12",
+        "webpack-bundle-analyzer": "^4.4.0",
+        "worker-loader": "^3.0.7"
     },
     "lint": [
         "*.*",
