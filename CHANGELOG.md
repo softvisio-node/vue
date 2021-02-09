@@ -1,3 +1,9 @@
+## 2.0.0-beta.2 (2021-02-09)
+
+### Raw commits log
+
+-   use getEnvBool function removed;
+
 ## 2.0.0-beta.1 (2021-02-09)
 
 ### Raw commits log
