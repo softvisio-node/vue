@@ -1,3 +1,9 @@
+## 2.0.0-beta.4 (2021-02-10)
+
+### Raw commits log
+
+-   migrated to vue v3;
+
 ## 2.0.0-beta.3 (2021-02-10)
 
 ### Raw commits log
