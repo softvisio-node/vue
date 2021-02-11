@@ -1,8 +1,9 @@
 // https://cli.vuejs.org/config/
 
-// import webpack from "webpack.js";
+// const webpack = require( "webpack" );
+const { getEnvBool } = require( "@softvisio/core/util" );
 
-process.env.VUE_APP_BUILD_CORDOVA = !!+process.env.VUE_APP_BUILD_CORDOVA || process.env.VUE_APP_BUILD_CORDOVA === "true" ? 1 : "";
+process.env.VUE_APP_BUILD_CORDOVA = getEnvBool( process.env.VUE_APP_BUILD_CORDOVA );
 
 var config = {
     "filenameHashing": process.env.VUE_APP_BUILD_CORDOVA ? false : true,
