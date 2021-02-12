@@ -3,10 +3,11 @@
 // const webpack = require( "webpack" );
 const { getEnvBool } = require( "@softvisio/core/utils" );
 
-process.env.VUE_APP_BUILD_CORDOVA = getEnvBool( process.env.VUE_APP_BUILD_CORDOVA );
+process.env.VUE_APP_BUILD_CORDOVA = getEnvBool( process.env.VUE_APP_BUILD_CORDOVA ) ? "true" : "";
+process.env.DEVSERVER_POLL = getEnvBool( process.env.DEVSERVER_POLL ) ? "true" : "";
 
 var config = {
-    "filenameHashing": process.env.VUE_APP_BUILD_CORDOVA ? false : true,
+    "filenameHashing": !process.env.VUE_APP_BUILD_CORDOVA,
     "outputDir": "www",
 
     "devServer": {
@@ -20,7 +21,7 @@ var config = {
         "inline": true,
         "stats": "none",
         "watchOptions": {
-            "poll": !process.env.DEVSERVER_POLL ? false : process.env.DEVSERVER_POLL === "true" ? true : +process.env.DEVSERVER_POLL,
+            "poll": !!process.env.DEVSERVER_POLL,
         },
     },
 
