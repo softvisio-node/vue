@@ -1,3 +1,9 @@
+## 2.0.0-beta.8 (2021-02-12)
+
+### Raw commits log
+
+-   using getEnvBool() to read env vars;
+
 ## 2.0.0-beta.7 (2021-02-11)
 
 ### Raw commits log
