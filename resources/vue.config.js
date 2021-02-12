@@ -1,7 +1,7 @@
 // https://cli.vuejs.org/config/
 
 // const webpack = require( "webpack" );
-const { getEnvBool } = require( "@softvisio/core/util" );
+const { getEnvBool } = require( "@softvisio/core/utils" );
 
 process.env.VUE_APP_BUILD_CORDOVA = getEnvBool( process.env.VUE_APP_BUILD_CORDOVA );
 
