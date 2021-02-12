@@ -1,3 +1,9 @@
+## 2.0.0-beta.10 (2021-02-12)
+
+### Raw commits log
+
+-   util renamed to utils;
+
 ## 2.0.0-beta.9 (2021-02-12)
 
 ### Raw commits log
