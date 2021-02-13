@@ -1,3 +1,9 @@
+## 2.0.0-beta.13 (2021-02-13)
+
+### Raw commits log
+
+-   $global renamed to $events;
+
 ## 2.0.0-beta.12 (2021-02-13)
 
 ### Raw commits log
