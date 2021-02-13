@@ -71,7 +71,7 @@ export default {
 
         // DEVICE HOOKS
         onDeviceReady () {
-            this.$global.emit( "device-ready" );
+            this.$events.emit( "device-ready" );
         },
 
         onDeviceUnload ( e ) {
@@ -81,43 +81,43 @@ export default {
         },
 
         onDevicePause () {
-            this.$global.emit( "device-pause" );
+            this.$events.emit( "device-pause" );
         },
 
         onDeviceResume () {
-            this.$global.emit( "device-resume" );
+            this.$events.emit( "device-resume" );
         },
 
         onDeviceBackButton () {
-            this.$global.emit( "device-back-button" );
+            this.$events.emit( "device-back-button" );
         },
 
         onDeviceMenuButton () {
-            this.$global.emit( "device-menu-button" );
+            this.$events.emit( "device-menu-button" );
         },
 
         onDeviceSearchButton () {
-            this.$global.emit( "device-search-button" );
+            this.$events.emit( "device-search-button" );
         },
 
         onDeviceStartCallButton () {
-            this.$global.emit( "device-start-call-button" );
+            this.$events.emit( "device-start-call-button" );
         },
 
         onDeviceEndCallButton () {
-            this.$global.emit( "device-end-call-button" );
+            this.$events.emit( "device-end-call-button" );
         },
 
         onDeviceVolumeDownButton () {
-            this.$global.emit( "device-volume-down-button" );
+            this.$events.emit( "device-volume-down-button" );
         },
 
         onDeviceVolumeUpButton () {
-            this.$global.emit( "device-volume-up-button" );
+            this.$events.emit( "device-volume-up-button" );
         },
 
         onDeviceActivated () {
-            this.$global.emit( "device-activated" );
+            this.$events.emit( "device-activated" );
         },
 
         // PUSH NOTIFICATIONS
@@ -140,7 +140,7 @@ export default {
 
             // set event listener
             window.FirebasePlugin.onMessageReceived( data => {
-                this.$global.emit( "push", data );
+                this.$events.emit( "push", data );
             },
             error => {
                 console.log( `Push notification error. ${error}` );
