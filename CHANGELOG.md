@@ -1,3 +1,9 @@
+## 2.0.0-beta.17 (2021-02-15)
+
+### Raw commits log
+
+-   mount plugin refactored;
+
 ## 2.0.0-beta.16 (2021-02-13)
 
 ### Raw commits log
