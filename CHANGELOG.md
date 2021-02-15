@@ -1,3 +1,9 @@
+## 2.0.0-beta.18 (2021-02-15)
+
+### Raw commits log
+
+-   mount async components;
+
 ## 2.0.0-beta.17 (2021-02-15)
 
 ### Raw commits log
