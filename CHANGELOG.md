@@ -1,3 +1,10 @@
+## 2.0.0-beta.19 (2021-02-16)
+
+### Raw commits log
+
+-   mount plugin refactored;
+-   mount load es6 modules support;
+
 ## 2.0.0-beta.18 (2021-02-15)
 
 ### Raw commits log
