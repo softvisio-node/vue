@@ -15,7 +15,7 @@ export default {
             document.addEventListener( "deviceready", this._onDeviceReady.bind( this ), false );
         }
         else {
-            this.createViewport();
+            this.ready();
         }
     },
 
@@ -40,10 +40,6 @@ export default {
 
             this.onDeviceReady();
 
-            this.createViewport();
-        },
-
-        createViewport () {
             this.ready();
         },
 
