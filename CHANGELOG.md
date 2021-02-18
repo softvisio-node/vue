@@ -1,3 +1,12 @@
+## 2.0.0-beta.20 (2021-02-18)
+
+### Raw commits log
+
+-   app init refactored;
+-   mount floated ext dialogs to viewport by default;
+-   components instance cache;
+-   mount plugin refactored;
+
 ## 2.0.0-beta.19 (2021-02-16)
 
 ### Raw commits log
