@@ -1,3 +1,9 @@
+## 2.0.0-beta.22 (2021-02-22)
+
+### Raw commits log
+
+-   smtp settings updated;
+
 ## 2.0.0-beta.21 (2021-02-22)
 
 ### Raw commits log
