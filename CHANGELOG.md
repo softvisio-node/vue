@@ -1,3 +1,9 @@
+## 2.0.0-rc.0 (2021-03-02)
+
+### Raw commits log
+
+-   api client properties setters;
+
 ## 2.0.0-beta.22 (2021-02-22)
 
 ### Raw commits log
