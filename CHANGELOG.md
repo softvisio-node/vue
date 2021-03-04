@@ -1,3 +1,9 @@
+## 2.0.1 (2021-03-04)
+
+### Raw commits log
+
+-   docs updated;
+
 ## 2.0.0 (2021-03-03)
 
 ### Raw commits log
