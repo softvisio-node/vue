@@ -16,11 +16,11 @@
         "url": "https://bitbucket.org/softvisio/softvisio-vue.git"
     },
     "author": "zdm <zdm@softvisio.net>",
+    "type": "module",
     "exports": {
         ".": "./lib/index.js",
         "./*": "./lib/*.js",
-        "./resources/babel.config": "./resources/babel.config.js",
-        "./resources/vue.config": "./resources/vue.config.js"
+        "./resources/*": "./resources/*"
     },
     "scripts": {
         "lint": "softvisio-cli lint"
