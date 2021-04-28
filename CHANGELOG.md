@@ -1,3 +1,9 @@
+## 3.0.0-alpha.6 (2021-04-28)
+
+### Raw commits log
+
+-   webpack config updated;
+
 ## 3.0.0-alpha.5 (2021-04-28)
 
 ### Raw commits log
