@@ -1,3 +1,12 @@
+## 3.0.0-alpha.2 (2021-04-28)
+
+### Raw commits log
+
+-   vue exports added;
+-   web[ack alias prefix set to ":";
+-   webpack5 top-level await enabled;
+-   require replaced with import;
+
 ## 3.0.0-alpha.1 (2021-04-28)
 
 ### Raw commits log
