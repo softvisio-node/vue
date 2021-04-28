@@ -50,10 +50,6 @@ var config = {
         // aliases
         config.resolve.alias["#softvisio"] = "@softvisio/vue/lib";
 
-        // TODO remove after webpack5 will support "extends" option
-        config.resolve.alias["@softvisio/core"] = "@softvisio/core/lib";
-        config.resolve.alias["@softvisio/vue"] = "@softvisio/vue/lib";
-
         // global vars
         // config.plugins.push( new webpack.ProvidePlugin( {
         //     "Ext": config.resolve.alias["#ext.js"],
@@ -85,7 +81,7 @@ var config = {
 
         // exclude amcharts4 additional libs from bundle
         config.externals( [
-            function ( context, request, callback ) {
+            function ( { context, request }, callback ) {
                 if ( /xlsx|canvg|pdfmake/.test( request ) ) {
                     return callback( null, "commonjs " + request );
                 }
