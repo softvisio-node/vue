@@ -47,6 +47,10 @@ var config = {
 
     "configureWebpack": config => {
 
+        // webpack5 experimental features
+        config.experiments ||= {};
+        config.experiments.topLevelAwait = true;
+
         // aliases
         config.resolve.alias["#softvisio"] = "@softvisio/vue/lib";
 
