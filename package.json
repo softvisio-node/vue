@@ -19,7 +19,10 @@
     "type": "module",
     "exports": {
         ".": "./lib/index.js",
-        "./*": "./lib/*.js",
+        "./*": [
+            "./lib/*.js",
+            "./lib/*.vue"
+        ],
         "./resources/*": "./resources/*"
     },
     "scripts": {
