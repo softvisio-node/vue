@@ -1,3 +1,9 @@
+## 3.0.0-alpha.3 (2021-04-28)
+
+### Raw commits log
+
+-   store index renamed;
+
 ## 3.0.0-alpha.2 (2021-04-28)
 
 ### Raw commits log
