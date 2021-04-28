@@ -26,8 +26,8 @@
         "lint": "softvisio-cli lint"
     },
     "peerDependencies": {
-        "@softvisio/core": "^2.0.0",
-        "@softvisio/vuex": "^2.0.0",
+        "@softvisio/core": "^3.0.0-alpha.0",
+        "@softvisio/vuex": "^3.0.0-alpha.0",
         "@vue/cli-plugin-babel": "^5.0.0-beta.0",
         "@vue/cli-service": "^5.0.0-beta.0",
         "@vue/compiler-sfc": "^3.0.5",
