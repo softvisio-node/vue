@@ -52,7 +52,7 @@ var config = {
         config.experiments.topLevelAwait = true;
 
         // aliases
-        config.resolve.alias["#softvisio"] = "@softvisio/vue/lib";
+        config.resolve.alias[":softvisio"] = "@softvisio/vue";
 
         // global vars
         // config.plugins.push( new webpack.ProvidePlugin( {
