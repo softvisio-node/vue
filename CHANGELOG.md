@@ -1,3 +1,9 @@
+## 3.0.0-alpha.0 (2021-04-28)
+
+### Raw commits log
+
+-   vue cli 5.0.0-beta.0;
+
 ## 2.0.3 (2021-04-16)
 
 ### Raw commits log
