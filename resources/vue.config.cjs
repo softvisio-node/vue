@@ -103,12 +103,12 @@ var config = {
 
         if ( process.env.NODE_ENV === "production" ) {
 
+            // XXX not required for webpack5
             // configure html minification, https://github.com/kangax/html-minifier#options-quick-reference
-            config.plugin( "html" ).tap( args => {
-                args[0].minify.removeAttributeQuotes = false;
-
-                return args;
-            } );
+            // config.plugin( "html" ).tap( args => {
+            //     args[0].minify.removeAttributeQuotes = false;
+            //     return args;
+            // } );
         }
 
         // disable WebpackBundleAnalyzer
