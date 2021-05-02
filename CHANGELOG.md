@@ -1,3 +1,9 @@
+## 3.0.0-alpha.8 (2021-05-02)
+
+### Raw commits log
+
+-   transpile @softvisio deps disabled;
+
 ## 3.0.0-alpha.7 (2021-05-02)
 
 ### Raw commits log
