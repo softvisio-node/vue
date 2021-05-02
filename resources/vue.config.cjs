@@ -1,10 +1,17 @@
 // https://cli.vuejs.org/config/
 
 // const webpack = require( "webpack" );
-const env = require( "@softvisio/core/utils/env" );
 
-process.env.VUE_APP_BUILD_CORDOVA = env.getBool( "VUE_APP_BUILD_CORDOVA" ) ? "true" : "";
-process.env.DEVSERVER_POLL = env.getBool( "DEVSERVER_POLL" ) ? "true" : "";
+function getBool ( name ) {
+    const value = process.env[name];
+
+    if ( value === true || value === "true" ) return true;
+
+    return false;
+}
+
+process.env.VUE_APP_BUILD_CORDOVA = getBool( "VUE_APP_BUILD_CORDOVA" ) ? "true" : "";
+process.env.DEVSERVER_POLL = getBool( "DEVSERVER_POLL" ) ? "true" : "";
 
 var config = {
     "filenameHashing": !process.env.VUE_APP_BUILD_CORDOVA,
