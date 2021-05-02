@@ -32,7 +32,7 @@ var config = {
         },
     },
 
-    // "transpileDependencies": ["@softvisio"],
+    // "transpileDependencies": ["@softvisio/ext"],
 
     "publicPath": "",
 
