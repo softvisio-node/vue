@@ -2,16 +2,8 @@
 
 // const webpack = require( "webpack" );
 
-function getBool ( name ) {
-    const value = process.env[name];
-
-    if ( value === true || value === "true" ) return true;
-
-    return false;
-}
-
-process.env.VUE_APP_BUILD_CORDOVA = getBool( "VUE_APP_BUILD_CORDOVA" ) ? "true" : "";
-process.env.DEVSERVER_POLL = getBool( "DEVSERVER_POLL" ) ? "true" : "";
+process.env.VUE_APP_BUILD_CORDOVA = process.env.VUE_APP_BUILD_CORDOVA === "true" ? "true" : "";
+process.env.DEVSERVER_POLL = process.env.DEVSERVER_POLL === "true" ? "true" : "";
 
 var config = {
     "filenameHashing": !process.env.VUE_APP_BUILD_CORDOVA,
