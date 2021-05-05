@@ -1,3 +1,9 @@
+## 3.0.0-beta.1 (2021-05-05)
+
+### Raw commits log
+
+-   minor code improvements;
+
 ## 3.0.0-beta.0 (2021-05-02)
 
 ### Raw commits log
