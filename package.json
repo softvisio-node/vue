@@ -28,9 +28,6 @@
         ],
         "./resources/*": "./resources/*"
     },
-    "scripts": {
-        "lint": "softvisio-cli lint"
-    },
     "peerDependencies": {
         "@softvisio/core": "^3.0.0",
         "@softvisio/vuex": "^3.0.0",
