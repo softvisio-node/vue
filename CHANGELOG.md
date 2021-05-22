@@ -1,3 +1,9 @@
+## 3.0.0-beta.8 (2021-05-22)
+
+### Raw commits log
+
+-   api client signout event added;
+
 ## 3.0.0-beta.7 (2021-05-22)
 
 ### Raw commits log
