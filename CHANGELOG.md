@@ -1,3 +1,9 @@
+## 3.0.0-beta.6 (2021-05-22)
+
+### Raw commits log
+
+-   session watch for server-side sigout;
+
 ## 3.0.0-beta.5 (2021-05-19)
 
 ### Raw commits log
