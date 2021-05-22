@@ -1,3 +1,9 @@
+## 3.0.0-beta.7 (2021-05-22)
+
+### Raw commits log
+
+-   session input data updated;
+
 ## 3.0.0-beta.6 (2021-05-22)
 
 ### Raw commits log
