@@ -1,3 +1,9 @@
+## 3.0.0-beta.9 (2021-05-29)
+
+### Raw commits log
+
+-   peer deps updated;
+
 ## 3.0.0-beta.8 (2021-05-22)
 
 ### Raw commits log
