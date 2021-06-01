@@ -37,10 +37,5 @@
         "vue-cli-plugin-webpack-bundle-analyzer": "^4.0.0",
         "webpack-bundle-analyzer": "^4.4.2",
         "worker-loader": "^3.0.8"
-    },
-    "lint": [
-        "*.*",
-        "lib/**",
-        "resources/**"
-    ]
+    }
 }
