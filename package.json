@@ -6,14 +6,14 @@
         "softvisio",
         "vue"
     ],
-    "homepage": "https://bitbucket.org/softvisio/softvisio-vue",
+    "homepage": "https://github.com/softvisio/vue",
     "bugs": {
-        "url": "https://bitbucket.org/softvisio/softvisio-vue/issues",
+        "url": "https://github.com/softvisio/vue/issues",
         "email": "zdm@softvisio.net"
     },
     "repository": {
         "type": "git",
-        "url": "https://bitbucket.org/softvisio/softvisio-vue.git"
+        "url": "https://github.com/softvisio/vue.git"
     },
     "author": "zdm <zdm@softvisio.net>",
     "type": "module",
