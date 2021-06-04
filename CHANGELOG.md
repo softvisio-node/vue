@@ -1,121 +1,121 @@
 ## 3.0.0-beta.12 (2021-06-01)
 
-### Raw commits log
+**Raw commits log**
 
 -   lint config removed;
 -   babel config removed;
 
 ## 3.0.0-beta.11 (2021-05-29)
 
-### Raw commits log
+**Raw commits log**
 
 -   peer deps updated;
 
 ## 3.0.0-beta.10 (2021-05-29)
 
-### Raw commits log
+**Raw commits log**
 
 -   peer deps updated;
 
 ## 3.0.0-beta.9 (2021-05-29)
 
-### Raw commits log
+**Raw commits log**
 
 -   peer deps updated;
 
 ## 3.0.0-beta.8 (2021-05-22)
 
-### Raw commits log
+**Raw commits log**
 
 -   api client signout event added;
 
 ## 3.0.0-beta.7 (2021-05-22)
 
-### Raw commits log
+**Raw commits log**
 
 -   session input data updated;
 
 ## 3.0.0-beta.6 (2021-05-22)
 
-### Raw commits log
+**Raw commits log**
 
 -   session watch for server-side sigout;
 
 ## 3.0.0-beta.5 (2021-05-19)
 
-### Raw commits log
+**Raw commits log**
 
 -   lint script removed;
 
 ## 3.0.0-beta.4 (2021-05-13)
 
-### Raw commits log
+**Raw commits log**
 
 -   env mode accessors added;
 
 ## 3.0.0-beta.3 (2021-05-11)
 
-### Raw commits log
+**Raw commits log**
 
 -   imports updated;
 
 ## 3.0.0-beta.2 (2021-05-09)
 
-### Raw commits log
+**Raw commits log**
 
 -   imports updated;
 
 ## 3.0.0-beta.1 (2021-05-05)
 
-### Raw commits log
+**Raw commits log**
 
 -   minor code improvements;
 
 ## 3.0.0-beta.0 (2021-05-02)
 
-### Raw commits log
+**Raw commits log**
 
 -   deps updated;
 
 ## 3.0.0-alpha.8 (2021-05-02)
 
-### Raw commits log
+**Raw commits log**
 
 -   transpile @softvisio deps disabled;
 
 ## 3.0.0-alpha.7 (2021-05-02)
 
-### Raw commits log
+**Raw commits log**
 
 -   minor code improvements;
 
 ## 3.0.0-alpha.6 (2021-04-28)
 
-### Raw commits log
+**Raw commits log**
 
 -   webpack config updated;
 
 ## 3.0.0-alpha.5 (2021-04-28)
 
-### Raw commits log
+**Raw commits log**
 
 -   deps updated;
 
 ## 3.0.0-alpha.4 (2021-04-28)
 
-### Raw commits log
+**Raw commits log**
 
 -   store imports fixed;
 
 ## 3.0.0-alpha.3 (2021-04-28)
 
-### Raw commits log
+**Raw commits log**
 
 -   store index renamed;
 
 ## 3.0.0-alpha.2 (2021-04-28)
 
-### Raw commits log
+**Raw commits log**
 
 -   vue exports added;
 -   web[ack alias prefix set to ":";
@@ -124,61 +124,61 @@
 
 ## 3.0.0-alpha.1 (2021-04-28)
 
-### Raw commits log
+**Raw commits log**
 
 -   ported to webpack 5;
 
 ## 3.0.0-alpha.0 (2021-04-28)
 
-### Raw commits log
+**Raw commits log**
 
 -   vue cli 5.0.0-beta.0;
 
 ## 2.0.3 (2021-04-16)
 
-### Raw commits log
+**Raw commits log**
 
 -   ported to modules;
 
 ## 2.0.2 (2021-03-14)
 
-### Raw commits log
+**Raw commits log**
 
 -   getEnvBool -> env.getBool;
 
 ## 2.0.1 (2021-03-04)
 
-### Raw commits log
+**Raw commits log**
 
 -   docs updated;
 
 ## 2.0.0 (2021-03-03)
 
-### Raw commits log
+**Raw commits log**
 
 -   deps updated;
 
 ## 2.0.0-rc.0 (2021-03-02)
 
-### Raw commits log
+**Raw commits log**
 
 -   api client properties setters;
 
 ## 2.0.0-beta.22 (2021-02-22)
 
-### Raw commits log
+**Raw commits log**
 
 -   smtp settings updated;
 
 ## 2.0.0-beta.21 (2021-02-22)
 
-### Raw commits log
+**Raw commits log**
 
 -   smtp hostname;
 
 ## 2.0.0-beta.20 (2021-02-18)
 
-### Raw commits log
+**Raw commits log**
 
 -   app init refactored;
 -   mount floated ext dialogs to viewport by default;
@@ -187,123 +187,123 @@
 
 ## 2.0.0-beta.19 (2021-02-16)
 
-### Raw commits log
+**Raw commits log**
 
 -   mount plugin refactored;
 -   mount load es6 modules support;
 
 ## 2.0.0-beta.18 (2021-02-15)
 
-### Raw commits log
+**Raw commits log**
 
 -   mount async components;
 
 ## 2.0.0-beta.17 (2021-02-15)
 
-### Raw commits log
+**Raw commits log**
 
 -   mount plugin refactored;
 
 ## 2.0.0-beta.16 (2021-02-13)
 
-### Raw commits log
+**Raw commits log**
 
 -   mount plugin refactored;
 -   vuex store init process refactored;
 
 ## 2.0.0-beta.15 (2021-02-13)
 
-### Raw commits log
+**Raw commits log**
 
 -   vuex store init process refactored;
 
 ## 2.0.0-beta.14 (2021-02-13)
 
-### Raw commits log
+**Raw commits log**
 
 -   vuex store init process refactored;
 
 ## 2.0.0-beta.13 (2021-02-13)
 
-### Raw commits log
+**Raw commits log**
 
 -   $global renamed to $events;
 
 ## 2.0.0-beta.12 (2021-02-13)
 
-### Raw commits log
+**Raw commits log**
 
 -   vue3 plugins;
 
 ## 2.0.0-beta.11 (2021-02-12)
 
-### Raw commits log
+**Raw commits log**
 
 -   cordova env parser fixed;
 
 ## 2.0.0-beta.10 (2021-02-12)
 
-### Raw commits log
+**Raw commits log**
 
 -   util renamed to utils;
 
 ## 2.0.0-beta.9 (2021-02-12)
 
-### Raw commits log
+**Raw commits log**
 
 -   util renamed to utils;
 
 ## 2.0.0-beta.8 (2021-02-12)
 
-### Raw commits log
+**Raw commits log**
 
 -   using getEnvBool() to read env vars;
 
 ## 2.0.0-beta.7 (2021-02-11)
 
-### Raw commits log
+**Raw commits log**
 
 -   migrated to vue v3;
 
 ## 2.0.0-beta.6 (2021-02-11)
 
-### Raw commits log
+**Raw commits log**
 
 -   migrated to vue v3;
 
 ## 2.0.0-beta.5 (2021-02-10)
 
-### Raw commits log
+**Raw commits log**
 
 -   migrated to vue v3;
 
 ## 2.0.0-beta.4 (2021-02-10)
 
-### Raw commits log
+**Raw commits log**
 
 -   migrated to vue v3;
 
 ## 2.0.0-beta.3 (2021-02-10)
 
-### Raw commits log
+**Raw commits log**
 
 -   migrated to vue v3;
 
 ## 2.0.0-beta.2 (2021-02-09)
 
-### Raw commits log
+**Raw commits log**
 
 -   use getEnvBool function removed;
 
 ## 2.0.0-beta.1 (2021-02-09)
 
-### Raw commits log
+**Raw commits log**
 
 -   use getEnvBool function;
 
 ## 2.0.0-beta.0 (2021-02-09)
 
-### Raw commits log
+**Raw commits log**
 
 -   softvisio/core update to v2;
 
