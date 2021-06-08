@@ -1,472 +1,474 @@
-## 3.0.0-beta.12 (2021-06-01)
+# Changelog
 
-**Raw commits log**
+### 3.0.0-beta.12 (2021-06-01)
+
+Changed:
 
 -   lint config removed;
 -   babel config removed;
 
-## 3.0.0-beta.11 (2021-05-29)
+### 3.0.0-beta.11 (2021-05-29)
 
-**Raw commits log**
-
--   peer deps updated;
-
-## 3.0.0-beta.10 (2021-05-29)
-
-**Raw commits log**
+Changed:
 
 -   peer deps updated;
 
-## 3.0.0-beta.9 (2021-05-29)
+### 3.0.0-beta.10 (2021-05-29)
 
-**Raw commits log**
+Changed:
 
 -   peer deps updated;
 
-## 3.0.0-beta.8 (2021-05-22)
+### 3.0.0-beta.9 (2021-05-29)
 
-**Raw commits log**
+Changed:
+
+-   peer deps updated;
+
+### 3.0.0-beta.8 (2021-05-22)
+
+Changed:
 
 -   api client signout event added;
 
-## 3.0.0-beta.7 (2021-05-22)
+### 3.0.0-beta.7 (2021-05-22)
 
-**Raw commits log**
+Changed:
 
 -   session input data updated;
 
-## 3.0.0-beta.6 (2021-05-22)
+### 3.0.0-beta.6 (2021-05-22)
 
-**Raw commits log**
+Changed:
 
 -   session watch for server-side sigout;
 
-## 3.0.0-beta.5 (2021-05-19)
+### 3.0.0-beta.5 (2021-05-19)
 
-**Raw commits log**
+Changed:
 
 -   lint script removed;
 
-## 3.0.0-beta.4 (2021-05-13)
+### 3.0.0-beta.4 (2021-05-13)
 
-**Raw commits log**
+Changed:
 
 -   env mode accessors added;
 
-## 3.0.0-beta.3 (2021-05-11)
+### 3.0.0-beta.3 (2021-05-11)
 
-**Raw commits log**
-
--   imports updated;
-
-## 3.0.0-beta.2 (2021-05-09)
-
-**Raw commits log**
+Changed:
 
 -   imports updated;
 
-## 3.0.0-beta.1 (2021-05-05)
+### 3.0.0-beta.2 (2021-05-09)
 
-**Raw commits log**
+Changed:
+
+-   imports updated;
+
+### 3.0.0-beta.1 (2021-05-05)
+
+Changed:
 
 -   minor code improvements;
 
-## 3.0.0-beta.0 (2021-05-02)
+### 3.0.0-beta.0 (2021-05-02)
 
-**Raw commits log**
+Changed:
 
 -   deps updated;
 
-## 3.0.0-alpha.8 (2021-05-02)
+### 3.0.0-alpha.8 (2021-05-02)
 
-**Raw commits log**
+Changed:
 
 -   transpile @softvisio deps disabled;
 
-## 3.0.0-alpha.7 (2021-05-02)
+### 3.0.0-alpha.7 (2021-05-02)
 
-**Raw commits log**
+Changed:
 
 -   minor code improvements;
 
-## 3.0.0-alpha.6 (2021-04-28)
+### 3.0.0-alpha.6 (2021-04-28)
 
-**Raw commits log**
+Changed:
 
 -   webpack config updated;
 
-## 3.0.0-alpha.5 (2021-04-28)
+### 3.0.0-alpha.5 (2021-04-28)
 
-**Raw commits log**
+Changed:
 
 -   deps updated;
 
-## 3.0.0-alpha.4 (2021-04-28)
+### 3.0.0-alpha.4 (2021-04-28)
 
-**Raw commits log**
+Changed:
 
 -   store imports fixed;
 
-## 3.0.0-alpha.3 (2021-04-28)
+### 3.0.0-alpha.3 (2021-04-28)
 
-**Raw commits log**
+Changed:
 
 -   store index renamed;
 
-## 3.0.0-alpha.2 (2021-04-28)
+### 3.0.0-alpha.2 (2021-04-28)
 
-**Raw commits log**
+Changed:
 
 -   vue exports added;
 -   web[ack alias prefix set to ":";
 -   webpack5 top-level await enabled;
 -   require replaced with import;
 
-## 3.0.0-alpha.1 (2021-04-28)
+### 3.0.0-alpha.1 (2021-04-28)
 
-**Raw commits log**
+Changed:
 
 -   ported to webpack 5;
 
-## 3.0.0-alpha.0 (2021-04-28)
+### 3.0.0-alpha.0 (2021-04-28)
 
-**Raw commits log**
+Changed:
 
 -   vue cli 5.0.0-beta.0;
 
-## 2.0.3 (2021-04-16)
+### 2.0.3 (2021-04-16)
 
-**Raw commits log**
+Changed:
 
 -   ported to modules;
 
-## 2.0.2 (2021-03-14)
+### 2.0.2 (2021-03-14)
 
-**Raw commits log**
+Changed:
 
 -   getEnvBool -> env.getBool;
 
-## 2.0.1 (2021-03-04)
+### 2.0.1 (2021-03-04)
 
-**Raw commits log**
+Changed:
 
 -   docs updated;
 
-## 2.0.0 (2021-03-03)
+### 2.0.0 (2021-03-03)
 
-**Raw commits log**
+Changed:
 
 -   deps updated;
 
-## 2.0.0-rc.0 (2021-03-02)
+### 2.0.0-rc.0 (2021-03-02)
 
-**Raw commits log**
+Changed:
 
 -   api client properties setters;
 
-## 2.0.0-beta.22 (2021-02-22)
+### 2.0.0-beta.22 (2021-02-22)
 
-**Raw commits log**
+Changed:
 
 -   smtp settings updated;
 
-## 2.0.0-beta.21 (2021-02-22)
+### 2.0.0-beta.21 (2021-02-22)
 
-**Raw commits log**
+Changed:
 
 -   smtp hostname;
 
-## 2.0.0-beta.20 (2021-02-18)
+### 2.0.0-beta.20 (2021-02-18)
 
-**Raw commits log**
+Changed:
 
 -   app init refactored;
 -   mount floated ext dialogs to viewport by default;
 -   components instance cache;
 -   mount plugin refactored;
 
-## 2.0.0-beta.19 (2021-02-16)
+### 2.0.0-beta.19 (2021-02-16)
 
-**Raw commits log**
+Changed:
 
 -   mount plugin refactored;
 -   mount load es6 modules support;
 
-## 2.0.0-beta.18 (2021-02-15)
+### 2.0.0-beta.18 (2021-02-15)
 
-**Raw commits log**
+Changed:
 
 -   mount async components;
 
-## 2.0.0-beta.17 (2021-02-15)
+### 2.0.0-beta.17 (2021-02-15)
 
-**Raw commits log**
-
--   mount plugin refactored;
-
-## 2.0.0-beta.16 (2021-02-13)
-
-**Raw commits log**
+Changed:
 
 -   mount plugin refactored;
+
+### 2.0.0-beta.16 (2021-02-13)
+
+Changed:
+
+-   mount plugin refactored;
 -   vuex store init process refactored;
 
-## 2.0.0-beta.15 (2021-02-13)
+### 2.0.0-beta.15 (2021-02-13)
 
-**Raw commits log**
-
--   vuex store init process refactored;
-
-## 2.0.0-beta.14 (2021-02-13)
-
-**Raw commits log**
+Changed:
 
 -   vuex store init process refactored;
 
-## 2.0.0-beta.13 (2021-02-13)
+### 2.0.0-beta.14 (2021-02-13)
 
-**Raw commits log**
+Changed:
+
+-   vuex store init process refactored;
+
+### 2.0.0-beta.13 (2021-02-13)
+
+Changed:
 
 -   $global renamed to $events;
 
-## 2.0.0-beta.12 (2021-02-13)
+### 2.0.0-beta.12 (2021-02-13)
 
-**Raw commits log**
+Changed:
 
 -   vue3 plugins;
 
-## 2.0.0-beta.11 (2021-02-12)
+### 2.0.0-beta.11 (2021-02-12)
 
-**Raw commits log**
+Changed:
 
 -   cordova env parser fixed;
 
-## 2.0.0-beta.10 (2021-02-12)
+### 2.0.0-beta.10 (2021-02-12)
 
-**Raw commits log**
-
--   util renamed to utils;
-
-## 2.0.0-beta.9 (2021-02-12)
-
-**Raw commits log**
+Changed:
 
 -   util renamed to utils;
 
-## 2.0.0-beta.8 (2021-02-12)
+### 2.0.0-beta.9 (2021-02-12)
 
-**Raw commits log**
+Changed:
+
+-   util renamed to utils;
+
+### 2.0.0-beta.8 (2021-02-12)
+
+Changed:
 
 -   using getEnvBool() to read env vars;
 
-## 2.0.0-beta.7 (2021-02-11)
+### 2.0.0-beta.7 (2021-02-11)
 
-**Raw commits log**
-
--   migrated to vue v3;
-
-## 2.0.0-beta.6 (2021-02-11)
-
-**Raw commits log**
+Changed:
 
 -   migrated to vue v3;
 
-## 2.0.0-beta.5 (2021-02-10)
+### 2.0.0-beta.6 (2021-02-11)
 
-**Raw commits log**
-
--   migrated to vue v3;
-
-## 2.0.0-beta.4 (2021-02-10)
-
-**Raw commits log**
+Changed:
 
 -   migrated to vue v3;
 
-## 2.0.0-beta.3 (2021-02-10)
+### 2.0.0-beta.5 (2021-02-10)
 
-**Raw commits log**
+Changed:
 
 -   migrated to vue v3;
 
-## 2.0.0-beta.2 (2021-02-09)
+### 2.0.0-beta.4 (2021-02-10)
 
-**Raw commits log**
+Changed:
+
+-   migrated to vue v3;
+
+### 2.0.0-beta.3 (2021-02-10)
+
+Changed:
+
+-   migrated to vue v3;
+
+### 2.0.0-beta.2 (2021-02-09)
+
+Changed:
 
 -   use getEnvBool function removed;
 
-## 2.0.0-beta.1 (2021-02-09)
+### 2.0.0-beta.1 (2021-02-09)
 
-**Raw commits log**
+Changed:
 
 -   use getEnvBool function;
 
-## 2.0.0-beta.0 (2021-02-09)
+### 2.0.0-beta.0 (2021-02-09)
 
-**Raw commits log**
+Changed:
 
 -   softvisio/core update to v2;
 
-## 1.0.3 (2021-01-31)
+### 1.0.3 (2021-01-31)
 
 -   package-lock disabled
 
-## 1.0.2 (2021-01-31)
+### 1.0.2 (2021-01-31)
 
 -   deps updated
 
-## 1.0.1 (2021-01-31)
+### 1.0.1 (2021-01-31)
 
 -   deps updated
 
-## 1.0.0 (2021-01-31)
+### 1.0.0 (2021-01-31)
 
 -   deps updated
 
-## 0.40.2 (2021-01-27)
+### 0.40.2 (2021-01-27)
 
 -   deps updated
 
-## 0.40.1 (2021-01-27)
+### 0.40.1 (2021-01-27)
 
 -   deps updated
 
-## 0.40.0 (2021-01-26)
+### 0.40.0 (2021-01-26)
 
 -   migrated to node v15
 
-## 0.39.1 (2021-01-05)
+### 0.39.1 (2021-01-05)
 
 -   bigint reverted to string
 -   session userId BigInt
 
-## 0.39.0 (2020-12-19)
+### 0.39.0 (2020-12-19)
 
 -   default stores refactored
 
-## 0.38.0 (2020-12-17)
+### 0.38.0 (2020-12-17)
 
 -   session title added
 
-## 0.37.0 (2020-12-14)
+### 0.37.0 (2020-12-14)
 
 -   main store updated
 
-## 0.36.0 (2020-12-13)
+### 0.36.0 (2020-12-13)
 
 -   export default from reverted
 -   vuex store moved to own package
 -   typo
 
-## 0.35.0 (2020-12-12)
+### 0.35.0 (2020-12-12)
 
 -   vuex store refactored
 
-## 0.34.0 (2020-12-01)
+### 0.34.0 (2020-12-01)
 
 -   api class moved
 
-## 0.33.0 (2020-11-30)
+### 0.33.0 (2020-11-30)
 
 -   vuex store refactored
 -   babel config updated to use decorators stage 2
 
-## 0.32.0 (2020-11-26)
+### 0.32.0 (2020-11-26)
 
 -   import events emitter from softvisio core
 -   global events hub replaced with EventEmitter
 
-## 0.31.0 (2020-11-25)
+### 0.31.0 (2020-11-25)
 
 -   peer deps updated
 -   babel config updated
 
-## 0.30.0 (2020-10-23)
+### 0.30.0 (2020-10-23)
 
 -   session store settings getter
 
-## 0.29.0 (2020-10-22)
+### 0.29.0 (2020-10-22)
 
 -   npm 7 reverted to 6
 -   deps updated
 -   webpack dev server disabled host check
 
-## 0.28.0 (2020-10-15)
+### 0.28.0 (2020-10-15)
 
 -   device events names changed to kebab case
 
-## 0.27.5 (2020-08-07)
+### 0.27.5 (2020-08-07)
 
 -   .eslintrc.yaml removed
 
-## 0.27.4 (2020-08-06)
+### 0.27.4 (2020-08-06)
 
 -   electron update timeout fixed
 
-## 0.27.3 (2020-08-06)
+### 0.27.3 (2020-08-06)
 
 -   electron detect devel mode
 
-## 0.27.2 (2020-08-06)
+### 0.27.2 (2020-08-06)
 
 -   debug log removed
 
-## 0.27.1 (2020-08-06)
+### 0.27.1 (2020-08-06)
 
 -   electron updates get version fixed
 
-## 0.27.0 (2020-08-06)
+### 0.27.0 (2020-08-06)
 
 -   electron updates
 
-## 0.26.2 (2020-08-03)
+### 0.26.2 (2020-08-03)
 
 -   npm-shrinkwrap.json version updated
 
-## 0.26.1 (2020-08-03)
+### 0.26.1 (2020-08-03)
 
 -   shrinkwrap added
 
-## 0.26.0 (2020-07-30)
+### 0.26.0 (2020-07-30)
 
 -   session store action changePassword renamed to setPassword
 
-## 0.25.1 (2020-07-22)
+### 0.25.1 (2020-07-22)
 
 -   signin permissions undefined value fixed
 
-## 0.25.0 (2020-07-21)
+### 0.25.0 (2020-07-21)
 
 -   session signin statuses added
 
-## 0.24.0 (2020-07-21)
+### 0.24.0 (2020-07-21)
 
 -   signin permissions added
 
-## 0.23.1 (2020-07-19)
+### 0.23.1 (2020-07-19)
 
 -   api client persistent replaced with onDemand
 
-## 0.23.0 (2020-07-17)
+### 0.23.0 (2020-07-17)
 
 -   userName -> username
 
-## 0.22.4 (2020-07-17)
+### 0.22.4 (2020-07-17)
 
 -   lint patterns updated
 
-## 0.22.3 (2020-07-16)
+### 0.22.3 (2020-07-16)
 
 -   user_name -> username
 
-## 0.22.2 (2020-07-12)
+### 0.22.2 (2020-07-12)
 
 -   changelog format updated
 
-## 0.22.1 (2020-07-12)
+### 0.22.1 (2020-07-12)
 
 -   .eslintrc.yaml updated
 
-## 0.22.0 (2020-07-10)
+### 0.22.0 (2020-07-10)
 
 -   lint config added to package.json
