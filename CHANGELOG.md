@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.0.0-beta.14 (2021-06-17)
+
+Changed:
+
+-   peer deps updated;
+
 ### 3.0.0-beta.13 (2021-06-17)
 
 Changed:
