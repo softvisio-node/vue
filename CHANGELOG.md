@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.0.0-beta.16 (2021-06-18)
+
+Changed:
+
+-   app events updated;
+
 ### 3.0.0-beta.15 (2021-06-18)
 
 Changed:
