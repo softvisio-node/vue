@@ -67,7 +67,7 @@ export default {
 
         // DEVICE HOOKS
         onDeviceReady () {
-            this.$app.publish( "device-ready" );
+            this.$app.publish( "device/ready" );
         },
 
         onDeviceUnload ( e ) {
@@ -77,43 +77,43 @@ export default {
         },
 
         onDevicePause () {
-            this.$app.publish( "device-pause" );
+            this.$app.publish( "device/pause" );
         },
 
         onDeviceResume () {
-            this.$app.publish( "device-resume" );
+            this.$app.publish( "device/resume" );
         },
 
         onDeviceBackButton () {
-            this.$app.publish( "device-back-button" );
+            this.$app.publish( "device/back-button" );
         },
 
         onDeviceMenuButton () {
-            this.$app.publish( "device-menu-button" );
+            this.$app.publish( "device/menu-button" );
         },
 
         onDeviceSearchButton () {
-            this.$app.publish( "device-search-button" );
+            this.$app.publish( "device/search-button" );
         },
 
         onDeviceStartCallButton () {
-            this.$app.publish( "device-start-call-button" );
+            this.$app.publish( "device/start-call-button" );
         },
 
         onDeviceEndCallButton () {
-            this.$app.publish( "device-end-call-button" );
+            this.$app.publish( "device/end-call-button" );
         },
 
         onDeviceVolumeDownButton () {
-            this.$app.publish( "device-volume-down-button" );
+            this.$app.publish( "device/volume-down-button" );
         },
 
         onDeviceVolumeUpButton () {
-            this.$app.publish( "device-volume-up-button" );
+            this.$app.publish( "device/volume-up-button" );
         },
 
         onDeviceActivated () {
-            this.$app.publish( "device-activated" );
+            this.$app.publish( "device/activated" );
         },
 
         // PUSH NOTIFICATIONS
@@ -136,7 +136,7 @@ export default {
 
             // set event listener
             window.FirebasePlugin.onMessageReceived( data => {
-                this.$app.publish( "push", data );
+                this.$app.publish( "device/push", data );
             },
             error => {
                 console.log( `Push notification error. ${error}` );
