@@ -1,5 +1,13 @@
 # Changelog
 
+### 3.0.0-beta.15 (2021-06-18)
+
+Changed:
+
+-   device events renamed;
+-   $events replaced with $app;
+-   @softvisio/vuex v4;
+
 ### 3.0.0-beta.14 (2021-06-17)
 
 Changed:
