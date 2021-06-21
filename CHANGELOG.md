@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.0.0-beta.17 (2021-06-21)
+
+Changed:
+
+-   api events updated;
+
 ### 3.0.0-beta.16 (2021-06-18)
 
 Changed:
