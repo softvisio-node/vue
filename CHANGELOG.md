@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.0.0-beta.19 (2021-06-28)
+
+Changed:
+
+-   api client static new() added
+
 ### 3.0.0-beta.18 (2021-06-24)
 
 Changed:
