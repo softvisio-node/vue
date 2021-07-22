@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.0.0-beta.21 (2021-07-22)
+
+Changed:
+
+-   docs added
+
 ### 3.0.0-beta.20 (2021-07-07)
 
 Changed:
