@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.0.0-beta.22 (2021-07-31)
+
+Changed:
+
+-   core const removed
+
 ### 3.0.0-beta.21 (2021-07-22)
 
 Changed:
