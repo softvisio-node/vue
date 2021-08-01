@@ -5,7 +5,7 @@
 <script>
 export default {
     "computed": {
-        sessionIsAuthenticated () {
+        isAuthenticated () {
             return this.$store.session.isAuthenticated;
         },
     },
@@ -46,8 +46,8 @@ export default {
         async ready () {
 
             // init session
-            while ( 1 ) {
-                var res = await this.$store.session.signin();
+            while ( true ) {
+                const res = await this.$store.session.signin();
 
                 // connection ok
                 if ( res.ok || res.status === 401 || res.status === 403 ) break;
@@ -56,7 +56,7 @@ export default {
                 await this.onAppInitFailure();
             }
 
-            this.$watch( "sessionIsAuthenticated", this.onAuthChange.bind( this ) );
+            this.$watch( "isAuthenticated", this.onAuthChange.bind( this ) );
         },
 
         async onAppInitFailure () {
