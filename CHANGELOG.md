@@ -1,5 +1,12 @@
 # Changelog
 
+### 3.0.0-beta.23 (2021-08-01)
+
+Changed:
+
+-   viewport auth refactored
+-   permissions compare refactored
+
 ### 3.0.0-beta.22 (2021-07-31)
 
 Changed:
