@@ -5,7 +5,7 @@
 process.env.VUE_APP_BUILD_CORDOVA = process.env.VUE_APP_BUILD_CORDOVA === "true" ? "true" : "";
 process.env.DEVSERVER_POLL = process.env.DEVSERVER_POLL === "true" ? "true" : "";
 
-var config = {
+const vueConfig = {
     "filenameHashing": !process.env.VUE_APP_BUILD_CORDOVA,
     "outputDir": "www",
 
@@ -61,6 +61,10 @@ var config = {
 
     "chainWebpack": config => {
 
+        // add webpack-bundle-analyzer
+        const bundleAnalyzerPlugin = require( "vue-cli-plugin-webpack-bundle-analyzer" );
+        bundleAnalyzerPlugin( { "chainWebpack": callback => callback( config ) }, vueConfig );
+
         // clear exclude for "babel-loader"
         // config.module
         //     .rule( "js" )
@@ -115,4 +119,4 @@ var config = {
     },
 };
 
-module.exports = config;
+module.exports = vueConfig;
