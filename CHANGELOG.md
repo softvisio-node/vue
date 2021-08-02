@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.0.0-beta.24 (2021-08-02)
+
+Changed:
+
+-   init bundle analyser plugin manually
+
 ### 3.0.0-beta.23 (2021-08-01)
 
 Changed:
