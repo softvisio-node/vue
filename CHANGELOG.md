@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.0.0-beta.25 (2021-08-03)
+
+Changed:
+
+-   use const from core
+
 ### 3.0.0-beta.24 (2021-08-02)
 
 Changed:
