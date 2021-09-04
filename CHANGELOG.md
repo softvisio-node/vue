@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.0.0 (2021-09-04)
+
+No significant changes since the previous release
+
 ### 3.0.0-beta.25 (2021-08-03)
 
 Changed:
