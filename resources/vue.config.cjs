@@ -24,7 +24,7 @@ const vueConfig = {
         },
     },
 
-    // "transpileDependencies": ["@softvisio/ext"],
+    "transpileDependencies": ["@softvisio"],
 
     "publicPath": "",
 
