@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.2.1 (2021-09-09)
+
+Fixes:
+
+-   fix: vue config
+
 ### 3.2.0 (2021-09-09)
 
 Features:
