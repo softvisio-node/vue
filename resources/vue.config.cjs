@@ -47,7 +47,7 @@ const vueConfig = {
         config.experiments.topLevelAwait = true;
 
         // aliases
-        config.resolve.alias[":softvisio"] = "@softvisio/vue";
+        config.resolve.alias["#softvisio"] = "@softvisio/vue";
     },
 
     "chainWebpack": config => {
