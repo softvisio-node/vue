@@ -1,5 +1,11 @@
 # Changelog
 
+### 4.1.0 (2021-09-11)
+
+Features:
+
+-   feat: cordova online/offline events added
+
 ### 4.0.0 (2021-09-11)
 
 Breaking changes:
