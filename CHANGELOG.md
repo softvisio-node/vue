@@ -1,5 +1,15 @@
 # Changelog
 
+### 4.0.0-alpha.0 (2021-09-11)
+
+Breaking changes:
+
+-   feat!: :softvisio alias replaced with #softvisio
+
+Features:
+
+-   feat: configs exports added
+
 ### 3.2.1 (2021-09-09)
 
 Fixes:
