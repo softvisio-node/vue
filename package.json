@@ -26,7 +26,9 @@
             "./lib/*.js",
             "./lib/*.vue"
         ],
-        "./resources/*": "./resources/*"
+        "./resources/*": "./resources/*",
+        "./vue.config.cjs": "./resources/vue.config.cjs",
+        "./babel.config.cjs": "./resources/babel.config.cjs"
     },
     "peerDependencies": {
         "@softvisio/core": "^4.0.0",
