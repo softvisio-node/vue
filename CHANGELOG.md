@@ -1,5 +1,21 @@
 # Changelog
 
+### 4.0.0 (2021-09-11)
+
+Breaking changes:
+
+-   refactor!: app
+
+Migration:
+
+-   replace `:softvisio` with `#vue`
+-   replace `:ext` with `#ext`
+-   replace `:ewc` with `#ewc`
+-   replace `:ext-resources` with `#ext`
+-   replace `:ewc-resources` with `#ewc`
+-   add `#vue` import to the `package.json`
+-   update `main.js`
+
 ### 4.0.0-alpha.1 (2021-09-11)
 
 Breaking changes:
