@@ -21,6 +21,8 @@ Migration:
 -   replace `:ewc-resources` with `#ewc`
 -   add `#vue` import to the `package.json`
 -   update `main.js`
+-   update `vue.config.js` and `babel.config.js`
+-   replace `noCache` option in the `$mount` call with the `cache`
 
 ### 4.0.0-alpha.1 (2021-09-11)
 
