@@ -1,5 +1,12 @@
 # Changelog
 
+### 4.2.0 (2021-09-13)
+
+Features:
+
+-   feat: app title icon added
+-   feat: reload on auth change
+
 ### 4.1.0 (2021-09-11)
 
 Features:
