@@ -22,16 +22,12 @@ export default {
             // connection error
             await this.onAppInitFailure();
         }
-
-        this.$watch( "isAuthenticated", this.onAuthChange.bind( this ) );
     },
 
     "methods": {
         async onAppInitFailure () {
             alert( `Server connection error. Press "OK" to try again.` );
         },
-
-        onAuthChange () {},
     },
 };
 </script>
