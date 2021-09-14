@@ -31,6 +31,9 @@
         "./vue.config.cjs": "./resources/vue.config.cjs",
         "./babel.config.cjs": "./resources/babel.config.cjs"
     },
+    "bin": {
+        "vue-cli-service": "bin/vue-cli-service.js"
+    },
     "peerDependencies": {
         "@softvisio/core": "^4.0.0",
         "@softvisio/vuex": "^4.0.0",
