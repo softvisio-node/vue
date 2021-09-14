@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // XXX https://github.com/vuejs/vue-cli/issues/6687
 
 const _Service = require( "@vue/cli-service/lib/Service.js" );
