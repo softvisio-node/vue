@@ -32,7 +32,7 @@
         "./babel.config.cjs": "./resources/babel.config.cjs"
     },
     "bin": {
-        "vue-cli-service": "bin/vue-cli-service.js"
+        "vue-cli-service": "bin/vue-cli-service.cjs"
     },
     "peerDependencies": {
         "@softvisio/core": "^4.0.0",
