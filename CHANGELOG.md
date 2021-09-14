@@ -1,5 +1,11 @@
 # Changelog
 
+### 4.3.0 (2021-09-14)
+
+Features:
+
+-   feat: vue cli service wrapper
+
 ### 4.2.0 (2021-09-13)
 
 Features:
