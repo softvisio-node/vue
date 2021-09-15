@@ -8,6 +8,7 @@ const vueConfig = {
     "devServer": {
         "host": process.env.DEVSERVER_HOST || "0.0.0.0",
         "port": process.env.DEVSERVER_PORT || "80",
+        "allowedHosts": "all",
         "hot": true,
         "compress": false,
         "historyApiFallback": true,
