@@ -6,18 +6,11 @@ const vueConfig = {
     "outputDir": "www",
 
     "devServer": {
-        "contentBase": "build",
-        "hot": true,
-        "historyApiFallback": true,
         "host": process.env.DEVSERVER_HOST || "0.0.0.0",
         "port": process.env.DEVSERVER_PORT || "80",
-        "disableHostCheck": true,
+        "hot": true,
         "compress": false,
-        "inline": true,
-        "stats": "none",
-        "watchOptions": {
-            "poll": !!process.env.DEVSERVER_POLL,
-        },
+        "historyApiFallback": true,
     },
 
     "transpileDependencies": ["@softvisio"],
