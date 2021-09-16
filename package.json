@@ -34,7 +34,7 @@
     "bin": {
         "vue-cli-service": "bin/vue-cli-service.cjs"
     },
-    "devDependencies": {
+    "dependencies": {
         "@softvisio/vuex": "^4.0.0",
         "@vue/cli-plugin-babel": "^5.0.0-beta.3",
         "vue-cli-plugin-webpack-bundle-analyzer": "^4.0.0",
