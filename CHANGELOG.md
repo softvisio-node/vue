@@ -1,5 +1,11 @@
 # Changelog
 
+### 4.3.4 (2021-09-17)
+
+Fixes:
+
+-   fix: webpack bundle analyzer disabled
+
 ### 4.3.3 (2021-09-17)
 
 Fixes:
