@@ -1,5 +1,12 @@
 # Changelog
 
+### 4.3.3 (2021-09-17)
+
+Fixes:
+
+-   fix: signout
+-   fix: store init
+
 ### 4.3.2 (2021-09-17)
 
 No notable changes since the previous release.
