@@ -79,7 +79,8 @@ const vueConfig = {
             .loader( "worker-loader" );
 
         // disable WebpackBundleAnalyzer
-        if ( process.env.NODE_ENV === "production" || process.env.VUE_APP_BUILD_CORDOVA ) config.plugins.delete( "webpack-bundle-analyzer" );
+        // if ( process.env.NODE_ENV === "production" || process.env.VUE_APP_BUILD_CORDOVA ) config.plugins.delete( "webpack-bundle-analyzer" );
+        config.plugins.delete( "webpack-bundle-analyzer" );
     },
 };
 
