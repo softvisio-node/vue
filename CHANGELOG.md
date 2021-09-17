@@ -1,5 +1,14 @@
 # Changelog
 
+### 4.3.1 (2021-09-17)
+
+Fixes:
+
+-   fix: api init
+-   fix: app init
+-   fix: replace app.vue on mount
+-   fix: webpack dev server options
+
 ### 4.3.0 (2021-09-14)
 
 Features:
