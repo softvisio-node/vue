@@ -53,15 +53,16 @@ Breaking changes:
 
 Migration:
 
--   replace `:softvisio` with `#vue`
--   replace `:ext` with `#ext`
--   replace `:ewc` with `#ewc`
--   replace `:ext-resources` with `#ext`
--   replace `:ewc-resources` with `#ewc`
--   add `#vue` import to the `package.json`
--   update `main.js`
--   update `vue.config.js` and `babel.config.js`
--   replace `noCache` option in the `$mount` call with the `cache`
+-   Replace `:softvisio` with `#vue`.
+-   Replace `:ext` with `#ext`.
+-   Replace `:ewc` with `#ewc`.
+-   Replace `:ext-resources` with `#ext`.
+-   Replace `:ewc-resources` with `#ewc`.
+-   Add `#vue` import to the `package.json`.
+-   Update `main.js`.
+-   Update `vue.config.js` and `babel.config.js`.
+-   Replace `noCache` option in the `$mount` call with the `cache`.
+-   Update npm scripts in `package.json`.
 
 ### 4.0.0-alpha.1 (2021-09-11)
 
