@@ -1,5 +1,11 @@
 # Changelog
 
+### 4.5.0 (2021-09-21)
+
+Features:
+
+-   feat: notifications unread api
+
 ### 4.4.0 (2021-09-19)
 
 Features:
