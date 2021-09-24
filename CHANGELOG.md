@@ -75,6 +75,7 @@ Migration:
 -   Update `vue.config.js` and `babel.config.js`.
 -   Replace `noCache` option in the `$mount` call with the `cache`.
 -   Update npm scripts in `package.json`.
+-   Remove `VUE_APP_PUSH_TOPIC` from config.
 
 ### 4.0.0-alpha.1 (2021-09-11)
 
