@@ -45,20 +45,6 @@ const vueConfig = {
     },
 
     "chainWebpack": config => {
-        if ( process.env.NODE_ENV === "development" || process.env.VUE_APP_BUILD_CORDOVA ) {
-
-            // exclude ext from babel-loader
-            config.module
-                .rule( "js" )
-                .exclude.add( /[\\/]resources[\\/]ext-[\d.]+[\\/]/ )
-                .end();
-
-            // exclude ewc from babel-loader
-            config.module
-                .rule( "js" )
-                .exclude.add( /[\\/]resources[\\/]ewc-[\d.]+[\\/]/ )
-                .end();
-        }
 
         // exclude amcharts4 additional libs from bundle
         config.externals( [
