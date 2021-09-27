@@ -50,13 +50,13 @@ const vueConfig = {
             // exclude ext from babel-loader
             config.module
                 .rule( "js" )
-                .exclude.add( /[\\/]resources[\\/]ext-v[\d.]+[\\/]/ )
+                .exclude.add( /[\\/]resources[\\/]ext-[\d.]+[\\/]/ )
                 .end();
 
             // exclude ewc from babel-loader
             config.module
                 .rule( "js" )
-                .exclude.add( /[\\/]resources[\\/]ewc-v[\d.]+[\\/]/ )
+                .exclude.add( /[\\/]resources[\\/]ewc-[\d.]+[\\/]/ )
                 .end();
         }
 
@@ -72,11 +72,11 @@ const vueConfig = {
         ] );
 
         // load *.worker.js via worker-loader
-        config.module
-            .rule( "worker" )
-            .test( /\.worker\.js$/ )
-            .use( "worker-loader" )
-            .loader( "worker-loader" );
+        // config.module
+        //     .rule( "worker" )
+        //     .test( /\.worker\.js$/ )
+        //     .use( "worker-loader" )
+        //     .loader( "worker-loader" );
 
         // disable WebpackBundleAnalyzer
         // if ( process.env.NODE_ENV === "production" || process.env.VUE_APP_BUILD_CORDOVA ) config.plugins.delete( "webpack-bundle-analyzer" );
