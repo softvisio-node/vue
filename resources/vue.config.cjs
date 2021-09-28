@@ -58,11 +58,11 @@ const vueConfig = {
         ] );
 
         // load *.worker.js via worker-loader
-        // config.module
-        //     .rule( "worker" )
-        //     .test( /\.worker\.js$/ )
-        //     .use( "worker-loader" )
-        //     .loader( "worker-loader" );
+        config.module
+            .rule( "worker" )
+            .test( /\.worker\.js$/ )
+            .use( "worker-loader" )
+            .loader( "worker-loader" );
 
         // disable WebpackBundleAnalyzer
         // if ( process.env.NODE_ENV === "production" || process.env.VUE_APP_BUILD_CORDOVA ) config.plugins.delete( "webpack-bundle-analyzer" );
