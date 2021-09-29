@@ -311,7 +311,7 @@ const app = {
         new HTMLPlugin( {
             "title": "rankrocket-ui",
             "scriptLoading": "defer",
-            "template": __dirname + "/public/index.html",
+            "template": "public/index.html",
             "templateParameters": {
                 "NODE_ENV": "development",
                 "BASE_URL": "",
@@ -329,7 +329,7 @@ const app = {
         new CopyPlugin( {
             "patterns": [
                 {
-                    "from": __dirname + "/public",
+                    "from": "public",
                     "globOptions": {
                         "ignore": ["**/index.html"],
                     },
