@@ -5,8 +5,18 @@ import CLI from "#core/cli";
 import env from "#core/env";
 import url from "url";
 import webpack from "webpack";
+import WebpackDevServer from "webpack-dev-server";
 import fs from "fs";
 import path from "path";
+
+const DEV_SERVER_OPTIONS = {
+    "host": process.env.DEVSERVER_HOST || "0.0.0.0",
+    "port": process.env.DEVSERVER_PORT || "80",
+    "allowedHosts": "all",
+    "hot": true,
+    "compress": false,
+    "historyApiFallback": true,
+};
 
 const spec = {
     "title": "Webpack runner",
@@ -52,6 +62,7 @@ class Run {
     }
 
     // public
+    // XXX set cordova variable
     async run () {
         await CLI.parse( spec );
 
@@ -61,10 +72,12 @@ class Run {
         env.readConfig( { "configPrefix": ".env", "envPrefix": false } );
 
         if ( process.cli.arguments.command === "serve" ) {
-            return this.#runServe();
+            this.#runServe();
         }
         else {
-            return this.#runBuild();
+            const res = await this.#runBuild();
+
+            process.exit( res.ok ? 0 : 1 );
         }
     }
 
@@ -77,18 +90,22 @@ class Run {
 
             for ( const config of this.#webpackConfig ) {
                 config.mode = env.mode;
+                config.context = this.context;
+                config.output.path = this.output;
             }
         }
 
         return this.#webpackConfig;
     }
 
-    // XXX
     async #runServe () {
+        const webpackConfig = await this.#buildWebpackConfig();
 
-        // const webpackConfig = await this.#buildWebpackConfig();
+        const compiler = webpack( webpackConfig );
 
-        return result( 500 );
+        const server = new WebpackDevServer( DEV_SERVER_OPTIONS, compiler );
+
+        server.startCallback( () => {} );
     }
 
     async #runBuild () {
@@ -116,6 +133,4 @@ class Run {
 
 const run = new Run();
 
-const res = await run.run();
-
-process.exit( res.ok ? 0 : 1 );
+run.run();

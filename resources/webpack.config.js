@@ -1,4 +1,3 @@
-import path from "path";
 import webpack from "webpack";
 import { VueLoaderPlugin } from "vue-loader";
 import HTMLPlugin from "html-webpack-plugin";
@@ -15,19 +14,8 @@ const __dirname = process.cwd();
 const app = {
     "devtool": false,
 
-    "devServer": {
-        "host": process.env.DEVSERVER_HOST || "0.0.0.0",
-        "port": process.env.DEVSERVER_PORT || "80",
-        "allowedHosts": "all",
-        "hot": true,
-        "compress": false,
-        "historyApiFallback": true,
-    },
-
-    "context": __dirname,
-
     "output": {
-        "path": path.resolve( __dirname, "www" ),
+        "path": null,
         "filename": "js/[name].js",
         "publicPath": "",
         "chunkFilename": "js/[name].js",
@@ -193,8 +181,7 @@ const app = {
                             "shadowMode": false,
                         },
                     },
-
-                    // MiniCSSExtractPlugin.loader,
+                    MiniCSSExtractPlugin.loader,
                     {
                         "loader": "css-loader",
                         "options": {
@@ -390,10 +377,8 @@ const worker = {
     "target": "webworker",
     "devtool": false,
 
-    "context": __dirname,
-
     "output": {
-        "path": path.resolve( __dirname, "www" ),
+        "path": null,
         "filename": "firebase-messaging-sw.js",
         "publicPath": "",
     },
