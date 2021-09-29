@@ -59,6 +59,6 @@
         "webpack-dev-server": "^4.3.0"
     },
     "peerDependencies": {
-        "@softvisio/core": "^5.0.0"
+        "@softvisio/core": "github:softvisio/core#main"
     }
 }
