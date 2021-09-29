@@ -29,22 +29,21 @@
         ],
         "./resources/*": "./resources/*",
         "./vue.config.cjs": "./resources/vue.config.cjs",
-        "./babel.config.cjs": "./resources/babel.config.cjs"
+        "./babel.config.cjs": "./resources/babel.config.cjs",
+        "./webpack.config.cjs": "./resources/webpack.config.cjs"
     },
     "bin": {
-        "vue-cli-service": "bin/vue-cli-service.cjs"
+        "run": "bin/run.js"
     },
     "dependencies": {
         "@softvisio/vuex": "^4.0.0",
-        "@vue/cli-plugin-babel": "^5.0.0-beta.3",
-        "vue-cli-plugin-webpack-bundle-analyzer": "^4.0.0",
-        "webpack-bundle-analyzer": "^4.4.2"
+        "webpack": "^5.55.0",
+        "webpack-bundle-analyzer": "^4.4.2",
+        "webpack-cli": "^4.8.0"
     },
     "peerDependencies": {
         "@softvisio/core": "^5.0.0",
-        "@vue/cli-service": "^5.0.0-beta.3",
         "@vue/compiler-sfc": "^3.1.2",
-        "vue": "^3.1.2",
-        "worker-loader": "^3.0.8"
+        "vue": "^3.2.19"
     }
 }
