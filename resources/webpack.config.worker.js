@@ -61,7 +61,7 @@ const worker = {
         new CaseSensitivePathsPlugin(),
 
         new DefinePlugin( {
-            "process.env": JSON.parse( process.env.WEBPACK_ENV ),
+            "process.env": process.env.WEBPACK_ENV,
         } ),
     ],
 
