@@ -227,40 +227,7 @@ const app = {
         },
 
         "minimizer": [
-            new TerserPlugin( {
-                "terserOptions": {
-                    "compress": {
-                        "arrows": false,
-                        "collapse_vars": false,
-                        "comparisons": false,
-                        "computed_props": false,
-                        "hoist_funs": false,
-                        "hoist_props": false,
-                        "hoist_vars": false,
-                        "inline": false,
-                        "loops": false,
-                        "negate_iife": false,
-                        "properties": false,
-                        "reduce_funcs": false,
-                        "reduce_vars": false,
-                        "switches": false,
-                        "toplevel": false,
-                        "typeofs": false,
-                        "booleans": true,
-                        "if_return": true,
-                        "sequences": true,
-                        "unused": true,
-                        "conditionals": true,
-                        "dead_code": true,
-                        "evaluate": true,
-                    },
-                    "mangle": {
-                        "safari10": true,
-                    },
-                },
-                "parallel": true,
-                "extractComments": false,
-            } ),
+            new TerserPlugin( JSON.parse( process.env.WEBPACK_TERSER_OPTIONS ) ),
 
             new CSSMinimizerPlugin( {
                 "parallel": true,
@@ -293,37 +260,14 @@ const app = {
         } ),
 
         new DefinePlugin( {
-            "process.env": {
-
-                // "NODE_ENV": '"development"', // XXX
-                "VUE_APP_API_URL": '"//devel/api/?persistent=true&json=true"',
-                "VUE_APP_BUILD_CORDOVA": '""',
-                "VUE_APP_SIGNIN_PERMISSIONS": '""',
-                "VUE_APP_THEME_ACCENT": '"red"',
-                "VUE_APP_THEME_BASE": '"light-green"',
-                "VUE_APP_THEME_DARK_MODE": '"auto"',
-                "VUE_APP_TITLE": '"Rank Rocket"',
-                "VUE_APP_TITLE_ICON": '"🚀"',
-                "BASE_URL": '""',
-            },
+            "process.env": JSON.parse( process.env.WEBPACK_ENV ),
         } ),
 
         new HTMLPlugin( {
             "title": "rankrocket-ui",
             "scriptLoading": "defer",
             "template": "public/index.html",
-            "templateParameters": {
-                "NODE_ENV": "development",
-                "BASE_URL": "",
-                "VUE_APP_API_URL": "//devel/api/?persistent=true&json=true",
-                "VUE_APP_BUILD_CORDOVA": "",
-                "VUE_APP_SIGNIN_PERMISSIONS": "",
-                "VUE_APP_THEME_ACCENT": "red",
-                "VUE_APP_THEME_BASE": "light-green",
-                "VUE_APP_THEME_DARK_MODE": "auto",
-                "VUE_APP_TITLE": "Rank Rocket",
-                "VUE_APP_TITLE_ICON": "🚀",
-            },
+            "templateParameters": JSON.parse( process.env.WEBPACK_ENV ),
         } ),
 
         new CopyPlugin( {

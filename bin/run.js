@@ -18,6 +18,8 @@ const DEV_SERVER_OPTIONS = {
     "historyApiFallback": true,
 };
 
+const ENV_PREFIX = "VUE_";
+
 const cli = {
     "title": "Webpack runner",
     "options": {
@@ -105,14 +107,66 @@ class Run {
                 path.join( this.context, "node_modules" ),
             ] );
 
+            process.env.WEBPACK_ENV = JSON.stringify( this.#getWebpackEnv() );
+
+            process.env.WEBPACK_TERSER_OPTIONS = JSON.stringify( this.#getWebpackTerserOptions() );
+
             const webpackConfig = await import( new URL( "webpack.config.js", url.pathToFileURL( env.root + "/" ) ) );
 
             this.#webpackConfig = Array.isArray( webpackConfig.default ) ? webpackConfig.default : [webpackConfig.default];
         }
 
-        // console.log( this.#webpackConfig );process.exit();
-
         return this.#webpackConfig;
+    }
+
+    #getWebpackEnv () {
+        const env = {
+            "NODE_ENV": env.mode,
+            "BASE_URL": "",
+        };
+
+        for ( const name in process.env ) {
+            if ( name.startsWith( ENV_PREFIX ) ) env[name] = process.env[name];
+        }
+
+        return env;
+    }
+
+    #getWebpackTerserOptions () {
+        return {
+            "terserOptions": {
+                "compress": {
+                    "arrows": false,
+                    "collapse_vars": false,
+                    "comparisons": false,
+                    "computed_props": false,
+                    "hoist_funs": false,
+                    "hoist_props": false,
+                    "hoist_vars": false,
+                    "inline": false,
+                    "loops": false,
+                    "negate_iife": false,
+                    "properties": false,
+                    "reduce_funcs": false,
+                    "reduce_vars": false,
+                    "switches": false,
+                    "toplevel": false,
+                    "typeofs": false,
+                    "booleans": true,
+                    "if_return": true,
+                    "sequences": true,
+                    "unused": true,
+                    "conditionals": true,
+                    "dead_code": true,
+                    "evaluate": true,
+                },
+                "mangle": {
+                    "safari10": true,
+                },
+            },
+            "parallel": true,
+            "extractComments": false,
+        };
     }
 
     async #runServe () {
