@@ -97,78 +97,37 @@ const app = {
             // images
             {
                 "test": /\.(png|jpe?g|gif|webp|avif)(\?.*)?$/,
-                "use": [
-                    {
-                        "loader": "url-loader",
-                        "options": {
-                            "limit": 4096,
-                            "esModule": true,
-                            "fallback": {
-                                "loader": "file-loader",
-                                "options": {
-                                    "name": "img/[name].[hash:8].[ext]",
-                                    "esModule": true,
-                                },
-                            },
-                        },
-                    },
-                ],
+                "type": "asset/resource",
+                "generator": {
+                    "filename": "img/[name].[hash:8][ext][query]",
+                },
             },
 
             // svg
             {
                 "test": /\.(svg)(\?.*)?$/,
-                "use": [
-                    {
-                        "loader": "file-loader",
-                        "options": {
-                            "name": "img/[name].[hash:8].[ext]",
-                            "esModule": true,
-                        },
-                    },
-                ],
+                "type": "asset/resource",
+                "generator": {
+                    "filename": "img/[name].[hash:8][ext][query]",
+                },
             },
 
             // media
             {
                 "test": /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-                "use": [
-                    {
-                        "loader": "url-loader",
-                        "options": {
-                            "limit": 4096,
-                            "esmodule": true,
-                            "fallback": {
-                                "loader": "file-loader",
-                                "options": {
-                                    "name": "media/[name].[hash:8].[ext]",
-                                    "esmodule": true,
-                                },
-                            },
-                        },
-                    },
-                ],
+                "type": "asset/resource",
+                "generator": {
+                    "filename": "media/[name].[hash:8][ext][query]",
+                },
             },
 
             // fonts
             {
                 "test": /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
-                "use": [
-                    {
-                        "loader": "url-loader",
-                        "options": {
-                            "limit": 4096,
-                            "esModule": true,
-                            "fallback": {
-                                "loader": "file-loader",
-                                "options": {
-                                    "name": "fonts/[name].[hash:8].[ext]",
-                                    "esModule": true,
-                                },
-                            },
-                        },
-                    },
-                ],
+                "type": "asset/resource",
+                "generator": {
+                    "filename": "fonts/[name].[hash:8][ext][query]",
+                },
             },
 
             // css
