@@ -1,4 +1,4 @@
-import { DefinePlugin } from "webpack";
+import webpack from "webpack";
 import { VueLoaderPlugin } from "vue-loader";
 import HTMLPlugin from "html-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin";
@@ -7,6 +7,8 @@ import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
 import MiniCSSExtractPlugin from "mini-css-extract-plugin";
 import CSSMinimizerPlugin from "css-minimizer-webpack-plugin";
 import autoprefixer from "autoprefixer";
+
+const DefinePlugin = webpack.DefinePlugin;
 
 // XXX
 const __dirname = process.cwd();
