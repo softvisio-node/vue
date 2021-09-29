@@ -359,14 +359,7 @@ const app = {
         "modules": JSON.parse( process.env.WEBPACK_RESOLVE_MODULES ),
     },
 
-    // "resolveLoader": {
-    //     "modules": [
-
-    //         //
-    //         "node_modules",
-    //         "d:/projects/devel/rankrocket/app\\node_modules",
-    //     ],
-    // },
+    "resolveLoader": JSON.parse( process.env.WEBPACK_RESOLVE_LOADER ),
 };
 
 export default [app];

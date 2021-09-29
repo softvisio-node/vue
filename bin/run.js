@@ -98,6 +98,12 @@ class Run {
             process.env.WEBPACK_RESOLVE_ALIAS = JSON.stringify( {
                 "@": path.join( this.context, "src" ),
             } );
+            process.env.WEBPACK_RESOLVE_LOADER = JSON.stringify( [
+
+                //
+                "node_modules",
+                path.join( this.context, "node_modules" ),
+            ] );
 
             const webpackConfig = await import( new URL( "webpack.config.js", url.pathToFileURL( env.root + "/" ) ) );
 
