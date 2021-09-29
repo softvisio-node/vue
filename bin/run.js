@@ -92,6 +92,7 @@ class Run {
                 config.mode = env.mode;
                 config.context = this.context;
                 config.output.path = this.output;
+                config.resolve.alias["@"] = path.join( this.context, "src" );
             }
         }
 

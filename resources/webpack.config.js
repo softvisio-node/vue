@@ -10,9 +10,6 @@ import autoprefixer from "autoprefixer";
 
 const DefinePlugin = webpack.DefinePlugin;
 
-// XXX
-const __dirname = process.cwd();
-
 const app = {
     "devtool": false,
 
@@ -341,7 +338,6 @@ const app = {
     "resolve": {
         "alias": {
             "vue$": "vue/dist/vue.runtime.esm-bundler.js",
-            "@": __dirname + "/src",
             "#vue": "@softvisio/vue-ext",
             "#ext$": "@softvisio/ext/ext-" + process.env.EXT_VERSION,
             "#ext": "@softvisio/ext/resources/ext-" + process.env.EXT_VERSION,
@@ -404,7 +400,6 @@ const worker = {
 
     "resolve": {
         "alias": {
-            "@": __dirname + "/src",
             "#vue": "@softvisio/vue-ext",
         },
 
