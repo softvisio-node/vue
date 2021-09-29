@@ -374,12 +374,12 @@ const app = {
 
         "extensions": [".mjs", ".js", ".jsx", ".vue", ".json", ".wasm"],
 
-        // "modules": [
+        "modules": [
 
-        //     //
-        //     "node_modules",
-        //     "d:/projects/devel\\rankrocket/app/node_modules",
-        // ],
+            //
+            "node_modules",
+            "d:/projects/devel\\rankrocket/app/node_modules",
+        ],
     },
 
     // "resolveLoader": {
