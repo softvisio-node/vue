@@ -98,7 +98,7 @@ class Run {
             process.env.WEBPACK_RESOLVE_ALIAS = JSON.stringify( {
                 "@": path.join( this.context, "src" ),
             } );
-            process.env.WEBPACK_RESOLVE_LOADER = JSON.stringify( [
+            process.env.WEBPACK_RESOLVE_LOADER_MODULES = JSON.stringify( [
 
                 //
                 "node_modules",
@@ -109,6 +109,8 @@ class Run {
 
             this.#webpackConfig = Array.isArray( webpackConfig.default ) ? webpackConfig.default : [webpackConfig.default];
         }
+
+        // console.log( this.#webpackConfig );process.exit();
 
         return this.#webpackConfig;
     }

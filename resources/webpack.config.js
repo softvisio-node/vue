@@ -359,7 +359,7 @@ const app = {
         "modules": JSON.parse( process.env.WEBPACK_RESOLVE_MODULES ),
     },
 
-    "resolveLoader": JSON.parse( process.env.WEBPACK_RESOLVE_LOADER ),
+    "resolveLoader": { "modules": JSON.parse( process.env.WEBPACK_RESOLVE_LOADER_MODULES ) },
 };
 
 export default [app];
