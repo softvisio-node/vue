@@ -14,7 +14,7 @@ const app = {
     "mode": process.env.WEBPACK_MODE,
     "context": process.env.WEBPACK_CONTEXT,
 
-    "devtool": false,
+    "devtool": "eval",
 
     "output": {
         "path": process.env.WEBPACK_OUTPUT_PATH,

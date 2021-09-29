@@ -16,6 +16,14 @@ const DEV_SERVER_OPTIONS = {
     "hot": true,
     "compress": false,
     "historyApiFallback": true,
+    "client": {
+        "logging": "none",
+        "progress": true,
+        "overlay": {
+            "errors": true,
+            "warnings": false,
+        },
+    },
 };
 
 const ENV_PREFIX = "VUE_";
@@ -74,6 +82,8 @@ class Run {
         env.readConfig( { "envPrefix": false } );
 
         if ( process.cli.arguments.command === "serve" ) {
+            process.cli.options.mode = "development";
+
             this.#runServe();
         }
         else if ( process.cli.arguments.command === "build" ) {
