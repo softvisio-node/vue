@@ -40,7 +40,6 @@ const cli = {
         "mode": {
             "short": "m",
             "description": `Can be "development" or "production".`,
-            "default": "production",
             "schema": { "type": "string", "enum": ["development", "production"] },
         },
     },
@@ -77,13 +76,16 @@ class Run {
         await CLI.parse( cli );
 
         // set mode
-        if ( process?.cli?.options.mode ) env.mode = process.cli.options.mode;
+        if ( process.cli.arguments.command === "serve" ) {
+            env.mode = process.cli?.options?.mode ?? "development";
+        }
+        else {
+            env.mode = process.cli?.options?.mode ?? "production";
+        }
 
         env.readConfig( { "envPrefix": false } );
 
         if ( process.cli.arguments.command === "serve" ) {
-            process.cli.options.mode = "development";
-
             this.#runServe();
         }
         else if ( process.cli.arguments.command === "build" ) {
