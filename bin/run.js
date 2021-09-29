@@ -89,14 +89,19 @@ class Run {
             process.env.WEBPACK_MODE = env.mode;
             process.env.WEBPACK_CONTEXT = this.context;
             process.env.WEBPACK_OUTPUT_PATH = this.output;
+            process.env.WEBPACK_RESOLVE_MODULES = JSON.stringify( [
+
+                //
+                "node_modules",
+                path.join( this.context, "node_modules" ),
+            ] );
+            process.env.WEBPACK_RESOLVE_ALIAS = JSON.stringify( {
+                "@": path.join( this.context, "src" ),
+            } );
 
             const webpackConfig = await import( new URL( "webpack.config.js", url.pathToFileURL( env.root + "/" ) ) );
 
             this.#webpackConfig = Array.isArray( webpackConfig.default ) ? webpackConfig.default : [webpackConfig.default];
-
-            for ( const config of this.#webpackConfig ) {
-                config.resolve.alias["@"] = path.join( this.context, "src" );
-            }
         }
 
         return this.#webpackConfig;

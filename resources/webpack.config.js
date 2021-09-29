@@ -340,6 +340,7 @@ const app = {
 
     "resolve": {
         "alias": {
+            ...JSON.parse( process.env.WEBPACK_RESOLVE_ALIAS ),
             "vue$": "vue/dist/vue.runtime.esm-bundler.js",
             "#vue": "@softvisio/vue-ext",
             "#ext$": "@softvisio/ext/ext-" + process.env.EXT_VERSION,
@@ -355,12 +356,7 @@ const app = {
 
         "extensions": [".mjs", ".js", ".jsx", ".vue", ".json", ".wasm"],
 
-        "modules": [
-
-            //
-            "node_modules",
-            "d:/projects/devel\\rankrocket/app/node_modules",
-        ],
+        "modules": JSON.parse( process.env.WEBPACK_RESOLVE_MODULES ),
     },
 
     // "resolveLoader": {
