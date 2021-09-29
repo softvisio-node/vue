@@ -13,7 +13,7 @@ const worker = {
     "output": {
         "path": process.env.WEBPACK_OUTPUT_PATH,
         "filename": "firebase-messaging-sw.js",
-        "publicPath": "",
+        "publicPath": "auto",
     },
 
     "experiments": {

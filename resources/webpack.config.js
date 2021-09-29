@@ -19,7 +19,7 @@ const app = {
     "output": {
         "path": process.env.WEBPACK_OUTPUT_PATH,
         "filename": "js/[name].js",
-        "publicPath": "",
+        "publicPath": "auto",
         "chunkFilename": "js/[name].js",
     },
 
