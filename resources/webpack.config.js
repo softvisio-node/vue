@@ -1,3 +1,4 @@
+import env from "#core/env";
 import webpack from "webpack";
 import { VueLoaderPlugin } from "vue-loader";
 import HTMLPlugin from "html-webpack-plugin";
@@ -6,6 +7,7 @@ import TerserPlugin from "terser-webpack-plugin";
 import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
 import MiniCSSExtractPlugin from "mini-css-extract-plugin";
 import CSSMinimizerPlugin from "css-minimizer-webpack-plugin";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import autoprefixer from "autoprefixer";
 
 const DefinePlugin = webpack.DefinePlugin;
@@ -141,7 +143,8 @@ const app = {
                             "shadowMode": false,
                         },
                     },
-                    MiniCSSExtractPlugin.loader,
+
+                    // MiniCSSExtractPlugin.loader,
                     {
                         "loader": "css-loader",
                         "options": {
@@ -237,6 +240,12 @@ const app = {
                     },
                 },
             ],
+        } ),
+
+        new BundleAnalyzerPlugin( {
+            "analyzerMode": env.isProduction ? "static" : "server",
+            "analyzerPort": 8888,
+            "openAnalyzer": false,
         } ),
     ],
 
