@@ -253,4 +253,4 @@ const app = {
     "resolveLoader": { "modules": JSON.parse( process.env.WEBPACK_RESOLVE_LOADER_MODULES ) },
 };
 
-export default [app];
+export default app;
