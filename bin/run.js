@@ -116,10 +116,6 @@ class Run {
             this.#webpackConfig = Array.isArray( webpackConfig.default ) ? webpackConfig.default : [webpackConfig.default];
         }
 
-        // console.log( process.env.WEBPACK_ENV );
-        // console.log( this.#webpackConfig[0].plugins[4]);
-        // process.exit();
-
         return this.#webpackConfig;
     }
 

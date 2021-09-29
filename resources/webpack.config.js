@@ -40,7 +40,6 @@ const app = {
         "rules": [
 
             // esm
-            // XXX ???
             {
                 "test": /\.m?jsx?$/,
                 "resolve": {

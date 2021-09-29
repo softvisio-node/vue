@@ -69,7 +69,6 @@ const worker = {
         "rules": [
 
             // esm
-            // XXX ???
             {
                 "test": /\.m?jsx?$/,
                 "resolve": {
