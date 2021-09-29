@@ -12,7 +12,7 @@ const DefinePlugin = webpack.DefinePlugin;
 
 const app = {
     "mode": process.env.WEBPACK_MODE,
-    "constext": process.env.WEBPACK_CONTEXT,
+    "context": process.env.WEBPACK_CONTEXT,
 
     "devtool": false,
 
