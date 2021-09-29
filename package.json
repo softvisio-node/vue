@@ -39,6 +39,7 @@
         "@babel/preset-env": "^7.15.6",
         "@softvisio/vuex": "^4.0.0",
         "@vue/babel-preset-app": "^4.5.13",
+        "autoprefixer": "^10.3.6",
         "babel-loader": "^8.2.2",
         "case-sensitive-paths-webpack-plugin": "^2.4.0",
         "copy-webpack-plugin": "^9.0.1",
