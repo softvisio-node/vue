@@ -99,7 +99,6 @@ class Run {
             process.env.WEBPACK_RESOLVE_MODULES = JSON.stringify( [
 
                 //
-                "node_modules",
                 path.join( this.context, "node_modules" ),
             ] );
             process.env.WEBPACK_RESOLVE_ALIAS = JSON.stringify( {
@@ -108,7 +107,6 @@ class Run {
             process.env.WEBPACK_RESOLVE_LOADER_MODULES = JSON.stringify( [
 
                 //
-                "node_modules",
                 path.join( this.context, "node_modules" ),
             ] );
 
