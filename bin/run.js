@@ -18,7 +18,7 @@ const DEV_SERVER_OPTIONS = {
     "historyApiFallback": true,
 };
 
-const spec = {
+const cli = {
     "title": "Webpack runner",
     "options": {
         "cordova": {
@@ -64,7 +64,7 @@ class Run {
     // public
     // XXX set cordova variable
     async run () {
-        await CLI.parse( spec );
+        await CLI.parse( cli );
 
         // set mode
         if ( process?.cli?.options.mode ) env.mode = process.cli.options.mode;
