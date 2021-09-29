@@ -4,7 +4,7 @@ import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
 
 const DefinePlugin = webpack.DefinePlugin;
 
-const worker = {
+const config = {
     "name": "firebase-worker",
     "mode": process.env.WEBPACK_MODE,
     "context": process.env.WEBPACK_CONTEXT,
@@ -88,4 +88,4 @@ const worker = {
     },
 };
 
-export default [worker];
+export default config;

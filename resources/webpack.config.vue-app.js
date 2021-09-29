@@ -1,4 +1,3 @@
-import env from "#core/env";
 import webpack from "webpack";
 import { VueLoaderPlugin } from "vue-loader";
 import HTMLPlugin from "html-webpack-plugin";
@@ -7,12 +6,14 @@ import TerserPlugin from "terser-webpack-plugin";
 import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
 import MiniCSSExtractPlugin from "mini-css-extract-plugin";
 import CSSMinimizerPlugin from "css-minimizer-webpack-plugin";
-import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import autoprefixer from "autoprefixer";
+
+// import env from "#core/env";
+// import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 const DefinePlugin = webpack.DefinePlugin;
 
-const app = {
+const config = {
     "name": "vue-app",
     "mode": process.env.WEBPACK_MODE,
     "context": process.env.WEBPACK_CONTEXT,
@@ -124,6 +125,7 @@ const app = {
                         },
                     },
 
+                    // XXX
                     // MiniCSSExtractPlugin.loader,
                     {
                         "loader": "css-loader",
@@ -222,11 +224,11 @@ const app = {
             ],
         } ),
 
-        new BundleAnalyzerPlugin( {
-            "analyzerMode": env.isProduction ? "static" : "server",
-            "analyzerPort": 8888,
-            "openAnalyzer": false,
-        } ),
+        // new BundleAnalyzerPlugin( {
+        //     "analyzerMode": env.isProduction ? "static" : "server",
+        //     "analyzerPort": 8888,
+        //     "openAnalyzer": false,
+        // } ),
     ],
 
     "resolve": {
@@ -253,4 +255,4 @@ const app = {
     "resolveLoader": { "modules": JSON.parse( process.env.WEBPACK_RESOLVE_LOADER_MODULES ) },
 };
 
-export default app;
+export default config;
