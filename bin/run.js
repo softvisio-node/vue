@@ -30,22 +30,54 @@ const spec = {
     },
 };
 
-await CLI.parse( spec );
+class Run {
+    #webpackConfig;
 
-env.readConfig( { "configPrefix": ".env", "envPrefix": "VUE_" } );
+    // public
+    async run () {
+        await CLI.parse( spec );
 
-// XXX
-// load env
-// load webpack config
+        env.readConfig( { "configPrefix": ".env", "envPrefix": "VUE_" } );
 
-const config = await import( new URL( "webpack.config.js", url.pathToFileURL( env.root + "/" ) ) );
-
-webpack( config.default, ( err, stats ) => {
-
-    // [Stats Object](#stats-object)
-    if ( err || stats.hasErrors() ) {
-        console.log( err );
+        if ( process.cli.arguments.command === "serve" ) {
+            return this.#runServe();
+        }
+        else {
+            return this.#runBuild();
+        }
     }
 
-    console.log( "DONE" );
-} );
+    // private
+    async #buildWebpackConfig () {
+        if ( !this.#webpackConfig ) {
+            const config = await import( new URL( "webpack.config.js", url.pathToFileURL( env.root + "/" ) ) );
+
+            this.#webpackConfig = config.default;
+        }
+
+        return this.#webpackConfig;
+    }
+
+    async #runServe () {
+
+        // const webpackConfig = await this.#buildWebpackConfig();
+    }
+
+    async #runBuild () {
+        const webpackConfig = await this.#buildWebpackConfig();
+
+        return new Promise( resolve => {
+            webpack( webpackConfig, ( err, stats ) => {
+                if ( err || stats.hasErrors() ) {
+                    console.log( stats + "" );
+                }
+
+                resolve();
+            } );
+        } );
+    }
+}
+
+const run = new Run();
+
+await run.run();

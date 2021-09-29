@@ -392,6 +392,7 @@ const app = {
     // },
 };
 
+// eslint-disable-next-line no-unused-vars
 const worker = {
     "target": "webworker",
     "devtool": false,
@@ -483,4 +484,5 @@ const worker = {
     },
 };
 
-export default [app, worker];
+// export default [app, worker];
+export default [app];
