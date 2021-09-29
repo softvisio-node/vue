@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import "#core/result";
 import CLI from "#core/cli";
 import env from "#core/env";
 import url from "url";
