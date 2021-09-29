@@ -10,14 +10,6 @@ import CSSMinimizerPlugin from "css-minimizer-webpack-plugin";
 import autoprefixer from "autoprefixer";
 
 // XXX
-// - worker
-// - load env varaibles
-// - template params variables
-
-// XXX
-process.env.EXT_VERSION = "7.4.0";
-process.env.EWC_VERSION = "7.4.0";
-
 const __dirname = process.cwd();
 
 const app = {

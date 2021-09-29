@@ -37,7 +37,7 @@ class Run {
     async run () {
         await CLI.parse( spec );
 
-        env.readConfig( { "configPrefix": ".env", "envPrefix": "VUE_" } );
+        env.readConfig( { "configPrefix": ".env", "envPrefix": false } );
 
         if ( process.cli.arguments.command === "serve" ) {
             return this.#runServe();
