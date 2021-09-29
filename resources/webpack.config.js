@@ -7,6 +7,7 @@ import TerserPlugin from "terser-webpack-plugin";
 import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
 import MiniCSSExtractPlugin from "mini-css-extract-plugin";
 import CSSMinimizerPlugin from "css-minimizer-webpack-plugin";
+import autoprefixer from "autoprefixer";
 
 // XXX
 // - worker
@@ -214,7 +215,7 @@ const app = {
                         "options": {
                             "sourceMap": false,
                             "postcssOptions": {
-                                "plugins": ["autoprefixer"],
+                                "plugins": [autoprefixer()],
                             },
                         },
                     },
