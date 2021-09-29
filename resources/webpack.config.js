@@ -1,4 +1,4 @@
-import webpack from "webpack";
+import { DefinePlugin } from "webpack";
 import { VueLoaderPlugin } from "vue-loader";
 import HTMLPlugin from "html-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin";
@@ -285,12 +285,12 @@ const app = {
 
         new CaseSensitivePathsPlugin(),
 
-        new webpack.DefinePlugin( {
+        new DefinePlugin( {
             "__VUE_OPTIONS_API__": "true",
             "__VUE_PROD_DEVTOOLS__": "false",
         } ),
 
-        new webpack.DefinePlugin( {
+        new DefinePlugin( {
             "process.env": {
 
                 // "NODE_ENV": '"development"', // XXX
