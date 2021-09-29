@@ -38,9 +38,9 @@ const cli = {
     },
     "arguments": {
         "command": {
-            "description": `One of: "serve", "build"`,
+            "description": `One of: "serve", "build", "dump"`,
             "required": true,
-            "schema": { "type": "string", "enum": ["serve", "build"] },
+            "schema": { "type": "string", "enum": ["serve", "build", "dump"] },
         },
     },
 };
@@ -76,10 +76,15 @@ class Run {
         if ( process.cli.arguments.command === "serve" ) {
             this.#runServe();
         }
-        else {
+        else if ( process.cli.arguments.command === "build" ) {
             const res = await this.#runBuild();
 
             process.exit( res.ok ? 0 : 1 );
+        }
+        else if ( process.cli.arguments.command === "dump" ) {
+            await this.#runDump();
+
+            process.exit( 0 );
         }
     }
 
@@ -199,6 +204,12 @@ class Run {
                 } );
             } );
         } );
+    }
+
+    async #runDump () {
+        const webpackConfig = await this.#buildWebpackConfig();
+
+        console.log( JSON.stringify( webpackConfig, null, 4 ) );
     }
 }
 
