@@ -71,7 +71,7 @@ class Run {
         // set mode
         if ( process?.cli?.options.mode ) env.mode = process.cli.options.mode;
 
-        env.readConfig( { "configPrefix": ".env", "envPrefix": false } );
+        env.readConfig( { "envPrefix": false } );
 
         if ( process.cli.arguments.command === "serve" ) {
             this.#runServe();
