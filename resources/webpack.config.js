@@ -5,7 +5,6 @@ import HTMLPlugin from "html-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
 import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
-import { CleanWebpackPlugin as CleanPlugin } from "clean-webpack-plugin";
 import MiniCSSExtractPlugin from "mini-css-extract-plugin";
 import CSSMinimizerPlugin from "css-minimizer-webpack-plugin";
 
@@ -299,9 +298,6 @@ const app = {
     "plugins": [
         new VueLoaderPlugin(),
 
-        // XXX
-        // new CleanPlugin(),
-
         new MiniCSSExtractPlugin( {
             "filename": "css/[name].[contenthash:8].css",
             "chunkFilename": "css/[name].[contenthash:8].css",
@@ -449,8 +445,6 @@ const worker = {
     "plugins": [
 
         //
-
-        new CleanPlugin(),
         new CaseSensitivePathsPlugin(),
     ],
 

@@ -3,6 +3,7 @@
 import CLI from "#core/cli";
 import env from "#core/env";
 import url from "url";
+import webpack from "webpack";
 
 const spec = {
     "title": "Webpack runner",
@@ -37,6 +38,14 @@ env.readConfig( { "configPrefix": ".env", "envPrefix": "VUE_" } );
 // load env
 // load webpack config
 
-const c = await import( new URL( "webpack.config.js", url.pathToFileURL( env.root + "/" ) ) );
+const config = await import( new URL( "webpack.config.js", url.pathToFileURL( env.root + "/" ) ) );
 
-console.log( c );
+webpack( config.default, ( err, stats ) => {
+
+    // [Stats Object](#stats-object)
+    if ( err || stats.hasErrors() ) {
+        console.log( err );
+    }
+
+    console.log( "DONE" );
+} );
