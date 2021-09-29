@@ -82,9 +82,12 @@ class Run {
         return this.#webpackConfig;
     }
 
+    // XXX
     async #runServe () {
 
         // const webpackConfig = await this.#buildWebpackConfig();
+
+        return result( 500 );
     }
 
     async #runBuild () {
@@ -98,15 +101,12 @@ class Run {
             const compiler = webpack( webpackConfig );
 
             compiler.run( ( err, stats ) => {
-                if ( err || stats.hasErrors() ) {
-
-                    // error
-                }
-
                 console.log( stats + "" );
 
+                const res = err || stats.hasErrors() ? result( 500 ) : result( 200 );
+
                 compiler.close( closeErr => {
-                    resolve();
+                    resolve( res );
                 } );
             } );
         } );
@@ -115,4 +115,6 @@ class Run {
 
 const run = new Run();
 
-await run.run();
+const res = await run.run();
+
+process.exit( res.ok ? 0 : 1 );
