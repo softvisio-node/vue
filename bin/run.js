@@ -4,6 +4,8 @@ import CLI from "#core/cli";
 import env from "#core/env";
 import url from "url";
 import webpack from "webpack";
+import fs from "fs";
+import path from "path";
 
 const spec = {
     "title": "Webpack runner",
@@ -32,10 +34,28 @@ const spec = {
 
 class Run {
     #webpackConfig;
+    #context;
+    #output;
+
+    // properties
+    get context () {
+        this.#context ??= path.resolve( "." );
+
+        return this.#context;
+    }
+
+    get output () {
+        this.#output ??= path.join( this.context, "www" );
+
+        return this.#output;
+    }
 
     // public
     async run () {
         await CLI.parse( spec );
+
+        // set mode
+        if ( process?.cli?.options.mode ) env.mode = process.cli.options.mode;
 
         env.readConfig( { "configPrefix": ".env", "envPrefix": false } );
 
@@ -50,9 +70,13 @@ class Run {
     // private
     async #buildWebpackConfig () {
         if ( !this.#webpackConfig ) {
-            const config = await import( new URL( "webpack.config.js", url.pathToFileURL( env.root + "/" ) ) );
+            const webpackConfig = await import( new URL( "webpack.config.js", url.pathToFileURL( env.root + "/" ) ) );
 
-            this.#webpackConfig = config.default;
+            this.#webpackConfig = Array.isArray( webpackConfig.default ) ? webpackConfig.default : [webpackConfig.default];
+
+            for ( const config of this.#webpackConfig ) {
+                config.mode = env.mode;
+            }
         }
 
         return this.#webpackConfig;
@@ -64,6 +88,10 @@ class Run {
     }
 
     async #runBuild () {
+
+        // cleanup output dir
+        fs.rmSync( this.output, { "force": true, "recursive": true } );
+
         const webpackConfig = await this.#buildWebpackConfig();
 
         return new Promise( resolve => {
