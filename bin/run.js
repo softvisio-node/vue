@@ -84,14 +84,17 @@ class Run {
     // private
     async #buildWebpackConfig () {
         if ( !this.#webpackConfig ) {
+
+            // set env variables
+            process.env.WEBPACK_MODE = env.mode;
+            process.env.WEBPACK_CONTEXT = this.context;
+            process.env.WEBPACK_OUTPUT_PATH = this.output;
+
             const webpackConfig = await import( new URL( "webpack.config.js", url.pathToFileURL( env.root + "/" ) ) );
 
             this.#webpackConfig = Array.isArray( webpackConfig.default ) ? webpackConfig.default : [webpackConfig.default];
 
             for ( const config of this.#webpackConfig ) {
-                config.mode = env.mode;
-                config.context = this.context;
-                config.output.path = this.output;
                 config.resolve.alias["@"] = path.join( this.context, "src" );
             }
         }

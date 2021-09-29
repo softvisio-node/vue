@@ -11,10 +11,13 @@ import autoprefixer from "autoprefixer";
 const DefinePlugin = webpack.DefinePlugin;
 
 const app = {
+    "mode": process.env.WEBPACK_MODE,
+    "constext": process.env.WEBPACK_CONTEXT,
+
     "devtool": false,
 
     "output": {
-        "path": null,
+        "path": process.env.WEBPACK_OUTPUT_PATH,
         "filename": "js/[name].js",
         "publicPath": "",
         "chunkFilename": "js/[name].js",
@@ -370,94 +373,4 @@ const app = {
     // },
 };
 
-// eslint-disable-next-line no-unused-vars
-const worker = {
-    "target": "webworker",
-    "devtool": false,
-
-    "output": {
-        "path": null,
-        "filename": "firebase-messaging-sw.js",
-        "publicPath": "",
-    },
-
-    "experiments": {
-        "topLevelAwait": true,
-    },
-
-    "entry": {
-        "firebase": {
-            "import": "./src/firebase-messaging-sw.js",
-            "filename": "firebase-messaging-sw.js",
-            "publicPath": "/",
-        },
-    },
-
-    // https://webpack.js.org/configuration/cache/
-    "cache": {
-        "type": "filesystem",
-    },
-
-    "resolve": {
-        "alias": {
-            "#vue": "@softvisio/vue-ext",
-        },
-
-        // required by froala, can be replaced with crypto-browserify
-        "fallback": {
-            "crypto": false,
-        },
-
-        "extensions": [".mjs", ".js", ".jsx", ".vue", ".json", ".wasm"],
-
-        // "modules": [
-
-        //     //
-        //     "node_modules",
-        //     "d:/projects/devel\\rankrocket/app/node_modules",
-        // ],
-    },
-
-    "plugins": [
-
-        //
-        new CaseSensitivePathsPlugin(),
-    ],
-
-    "module": {
-        "rules": [
-
-            // esm
-            // XXX ???
-            {
-                "test": /\.m?jsx?$/,
-                "resolve": {
-                    "fullySpecified": false,
-                },
-            },
-
-            // js
-            {
-                "test": /\.m?jsx?$/,
-                "exclude": [
-
-                    //
-                    /node_modules/,
-                ],
-                "use": [
-                    {
-                        "loader": "babel-loader",
-                        "options": {
-                            "cacheCompression": false,
-                            "cacheDirectory": "node_modules/.cache/babel-loader",
-                            "cacheIdentifier": "80c0301a",
-                        },
-                    },
-                ],
-            },
-        ],
-    },
-};
-
-// export default [app, worker];
 export default [app];
