@@ -116,20 +116,22 @@ class Run {
             this.#webpackConfig = Array.isArray( webpackConfig.default ) ? webpackConfig.default : [webpackConfig.default];
         }
 
+        // console.log( this.#webpackConfig[0].plugins[4]);process.exit();
+
         return this.#webpackConfig;
     }
 
     #getWebpackEnv () {
-        const env = {
+        const _env = {
             "NODE_ENV": env.mode,
             "BASE_URL": "",
         };
 
         for ( const name in process.env ) {
-            if ( name.startsWith( ENV_PREFIX ) ) env[name] = process.env[name];
+            if ( name.startsWith( ENV_PREFIX ) ) _env[name] = process.env[name];
         }
 
-        return env;
+        return _env;
     }
 
     #getWebpackTerserOptions () {
