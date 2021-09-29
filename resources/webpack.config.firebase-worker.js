@@ -5,10 +5,11 @@ import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
 const DefinePlugin = webpack.DefinePlugin;
 
 const worker = {
+    "name": "firebase-worker",
     "mode": process.env.WEBPACK_MODE,
     "context": process.env.WEBPACK_CONTEXT,
-    "target": "webworker",
     "devtool": "eval",
+    "target": "webworker",
 
     "output": {
         "path": process.env.WEBPACK_OUTPUT_PATH,
@@ -28,10 +29,7 @@ const worker = {
         },
     },
 
-    // https://webpack.js.org/configuration/cache/
-    "cache": {
-        "type": "filesystem",
-    },
+    "cache": { "type": "filesystem" },
 
     "resolve": {
         "alias": {
@@ -84,16 +82,7 @@ const worker = {
                     //
                     /node_modules/,
                 ],
-                "use": [
-                    {
-                        "loader": "babel-loader",
-                        "options": {
-                            "cacheCompression": false,
-                            "cacheDirectory": "node_modules/.cache/babel-loader",
-                            "cacheIdentifier": "80c0301a",
-                        },
-                    },
-                ],
+                "use": ["thread-loader", "babel-loader"],
             },
         ],
     },

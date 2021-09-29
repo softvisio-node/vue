@@ -13,9 +13,9 @@ import autoprefixer from "autoprefixer";
 const DefinePlugin = webpack.DefinePlugin;
 
 const app = {
+    "name": "vue-app",
     "mode": process.env.WEBPACK_MODE,
     "context": process.env.WEBPACK_CONTEXT,
-
     "devtool": "eval",
 
     "output": {
@@ -33,10 +33,7 @@ const app = {
         "app": "./src/main.js",
     },
 
-    // https://webpack.js.org/configuration/cache/
-    "cache": {
-        "type": "filesystem",
-    },
+    "cache": { "type": "filesystem" },
 
     "module": {
         "rules": [
@@ -59,16 +56,7 @@ const app = {
                     /[\\/]resources[\\/]ext-[\d.]+[\\/]/,
                     /[\\/]resources[\\/]ewc-[\d.]+[\\/]/,
                 ],
-                "use": [
-                    {
-                        "loader": "babel-loader",
-                        "options": {
-                            "cacheCompression": false,
-                            "cacheDirectory": "node_modules/.cache/babel-loader",
-                            "cacheIdentifier": "80c0301a",
-                        },
-                    },
-                ],
+                "use": ["thread-loader", "babel-loader"],
             },
 
             // vue
@@ -78,8 +66,6 @@ const app = {
                     {
                         "loader": "vue-loader",
                         "options": {
-                            "cacheDirectory": "node_modules/.cache/vue-loader",
-                            "cacheIdentifier": "5e5cf8f2",
                             "babelParserPlugins": ["jsx", "classProperties", "decorators-legacy"],
                             "compilerOptions": {
                                 "isCustomElement": tag => tag.startsWith( "ext-" ),
