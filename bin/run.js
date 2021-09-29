@@ -26,7 +26,7 @@ const DEV_SERVER_OPTIONS = {
     },
 };
 
-const ENV_PREFIX = "VUE_";
+const ENV_PREFIX = "APP_";
 
 const cli = {
     "title": "Webpack runner",
