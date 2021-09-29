@@ -28,8 +28,8 @@
             "./lib/*.vue"
         ],
         "./resources/*": "./resources/*",
-        "./babel.config.cjs": "./resources/babel.config.cjs",
-        "./webpack.config.js": "./resources/webpack.config.js"
+        "./babel.config": "./resources/babel.config.cjs",
+        "./webpack.config.*": "./resources/webpack.config.*.js"
     },
     "bin": {
         "run": "bin/run.js"

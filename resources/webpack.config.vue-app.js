@@ -49,13 +49,7 @@ const app = {
             // js
             {
                 "test": /\.m?jsx?$/,
-                "exclude": [
-
-                    //
-                    /node_modules/,
-                    /[\\/]resources[\\/]ext-[\d.]+[\\/]/,
-                    /[\\/]resources[\\/]ewc-[\d.]+[\\/]/,
-                ],
+                "exclude": [/node_modules/],
                 "use": ["thread-loader", "babel-loader"],
             },
 
@@ -239,7 +233,7 @@ const app = {
         "alias": {
             ...JSON.parse( process.env.WEBPACK_RESOLVE_ALIAS ),
             "vue$": "vue/dist/vue.runtime.esm-bundler.js",
-            "#vue": "@softvisio/vue-ext",
+            "#vue": "@softvisio/vue",
             "#ext$": "@softvisio/ext/ext-" + process.env.EXT_VERSION,
             "#ext": "@softvisio/ext/resources/ext-" + process.env.EXT_VERSION,
             "#ewc$": "@softvisio/ext/ewc-" + process.env.EWC_VERSION,
