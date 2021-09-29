@@ -1,13 +1,13 @@
-const path = require( "path" );
-const webpack = require( "webpack" );
-const { VueLoaderPlugin } = require( "vue-loader" );
-const HTMLPlugin = require( "html-webpack-plugin" );
-const CopyPlugin = require( "copy-webpack-plugin" );
-const TerserPlugin = require( "terser-webpack-plugin" );
-const CaseSensitivePathsPlugin = require( "case-sensitive-paths-webpack-plugin" );
-const { "CleanWebpackPlugin": CleanPlugin } = require( "clean-webpack-plugin" );
-const MiniCSSExtractPlugin = require( "mini-css-extract-plugin" );
-const CSSMinimizerPlugin = require( "css-minimizer-webpack-plugin" );
+import path from "path";
+import webpack from "webpack";
+import { VueLoaderPlugin } from "vue-loader";
+import HTMLPlugin from "html-webpack-plugin";
+import CopyPlugin from "copy-webpack-plugin";
+import TerserPlugin from "terser-webpack-plugin";
+import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
+import { CleanWebpackPlugin as CleanPlugin } from "clean-webpack-plugin";
+import MiniCSSExtractPlugin from "mini-css-extract-plugin";
+import CSSMinimizerPlugin from "css-minimizer-webpack-plugin";
 
 // XXX
 // - worker
@@ -17,6 +17,8 @@ const CSSMinimizerPlugin = require( "css-minimizer-webpack-plugin" );
 // XXX
 process.env.EXT_VERSION = "7.4.0";
 process.env.EWC_VERSION = "7.4.0";
+
+const __dirname = process.cwd();
 
 const app = {
     "devtool": false,
@@ -487,4 +489,4 @@ const worker = {
     },
 };
 
-module.exports = [app, worker];
+export default [app, worker];

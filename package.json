@@ -28,22 +28,21 @@
             "./lib/*.vue"
         ],
         "./resources/*": "./resources/*",
-        "./vue.config.cjs": "./resources/vue.config.cjs",
         "./babel.config.cjs": "./resources/babel.config.cjs",
-        "./webpack.config.cjs": "./resources/webpack.config.cjs"
+        "./webpack.config.js": "./resources/webpack.config.js"
     },
     "bin": {
         "run": "bin/run.js"
     },
     "dependencies": {
         "@softvisio/vuex": "^4.0.0",
-        "webpack": "^5.55.0",
         "webpack-bundle-analyzer": "^4.4.2",
         "webpack-cli": "^4.8.0"
     },
     "peerDependencies": {
         "@softvisio/core": "^5.0.0",
         "@vue/compiler-sfc": "^3.1.2",
-        "vue": "^3.2.19"
+        "vue": "^3.2.19",
+        "webpack": "^5.55.0"
     }
 }

@@ -37,8 +37,6 @@ env.readConfig( { "configPrefix": ".env", "envPrefix": "VUE_" } );
 // load env
 // load webpack config
 
-console.log( new URL( "webpack.config.cjs", url.pathToFileURL( env.root + "/" ) ) + "" );
-
-const c = await import( new URL( "webpack.config.cjs", url.pathToFileURL( env.root + "/" ) ) );
+const c = await import( new URL( "webpack.config.js", url.pathToFileURL( env.root + "/" ) ) );
 
 console.log( c );
