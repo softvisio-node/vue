@@ -67,12 +67,19 @@ class Run {
         const webpackConfig = await this.#buildWebpackConfig();
 
         return new Promise( resolve => {
-            webpack( webpackConfig, ( err, stats ) => {
+            const compiler = webpack( webpackConfig );
+
+            compiler.run( ( err, stats ) => {
                 if ( err || stats.hasErrors() ) {
-                    console.log( stats + "" );
+
+                    // error
                 }
 
-                resolve();
+                console.log( stats + "" );
+
+                compiler.close( closeErr => {
+                    resolve();
+                } );
             } );
         } );
     }
