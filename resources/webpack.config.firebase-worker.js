@@ -2,8 +2,11 @@ import env from "#core/env";
 import webpack from "webpack";
 import TerserPlugin from "terser-webpack-plugin";
 import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
+import { resolve } from "#core/utils";
 
 const DefinePlugin = webpack.DefinePlugin;
+
+const worker = resolve( "@softvisio/vue-ext/firebase/firebase-messaging-sw", import.meta.url );
 
 const config = {
     "name": "firebase-worker",
@@ -18,7 +21,7 @@ const config = {
 
     "entry": {
         "firebase": {
-            "import": "./src/firebase-messaging-sw.js",
+            "import": worker,
             "filename": "firebase-messaging-sw.js",
         },
     },
