@@ -1,3 +1,4 @@
+import env from "#core/env";
 import webpack from "webpack";
 import { VueLoaderPlugin } from "vue-loader";
 import HTMLPlugin from "html-webpack-plugin";
@@ -8,7 +9,6 @@ import MiniCSSExtractPlugin from "mini-css-extract-plugin";
 import CSSMinimizerPlugin from "css-minimizer-webpack-plugin";
 import autoprefixer from "autoprefixer";
 
-// import env from "#core/env";
 // import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 const DefinePlugin = webpack.DefinePlugin;
@@ -18,7 +18,7 @@ const config = {
     "target": "web", // browserslist
     "mode": process.env.WEBPACK_MODE,
     "context": process.env.WEBPACK_CONTEXT,
-    "devtool": "eval",
+    "devtool": env.isDevelopment ? "eval-cheap-source-map" : "eval",
     "cache": { "type": "filesystem" },
     "experiments": {
         "topLevelAwait": true,
@@ -112,12 +112,13 @@ const config = {
             // js
             {
                 "test": /\.m?jsx?$/,
-                "exclude": [/node_modules/],
+                "exclude": [],
                 "use": [
                     "thread-loader",
                     {
                         "loader": "babel-loader",
                         "options": {
+                            "compact": false, // we don't need babel compact, because js files optimized using terser later
                             "presets": [
                                 ["@babel/preset-env", { "shippedProposals": true }],
                                 ["@vue/app", { "decoratorsLegacy": false, "decoratorsBeforeExport": true }],
