@@ -179,6 +179,9 @@ class Run {
                 "mangle": {
                     "safari10": true,
                 },
+                "format": {
+                    "comments": false,
+                },
             },
             "parallel": true,
             "extractComments": false,
