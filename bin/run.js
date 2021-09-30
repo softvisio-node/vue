@@ -74,7 +74,7 @@ class Run {
     async run () {
         await CLI.parse( cli );
 
-        process.env.BUILD_CORDOVA = process.cli?.options?.cordova ? 1 : "";
+        process.env.WEBPACK_BUILD_CORDOVA = process.cli?.options?.cordova ? 1 : "";
 
         // set mode
         if ( process.cli.arguments.command === "serve" ) {
@@ -138,8 +138,7 @@ class Run {
     #getWebpackEnv () {
         const _env = {
             "NODE_ENV": env.mode,
-            "BASE_URL": "",
-            "BUILD_CORDOVA": process.env.BUILD_CORDOVA,
+            "WEBPACK_BUILD_CORDOVA": process.env.WEBPACK_BUILD_CORDOVA,
         };
 
         for ( const name in process.env ) {
