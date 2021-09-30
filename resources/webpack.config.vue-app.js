@@ -96,7 +96,6 @@ const config = {
                 "test": /\.m?jsx?$/,
                 "exclude": [],
                 "use": [
-                    "thread-loader",
                     {
                         "loader": "babel-loader",
                         "options": {
