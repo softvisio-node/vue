@@ -21,9 +21,10 @@ const config = {
 
     "output": {
         "path": process.env.WEBPACK_OUTPUT_PATH,
-        "filename": "js/[name].js",
         "publicPath": "auto",
-        "chunkFilename": "js/[name].js",
+        "filename": "js/[name].[contenthash].js",
+        "chunkFilename": "js/[name].[contenthash].js",
+        "hashDigestLength": 4,
     },
 
     "experiments": {
@@ -79,19 +80,10 @@ const config = {
 
             // images
             {
-                "test": /\.(png|jpe?g|gif|webp|avif)(\?.*)?$/,
+                "test": /\.(png|jpe?g|gif|webp|avif|svg)(\?.*)?$/,
                 "type": "asset/resource",
                 "generator": {
-                    "filename": "img/[name].[hash:8][ext][query]",
-                },
-            },
-
-            // svg
-            {
-                "test": /\.(svg)(\?.*)?$/,
-                "type": "asset/resource",
-                "generator": {
-                    "filename": "img/[name].[hash:8][ext][query]",
+                    "filename": "img/[name].[hash][ext][query]",
                 },
             },
 
@@ -100,7 +92,7 @@ const config = {
                 "test": /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
                 "type": "asset/resource",
                 "generator": {
-                    "filename": "media/[name].[hash:8][ext][query]",
+                    "filename": "media/[name].[hash][ext][query]",
                 },
             },
 
@@ -109,7 +101,7 @@ const config = {
                 "test": /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
                 "type": "asset/resource",
                 "generator": {
-                    "filename": "fonts/[name].[hash:8][ext][query]",
+                    "filename": "fonts/[name].[hash][ext][query]",
                 },
             },
 
@@ -126,7 +118,7 @@ const config = {
                     },
 
                     // XXX
-                    // MiniCSSExtractPlugin.loader,
+                    MiniCSSExtractPlugin.loader,
                     {
                         "loader": "css-loader",
                         "options": {
@@ -191,8 +183,8 @@ const config = {
         new VueLoaderPlugin(),
 
         new MiniCSSExtractPlugin( {
-            "filename": "css/[name].[contenthash:8].css",
-            "chunkFilename": "css/[name].[contenthash:8].css",
+            "filename": "css/[name].[contenthash].css",
+            "chunkFilename": "css/[name].[contenthash].css",
         } ),
 
         new CaseSensitivePathsPlugin(),
