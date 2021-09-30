@@ -17,7 +17,7 @@ const config = {
     "target": "web", // browserslist
     "mode": process.env.WEBPACK_MODE,
     "context": process.env.WEBPACK_CONTEXT,
-    "devtool": env.isDevelopment ? "eval-cheap-source-map" : "eval",
+    "devtool": env.isDevelopment ? "eval" : undefined,
     "cache": { "type": "filesystem" },
     "experiments": {
         "topLevelAwait": true,
