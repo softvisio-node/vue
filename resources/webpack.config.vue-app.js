@@ -8,8 +8,7 @@ import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
 import MiniCSSExtractPlugin from "mini-css-extract-plugin";
 import CSSMinimizerPlugin from "css-minimizer-webpack-plugin";
 import autoprefixer from "autoprefixer";
-
-// import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 const DefinePlugin = webpack.DefinePlugin;
 
@@ -191,7 +190,7 @@ const config = {
                     },
 
                     // XXX - must be disabled for dev server
-                    // MiniCSSExtractPlugin.loader,
+                    MiniCSSExtractPlugin.loader,
                     {
                         "loader": "css-loader",
                         "options": {
@@ -249,13 +248,15 @@ const config = {
                 },
             ],
         } ),
-
-        // new BundleAnalyzerPlugin( {
-        //     "analyzerMode": env.isProduction ? "static" : "server",
-        //     "analyzerPort": 8888,
-        //     "openAnalyzer": false,
-        // } ),
     ],
 };
+
+if ( process.env.WEBPACK_DEV_SERVER || env.isDevelopment ) {
+    config.plugins.push( new BundleAnalyzerPlugin( {
+        "analyzerMode": process.env.WEBPACK_DEV_SERVER ? "server" : "static",
+        "analyzerPort": 8888,
+        "openAnalyzer": false,
+    } ) );
+}
 
 export default config;

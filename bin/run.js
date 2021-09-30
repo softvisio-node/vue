@@ -187,6 +187,8 @@ class Run {
     }
 
     async #runServe () {
+        process.env.WEBPACK_DEV_SERVER = 1;
+
         const webpackConfig = await this.#buildWebpackConfig();
 
         const compiler = webpack( webpackConfig );
