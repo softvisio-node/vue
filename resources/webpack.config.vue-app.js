@@ -190,7 +190,7 @@ const config = {
                     },
 
                     // XXX - must be disabled for dev server
-                    MiniCSSExtractPlugin.loader,
+                    // MiniCSSExtractPlugin.loader,
                     {
                         "loader": "css-loader",
                         "options": {
@@ -251,6 +251,7 @@ const config = {
     ],
 };
 
+// add bundle analyzer
 if ( process.env.WEBPACK_DEV_SERVER || env.isDevelopment ) {
     config.plugins.push( new BundleAnalyzerPlugin( {
         "analyzerMode": process.env.WEBPACK_DEV_SERVER ? "server" : "static",
