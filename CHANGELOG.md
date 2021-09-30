@@ -1,5 +1,17 @@
 # Changelog
 
+### 5.1.0 (2021-09-30)
+
+Features:
+
+-   feat: webpack migration
+
+Fixes:
+
+-   fix: vue config ext settings moved to the vue ext
+-   fix: vue config worker loader disabled
+-   fix: worker-loader restored
+
 ### 5.0.0 (2021-09-24)
 
 Fixes:
