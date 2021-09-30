@@ -18,9 +18,11 @@ const config = {
     "mode": process.env.WEBPACK_MODE,
     "context": process.env.WEBPACK_CONTEXT,
     "devtool": env.isDevelopment ? "eval" : undefined,
-    "cache": { "type": "filesystem" },
-    "experiments": {
-        "topLevelAwait": true,
+    "experiments": { "topLevelAwait": true },
+    "cache": {
+        "type": "filesystem",
+        "compression": "brotli",
+        "maxAge": 1000 * 60 * 60 * 24 * 3, // 3 days
     },
 
     "entry": {
