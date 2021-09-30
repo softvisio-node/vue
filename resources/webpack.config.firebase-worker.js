@@ -6,7 +6,7 @@ import { resolve } from "#core/utils";
 
 const DefinePlugin = webpack.DefinePlugin;
 
-const worker = resolve( "@softvisio/vue-ext/firebase/firebase-messaging-sw", import.meta.url );
+const worker = resolve( "@softvisio/vue-ext/firebase/worker", import.meta.url );
 
 const config = {
     "name": "firebase-worker",
