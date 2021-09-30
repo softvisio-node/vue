@@ -15,18 +15,11 @@ const DefinePlugin = webpack.DefinePlugin;
 
 const config = {
     "name": "vue-app",
+    "target": "web", // browserslist
     "mode": process.env.WEBPACK_MODE,
     "context": process.env.WEBPACK_CONTEXT,
     "devtool": "eval",
-
-    "output": {
-        "path": process.env.WEBPACK_OUTPUT_PATH,
-        "publicPath": "auto",
-        "filename": "js/[name].[contenthash].js",
-        "chunkFilename": "js/[name].[contenthash].js",
-        "hashDigestLength": 4,
-    },
-
+    "cache": { "type": "filesystem" },
     "experiments": {
         "topLevelAwait": true,
     },
@@ -35,7 +28,75 @@ const config = {
         "app": "./src/main.js",
     },
 
-    "cache": { "type": "filesystem" },
+    "output": {
+        "path": process.env.WEBPACK_OUTPUT_PATH,
+        "publicPath": "auto",
+        "filename": "js/[name].[contenthash].js",
+        "chunkFilename": "js/[name].[contenthash].js",
+        "hashDigestLength": 8,
+    },
+
+    "resolve": {
+        "alias": {
+            ...JSON.parse( process.env.WEBPACK_RESOLVE_ALIAS ),
+            "vue$": "vue/dist/vue.runtime.esm-bundler.js",
+            "#vue": "@softvisio/vue",
+            "#ext$": "@softvisio/ext/ext-" + process.env.EXT_VERSION,
+            "#ext": "@softvisio/ext/resources/ext-" + process.env.EXT_VERSION,
+            "#ewc$": "@softvisio/ext/ewc-" + process.env.EWC_VERSION,
+            "#ewc": "@softvisio/ext/resources/ewc-" + process.env.EWC_VERSION,
+        },
+
+        // required by froala, can be replaced with crypto-browserify
+        "fallback": {
+            "crypto": false,
+        },
+
+        "extensions": [".mjs", ".js", ".jsx", ".vue", ".json", ".wasm"],
+
+        "modules": JSON.parse( process.env.WEBPACK_RESOLVE_MODULES ),
+    },
+
+    "resolveLoader": { "modules": JSON.parse( process.env.WEBPACK_RESOLVE_LOADER_MODULES ) },
+
+    "optimization": {
+        "realContentHash": false,
+
+        "splitChunks": {
+            "cacheGroups": {
+                "defaultVendors": {
+                    "name": "chunk-vendors",
+                    "test": /[\\/]node_modules[\\/]/,
+                    "priority": -10,
+                    "chunks": "initial",
+                },
+                "common": {
+                    "name": "chunk-common",
+                    "minChunks": 2,
+                    "priority": -20,
+                    "chunks": "initial",
+                    "reuseExistingChunk": true,
+                },
+            },
+        },
+
+        "minimizer": [
+            new TerserPlugin( JSON.parse( process.env.WEBPACK_TERSER_OPTIONS ) ),
+
+            new CSSMinimizerPlugin( {
+                "parallel": true,
+                "minimizerOptions": {
+                    "preset": [
+                        "default",
+                        {
+                            "mergeLonghand": false,
+                            "cssDeclarationSorter": false,
+                        },
+                    ],
+                },
+            } ),
+        ],
+    },
 
     "module": {
         "rules": [
@@ -140,45 +201,6 @@ const config = {
         ],
     },
 
-    "optimization": {
-        "realContentHash": false,
-
-        "splitChunks": {
-            "cacheGroups": {
-                "defaultVendors": {
-                    "name": "chunk-vendors",
-                    "test": /[\\/]node_modules[\\/]/,
-                    "priority": -10,
-                    "chunks": "initial",
-                },
-                "common": {
-                    "name": "chunk-common",
-                    "minChunks": 2,
-                    "priority": -20,
-                    "chunks": "initial",
-                    "reuseExistingChunk": true,
-                },
-            },
-        },
-
-        "minimizer": [
-            new TerserPlugin( JSON.parse( process.env.WEBPACK_TERSER_OPTIONS ) ),
-
-            new CSSMinimizerPlugin( {
-                "parallel": true,
-                "minimizerOptions": {
-                    "preset": [
-                        "default",
-                        {
-                            "mergeLonghand": false,
-                            "cssDeclarationSorter": false,
-                        },
-                    ],
-                },
-            } ),
-        ],
-    },
-
     "plugins": [
         new VueLoaderPlugin(),
 
@@ -222,29 +244,6 @@ const config = {
         //     "openAnalyzer": false,
         // } ),
     ],
-
-    "resolve": {
-        "alias": {
-            ...JSON.parse( process.env.WEBPACK_RESOLVE_ALIAS ),
-            "vue$": "vue/dist/vue.runtime.esm-bundler.js",
-            "#vue": "@softvisio/vue",
-            "#ext$": "@softvisio/ext/ext-" + process.env.EXT_VERSION,
-            "#ext": "@softvisio/ext/resources/ext-" + process.env.EXT_VERSION,
-            "#ewc$": "@softvisio/ext/ewc-" + process.env.EWC_VERSION,
-            "#ewc": "@softvisio/ext/resources/ewc-" + process.env.EWC_VERSION,
-        },
-
-        // required by froala, can be replaced with crypto-browserify
-        "fallback": {
-            "crypto": false,
-        },
-
-        "extensions": [".mjs", ".js", ".jsx", ".vue", ".json", ".wasm"],
-
-        "modules": JSON.parse( process.env.WEBPACK_RESOLVE_MODULES ),
-    },
-
-    "resolveLoader": { "modules": JSON.parse( process.env.WEBPACK_RESOLVE_LOADER_MODULES ) },
 };
 
 export default config;
