@@ -1,5 +1,11 @@
 # Changelog
 
+### 5.1.1 (2021-09-30)
+
+Fixes:
+
+-   fix: deps
+
 ### 5.1.0 (2021-09-30)
 
 Features:
