@@ -26,8 +26,6 @@ const DEV_SERVER_OPTIONS = {
     },
 };
 
-const ENV_PREFIX = "APP_";
-
 const cli = {
     "title": "Webpack runner",
     "options": {
@@ -138,11 +136,10 @@ class Run {
     #getWebpackEnv () {
         const _env = {
             "NODE_ENV": env.mode,
-            "WEBPACK_BUILD_CORDOVA": process.env.WEBPACK_BUILD_CORDOVA,
         };
 
         for ( const name in process.env ) {
-            if ( name.startsWith( ENV_PREFIX ) ) _env[name] = process.env[name];
+            if ( name.startsWith( "APP_" ) ) _env[name] = process.env[name];
         }
 
         return _env;

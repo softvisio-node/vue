@@ -211,7 +211,7 @@ const config = {
             "title": "rankrocket-ui",
             "scriptLoading": "defer",
             "template": "public/index.html",
-            "templateParameters": JSON.parse( process.env.WEBPACK_ENV ),
+            "templateParameters": process.env,
         } ),
 
         new CopyPlugin( {
