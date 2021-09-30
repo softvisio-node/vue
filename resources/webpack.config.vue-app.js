@@ -79,22 +79,7 @@ const config = {
             },
         },
 
-        "minimizer": [
-            new TerserPlugin( JSON.parse( process.env.WEBPACK_TERSER_OPTIONS ) ),
-
-            new CSSMinimizerPlugin( {
-                "parallel": true,
-                "minimizerOptions": {
-                    "preset": [
-                        "default",
-                        {
-                            "mergeLonghand": false,
-                            "cssDeclarationSorter": false,
-                        },
-                    ],
-                },
-            } ),
-        ],
+        "minimizer": [new TerserPlugin( JSON.parse( process.env.WEBPACK_TERSER_OPTIONS ) )],
     },
 
     "module": {
@@ -188,9 +173,7 @@ const config = {
                             "shadowMode": false,
                         },
                     },
-
-                    // XXX - must be disabled for dev server
-                    // MiniCSSExtractPlugin.loader,
+                    ...( env.isProduction ? [MiniCSSExtractPlugin.loader] : [] ),
                     {
                         "loader": "css-loader",
                         "options": {
@@ -214,11 +197,6 @@ const config = {
 
     "plugins": [
         new VueLoaderPlugin(),
-
-        new MiniCSSExtractPlugin( {
-            "filename": "css/[name].[contenthash].css",
-            "chunkFilename": "css/[name].[contenthash].css",
-        } ),
 
         new CaseSensitivePathsPlugin(),
 
@@ -250,6 +228,27 @@ const config = {
         } ),
     ],
 };
+
+// css
+if ( env.isProduction ) {
+    config.optimization.minimizer.push( new CSSMinimizerPlugin( {
+        "parallel": true,
+        "minimizerOptions": {
+            "preset": [
+                "default",
+                {
+                    "mergeLonghand": false,
+                    "cssDeclarationSorter": false,
+                },
+            ],
+        },
+    } ) );
+
+    config.plugins.push( new MiniCSSExtractPlugin( {
+        "filename": "css/[name].[contenthash].css",
+        "chunkFilename": "css/[name].[contenthash].css",
+    } ) );
+}
 
 // add bundle analyzer
 if ( process.env.WEBPACK_DEV_SERVER || env.isDevelopment ) {
