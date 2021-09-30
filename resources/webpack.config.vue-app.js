@@ -113,7 +113,18 @@ const config = {
             {
                 "test": /\.m?jsx?$/,
                 "exclude": [/node_modules/],
-                "use": ["thread-loader", "babel-loader"],
+                "use": [
+                    "thread-loader",
+                    {
+                        "loader": "babel-loader",
+                        "options": {
+                            "presets": [
+                                ["@babel/preset-env", { "shippedProposals": true }],
+                                ["@vue/app", { "decoratorsLegacy": false, "decoratorsBeforeExport": true }],
+                            ],
+                        },
+                    },
+                ],
             },
 
             // vue
@@ -178,8 +189,8 @@ const config = {
                         },
                     },
 
-                    // XXX
-                    MiniCSSExtractPlugin.loader,
+                    // XXX - must be disabled for dev server
+                    // MiniCSSExtractPlugin.loader,
                     {
                         "loader": "css-loader",
                         "options": {
