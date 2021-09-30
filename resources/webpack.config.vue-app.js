@@ -59,8 +59,6 @@ const config = {
     "resolveLoader": { "modules": JSON.parse( process.env.WEBPACK_RESOLVE_LOADER_MODULES ) },
 
     "optimization": {
-        "realContentHash": false,
-
         "splitChunks": {
             "cacheGroups": {
                 "defaultVendors": {
