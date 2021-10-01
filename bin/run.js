@@ -9,6 +9,8 @@ import WebpackDevServer from "webpack-dev-server";
 import fs from "fs";
 import path from "path";
 
+// console.log( import.meta.url );process.exit();
+
 const DEV_SERVER_OPTIONS = {
     "host": process.env.DEVSERVER_HOST || "0.0.0.0",
     "port": process.env.DEVSERVER_PORT || "80",

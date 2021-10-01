@@ -32,7 +32,7 @@
         "./webpack.config.*": "./resources/webpack.config.*.js"
     },
     "bin": {
-        "run": "bin/run.mjs"
+        "run": "bin/run.js"
     },
     "dependencies": {
         "@babel/core": "^7.15.5",
