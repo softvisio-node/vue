@@ -1,5 +1,13 @@
 # Changelog
 
+### 5.1.2 (2021-10-01)
+
+Fixes:
+
+-   fix: load env from context
+-   fix: minicss loader options fixed
+-   fix: webpack remove all css comments in prodiction
+
 ### 5.1.1 (2021-09-30)
 
 Fixes:
