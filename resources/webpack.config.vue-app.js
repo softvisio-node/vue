@@ -63,7 +63,7 @@ const config = {
     "optimization": {
         "splitChunks": {
             "cacheGroups": {
-                "defaultVendors": {
+                "vendors": {
                     "name": "vendors",
                     "test": /[\\/]node_modules[\\/]/,
                     "priority": -10,
