@@ -24,12 +24,6 @@ const DEV_SERVER_OPTIONS = {
             "errors": true,
             "warnings": false,
         },
-
-        // "static": {
-        //     "directory": "public",
-        //     "publicPath": "/",
-        //     "watch": true,
-        // },
     },
 };
 
