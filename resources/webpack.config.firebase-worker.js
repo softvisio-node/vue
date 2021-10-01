@@ -15,6 +15,7 @@ const config = {
     "context": process.env.WEBPACK_CONTEXT,
     "devtool": env.isDevelopment ? "eval" : undefined,
     "experiments": { "topLevelAwait": true },
+
     "cache": {
         "type": "filesystem",
         "compression": "brotli",
