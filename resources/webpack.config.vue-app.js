@@ -172,7 +172,16 @@ const config = {
                             "shadowMode": false,
                         },
                     },
-                    ...( env.isProduction ? [MiniCSSExtractPlugin.loader] : [] ),
+                    ...( env.isProduction
+                        ? [
+                            {
+                                "loader": MiniCSSExtractPlugin.loader,
+                                "options": {
+                                    "esModule": false,
+                                },
+                            },
+                        ]
+                        : [] ),
                     {
                         "loader": "css-loader",
                         "options": {
