@@ -19,6 +19,7 @@ const config = {
     "context": process.env.WEBPACK_CONTEXT,
     "devtool": env.isDevelopment ? "eval" : undefined,
     "experiments": { "topLevelAwait": true },
+
     "cache": {
         "type": "filesystem",
         "compression": "brotli",
@@ -79,7 +80,25 @@ const config = {
             },
         },
 
-        "minimizer": [new TerserPlugin( JSON.parse( process.env.WEBPACK_TERSER_OPTIONS ) )],
+        "minimizer": [
+            new TerserPlugin( JSON.parse( process.env.WEBPACK_TERSER_OPTIONS ) ),
+
+            new CSSMinimizerPlugin( {
+                "parallel": true,
+                "minimizerOptions": {
+                    "preset": [
+                        "default",
+                        {
+                            "mergeLonghand": false,
+                            "cssDeclarationSorter": false,
+                            "discardComments": {
+                                "removeAll": true,
+                            },
+                        },
+                    ],
+                },
+            } ),
+        ],
     },
 
     "module": {
@@ -172,16 +191,12 @@ const config = {
                             "shadowMode": false,
                         },
                     },
-                    ...( env.isProduction
-                        ? [
-                            {
-                                "loader": MiniCSSExtractPlugin.loader,
-                                "options": {
-                                    "esModule": false,
-                                },
-                            },
-                        ]
-                        : [] ),
+                    {
+                        "loader": MiniCSSExtractPlugin.loader,
+                        "options": {
+                            "esModule": false,
+                        },
+                    },
                     {
                         "loader": "css-loader",
                         "options": {
@@ -205,6 +220,11 @@ const config = {
 
     "plugins": [
         new VueLoaderPlugin(),
+
+        new MiniCSSExtractPlugin( {
+            "filename": "css/[name].[contenthash].css",
+            "chunkFilename": "css/[name].[contenthash].css",
+        } ),
 
         new CaseSensitivePathsPlugin(),
 
@@ -236,30 +256,6 @@ const config = {
         } ),
     ],
 };
-
-// css
-if ( env.isProduction ) {
-    config.optimization.minimizer.push( new CSSMinimizerPlugin( {
-        "parallel": true,
-        "minimizerOptions": {
-            "preset": [
-                "default",
-                {
-                    "mergeLonghand": false,
-                    "cssDeclarationSorter": false,
-                    "discardComments": {
-                        "removeAll": true,
-                    },
-                },
-            ],
-        },
-    } ) );
-
-    config.plugins.push( new MiniCSSExtractPlugin( {
-        "filename": "css/[name].[contenthash].css",
-        "chunkFilename": "css/[name].[contenthash].css",
-    } ) );
-}
 
 // add bundle analyzer
 if ( process.env.WEBPACK_DEV_SERVER || env.isDevelopment ) {
