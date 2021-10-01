@@ -238,6 +238,9 @@ if ( env.isProduction ) {
                 {
                     "mergeLonghand": false,
                     "cssDeclarationSorter": false,
+                    "discardComments": {
+                        "removeAll": true,
+                    },
                 },
             ],
         },
