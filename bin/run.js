@@ -16,6 +16,7 @@ const DEV_SERVER_OPTIONS = {
     "hot": true,
     "compress": false,
     "historyApiFallback": true,
+    "setupExitSignals": true,
     "client": {
         "logging": "none",
         "progress": true,
@@ -23,6 +24,12 @@ const DEV_SERVER_OPTIONS = {
             "errors": true,
             "warnings": false,
         },
+
+        // "static": {
+        //     "directory": "public",
+        //     "publicPath": "/",
+        //     "watch": true,
+        // },
     },
 };
 
@@ -50,7 +57,7 @@ const cli = {
     },
 };
 
-class Run {
+class Runner {
     #webpackConfig;
     #context;
     #output;
@@ -190,11 +197,32 @@ class Run {
 
         const webpackConfig = await this.#buildWebpackConfig();
 
-        const compiler = webpack( webpackConfig );
+        // supress webpack-dev-server logging
+        webpackConfig[0].infrastructureLogging ??= {};
+        webpackConfig[0].infrastructureLogging.level = "none";
 
-        const server = new WebpackDevServer( DEV_SERVER_OPTIONS, compiler );
+        // output only compilation errors
+        webpackConfig[0].stats = "errors-warnings";
 
-        server.startCallback( () => {} );
+        const compiler = webpack( webpackConfig ),
+            server = new WebpackDevServer( DEV_SERVER_OPTIONS, compiler );
+
+        let firstCompile = true;
+
+        compiler.hooks.done.tap( "run", stats => {
+            if ( firstCompile ) {
+                firstCompile = false;
+
+                console.log( `done` );
+                console.log( `Listening on: http://${DEV_SERVER_OPTIONS.host}:${DEV_SERVER_OPTIONS.port}` );
+                console.log( `Press CTRL+C to terminate` );
+                console.log( "" );
+            }
+        } );
+
+        process.stdout.write( `Compiling ... ` );
+
+        await server.start();
     }
 
     async #runBuild () {
@@ -226,6 +254,6 @@ class Run {
     }
 }
 
-const run = new Run();
+const runner = new Runner();
 
-run.run();
+runner.run();
