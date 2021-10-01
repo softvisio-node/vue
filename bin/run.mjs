@@ -82,7 +82,7 @@ class Run {
             env.mode = process.cli?.options?.mode ?? "production";
         }
 
-        env.readConfig( { "envPrefix": false } );
+        env.readConfig( { "path": this.context, "envPrefix": false } );
 
         if ( process.cli.arguments.command === "serve" ) {
             this.#runServe();
@@ -125,7 +125,7 @@ class Run {
 
             process.env.WEBPACK_TERSER_OPTIONS = JSON.stringify( this.#getWebpackTerserOptions() );
 
-            const webpackConfig = await import( new URL( "webpack.config.js", url.pathToFileURL( env.root + "/" ) ) );
+            const webpackConfig = await import( new URL( "webpack.config.js", url.pathToFileURL( this.context + "/" ) ) );
 
             this.#webpackConfig = Array.isArray( webpackConfig.default ) ? webpackConfig.default : [webpackConfig.default];
         }
