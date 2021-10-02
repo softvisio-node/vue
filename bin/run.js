@@ -9,7 +9,6 @@ import WebpackDevServer from "webpack-dev-server";
 import fs from "fs";
 import path from "path";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
-import * as uuid from "#core/uuid";
 
 const DEV_SERVER_OPTIONS = {
     "host": process.env.DEVSERVER_HOST || "0.0.0.0",
@@ -146,7 +145,7 @@ class Runner {
 
             // config post-processing
             for ( const config of this.#webpackConfig ) {
-                config.name ||= uuid.v4();
+                if ( !config.name ) throw Error( `Webpack config name is required` );
 
                 // inject webpack bundle analyzer
                 if ( process.cli?.options?.analyzer || process.env.WEBPACK_DEV_SERVER || env.isDevelopment ) {
