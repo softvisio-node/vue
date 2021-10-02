@@ -1,5 +1,11 @@
 # Changelog
 
+### 5.1.7 (2021-10-02)
+
+Fixes:
+
+-   fix: webpack cache options
+
 ### 5.1.6 (2021-10-02)
 
 Fixes:
