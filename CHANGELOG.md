@@ -1,5 +1,11 @@
 # Changelog
 
+### 5.1.6 (2021-10-02)
+
+Fixes:
+
+-   fix: run script renamed to softvisio-webpack
+
 ### 5.1.5 (2021-10-02)
 
 Fixes:
