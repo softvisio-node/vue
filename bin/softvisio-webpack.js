@@ -10,6 +10,13 @@ import fs from "fs";
 import path from "path";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
+const CACHE_OPTIONS = {
+    "type": "filesystem",
+    "compression": "brotli",
+    "maxAge": 1000 * 60 * 60 * 24 * 3, // 3 days
+    "maxMemoryGenerations": 1,
+};
+
 const DEV_SERVER_OPTIONS = {
     "host": process.env.DEVSERVER_HOST || "0.0.0.0",
     "port": process.env.DEVSERVER_PORT || "80",
@@ -120,15 +127,19 @@ class Runner {
             // set env variables
             process.env.WEBPACK_MODE = env.mode;
             process.env.WEBPACK_CONTEXT = this.context;
+            process.env.WEBPACK_CACHE = JSON.stringify( CACHE_OPTIONS );
             process.env.WEBPACK_OUTPUT_PATH = this.output;
+
             process.env.WEBPACK_RESOLVE_MODULES = JSON.stringify( [
 
                 //
                 path.join( this.context, "node_modules" ),
             ] );
+
             process.env.WEBPACK_RESOLVE_ALIAS = JSON.stringify( {
                 "@": path.join( this.context, "src" ),
             } );
+
             process.env.WEBPACK_RESOLVE_LOADER_MODULES = JSON.stringify( [
 
                 //

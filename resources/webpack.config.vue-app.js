@@ -18,12 +18,7 @@ const config = {
     "context": process.env.WEBPACK_CONTEXT,
     "devtool": env.isDevelopment ? "eval-source-map" : undefined,
     "experiments": { "topLevelAwait": true },
-
-    "cache": {
-        "type": "filesystem",
-        "compression": "brotli",
-        "maxAge": 1000 * 60 * 60 * 24 * 3, // 3 days
-    },
+    "cache": JSON.parse( process.env.WEBPACK_CACHE ),
 
     "entry": {
         "app": "./src/main.js",
