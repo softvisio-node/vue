@@ -1,5 +1,12 @@
 # Changelog
 
+### 5.1.5 (2021-10-02)
+
+Fixes:
+
+-   fix: serve output
+-   fix: webpack source ,aps added
+
 ### 5.1.4 (2021-10-01)
 
 No notable changes since the previous release.
