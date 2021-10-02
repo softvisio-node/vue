@@ -8,7 +8,6 @@ import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
 import MiniCSSExtractPlugin from "mini-css-extract-plugin";
 import CSSMinimizerPlugin from "css-minimizer-webpack-plugin";
 import autoprefixer from "autoprefixer";
-import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 const DefinePlugin = webpack.DefinePlugin;
 
@@ -256,14 +255,5 @@ const config = {
         } ),
     ],
 };
-
-// add bundle analyzer
-if ( process.env.WEBPACK_DEV_SERVER || env.isDevelopment ) {
-    config.plugins.push( new BundleAnalyzerPlugin( {
-        "analyzerMode": process.env.WEBPACK_DEV_SERVER ? "server" : "static",
-        "analyzerPort": 8888,
-        "openAnalyzer": false,
-    } ) );
-}
 
 export default config;

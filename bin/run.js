@@ -8,6 +8,8 @@ import webpack from "webpack";
 import WebpackDevServer from "webpack-dev-server";
 import fs from "fs";
 import path from "path";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import * as uuid from "#core/uuid";
 
 const DEV_SERVER_OPTIONS = {
     "host": process.env.DEVSERVER_HOST || "0.0.0.0",
@@ -27,19 +29,31 @@ const DEV_SERVER_OPTIONS = {
     },
 };
 
+const BUNDLE_ANALYZER_OPTIONS = {
+    "analyzerMode": "static",
+    "openAnalyzer": false,
+    "logLevel": "silent",
+};
+
 const cli = {
     "title": "Webpack runner",
     "options": {
+        "mode": {
+            "short": "m",
+            "description": `can be "development" or "production"`,
+            "schema": { "type": "string", "enum": ["development", "production"] },
+        },
         "cordova": {
             "short": "c",
             "description": "build for cordova",
             "default": false,
             "schema": { "type": "boolean" },
         },
-        "mode": {
-            "short": "m",
-            "description": `Can be "development" or "production".`,
-            "schema": { "type": "string", "enum": ["development", "production"] },
+        "analyzer": {
+            "short": "a",
+            "description": `run with webpack bundle analyzer`,
+            "default": false,
+            "schema": { "type": "boolean" },
         },
     },
     "arguments": {
@@ -129,6 +143,19 @@ class Runner {
             const webpackConfig = await import( new URL( "webpack.config.js", url.pathToFileURL( this.context + "/" ) ) );
 
             this.#webpackConfig = Array.isArray( webpackConfig.default ) ? webpackConfig.default : [webpackConfig.default];
+
+            // config post-processing
+            for ( const config of this.#webpackConfig ) {
+                config.name ||= uuid.v4();
+
+                // inject webpack bundle analyzer
+                if ( process.cli?.options?.analyzer || process.env.WEBPACK_DEV_SERVER || env.isDevelopment ) {
+                    config.plugins.push( new BundleAnalyzerPlugin( {
+                        ...BUNDLE_ANALYZER_OPTIONS,
+                        "reportFilename": `bundle-analyzer-${config.name}.html`,
+                    } ) );
+                }
+            }
         }
 
         return this.#webpackConfig;
