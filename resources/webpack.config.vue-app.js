@@ -1,12 +1,12 @@
 import env from "#core/env";
 import webpack from "webpack";
 import { VueLoaderPlugin } from "vue-loader";
-import HTMLPlugin from "html-webpack-plugin";
+import HtmlPlugin from "html-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
 import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
-import MiniCSSExtractPlugin from "mini-css-extract-plugin";
-import CSSMinimizerPlugin from "css-minimizer-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import autoprefixer from "autoprefixer";
 
 const DefinePlugin = webpack.DefinePlugin;
@@ -77,7 +77,7 @@ const config = {
         "minimizer": [
             new TerserPlugin( JSON.parse( process.env.WEBPACK_TERSER_OPTIONS ) ),
 
-            new CSSMinimizerPlugin( {
+            new CssMinimizerPlugin( {
                 "parallel": true,
                 "minimizerOptions": {
                     "preset": [
@@ -186,7 +186,7 @@ const config = {
                         },
                     },
                     {
-                        "loader": MiniCSSExtractPlugin.loader,
+                        "loader": MiniCssExtractPlugin.loader,
                         "options": {
                             "esModule": false,
                         },
@@ -215,7 +215,7 @@ const config = {
     "plugins": [
         new VueLoaderPlugin(),
 
-        new MiniCSSExtractPlugin( {
+        new MiniCssExtractPlugin( {
             "filename": "css/[name].[contenthash].css",
             "chunkFilename": "css/[name].[contenthash].css",
         } ),
@@ -231,7 +231,7 @@ const config = {
             "process.env": process.env.WEBPACK_ENV,
         } ),
 
-        new HTMLPlugin( {
+        new HtmlPlugin( {
             "title": "rankrocket-ui",
             "scriptLoading": "defer",
             "template": "public/index.html",
