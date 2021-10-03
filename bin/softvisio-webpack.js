@@ -38,7 +38,7 @@ const DEV_SERVER_OPTIONS = {
 const BUNDLE_ANALYZER_OPTIONS = {
     "analyzerMode": "static",
     "openAnalyzer": false,
-    "logLevel": "silent",
+    "logLevel": "warn",
 };
 
 const cli = {
