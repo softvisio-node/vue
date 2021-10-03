@@ -162,7 +162,7 @@ class Runner {
                 if ( process.cli?.options?.analyzer || process.env.WEBPACK_DEV_SERVER || env.isDevelopment ) {
                     config.plugins.push( new BundleAnalyzerPlugin( {
                         ...BUNDLE_ANALYZER_OPTIONS,
-                        "reportFilename": `bundle-analyzer-${config.name}.html`,
+                        "reportFilename": `bundle-analyzer.${config.name}.${env.mode}.html`,
                     } ) );
                 }
             }
