@@ -163,6 +163,7 @@ class Runner {
                     config.plugins.push( new BundleAnalyzerPlugin( {
                         ...BUNDLE_ANALYZER_OPTIONS,
                         "reportFilename": `bundle-analyzer.${config.name}.${env.mode}.html`,
+                        "reportTitle": `${config.name} [${env.mode}] ${new Date().toISOString()}`,
                     } ) );
                 }
             }
