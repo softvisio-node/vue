@@ -1,5 +1,19 @@
 # Changelog
 
+### 6.0.0-alpha.0 (2021-10-04)
+
+Breaking changes:
+
+-   feat!: strict camel case
+
+Fixes:
+
+-   fix: bundle analyzer log level set to warn
+-   fix: bundle analyzer report title
+-   fix: mode added to the bundle analyzer report filename
+
+Migration:
+
 ### 5.1.7 (2021-10-02)
 
 Fixes:
