@@ -1,5 +1,13 @@
 # Changelog
 
+### 6.0.0-alpha.3 (2021-10-05)
+
+Fixes:
+
+-   fix: reverted
+
+Migration:
+
 ### 6.0.0-alpha.2 (2021-10-05)
 
 Breaking changes:
