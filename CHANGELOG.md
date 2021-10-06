@@ -1,5 +1,9 @@
 # Changelog
 
+### 6.0.1 (2021-10-06)
+
+No notable changes since the previous release.
+
 ### 6.0.1-alpha.0 (2021-10-06)
 
 Fixes:
