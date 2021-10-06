@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.0.2 (2021-10-06)
+
+Fixes:
+
+-   fix: babel loader options
+
 ### 6.0.1 (2021-10-06)
 
 No notable changes since the previous release.
