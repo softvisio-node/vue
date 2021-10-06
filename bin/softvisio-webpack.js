@@ -159,7 +159,7 @@ class Runner {
                 if ( !config.name ) throw Error( `Webpack config name is required` );
 
                 // inject webpack bundle analyzer
-                if ( process.cli?.options?.analyzer || process.env.WEBPACK_DEV_SERVER || env.isDevelopment ) {
+                if ( process.cli?.options?.analyzer ) {
                     config.plugins.push( new BundleAnalyzerPlugin( {
                         ...BUNDLE_ANALYZER_OPTIONS,
                         "reportFilename": `bundle-analyzer.${config.name}.${env.mode}.html`,
