@@ -1,5 +1,12 @@
 # Changelog
 
+### 6.0.1-alpha.0 (2021-10-06)
+
+Fixes:
+
+-   fix: babel loader options
+-   fix: make bundle analyzer optional
+
 ### 6.0.0 (2021-10-06)
 
 No notable changes since the previous release.
