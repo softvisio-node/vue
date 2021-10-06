@@ -42,45 +42,101 @@ const BUNDLE_ANALYZER_OPTIONS = {
 };
 
 const BABEL_OPTIONS = {
-    "compact": false, // we don't need babel compact, because js files optimized using terser later
+    "compact": false,
+    "sourceType": "unambiguous",
+    "overrides": [
+        {
+            "exclude": [/@babel[/|\\\\]runtime/, /core-js/],
+            "presets": [
+                [
+                    "@babel/preset-env",
+                    {
+                        "bugfixes": true,
+                        "corejs": 3,
+                        "loose": false,
+                        "debug": false,
+                        "modules": false,
+                        "targets": {},
+                        "useBuiltIns": "usage",
+                        "exclude": ["es.array.iterator", "es.promise", "es.object.assign", "es.promise.finally"],
+                        "shippedProposals": true,
+                    },
+                ],
+            ],
+            "plugins": [
+                [
+                    "@babel/plugin-transform-runtime",
+                    {
+                        "regenerator": false, // useBuiltIns !== "usage"
+                        "corejs": false, // 3, polyfills are injected by preset-env & polyfillsPlugin, so no need to add them again
+                        "helpers": true, // useBuiltIns === "usage",
+                        "useESModules": true, // !process.env.VUE_CLI_BABEL_TRANSPILE_MODULES,
+                    },
+                ],
+            ],
+        },
+        {
 
-    // XXX mandotory, there are some untranspiled code in @babel/runtime, https://github.com/babel/babel/issues/9903
-    "exclude": ["@babel/runtime", "core-js"],
-    "include": ["@babel/runtime"],
+            // there are some untranspiled code in @babel/runtime, https://github.com/babel/babel/issues/9903
+            "include": [/@babel[/|\\\\]runtime/],
 
-    "presets": [
-        [
-            "@babel/preset-env",
-            {
-                "bugfixes": true,
-                "corejs": 3,
-                "spec": undefined,
-                "loose": false,
-                "debug": false,
-                "modules": false,
-                "targets": {},
-                "useBuiltIns": "usage",
-                "ignoreBrowserslistConfig": undefined,
-                "configPath": undefined,
-                "include": undefined,
-                "exclude": ["es.array.iterator", "es.promise", "es.object.assign", "es.promise.finally"],
-                "shippedProposals": true,
-                "forceAllTransforms": undefined,
-            },
-        ],
+            "presets": [
+                [
+                    "@babel/preset-env",
+                    {
+                        "bugfixes": true,
+                        "corejs": 3,
+                        "loose": false,
+                        "debug": false,
+                        "modules": false,
+                        "targets": {},
+                        "useBuiltIns": "usage",
+                        "ignoreBrowserslistConfig": undefined,
+                        "exclude": ["es.array.iterator", "es.promise", "es.object.assign", "es.promise.finally"],
+                        "shippedProposals": true,
+                    },
+                ],
+            ],
+        },
     ],
+};
 
-    "plugins": [
-        [
-            "@babel/plugin-transform-runtime",
-            {
-                "regenerator": false, // useBuiltIns !== "usage"
-                "corejs": false, // 3, polyfills are injected by preset-env & polyfillsPlugin, so no need to add them again
-                "helpers": true, // useBuiltIns === "usage",
-                "useESModules": true, // !process.env.VUE_CLI_BABEL_TRANSPILE_MODULES,
-            },
-        ],
-    ],
+const TERSER_OPTIONS = {
+    "terserOptions": {
+        "compress": {
+            "arrows": false,
+            "collapse_vars": false,
+            "comparisons": false,
+            "computed_props": false,
+            "hoist_funs": false,
+            "hoist_props": false,
+            "hoist_vars": false,
+            "inline": false,
+            "loops": false,
+            "negate_iife": false,
+            "properties": false,
+            "reduce_funcs": false,
+            "reduce_vars": false,
+            "switches": false,
+            "toplevel": false,
+            "typeofs": false,
+            "booleans": true,
+            "if_return": true,
+            "sequences": true,
+            "unused": true,
+            "conditionals": true,
+            "dead_code": true,
+            "evaluate": true,
+        },
+        "mangle": {
+            "safari10": true,
+        },
+        "format": {
+            "comments": false,
+        },
+    },
+    "parallel": true,
+    "extractComments": false,
 };
 
 const cli = {
@@ -167,34 +223,24 @@ class Runner {
         if ( !this.#webpackConfig ) {
 
             // set env variables
-            process.env.WEBPACK_MODE = env.mode;
-            process.env.WEBPACK_CONTEXT = this.context;
-            process.env.WEBPACK_CACHE = JSON.stringify( CACHE_OPTIONS );
-            process.env.WEBPACK_OUTPUT_PATH = this.output;
-
-            process.env.WEBPACK_RESOLVE_MODULES = JSON.stringify( [
-
-                //
-                path.join( this.context, "node_modules" ),
-            ] );
-
-            process.env.WEBPACK_RESOLVE_ALIAS = JSON.stringify( {
-                "@": path.join( this.context, "src" ),
-            } );
-
-            process.env.WEBPACK_RESOLVE_LOADER_MODULES = JSON.stringify( [
-
-                //
-                path.join( this.context, "node_modules" ),
-            ] );
-
-            process.env.WEBPACK_ENV = JSON.stringify( this.#getWebpackEnv() );
-
-            process.env.WEBPACK_BABEL_OPTIONS = JSON.stringify( BABEL_OPTIONS );
-
-            process.env.WEBPACK_TERSER_OPTIONS = JSON.stringify( this.#getWebpackTerserOptions() );
+            global.WEBPACK = {
+                "MODE": env.mode,
+                "CONTEXT": this.context,
+                CACHE_OPTIONS,
+                "OUTPUT_PATH": this.output,
+                "RESOLVE_ALIAS": {
+                    "@": path.join( this.context, "src" ),
+                },
+                "RESOLVE_MODULES": [path.join( this.context, "node_modules" )],
+                "RESOLVE_LOADER_MODULES": [path.join( this.context, "node_modules" )],
+                TERSER_OPTIONS,
+                BABEL_OPTIONS,
+                "ENV": this.#getWebpackEnv(),
+            };
 
             const webpackConfig = await import( new URL( "webpack.config.js", url.pathToFileURL( this.context + "/" ) ) );
+
+            delete global.WEBPACK;
 
             this.#webpackConfig = Array.isArray( webpackConfig.default ) ? webpackConfig.default : [webpackConfig.default];
 
@@ -226,46 +272,6 @@ class Runner {
         }
 
         return _env;
-    }
-
-    #getWebpackTerserOptions () {
-        return {
-            "terserOptions": {
-                "compress": {
-                    "arrows": false,
-                    "collapse_vars": false,
-                    "comparisons": false,
-                    "computed_props": false,
-                    "hoist_funs": false,
-                    "hoist_props": false,
-                    "hoist_vars": false,
-                    "inline": false,
-                    "loops": false,
-                    "negate_iife": false,
-                    "properties": false,
-                    "reduce_funcs": false,
-                    "reduce_vars": false,
-                    "switches": false,
-                    "toplevel": false,
-                    "typeofs": false,
-                    "booleans": true,
-                    "if_return": true,
-                    "sequences": true,
-                    "unused": true,
-                    "conditionals": true,
-                    "dead_code": true,
-                    "evaluate": true,
-                },
-                "mangle": {
-                    "safari10": true,
-                },
-                "format": {
-                    "comments": false,
-                },
-            },
-            "parallel": true,
-            "extractComments": false,
-        };
     }
 
     async #runServe () {

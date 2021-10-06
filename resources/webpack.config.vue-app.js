@@ -14,18 +14,18 @@ const DefinePlugin = webpack.DefinePlugin;
 const config = {
     "name": "vue-app",
     "target": "web", // browserslist
-    "mode": process.env.WEBPACK_MODE,
-    "context": process.env.WEBPACK_CONTEXT,
+    "mode": global.WEBPACK.MODE,
+    "context": global.WEBPACK.CONTEXT,
     "devtool": env.isDevelopment ? "eval-source-map" : undefined,
     "experiments": { "topLevelAwait": true },
-    "cache": JSON.parse( process.env.WEBPACK_CACHE ),
+    "cache": JSON.parse( global.WEBPACK.CACHE_OPTIONS ),
 
     "entry": {
         "app": "./src/main.js",
     },
 
     "output": {
-        "path": process.env.WEBPACK_OUTPUT_PATH,
+        "path": global.WEBPACK.OUTPUT_PATH,
         "publicPath": "auto",
         "filename": "js/[name].[contenthash].js",
         "chunkFilename": "js/[name].[contenthash].js",
@@ -34,7 +34,7 @@ const config = {
 
     "resolve": {
         "alias": {
-            ...JSON.parse( process.env.WEBPACK_RESOLVE_ALIAS ),
+            ...JSON.parse( global.WEBPACK.RESOLVE_ALIAS ),
             "vue$": "vue/dist/vue.runtime.esm-bundler.js",
             "#vue": "@softvisio/vue",
             "#ext$": "@softvisio/ext/ext-" + process.env.EXT_VERSION,
@@ -50,10 +50,10 @@ const config = {
 
         "extensions": [".mjs", ".js", ".jsx", ".vue", ".json", ".wasm"],
 
-        "modules": JSON.parse( process.env.WEBPACK_RESOLVE_MODULES ),
+        "modules": global.WEBPACK.RESOLVE_MODULES,
     },
 
-    "resolveLoader": { "modules": JSON.parse( process.env.WEBPACK_RESOLVE_LOADER_MODULES ) },
+    "resolveLoader": { "modules": global.WEBPACK.RESOLVE_LOADER_MODULES },
 
     "optimization": {
         "splitChunks": {
@@ -75,7 +75,7 @@ const config = {
         },
 
         "minimizer": [
-            new TerserPlugin( JSON.parse( process.env.WEBPACK_TERSER_OPTIONS ) ),
+            new TerserPlugin( global.WEBPACK.TERSER_OPTIONS ),
 
             new CssMinimizerPlugin( {
                 "parallel": true,
@@ -113,7 +113,7 @@ const config = {
                 "use": [
                     {
                         "loader": "babel-loader",
-                        "options": JSON.parse( process.env.WEBPACK_BABEL_OPTIONS ),
+                        "options": global.WEBPACK.BABEL_OPTIONS,
                     },
                 ],
             },
@@ -126,7 +126,7 @@ const config = {
                         "loader": "vue-loader",
                         "options": {
 
-                            // "babelParserPlugins": ["jsx", "classProperties", "decorators-legacy"],
+                            // XXX "babelParserPlugins": ["jsx", "classProperties", "decorators-legacy"],
                             "compilerOptions": {
                                 "isCustomElement": tag => tag.startsWith( "ext-" ),
                             },
@@ -223,7 +223,7 @@ const config = {
         } ),
 
         new DefinePlugin( {
-            "process.env": process.env.WEBPACK_ENV,
+            "process.env": JSON.stringify( global.WEBPACK.ENV ),
         } ),
 
         new HtmlPlugin( {
