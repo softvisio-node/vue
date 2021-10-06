@@ -70,13 +70,7 @@ const config = {
                     "thread-loader",
                     {
                         "loader": "babel-loader",
-                        "options": {
-                            "compact": false, // we don't need babel compact, because js files optimized using terser later
-                            "presets": [
-                                ["@babel/preset-env", { "shippedProposals": true }],
-                                ["@vue/app", { "decoratorsLegacy": false, "decoratorsBeforeExport": true }],
-                            ],
-                        },
+                        "options": JSON.parse( process.env.WEBPACK_BABEL_OPTIONS ),
                     },
                 ],
             },

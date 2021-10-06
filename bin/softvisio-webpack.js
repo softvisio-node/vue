@@ -41,6 +41,48 @@ const BUNDLE_ANALYZER_OPTIONS = {
     "logLevel": "warn",
 };
 
+const BABEL_OPTIONS = {
+    "compact": false, // we don't need babel compact, because js files optimized using terser later
+
+    // XXX mandotory, there are some untranspiled code in @babel/runtime, https://github.com/babel/babel/issues/9903
+    "exclude": ["@babel/runtime", "core-js"],
+    "include": ["@babel/runtime"],
+
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "bugfixes": true,
+                "corejs": 3,
+                "spec": undefined,
+                "loose": false,
+                "debug": false,
+                "modules": false,
+                "targets": {},
+                "useBuiltIns": "usage",
+                "ignoreBrowserslistConfig": undefined,
+                "configPath": undefined,
+                "include": undefined,
+                "exclude": ["es.array.iterator", "es.promise", "es.object.assign", "es.promise.finally"],
+                "shippedProposals": true,
+                "forceAllTransforms": undefined,
+            },
+        ],
+    ],
+
+    "plugins": [
+        [
+            "@babel/plugin-transform-runtime",
+            {
+                "regenerator": false, // useBuiltIns !== "usage"
+                "corejs": false, // 3, polyfills are injected by preset-env & polyfillsPlugin, so no need to add them again
+                "helpers": true, // useBuiltIns === "usage",
+                "useESModules": true, // !process.env.VUE_CLI_BABEL_TRANSPILE_MODULES,
+            },
+        ],
+    ],
+};
+
 const cli = {
     "title": "Webpack runner",
     "options": {
@@ -147,6 +189,8 @@ class Runner {
             ] );
 
             process.env.WEBPACK_ENV = JSON.stringify( this.#getWebpackEnv() );
+
+            process.env.WEBPACK_BABEL_OPTIONS = JSON.stringify( BABEL_OPTIONS );
 
             process.env.WEBPACK_TERSER_OPTIONS = JSON.stringify( this.#getWebpackTerserOptions() );
 

@@ -113,13 +113,7 @@ const config = {
                 "use": [
                     {
                         "loader": "babel-loader",
-                        "options": {
-                            "compact": false, // we don't need babel compact, because js files optimized using terser later
-                            "presets": [
-                                ["@babel/preset-env", { "shippedProposals": true }],
-                                ["@vue/app", { "decoratorsLegacy": false, "decoratorsBeforeExport": true }],
-                            ],
-                        },
+                        "options": JSON.parse( process.env.WEBPACK_BABEL_OPTIONS ),
                     },
                 ],
             },
@@ -131,7 +125,8 @@ const config = {
                     {
                         "loader": "vue-loader",
                         "options": {
-                            "babelParserPlugins": ["jsx", "classProperties", "decorators-legacy"],
+
+                            // "babelParserPlugins": ["jsx", "classProperties", "decorators-legacy"],
                             "compilerOptions": {
                                 "isCustomElement": tag => tag.startsWith( "ext-" ),
                             },
