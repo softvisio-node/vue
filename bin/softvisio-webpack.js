@@ -79,7 +79,6 @@ const BABEL_OPTIONS = {
         },
         {
             "include": [/@babel[/|\\\\]runtime/],
-
             "presets": [
                 [
                     "@babel/preset-env",
