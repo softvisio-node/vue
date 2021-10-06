@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.0.0 (2021-10-06)
+
+No notable changes since the previous release.
+
+Migration:
+
 ### 6.0.0-alpha.3 (2021-10-05)
 
 Fixes:
