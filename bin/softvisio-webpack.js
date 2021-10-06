@@ -46,6 +46,8 @@ const BABEL_OPTIONS = {
     "sourceType": "unambiguous",
     "overrides": [
         {
+
+            // NOTE https://github.com/babel/babel/issues/9903
             "exclude": [/@babel[/|\\\\]runtime/, /core-js/],
             "presets": [
                 [
@@ -76,8 +78,6 @@ const BABEL_OPTIONS = {
             ],
         },
         {
-
-            // NOTE https://github.com/babel/babel/issues/9903
             "include": [/@babel[/|\\\\]runtime/],
 
             "presets": [
