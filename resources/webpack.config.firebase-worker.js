@@ -11,11 +11,11 @@ const worker = resolve( "@softvisio/vue-ext/firebase/worker", import.meta.url );
 const config = {
     "name": "firebase-worker",
     "target": "webworker",
-    "mode": process.env.WEBPACK_MODE,
-    "context": process.env.WEBPACK_CONTEXT,
+    "mode": global.WEBPACK.MODE,
+    "context": global.WEBPACK.CONTEXT,
     "devtool": env.isDevelopment ? "eval" : undefined,
     "experiments": { "topLevelAwait": true },
-    "cache": JSON.parse( process.env.WEBPACK_CACHE ),
+    "cache": global.WEBPACK.CACHE_OPTIONS,
 
     "entry": {
         "firebase": {
@@ -25,13 +25,13 @@ const config = {
     },
 
     "output": {
-        "path": process.env.WEBPACK_OUTPUT_PATH,
+        "path": global.WEBPACK.OUTPUT_PATH,
         "publicPath": "auto",
     },
 
     "resolve": {
         "alias": {
-            ...JSON.parse( process.env.WEBPACK_RESOLVE_ALIAS ),
+            ...global.WEBPACK.RESOLVE_ALIAS,
             "#vue": "@softvisio/vue-ext",
         },
 
@@ -42,13 +42,13 @@ const config = {
 
         "extensions": [".mjs", ".js", ".jsx", ".vue", ".json", ".wasm"],
 
-        "modules": JSON.parse( process.env.WEBPACK_RESOLVE_MODULES ),
+        "modules": global.WEBPACK.RESOLVE_MODULES,
     },
 
-    "resolveLoader": { "modules": JSON.parse( process.env.WEBPACK_RESOLVE_LOADER_MODULES ) },
+    "resolveLoader": { "modules": global.WEBPACK.RESOLVE_LOADER_MODULES },
 
     "optimization": {
-        "minimizer": [new TerserPlugin( JSON.parse( process.env.WEBPACK_TERSER_OPTIONS ) )],
+        "minimizer": [new TerserPlugin( global.WEBPACK.TERSER_OPTIONS )],
     },
 
     "module": {
@@ -70,7 +70,7 @@ const config = {
                     "thread-loader",
                     {
                         "loader": "babel-loader",
-                        "options": JSON.parse( process.env.WEBPACK_BABEL_OPTIONS ),
+                        "options": global.WEBPACK.BABEL_OPTIONS,
                     },
                 ],
             },
@@ -81,7 +81,7 @@ const config = {
         new CaseSensitivePathsPlugin(),
 
         new DefinePlugin( {
-            "process.env": process.env.WEBPACK_ENV,
+            "process.env": global.WEBPACK.ENV,
         } ),
     ],
 };
