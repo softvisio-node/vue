@@ -48,7 +48,7 @@ const BABEL_OPTIONS = {
         {
 
             // NOTE https://github.com/babel/babel/issues/9903
-            "exclude": [/@babel[/|\\\\]runtime/, /core-js/],
+            "exclude": [/@babel(\/|\\)runtime/, /core-js/],
             "presets": [
                 [
                     "@babel/preset-env",
@@ -78,7 +78,7 @@ const BABEL_OPTIONS = {
             ],
         },
         {
-            "include": [/@babel[/|\\\\]runtime/],
+            "include": [/@babel(\/|\\)runtime/],
             "presets": [
                 [
                     "@babel/preset-env",
