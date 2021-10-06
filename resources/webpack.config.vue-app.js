@@ -18,7 +18,7 @@ const config = {
     "context": global.WEBPACK.CONTEXT,
     "devtool": env.isDevelopment ? "eval-source-map" : undefined,
     "experiments": { "topLevelAwait": true },
-    "cache": JSON.parse( global.WEBPACK.CACHE_OPTIONS ),
+    "cache": global.WEBPACK.CACHE_OPTIONS,
 
     "entry": {
         "app": "./src/main.js",
@@ -34,7 +34,7 @@ const config = {
 
     "resolve": {
         "alias": {
-            ...JSON.parse( global.WEBPACK.RESOLVE_ALIAS ),
+            ...global.WEBPACK.RESOLVE_ALIAS,
             "vue$": "vue/dist/vue.runtime.esm-bundler.js",
             "#vue": "@softvisio/vue",
             "#ext$": "@softvisio/ext/ext-" + process.env.EXT_VERSION,
@@ -223,7 +223,7 @@ const config = {
         } ),
 
         new DefinePlugin( {
-            "process.env": JSON.stringify( global.WEBPACK.ENV ),
+            "process.env": global.WEBPACK.ENV,
         } ),
 
         new HtmlPlugin( {

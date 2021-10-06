@@ -77,7 +77,7 @@ const BABEL_OPTIONS = {
         },
         {
 
-            // there are some untranspiled code in @babel/runtime, https://github.com/babel/babel/issues/9903
+            // NOTE https://github.com/babel/babel/issues/9903
             "include": [/@babel[/|\\\\]runtime/],
 
             "presets": [
@@ -235,7 +235,7 @@ class Runner {
                 "RESOLVE_LOADER_MODULES": [path.join( this.context, "node_modules" )],
                 TERSER_OPTIONS,
                 BABEL_OPTIONS,
-                "ENV": this.#getWebpackEnv(),
+                "ENV": JSON.stringify( this.#getWebpackEnv() ),
             };
 
             const webpackConfig = await import( new URL( "webpack.config.js", url.pathToFileURL( this.context + "/" ) ) );
