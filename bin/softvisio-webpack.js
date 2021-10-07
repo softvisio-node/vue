@@ -41,6 +41,22 @@ const BUNDLE_ANALYZER_OPTIONS = {
     "logLevel": "warn",
 };
 
+const BABEL_PRESET_ENV_OPTIONS = [
+    "@babel/preset-env",
+    {
+        "bugfixes": true,
+        "corejs": 3,
+        "loose": false,
+        "debug": false,
+        "modules": false,
+        "targets": {},
+        "useBuiltIns": "usage",
+        "ignoreBrowserslistConfig": undefined,
+        "exclude": ["es.array.iterator", "es.promise", "es.object.assign", "es.promise.finally"],
+        "shippedProposals": true,
+    },
+];
+
 const BABEL_OPTIONS = {
     "compact": false,
     "sourceType": "unambiguous",
@@ -49,22 +65,7 @@ const BABEL_OPTIONS = {
 
             // NOTE https://github.com/babel/babel/issues/9903
             "exclude": [/@babel(\/|\\)runtime/, /core-js/],
-            "presets": [
-                [
-                    "@babel/preset-env",
-                    {
-                        "bugfixes": true,
-                        "corejs": 3,
-                        "loose": false,
-                        "debug": false,
-                        "modules": false,
-                        "targets": {},
-                        "useBuiltIns": "usage",
-                        "exclude": ["es.array.iterator", "es.promise", "es.object.assign", "es.promise.finally"],
-                        "shippedProposals": true,
-                    },
-                ],
-            ],
+            "presets": [BABEL_PRESET_ENV_OPTIONS],
             "plugins": [
                 [
                     "@babel/plugin-transform-runtime",
@@ -79,23 +80,7 @@ const BABEL_OPTIONS = {
         },
         {
             "include": [/@babel(\/|\\)runtime/],
-            "presets": [
-                [
-                    "@babel/preset-env",
-                    {
-                        "bugfixes": true,
-                        "corejs": 3,
-                        "loose": false,
-                        "debug": false,
-                        "modules": false,
-                        "targets": {},
-                        "useBuiltIns": "usage",
-                        "ignoreBrowserslistConfig": undefined,
-                        "exclude": ["es.array.iterator", "es.promise", "es.object.assign", "es.promise.finally"],
-                        "shippedProposals": true,
-                    },
-                ],
-            ],
+            "presets": [BABEL_PRESET_ENV_OPTIONS],
         },
     ],
 };
