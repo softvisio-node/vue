@@ -1,5 +1,13 @@
 # Changelog
 
+### 6.0.4 (2021-10-07)
+
+Fixes:
+
+-   fix: babel entry point removed
+-   fix: cli help
+-   fix: webpack babel connfig
+
 ### 6.0.3 (2021-10-06)
 
 Fixes:
