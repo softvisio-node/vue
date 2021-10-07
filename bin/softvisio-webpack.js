@@ -154,7 +154,7 @@ const cli = {
         },
         "analyzer": {
             "short": "a",
-            "description": `run with webpack bundle analyzer`,
+            "description": `Inject webpack bundle analyzer. Static report file will be created in the output dir after each compilation.`,
             "default": false,
             "schema": { "type": "boolean" },
         },
