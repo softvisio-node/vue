@@ -7,7 +7,6 @@ import TerserPlugin from "terser-webpack-plugin";
 import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
-import autoprefixer from "autoprefixer";
 
 const DefinePlugin = webpack.DefinePlugin;
 
@@ -81,7 +80,7 @@ const config = {
                 "parallel": true,
                 "minimizerOptions": {
                     "preset": [
-                        "default",
+                        "advanced",
                         {
                             "mergeLonghand": false,
                             "cssDeclarationSorter": false,
@@ -174,13 +173,6 @@ const config = {
                 "test": /\.css$/,
                 "use": [
                     {
-                        "loader": "vue-style-loader",
-                        "options": {
-                            "sourceMap": false,
-                            "shadowMode": false,
-                        },
-                    },
-                    {
                         "loader": MiniCssExtractPlugin.loader,
                         "options": {
                             "esModule": false,
@@ -198,7 +190,11 @@ const config = {
                         "options": {
                             "sourceMap": false,
                             "postcssOptions": {
-                                "plugins": [autoprefixer()],
+                                "plugins": {
+                                    "cssnano": {
+                                        "preset": ["advanced", { "normalizeWhitespace": false }],
+                                    },
+                                },
                             },
                         },
                     },
