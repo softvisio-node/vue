@@ -60,28 +60,21 @@ const BABEL_PRESET_ENV_OPTIONS = [
 const BABEL_OPTIONS = {
     "compact": false,
     "sourceType": "unambiguous",
-    "overrides": [
-        {
 
-            // NOTE https://github.com/babel/babel/issues/9903
-            "exclude": [/@babel(\/|\\)runtime/, /core-js/],
-            "presets": [BABEL_PRESET_ENV_OPTIONS],
-            "plugins": [
-                [
-                    "@babel/plugin-transform-runtime",
-                    {
-                        "regenerator": false, // useBuiltIns !== "usage"
-                        "corejs": false, // 3, polyfills are injected by preset-env & polyfillsPlugin, so no need to add them again
-                        "helpers": true, // useBuiltIns === "usage",
-                        "useESModules": true, // !process.env.VUE_CLI_BABEL_TRANSPILE_MODULES,
-                    },
-                ],
-            ],
-        },
-        {
-            "include": [/@babel(\/|\\)runtime/],
-            "presets": [BABEL_PRESET_ENV_OPTIONS],
-        },
+    // NOTE https://github.com/babel/babel/issues/9903
+    // NOTE https://github.com/babel/babel/discussions/13826
+    "exclude": [/@babel(\/|\\)runtime/, /core-js/],
+    "presets": [BABEL_PRESET_ENV_OPTIONS],
+    "plugins": [
+        [
+            "@babel/plugin-transform-runtime",
+            {
+                "regenerator": false, // useBuiltIns !== "usage"
+                "corejs": false, // 3, polyfills are injected by preset-env & polyfillsPlugin, so no need to add them again
+                "helpers": true, // useBuiltIns === "usage",
+                "useESModules": true, // !process.env.VUE_CLI_BABEL_TRANSPILE_MODULES,
+            },
+        ],
     ],
 };
 
