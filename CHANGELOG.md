@@ -1,5 +1,12 @@
 # Changelog
 
+### 6.0.6 (2021-10-10)
+
+Fixes:
+
+-   fix: case-sensitive-paths-webpack-plugin removed
+-   fix: devtool mode
+
 ### 6.0.5 (2021-10-10)
 
 Fixes:
