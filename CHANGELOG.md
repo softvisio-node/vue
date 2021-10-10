@@ -1,5 +1,12 @@
 # Changelog
 
+### 6.0.5 (2021-10-10)
+
+Fixes:
+
+-   fix: babel loader options
+-   fix: webpack css
+
 ### 6.0.4 (2021-10-07)
 
 Fixes:
