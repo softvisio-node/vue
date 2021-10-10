@@ -12,7 +12,7 @@ const config = {
     "target": "webworker",
     "mode": global.WEBPACK.MODE,
     "context": global.WEBPACK.CONTEXT,
-    "devtool": env.isDevelopment ? "eval" : undefined,
+    "devtool": env.isDevelopment ? "eval-source-map" : undefined,
     "experiments": { "topLevelAwait": true },
     "cache": global.WEBPACK.CACHE_OPTIONS,
 
