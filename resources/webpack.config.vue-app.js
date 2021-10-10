@@ -4,7 +4,6 @@ import { VueLoaderPlugin } from "vue-loader";
 import HtmlPlugin from "html-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
-import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 
@@ -210,8 +209,6 @@ const config = {
             "filename": "css/[name].[contenthash].css",
             "chunkFilename": "css/[name].[contenthash].css",
         } ),
-
-        new CaseSensitivePathsPlugin(),
 
         new DefinePlugin( {
             "__VUE_OPTIONS_API__": "true",

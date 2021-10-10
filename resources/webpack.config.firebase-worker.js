@@ -1,7 +1,6 @@
 import env from "#core/env";
 import webpack from "webpack";
 import TerserPlugin from "terser-webpack-plugin";
-import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
 import { resolve } from "#core/utils";
 
 const DefinePlugin = webpack.DefinePlugin;
@@ -78,8 +77,6 @@ const config = {
     },
 
     "plugins": [
-        new CaseSensitivePathsPlugin(),
-
         new DefinePlugin( {
             "process.env": global.WEBPACK.ENV,
         } ),
