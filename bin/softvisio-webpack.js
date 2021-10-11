@@ -271,15 +271,11 @@ class Runner {
         compiler.hooks.done.tap( "run", stats => {
             if ( firstCompile ) {
                 firstCompile = false;
-
-                console.log( `done` );
-                console.log( `Listening on: http://${DEV_SERVER_OPTIONS.host}:${DEV_SERVER_OPTIONS.port}` );
-                console.log( `Press CTRL+C to terminate` );
-                console.log( "" );
             }
         } );
 
-        process.stdout.write( `Compiling ... ` );
+        console.log( `Listening on: http://${DEV_SERVER_OPTIONS.host}:${DEV_SERVER_OPTIONS.port}` );
+        console.log( "" );
 
         await server.start();
     }
