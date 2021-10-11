@@ -270,6 +270,10 @@ class Runner {
             for ( const config of this.#webpackConfig ) {
                 if ( !config.name ) throw Error( `Webpack config name is required` );
 
+                // patch stats
+                config.stats ||= {};
+                config.stats.colors = true;
+
                 // patch cache name
                 config.cache.name = `${config.name}.${this.buildTag}`;
 
@@ -312,7 +316,8 @@ class Runner {
             config.infrastructureLogging.level = "none";
 
             // output only compilation errors
-            config.stats = "none";
+            config.stats ||= {};
+            config.stats.preset = "none";
         }
 
         const compiler = webpack( webpackConfig ),
@@ -322,12 +327,12 @@ class Runner {
             console.clear();
 
             if ( stats.hasErrors() ) {
-                console.log( stats.toString( "errors-warnings" ), "\n" );
+                console.log( stats.toString( { "preset": "errors-warnings", "colors": true } ), "\n" );
                 console.log( ansi.hl( "• Compilation status:" ), ansi.error( ` FAIL ` ) + ",", "targets:", this.buildTargets );
                 console.log( " ", info, "\n" );
             }
             else {
-                console.log( stats.toString( "summary" ), "\n" );
+                console.log( stats.toString( { "preset": "summary", "colors": true } ), "\n" );
                 console.log( ansi.hl( "• Compilation status:" ), ansi.ok( ` SUCCESS ` ) + ",", "targets:", this.buildTargets );
                 console.log( " ", info, "\n" );
             }
