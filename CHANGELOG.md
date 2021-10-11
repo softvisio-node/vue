@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.2.3 (2021-10-11)
+
+Fixes:
+
+-   fix: typo
+
 ### 6.2.2 (2021-10-11)
 
 No notable changes since the previous release.
