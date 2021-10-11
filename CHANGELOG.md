@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.2.5 (2021-10-11)
+
+Fixes:
+
+-   fix: serve log
+
 ### 6.2.4 (2021-10-11)
 
 Fixes:
