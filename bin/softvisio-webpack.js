@@ -300,7 +300,7 @@ class Runner {
     }
 
     async #runServe () {
-        const info = `Webpack dev. server Listening on: ${ansi.hl( `http://${DEV_SERVER_OPTIONS.host}:${DEV_SERVER_OPTIONS.port}` )}`;
+        const info = `Webpack dev. server listening on: ${ansi.hl( `http://${DEV_SERVER_OPTIONS.host}:${DEV_SERVER_OPTIONS.port}` )}`;
 
         const webpackConfig = await this.#buildWebpackConfig();
 
