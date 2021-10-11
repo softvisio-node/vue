@@ -35,6 +35,11 @@ const cli = {
 
 await CLI.parse( cli );
 
-const webpackRunner = new WebpackRunner();
+const webpackRunner = new WebpackRunner( {
+    "command": process.cli.arguments.command,
+    "mode": process.cli.options.mode,
+    "cordova": process.cli.options.cordova,
+    "analyzer": process.cli.options.analyzer,
+} );
 
 webpackRunner.run();
