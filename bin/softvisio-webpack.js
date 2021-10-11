@@ -222,13 +222,19 @@ class Runner {
         else if ( this.#command === "build" ) {
             const res = await this.#runBuild();
 
+            // ok
             if ( res.ok ) {
-                console.log( "\n", ansi.hl( "• Build status:" ), ansi.ok( ` SUCCESS ` ), "\n" );
+                console.log( "\n", ansi.hl( "• Build status:" ), ansi.ok( ` SUCCESS ` ) );
+                if ( this.#injectBundleAnalyzer ) console.log( " ", `Webpack bundle analyzer reports were created in the output directory` );
+                console.log( "" );
 
                 process.exit( 0 );
             }
+
+            // error
             else {
-                console.log( "\n", ansi.hl( "• Build status:" ), ansi.error( ` FAIL ` ), "\n" );
+                console.log( "\n", ansi.hl( "• Build status:" ), ansi.error( ` FAIL ` ) );
+                console.log( "" );
 
                 process.exit( 1 );
             }
@@ -326,15 +332,21 @@ class Runner {
         compiler.hooks.done.tap( "run", stats => {
             console.clear();
 
+            // error
             if ( stats.hasErrors() ) {
                 console.log( stats.toString( { "preset": "errors-warnings", "colors": true } ), "\n" );
                 console.log( ansi.hl( "• Compilation status:" ), ansi.error( ` FAIL ` ) + ",", "targets:", this.buildTargets );
-                console.log( " ", info, "\n" );
+                console.log( " ", info );
+                console.log( "" );
             }
+
+            // ok
             else {
                 console.log( stats.toString( { "preset": "summary", "colors": true } ), "\n" );
                 console.log( ansi.hl( "• Compilation status:" ), ansi.ok( ` SUCCESS ` ) + ",", "targets:", this.buildTargets );
-                console.log( " ", info, "\n" );
+                console.log( " ", info );
+                if ( this.#injectBundleAnalyzer ) console.log( " ", `Webpack bundle analyzer reports were created in the output directory` );
+                console.log( "" );
             }
         } );
 
