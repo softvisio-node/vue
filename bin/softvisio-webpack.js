@@ -205,11 +205,15 @@ class Runner {
         return this.#output;
     }
 
+    get buildTargets () {
+        return `${ansi.ok( ` ${env.mode.toUpperCase()} ` )}${this.#buildCordova ? `, ${ansi.ok( ` CORDOVA ` )}` : ""}`;
+    }
+
     // public
     async run () {
         env.readConfig( { "path": this.context, "envPrefix": false } );
 
-        console.log( ansi.hl( "• Building for:" ), `${ansi.ok( ` ${env.mode.toUpperCase()} ` )}${this.#buildCordova ? `, ${ansi.ok( ` CORDOVA ` )}` : ""}`, "\n" );
+        console.log( ansi.hl( "• Building for:" ), this.buildTargets, "\n" );
 
         // run
         if ( this.#command === "serve" ) {
@@ -219,12 +223,12 @@ class Runner {
             const res = await this.#runBuild();
 
             if ( res.ok ) {
-                console.log( "\n", ansi.hl( "• Build status:" ), ansi.ok( ` SUCCESS ` ) );
+                console.log( "\n", ansi.hl( "• Build status:" ), ansi.ok( ` SUCCESS ` ), "\n" );
 
                 process.exit( 0 );
             }
             else {
-                console.log( "\n", ansi.hl( "• Build status:" ), ansi.error( ` FAIL ` ) );
+                console.log( "\n", ansi.hl( "• Build status:" ), ansi.error( ` FAIL ` ), "\n" );
 
                 process.exit( 1 );
             }
@@ -306,17 +310,24 @@ class Runner {
             config.infrastructureLogging.level = "none";
 
             // output only compilation errors
-            config.stats = "errors-warnings";
+            config.stats = "none";
         }
 
         const compiler = webpack( webpackConfig ),
             server = new WebpackDevServer( DEV_SERVER_OPTIONS, compiler );
 
-        let firstCompile = true;
-
         compiler.hooks.done.tap( "run", stats => {
-            if ( firstCompile ) {
-                firstCompile = false;
+            console.clear();
+
+            if ( stats.hasErrors() ) {
+                console.log( stats.toString( "errors-warnings" ) );
+
+                console.log( "\n", ansi.hl( "• Compilation status:" ), ansi.error( ` FAIL ` ) + ",", "targets:", this.buildTargets, "\n" );
+            }
+            else {
+                console.log( stats.toString( "summary" ) );
+
+                console.log( "\n", ansi.hl( "• Compilation status:" ), ansi.ok( ` SUCCESS ` ) + ",", "targets:", this.buildTargets, "\n" );
             }
         } );
 
@@ -336,10 +347,10 @@ class Runner {
         return new Promise( resolve => {
             const compiler = webpack( webpackConfig );
 
-            compiler.run( ( err, stats ) => {
+            compiler.run( ( error, stats ) => {
                 console.log( stats + "" );
 
-                const res = err || stats.hasErrors() ? result( 500 ) : result( 200 );
+                const res = error || stats.hasErrors() ? result( 500 ) : result( 200 );
 
                 compiler.close( closeErr => {
                     resolve( res );
