@@ -2,6 +2,7 @@
 
 import "#core/result";
 import CLI from "#core/cli";
+import ansi from "#core/text/ansi";
 import env from "#core/env";
 import url from "url";
 import webpack from "webpack";
@@ -147,11 +148,51 @@ const cli = {
 };
 
 class Runner {
+    #command;
+    #buildCordova;
+    #injectBundleAnalyzer;
+    #buildTag;
     #webpackConfig;
     #context;
     #output;
 
+    constructor () {
+        this.#command = process.cli?.arguments?.command;
+
+        // mode
+        if ( this.#command === "serve" ) {
+            env.mode = process.cli?.options?.mode ?? "development";
+
+            process.env.WEBPACK_DEV_SERVER = 1;
+        }
+        else {
+            env.mode = process.cli?.options?.mode ?? "production";
+
+            process.env.WEBPACK_DEV_SERVER = "";
+        }
+
+        // cordova
+        if ( process.cli?.options?.cordova ) {
+            this.#buildCordova = true;
+
+            process.env.WEBPACK_BUILD_CORDOVA = 1;
+        }
+        else {
+            this.#buildCordova = false;
+
+            process.env.WEBPACK_BUILD_CORDOVA = "";
+        }
+
+        this.#injectBundleAnalyzer = process.cli?.options?.analyzer;
+    }
+
     // properties
+    get buildTag () {
+        this.#buildTag ??= [this.#command, env.mode, this.#buildCordova ? "cordova" : null].filter( tag => tag ).join( "." );
+
+        return this.#buildTag;
+    }
+
     get context () {
         this.#context ??= path.resolve( "." );
 
@@ -166,29 +207,29 @@ class Runner {
 
     // public
     async run () {
-        await CLI.parse( cli );
-
-        process.env.WEBPACK_BUILD_CORDOVA = process.cli?.options?.cordova ? 1 : "";
-
-        // set mode
-        if ( process.cli.arguments.command === "serve" ) {
-            env.mode = process.cli?.options?.mode ?? "development";
-        }
-        else {
-            env.mode = process.cli?.options?.mode ?? "production";
-        }
-
         env.readConfig( { "path": this.context, "envPrefix": false } );
 
-        if ( process.cli.arguments.command === "serve" ) {
+        console.log( ansi.hl( "• Building for:" ), `${ansi.ok( ` ${env.mode.toUpperCase()} ` )}${this.#buildCordova ? `, ${ansi.ok( ` CORDOVA ` )}` : ""}`, "\n" );
+
+        // run
+        if ( this.#command === "serve" ) {
             this.#runServe();
         }
-        else if ( process.cli.arguments.command === "build" ) {
+        else if ( this.#command === "build" ) {
             const res = await this.#runBuild();
 
-            process.exit( res.ok ? 0 : 1 );
+            if ( res.ok ) {
+                console.log( "\n", ansi.hl( "• Build status:" ), ansi.ok( ` SUCCESS ` ) );
+
+                process.exit( 0 );
+            }
+            else {
+                console.log( "\n", ansi.hl( "• Build status:" ), ansi.error( ` FAIL ` ) );
+
+                process.exit( 1 );
+            }
         }
-        else if ( process.cli.arguments.command === "dump" ) {
+        else if ( this.#command === "dump" ) {
             await this.#runDump();
 
             process.exit( 0 );
@@ -221,15 +262,18 @@ class Runner {
 
             this.#webpackConfig = Array.isArray( webpackConfig.default ) ? webpackConfig.default : [webpackConfig.default];
 
-            // config post-processing
+            // patch config
             for ( const config of this.#webpackConfig ) {
                 if ( !config.name ) throw Error( `Webpack config name is required` );
 
+                // patch cache name
+                config.cache.name = `${config.name}.${this.buildTag}`;
+
                 // inject webpack bundle analyzer
-                if ( process.cli?.options?.analyzer ) {
+                if ( this.#injectBundleAnalyzer ) {
                     config.plugins.push( new BundleAnalyzerPlugin( {
                         ...BUNDLE_ANALYZER_OPTIONS,
-                        "reportFilename": `bundle-analyzer.${config.name}.${env.mode}.html`,
+                        "reportFilename": `report.${config.name}.${this.buildTag}.html`,
                         "reportTitle": `${config.name} [${env.mode}] ${new Date().toISOString()}`,
                     } ) );
                 }
@@ -252,10 +296,9 @@ class Runner {
     }
 
     async #runServe () {
-        process.env.WEBPACK_DEV_SERVER = 1;
-
         const webpackConfig = await this.#buildWebpackConfig();
 
+        // patch config
         for ( const config of webpackConfig ) {
 
             // supress webpack-dev-server logging
@@ -277,10 +320,8 @@ class Runner {
             }
         } );
 
-        console.log( `Listening on: http://${DEV_SERVER_OPTIONS.host}:${DEV_SERVER_OPTIONS.port}` );
-        console.log( "" );
-        console.log( "Compiling ..." );
-        console.log( "" );
+        console.log( `Webpack dev. server Listening on: ${ansi.hl( `http://${DEV_SERVER_OPTIONS.host}:${DEV_SERVER_OPTIONS.port}` )}`, "\n" );
+        console.log( ansi.hl( "•" ), "Compiling ...", "\n" );
 
         await server.start();
     }
@@ -313,6 +354,8 @@ class Runner {
         console.log( JSON.stringify( webpackConfig, null, 4 ) );
     }
 }
+
+await CLI.parse( cli );
 
 const runner = new Runner();
 
