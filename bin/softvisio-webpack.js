@@ -333,9 +333,6 @@ class Runner {
             }
         } );
 
-        console.log( info, "\n" );
-        console.log( ansi.hl( "•" ), "Compiling ...", "\n" );
-
         await server.start();
     }
 
