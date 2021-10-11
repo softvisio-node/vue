@@ -19,7 +19,7 @@ const config = {
     "cache": global.WEBPACK.CACHE_OPTIONS,
 
     "entry": {
-        "app": "./src/main.js",
+        "app": "./src",
     },
 
     "output": {

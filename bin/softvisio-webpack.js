@@ -256,12 +256,15 @@ class Runner {
 
         const webpackConfig = await this.#buildWebpackConfig();
 
-        // supress webpack-dev-server logging
-        webpackConfig[0].infrastructureLogging ??= {};
-        webpackConfig[0].infrastructureLogging.level = "none";
+        for ( const config of webpackConfig ) {
 
-        // output only compilation errors
-        webpackConfig[0].stats = "errors-warnings";
+            // supress webpack-dev-server logging
+            config.infrastructureLogging ??= {};
+            config.infrastructureLogging.level = "none";
+
+            // output only compilation errors
+            config.stats = "errors-warnings";
+        }
 
         const compiler = webpack( webpackConfig ),
             server = new WebpackDevServer( DEV_SERVER_OPTIONS, compiler );
