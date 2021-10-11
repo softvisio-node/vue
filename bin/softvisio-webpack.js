@@ -276,6 +276,8 @@ class Runner {
 
         console.log( `Listening on: http://${DEV_SERVER_OPTIONS.host}:${DEV_SERVER_OPTIONS.port}` );
         console.log( "" );
+        console.log( "Compiling ..." );
+        console.log( "" );
 
         await server.start();
     }
