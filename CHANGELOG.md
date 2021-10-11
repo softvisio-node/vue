@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.2.0 (2021-10-11)
+
+Features:
+
+-   feat: firebase
+
 ### 6.1.0 (2021-10-11)
 
 Features:
