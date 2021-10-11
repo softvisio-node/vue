@@ -1,5 +1,16 @@
 # Changelog
 
+### 6.1.0 (2021-10-11)
+
+Features:
+
+-   feat: firebase
+
+Fixes:
+
+-   fix: firebase babel loader fixed
+-   fix: serve log
+
 ### 6.0.6 (2021-10-10)
 
 Fixes:
