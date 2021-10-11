@@ -1,5 +1,9 @@
 # Changelog
 
+### 6.2.1 (2021-10-11)
+
+No notable changes since the previous release.
+
 ### 6.2.0 (2021-10-11)
 
 Features:
