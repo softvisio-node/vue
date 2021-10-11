@@ -66,7 +66,6 @@ const config = {
                 "test": /\.m?jsx?$/,
                 "exclude": [],
                 "use": [
-                    "thread-loader",
                     {
                         "loader": "babel-loader",
                         "options": global.WEBPACK.BABEL_OPTIONS,
