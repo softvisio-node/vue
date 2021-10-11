@@ -300,6 +300,8 @@ class Runner {
     }
 
     async #runServe () {
+        const info = `Webpack dev. server Listening on: ${ansi.hl( `http://${DEV_SERVER_OPTIONS.host}:${DEV_SERVER_OPTIONS.port}` )}`;
+
         const webpackConfig = await this.#buildWebpackConfig();
 
         // patch config
@@ -320,18 +322,18 @@ class Runner {
             console.clear();
 
             if ( stats.hasErrors() ) {
-                console.log( stats.toString( "errors-warnings" ) );
-
-                console.log( "\n", ansi.hl( "• Compilation status:" ), ansi.error( ` FAIL ` ) + ",", "targets:", this.buildTargets, "\n" );
+                console.log( stats.toString( "errors-warnings" ), "\n" );
+                console.log( ansi.hl( "• Compilation status:" ), ansi.error( ` FAIL ` ) + ",", "targets:", this.buildTargets );
+                console.log( " ", info, "\n" );
             }
             else {
-                console.log( stats.toString( "summary" ) );
-
-                console.log( "\n", ansi.hl( "• Compilation status:" ), ansi.ok( ` SUCCESS ` ) + ",", "targets:", this.buildTargets, "\n" );
+                console.log( stats.toString( "summary" ), "\n" );
+                console.log( ansi.hl( "• Compilation status:" ), ansi.ok( ` SUCCESS ` ) + ",", "targets:", this.buildTargets );
+                console.log( " ", info, "\n" );
             }
         } );
 
-        console.log( `Webpack dev. server Listening on: ${ansi.hl( `http://${DEV_SERVER_OPTIONS.host}:${DEV_SERVER_OPTIONS.port}` )}`, "\n" );
+        console.log( info, "\n" );
         console.log( ansi.hl( "•" ), "Compiling ...", "\n" );
 
         await server.start();
