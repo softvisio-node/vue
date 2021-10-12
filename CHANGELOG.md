@@ -1,5 +1,12 @@
 # Changelog
 
+### 6.2.6 (2021-10-12)
+
+Fixes:
+
+-   fix: webpack constructor refactored
+-   fix: webpack report
+
 ### 6.2.5 (2021-10-11)
 
 Fixes:
