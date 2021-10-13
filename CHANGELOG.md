@@ -1,5 +1,15 @@
 # Changelog
 
+### 6.2.7 (2021-10-13)
+
+Fixes:
+
+-   fix: aliases
+-   fix: firebase worker compilation
+-   fix: webpack aliases
+-   fix: webpack module renamed
+-   fix: worker loader config
+
 ### 6.2.6 (2021-10-12)
 
 Fixes:
