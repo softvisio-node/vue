@@ -19,12 +19,12 @@ const config = {
     "entry": {
         "firebase": {
             "import": worker,
-            "filename": "tmp/firebase-messaging.worker.js",
+            "filename": "firebase-messaging.worker.js",
         },
     },
 
     "output": {
-        "path": global.WEBPACK.OUTPUT_PATH,
+        "path": global.WEBPACK.TMP_PATH,
         "publicPath": "auto",
     },
 
