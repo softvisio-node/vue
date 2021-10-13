@@ -104,6 +104,7 @@ const config = {
             // esm
             {
                 "test": /\.m?jsx?$/,
+                "exclude": [/\.worker\.js$/],
                 "resolve": {
                     "fullySpecified": false,
                 },
@@ -112,7 +113,7 @@ const config = {
             // js
             {
                 "test": /\.m?jsx?$/,
-                "exclude": [],
+                "exclude": [/\.worker\.js$/],
                 "use": [
                     {
                         "loader": "babel-loader",
