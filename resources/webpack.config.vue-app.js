@@ -92,20 +92,20 @@ const config = {
     "module": {
         "rules": [
 
-            // esm
-            {
-                "test": /\.m?jsx?$/,
-                "resolve": {
-                    "fullySpecified": false,
-                },
-            },
-
             // web workers
             {
                 "test": /\.worker\.js$/,
                 "type": "asset/resource",
                 "generator": {
-                    "filename": "js/[name].[hash][ext][query]",
+                    "filename": "[name].[hash][ext][query]",
+                },
+            },
+
+            // esm
+            {
+                "test": /\.m?jsx?$/,
+                "resolve": {
+                    "fullySpecified": false,
                 },
             },
 

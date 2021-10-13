@@ -19,7 +19,7 @@ const config = {
     "entry": {
         "firebase": {
             "import": worker,
-            "filename": "js/firebase-messaging.worker.js",
+            "filename": "tmp/firebase-messaging.worker.js",
         },
     },
 
