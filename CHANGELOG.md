@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.2.8 (2021-10-13)
+
+Fixes:
+
+-   fix: webpack cache
+
 ### 6.2.7 (2021-10-13)
 
 Fixes:
