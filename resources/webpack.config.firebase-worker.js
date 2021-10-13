@@ -53,18 +53,13 @@ const config = {
     "module": {
         "rules": [
 
-            // esm
+            // js
             {
-                "test": /\.m?jsx?$/,
+                "test": /\.(m|c)?jsx?$/,
+                "exclude": [/\.worker\.js$/],
                 "resolve": {
                     "fullySpecified": false,
                 },
-            },
-
-            // js
-            {
-                "test": /\.m?jsx?$/,
-                "exclude": [],
                 "use": [
                     {
                         "loader": "babel-loader",
