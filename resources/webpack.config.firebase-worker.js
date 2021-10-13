@@ -19,7 +19,7 @@ const config = {
     "entry": {
         "firebase": {
             "import": worker,
-            "filename": "firebase-messaging-sw.js",
+            "filename": "js/firebase-messaging.worker.js",
         },
     },
 
@@ -32,7 +32,7 @@ const config = {
         "alias": {
             ...global.WEBPACK.RESOLVE_ALIAS,
             "#vue$": "@softvisio/vue",
-            "#vue/": "@softvisio/vue/",
+            "#vue": "@softvisio/vue",
         },
 
         // required by froala, can be replaced with crypto-browserify
