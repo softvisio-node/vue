@@ -100,6 +100,15 @@ const config = {
                 },
             },
 
+            // web workers
+            {
+                "test": /\.worker\.js$/,
+                "type": "asset/resource",
+                "generator": {
+                    "filename": "js/[name].[hash][ext][query]",
+                },
+            },
+
             // js
             {
                 "test": /\.m?jsx?$/,
