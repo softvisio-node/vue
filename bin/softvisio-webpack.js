@@ -23,6 +23,13 @@ const cli = {
             "default": false,
             "schema": { "type": "boolean" },
         },
+        "cache": {
+
+            // "short": "C",
+            "description": `disable webpack cache`,
+            "default": true,
+            "schema": { "type": "boolean" },
+        },
     },
     "arguments": {
         "command": {
@@ -40,6 +47,7 @@ const webpackRunner = new WebpackRunner( {
     "mode": process.cli.options.mode,
     "cordova": process.cli.options.cordova,
     "analyzer": process.cli.options.analyzer,
+    "cache": process.cli.options.cache,
 } );
 
 webpackRunner.run();
