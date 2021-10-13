@@ -56,7 +56,6 @@ const config = {
             // js
             {
                 "test": /\.(m|c)?jsx?$/,
-                "exclude": [/\.worker\.js$/],
                 "resolve": {
                     "fullySpecified": false,
                 },

@@ -92,26 +92,31 @@ const config = {
     "module": {
         "rules": [
 
-            // web workers
-            {
-                "test": /\.worker\.js$/,
-                "type": "asset/resource",
-                "generator": {
-                    "filename": "[name].[hash][ext][query]",
-                },
-            },
-
             // js
             {
                 "test": /\.(m|c)?jsx?$/,
-                "exclude": [/\.worker\.js$/],
                 "resolve": {
                     "fullySpecified": false,
                 },
-                "use": [
+                "oneOf": [
+
+                    // web workers *.worker.js
                     {
-                        "loader": "babel-loader",
-                        "options": global.WEBPACK.BABEL_OPTIONS,
+                        "test": /\.worker\.js$/,
+                        "type": "asset/resource",
+                        "generator": {
+                            "filename": "[name].[hash][ext][query]",
+                        },
+                    },
+
+                    // other *.js files
+                    {
+                        "use": [
+                            {
+                                "loader": "babel-loader",
+                                "options": global.WEBPACK.BABEL_OPTIONS,
+                            },
+                        ],
                     },
                 ],
             },
