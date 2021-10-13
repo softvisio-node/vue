@@ -31,7 +31,6 @@ const config = {
     "resolve": {
         "alias": {
             ...global.WEBPACK.RESOLVE_ALIAS,
-            "#vue$": "@softvisio/vue",
             "#vue": "@softvisio/vue",
         },
 

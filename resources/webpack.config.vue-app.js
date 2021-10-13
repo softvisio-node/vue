@@ -34,7 +34,6 @@ const config = {
         "alias": {
             ...global.WEBPACK.RESOLVE_ALIAS,
             "vue$": "vue/dist/vue.runtime.esm-bundler.js",
-            "#vue$": "@softvisio/vue",
             "#vue": "@softvisio/vue",
         },
 
