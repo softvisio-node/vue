@@ -34,11 +34,8 @@ const config = {
         "alias": {
             ...global.WEBPACK.RESOLVE_ALIAS,
             "vue$": "vue/dist/vue.runtime.esm-bundler.js",
-            "#vue": "@softvisio/vue",
-            "#ext$": "@softvisio/ext/ext-" + process.env.EXT_VERSION,
-            "#ext": "@softvisio/ext/resources/ext-" + process.env.EXT_VERSION,
-            "#ewc$": "@softvisio/ext/ewc-" + process.env.EWC_VERSION,
-            "#ewc": "@softvisio/ext/resources/ewc-" + process.env.EWC_VERSION,
+            "#vue$": "@softvisio/vue",
+            "#vue/": "@softvisio/vue/",
         },
 
         // required by froala, can be replaced with crypto-browserify

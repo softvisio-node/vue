@@ -31,7 +31,8 @@ const config = {
     "resolve": {
         "alias": {
             ...global.WEBPACK.RESOLVE_ALIAS,
-            "#vue": "@softvisio/vue-ext",
+            "#vue$": "@softvisio/vue",
+            "#vue/": "@softvisio/vue/",
         },
 
         // required by froala, can be replaced with crypto-browserify
