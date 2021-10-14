@@ -176,12 +176,24 @@ const config = {
             {
                 "test": /\.css$/,
                 "use": [
-                    {
-                        "loader": MiniCssExtractPlugin.loader,
-                        "options": {
-                            "esModule": false,
-                        },
-                    },
+                    ...( process.env.WEBPACK_DEV_SERVER
+                        ? [
+                            {
+                                "loader": "vue-style-loader",
+                                "options": {
+                                    "sourceMap": false,
+                                    "shadowMode": false,
+                                },
+                            },
+                        ]
+                        : [
+                            {
+                                "loader": MiniCssExtractPlugin.loader,
+                                "options": {
+                                    "esModule": false,
+                                },
+                            },
+                        ] ),
                     {
                         "loader": "css-loader",
                         "options": {
