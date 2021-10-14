@@ -208,7 +208,7 @@ const config = {
                             "postcssOptions": {
                                 "plugins": {
                                     "cssnano": {
-                                        "preset": ["advanced", { "normalizeWhitespace": false }],
+                                        "preset": ["default", { "normalizeWhitespace": false }],
                                     },
                                 },
                             },
