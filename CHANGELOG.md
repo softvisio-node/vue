@@ -1,5 +1,13 @@
 # Changelog
 
+### 6.2.9 (2021-10-14)
+
+Fixes:
+
+-   fix: cssnano options
+-   fix: webpack css loaders
+-   fix: webpack log
+
 ### 6.2.8 (2021-10-13)
 
 Fixes:
