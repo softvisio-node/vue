@@ -111,12 +111,8 @@ const config = {
 
                     // other *.js files
                     {
-                        "use": [
-                            {
-                                "loader": "babel-loader",
-                                "options": global.WEBPACK.BABEL_OPTIONS,
-                            },
-                        ],
+                        "loader": "babel-loader",
+                        "options": global.WEBPACK.BABEL_OPTIONS,
                     },
                 ],
             },
@@ -124,18 +120,14 @@ const config = {
             // vue
             {
                 "test": /\.vue$/,
-                "use": [
-                    {
-                        "loader": "vue-loader",
-                        "options": {
+                "loader": "vue-loader",
+                "options": {
 
-                            // XXX "babelParserPlugins": ["jsx", "classProperties", "decorators-legacy"],
-                            "compilerOptions": {
-                                "isCustomElement": tag => tag.startsWith( "ext-" ),
-                            },
-                        },
+                    // XXX "babelParserPlugins": ["jsx", "classProperties", "decorators-legacy"],
+                    "compilerOptions": {
+                        "isCustomElement": tag => tag.startsWith( "ext-" ),
                     },
-                ],
+                },
             },
 
             // vue-style
