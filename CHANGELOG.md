@@ -1,5 +1,13 @@
 # Changelog
 
+### 6.2.10 (2021-10-15)
+
+Fixes:
+
+-   fix: notifications store removed
+-   fix: webpack config
+-   fix: webpack server headers
+
 ### 6.2.9 (2021-10-14)
 
 Fixes:
