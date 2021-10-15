@@ -130,13 +130,6 @@ const config = {
                 },
             },
 
-            // vue-style
-            {
-                "test": /\.vue$/,
-                "resourceQuery": /type=style/,
-                "sideEffects": true,
-            },
-
             // images
             {
                 "test": /\.(png|jpe?g|gif|webp|avif|svg)(\?.*)?$/,
@@ -168,24 +161,20 @@ const config = {
             {
                 "test": /\.css$/,
                 "use": [
-                    ...( process.env.WEBPACK_DEV_SERVER
-                        ? [
-                            {
-                                "loader": "vue-style-loader",
-                                "options": {
-                                    "sourceMap": false,
-                                    "shadowMode": false,
-                                },
+                    process.env.WEBPACK_DEV_SERVER
+                        ? {
+                            "loader": "vue-style-loader",
+                            "options": {
+                                "sourceMap": false,
+                                "shadowMode": false,
                             },
-                        ]
-                        : [
-                            {
-                                "loader": MiniCssExtractPlugin.loader,
-                                "options": {
-                                    "esModule": false,
-                                },
+                        }
+                        : {
+                            "loader": MiniCssExtractPlugin.loader,
+                            "options": {
+                                "esModule": false,
                             },
-                        ] ),
+                        },
                     {
                         "loader": "css-loader",
                         "options": {
