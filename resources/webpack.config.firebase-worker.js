@@ -55,16 +55,12 @@ const config = {
 
             // js
             {
-                "test": /\.(m|c)?jsx?$/,
+                "test": /\.[cm]?jsx?$/,
                 "resolve": {
                     "fullySpecified": false,
                 },
-                "use": [
-                    {
-                        "loader": "babel-loader",
-                        "options": global.WEBPACK.BABEL_OPTIONS,
-                    },
-                ],
+                "loader": "babel-loader",
+                "options": global.WEBPACK.BABEL_OPTIONS,
             },
         ],
     },

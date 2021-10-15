@@ -94,7 +94,7 @@ const config = {
 
             // js
             {
-                "test": /\.(m|c)?jsx?$/,
+                "test": /\.[cm]?jsx?$/,
                 "resolve": {
                     "fullySpecified": false,
                 },
