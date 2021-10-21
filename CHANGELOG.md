@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.2.11 (2021-10-21)
+
+Fixes:
+
+-   fix: webpack hash function changed to xxhash64
+
 ### 6.2.10 (2021-10-15)
 
 Fixes:
