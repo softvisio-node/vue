@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.2.12 (2021-10-27)
+
+Fixes:
+
+-   fix: store install
+
 ### 6.2.11 (2021-10-21)
 
 Fixes:
