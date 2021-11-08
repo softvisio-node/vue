@@ -33,9 +33,9 @@ const cli = {
     },
     "arguments": {
         "command": {
-            "description": `One of: "serve", "build", "dump"`,
+            "description": `One of: "dev", "build", "dump"`,
             "required": true,
-            "schema": { "type": "string", "enum": ["serve", "build", "dump"] },
+            "schema": { "type": "string", "enum": ["dev", "build", "dump"] },
         },
     },
 };
