@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.3.0 (2021-11-08)
+
+Features:
+
+-   feat: webpack dev command
+
 ### 6.2.13 (2021-11-06)
 
 No notable changes since the previous release.
