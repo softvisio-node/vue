@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.4.0 (2021-11-13)
+
+Features:
+
+-   feat: signin after successful signup
+
 ### 6.3.0 (2021-11-08)
 
 Features:
