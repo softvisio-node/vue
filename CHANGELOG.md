@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.4.2 (2021-12-24)
+
+Fixes:
+
+-   fix: api client properties immutable
+
 ### 6.4.1 (2021-11-23)
 
 No notable changes since the previous release.
