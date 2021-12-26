@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.4.3 (2021-12-26)
+
+Fixes:
+
+-   fix: api client init
+
 ### 6.4.2 (2021-12-24)
 
 Fixes:
