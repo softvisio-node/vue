@@ -75,10 +75,8 @@ const config = {
                 "parallel": true,
                 "minimizerOptions": {
                     "preset": [
-                        "advanced",
+                        "default",
                         {
-                            "mergeLonghand": false,
-                            "cssDeclarationSorter": false,
                             "discardComments": {
                                 "removeAll": true,
                             },
