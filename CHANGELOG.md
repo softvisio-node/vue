@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.4.4 (2022-01-03)
+
+Fixes:
+
+-   fix: cssnano default preset
+
 ### 6.4.3 (2021-12-26)
 
 Fixes:
