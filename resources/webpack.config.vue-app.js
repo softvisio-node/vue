@@ -168,7 +168,7 @@ const config = {
                             },
                         }
                         : {
-                            "loader": MiniCssExtractPlugin.default.loader,
+                            "loader": MiniCssExtractPlugin.loader,
                             "options": {
                                 "esModule": false,
                             },
@@ -201,7 +201,7 @@ const config = {
     "plugins": [
         new VueLoaderPlugin(),
 
-        new MiniCssExtractPlugin.default( {
+        new MiniCssExtractPlugin( {
             "filename": "css/[name].[contenthash].css",
             "chunkFilename": "css/[name].[contenthash].css",
         } ),
