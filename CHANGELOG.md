@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.4.6 (2022-01-17)
+
+Fixes:
+
+-   fix: MiniCssExtractPlugin imports
+
 ### 6.4.5 (2022-01-16)
 
 Fixes:
