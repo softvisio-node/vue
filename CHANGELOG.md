@@ -1,5 +1,12 @@
 # Changelog
 
+### 6.4.7 (2022-01-25)
+
+Fixes:
+
+-   fix: api events
+-   fix: app constants update
+
 ### 6.4.6 (2022-01-17)
 
 Fixes:
