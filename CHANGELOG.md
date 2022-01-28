@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.4.8 (2022-01-28)
+
+Fixes:
+
+-   fix: signout
+
 ### 6.4.7 (2022-01-25)
 
 Fixes:
