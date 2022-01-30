@@ -20,10 +20,10 @@ export default {
 
             // init session
             while ( true ) {
-                const res = await this.$store.session.signin();
+                const res = await this.$app.signin();
 
                 // connection ok
-                if ( res.ok || res.status === 401 || res.status === 403 ) break;
+                if ( res.ok ) break;
 
                 // connection error
                 await this.onInitFailure();
