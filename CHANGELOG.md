@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.4.10 (2022-01-30)
+
+Fixes:
+
+-   fix: app signin
+
 ### 6.4.9 (2022-01-30)
 
 Fixes:
