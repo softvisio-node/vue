@@ -10,6 +10,8 @@ import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 const DefinePlugin = webpack.DefinePlugin;
 
 const config = {
+    "schemas": [new URL( "./schemas/app.env.vue-app.schema.yaml", import.meta.url )],
+
     "name": "vue-app",
     "target": "web", // browserslist
     "mode": global.WEBPACK.MODE,
@@ -235,6 +237,4 @@ const config = {
     ],
 };
 
-const schema = [new URL( "./schemas/app.env.vue-app.schema.yaml", import.meta.url )];
-
-export { config, schema };
+export default config;
