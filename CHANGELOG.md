@@ -1,5 +1,15 @@
 # Changelog
 
+### 6.5.0 (2022-02-11)
+
+Features:
+
+-   feat: app env schema validator
+
+Fixes:
+
+-   fix: env readConfig -> loadEnv
+
 ### 6.4.12 (2022-02-07)
 
 Fixes:
