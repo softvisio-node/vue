@@ -235,4 +235,6 @@ const config = {
     ],
 };
 
-export default config;
+const schema = [new URL( "./schemas/app.env.vue-app.schema.yaml", import.meta.url )];
+
+export { config, schema };

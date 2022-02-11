@@ -72,4 +72,6 @@ const config = {
     ],
 };
 
-export default config;
+const schema = [new URL( "./schemas/app.env.firebase-worker.schema.yaml", import.meta.url )];
+
+export { config, schema };
