@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.5.2 (2022-02-12)
+
+Fixes:
+
+-   fix: config api changed
+
 ### 6.5.1 (2022-02-12)
 
 Fixes:
