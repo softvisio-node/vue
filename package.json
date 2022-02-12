@@ -19,7 +19,8 @@
     "type": "module",
     "imports": {
         "#core/*": "@softvisio/core/*",
-        "#lib/*": "./lib/*.js"
+        "#lib/*": "./lib/*.js",
+        "#resources/*": "./resources/*"
     },
     "exports": {
         ".": "./lib/app.js",
@@ -27,8 +28,7 @@
             "./lib/*.js",
             "./lib/*.vue"
         ],
-        "./resources/*": "./resources/*",
-        "./webpack.config.*": "./resources/webpack.config.*.js"
+        "./resources/*": "./resources/*"
     },
     "bin": {
         "softvisio-webpack": "bin/softvisio-webpack.js"
