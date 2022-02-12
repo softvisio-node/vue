@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.5.1 (2022-02-12)
+
+Fixes:
+
+-   fix: webpack config
+
 ### 6.5.0 (2022-02-11)
 
 Features:
