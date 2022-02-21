@@ -6,15 +6,16 @@
         "softvisio",
         "vue"
     ],
-    "homepage": "https://github.com/softvisio/vue",
+    "homepage": "https://softvisio.github.io/vue/",
     "bugs": {
         "url": "https://github.com/softvisio/vue/issues",
-        "email": "zdm@softvisio.net"
+        "email": "zdm <zdm@softvisio.net>"
     },
     "repository": {
         "type": "git",
         "url": "https://github.com/softvisio/vue.git"
     },
+    "license": "ISC",
     "author": "zdm <zdm@softvisio.net>",
     "type": "module",
     "imports": {
