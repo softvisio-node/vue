@@ -1,5 +1,12 @@
 # Changelog
 
+### 6.5.4 (2022-04-18)
+
+Fixes:
+
+-   fix: downloadFile replaces with saveAs
+-   fix: utils toast
+
 ### 6.5.3 (2022-02-21)
 
 Fixes:
