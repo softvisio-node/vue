@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.5.5 (2022-04-24)
+
+Fixes:
+
+-   fix: core-js deps
+
 ### 6.5.4 (2022-04-18)
 
 Fixes:
