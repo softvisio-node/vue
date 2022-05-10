@@ -70,6 +70,7 @@ const config = {
     "plugins": [
         new DefinePlugin( {
             "process.env": global.WEBPACK.ENV,
+            "process.config": global.WEBPACK.CONFIG,
         } ),
     ],
 };

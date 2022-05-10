@@ -211,10 +211,8 @@ const config = {
         new DefinePlugin( {
             "__VUE_OPTIONS_API__": "true",
             "__VUE_PROD_DEVTOOLS__": "false",
-        } ),
-
-        new DefinePlugin( {
             "process.env": global.WEBPACK.ENV,
+            "process.config": global.WEBPACK.CONFIG,
         } ),
 
         new HtmlPlugin( {
