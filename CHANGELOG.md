@@ -1,5 +1,13 @@
 # Changelog
 
+### 6.5.6 (2022-05-10)
+
+Fixes:
+
+-   fix: firebase config loader
+-   fix: validate app env
+-   fix: webpack define process.config
+
 ### 6.5.5 (2022-04-24)
 
 Fixes:
