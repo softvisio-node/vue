@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.5.8 (2022-05-18)
+
+Fixes:
+
+-   fix: electron store
+
 ### 6.5.7 (2022-05-18)
 
 Fixes:
