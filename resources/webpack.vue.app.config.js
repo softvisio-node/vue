@@ -13,7 +13,8 @@ const config = {
     "schemas": [new URL( "./schemas/env.vue.app.schema.yaml", import.meta.url )],
 
     "name": "vue-app",
-    "target": "web", // browserslist
+
+    // "target": "web", "browserslist",
     "mode": global.WEBPACK.MODE,
     "context": global.WEBPACK.CONTEXT,
     "devtool": env.isDevelopment ? "eval-source-map" : undefined,
