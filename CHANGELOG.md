@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.5.7 (2022-05-18)
+
+Fixes:
+
+-   fix: webpack use browserlist if present
+
 ### 6.5.6 (2022-05-10)
 
 Fixes:
