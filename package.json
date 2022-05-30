@@ -29,6 +29,7 @@
             "./lib/*.js",
             "./lib/*.vue"
         ],
+        "./po-loader": "./lib/webpack/po-loader.cjs",
         "./resources/*": "./resources/*"
     },
     "bin": {

@@ -45,7 +45,7 @@ const config = {
             "crypto": false,
         },
 
-        "extensions": [".mjs", ".js", ".jsx", ".vue", ".json", ".wasm"],
+        "extensions": [".mjs", ".js", ".jsx", ".vue", ".json", ".wasm", ".po"],
 
         "modules": global.WEBPACK.RESOLVE_MODULES,
     },
@@ -197,6 +197,12 @@ const config = {
                         },
                     },
                 ],
+            },
+
+            // localization
+            {
+                "test": /\.po$/,
+                "loader": "@softvisio/vue/po-loader",
             },
         ],
     },
