@@ -6,7 +6,7 @@ import CopyPlugin from "copy-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
-import GetText from "#core/localization/gettext";
+import Locale from "#core/localization/locale";
 
 const DefinePlugin = webpack.DefinePlugin;
 
@@ -204,7 +204,7 @@ const config = {
             {
                 "test": /\.po$/,
                 "loader": "@softvisio/vue/po-loader",
-                "options": { GetText },
+                "options": { Locale },
             },
         ],
     },
