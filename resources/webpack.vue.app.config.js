@@ -6,7 +6,7 @@ import CopyPlugin from "copy-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
-import Locale from "#core/localization/locale";
+import Locale from "#core/locale";
 
 const DefinePlugin = webpack.DefinePlugin;
 
