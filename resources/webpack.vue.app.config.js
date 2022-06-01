@@ -47,7 +47,7 @@ const config = {
             "crypto": false,
         },
 
-        "extensions": [".mjs", ".js", ".jsx", ".vue", ".json", ".wasm", ".po"],
+        "extensions": [".mjs", ".js", ".jsx", ".vue", ".json", ".wasm", ".po", ".yaml"],
 
         "modules": global.WEBPACK.RESOLVE_MODULES,
     },
