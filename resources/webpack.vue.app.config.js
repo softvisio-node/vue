@@ -6,7 +6,8 @@ import CopyPlugin from "copy-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
-import Locale from "#core/locale";
+import PoFile from "#core/l10n/po-file";
+import { readConfig } from "#core/config";
 
 const DefinePlugin = webpack.DefinePlugin;
 
@@ -200,11 +201,18 @@ const config = {
                 ],
             },
 
-            // localization
+            // .po
             {
                 "test": /\.po$/,
                 "loader": "@softvisio/vue/po-loader",
-                "options": { Locale },
+                "options": { PoFile },
+            },
+
+            // .yaml
+            {
+                "test": /\.yaml$/,
+                "loader": "@softvisio/vue/yaml-loader",
+                "options": { readConfig },
             },
         ],
     },
