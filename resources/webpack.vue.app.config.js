@@ -208,11 +208,18 @@ const config = {
                 "options": { PoFile },
             },
 
+            // .json
+            {
+                "test": /\.json$/,
+                "loader": "@softvisio/vue/config-loader",
+                "options": { readConfig, "type": "json" },
+            },
+
             // .yaml
             {
                 "test": /\.yaml$/,
-                "loader": "@softvisio/vue/yaml-loader",
-                "options": { readConfig },
+                "loader": "@softvisio/vue/config-loader",
+                "options": { readConfig, "type": "yaml" },
             },
         ],
     },
