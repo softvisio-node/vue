@@ -30,7 +30,7 @@
             "./lib/*.vue"
         ],
         "./po-loader": "./lib/webpack/po-loader.cjs",
-        "./yaml-loader": "./lib/webpack/yaml-loader.cjs",
+        "./config-loader": "./lib/webpack/config-loader.cjs",
         "./resources/*": "./resources/*"
     },
     "bin": {
