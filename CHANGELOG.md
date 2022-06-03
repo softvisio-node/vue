@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.6.0 (2022-06-03)
+
+Features:
+
+-   feat: localization
+
 ### 6.5.9 (2022-05-19)
 
 Fixes:
