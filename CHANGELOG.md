@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.6.1 (2022-06-05)
+
+Fixes:
+
+-   fix: po template
+
 ### 6.6.0 (2022-06-03)
 
 Features:
