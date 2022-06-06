@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.6.2 (2022-06-06)
+
+Fixes:
+
+-   fix: locale domains
+
 ### 6.6.1 (2022-06-05)
 
 Fixes:
