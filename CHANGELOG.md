@@ -1,5 +1,12 @@
 # Changelog
 
+### 6.6.4 (2022-06-13)
+
+Fixes:
+
+-   fix: linted
+-   fix: locale parser
+
 ### 6.6.3 (2022-06-09)
 
 Fixes:
