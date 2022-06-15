@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.6.5 (2022-06-15)
+
+Fixes:
+
+-   fix: locales
+
 ### 6.6.4 (2022-06-13)
 
 Fixes:
