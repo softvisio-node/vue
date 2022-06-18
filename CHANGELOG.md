@@ -1,5 +1,12 @@
 # Changelog
 
+### 6.6.7 (2022-06-18)
+
+Fixes:
+
+-   fix: alert dialog refactored
+-   fix: confirmation dialog redesigned
+
 ### 6.6.6 (2022-06-15)
 
 Fixes:
