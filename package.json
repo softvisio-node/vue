@@ -24,7 +24,7 @@
         "#resources/*": "./resources/*"
     },
     "exports": {
-        ".": "./lib/app.js",
+        ".": "./lib/index.js",
         "./*": [
             "./lib/*.js",
             "./lib/*.vue"
