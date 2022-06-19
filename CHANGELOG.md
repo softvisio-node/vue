@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.6.9 (2022-06-19)
+
+Fixes:
+
+-   fix: locale chunk name
+
 ### 6.6.8 (2022-06-19)
 
 Fixes:
