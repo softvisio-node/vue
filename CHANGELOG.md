@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.6.8 (2022-06-19)
+
+Fixes:
+
+-   fix: webpack chunks
+
 ### 6.6.7 (2022-06-18)
 
 Fixes:
