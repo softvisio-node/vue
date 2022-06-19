@@ -204,10 +204,6 @@ const config = {
             // .po
             {
                 "test": /\.po$/,
-                "type": "asset/resource",
-                "generator": {
-                    "filename": "js/locales/[name].[contenthash].js",
-                },
                 "loader": "@softvisio/vue/po-loader",
                 "options": { PoFile },
             },
