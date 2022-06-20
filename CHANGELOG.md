@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.6.12 (2022-06-20)
+
+Fixes:
+
+-   fix: locale store removed
+
 ### 6.6.11 (2022-06-19)
 
 Fixes:
