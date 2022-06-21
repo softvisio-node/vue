@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.6.13 (2022-06-21)
+
+Fixes:
+
+-   fix: locale region name removed
+
 ### 6.6.12 (2022-06-20)
 
 Fixes:
