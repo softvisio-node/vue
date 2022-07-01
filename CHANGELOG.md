@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.6.14 (2022-07-01)
+
+Fixes:
+
+-   fix: locale domains refactored
+
 ### 6.6.13 (2022-06-21)
 
 Fixes:
