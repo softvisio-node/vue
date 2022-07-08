@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.6.16 (2022-07-08)
+
+Fixes:
+
+-   fix: default locale
+
 ### 6.6.15 (2022-07-02)
 
 Fixes:
