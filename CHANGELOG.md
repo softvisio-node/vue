@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.6.18 (2022-07-24)
+
+Fixes:
+
+-   fix: auto signout
+
 ### 6.6.17 (2022-07-18)
 
 Fixes:
