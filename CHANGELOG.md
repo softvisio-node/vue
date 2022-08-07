@@ -1,5 +1,16 @@
 # Changelog
 
+### 6.7.0 (2022-08-07)
+
+Features:
+
+-   feat: permissions renamed to roles
+
+Fixes:
+
+-   fix: auth roles
+-   fix: frontend permissions renamed to roles
+
 ### 6.6.19 (2022-07-26)
 
 Fixes:
