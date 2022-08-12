@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.7.2 (2022-08-12)
+
+Fixes:
+
+-   fix: api session signin roles removed
+
 ### 6.7.1 (2022-08-08)
 
 Fixes:
