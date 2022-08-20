@@ -1,5 +1,13 @@
 # Changelog
 
+### 6.7.3 (2022-08-20)
+
+Fixes:
+
+-   fix: default locale selecton
+-   fix: signup
+-   fix: user signout
+
 ### 6.7.2 (2022-08-12)
 
 Fixes:
