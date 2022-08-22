@@ -1,3 +1,7 @@
+// this.#worker = await navigator.serviceworker.register( new url( "#tmp/firebase-messaging.worker.js", import.meta.url ), {
+//     "scope": "/firebase-cloud-messaging-push-scope",
+// } );
+
 import env from "#core/env";
 import webpack from "webpack";
 import TerserPlugin from "terser-webpack-plugin";
@@ -5,7 +9,7 @@ import { resolve } from "#core/utils";
 
 const DefinePlugin = webpack.DefinePlugin;
 
-const worker = resolve( "#lib/firebase/worker", import.meta.url );
+const worker = resolve( "#lib/firebase/firebase.worker", import.meta.url );
 
 const config = {
     "schemas": [new URL( "./schemas/env.firebase.worker.schema.yaml", import.meta.url )],
