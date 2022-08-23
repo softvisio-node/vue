@@ -12,9 +12,9 @@ import { readConfig } from "#core/config";
 const DefinePlugin = webpack.DefinePlugin;
 
 const config = {
-    "schemas": [new URL( "./schemas/env.vue.app.schema.yaml", import.meta.url )],
+    "schemas": [new URL( "../schemas/env.vue.app.schema.yaml", import.meta.url )],
 
-    "name": "vue-app",
+    "name": "main",
 
     // "target": "web", "browserslist",
     "mode": global.WEBPACK.MODE,

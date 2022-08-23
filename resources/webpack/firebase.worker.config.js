@@ -12,9 +12,9 @@ const DefinePlugin = webpack.DefinePlugin;
 const worker = resolve( "#lib/firebase/firebase.worker", import.meta.url );
 
 const config = {
-    "schemas": [new URL( "./schemas/env.firebase.worker.schema.yaml", import.meta.url )],
+    "schemas": [new URL( "../schemas/env.firebase.worker.schema.yaml", import.meta.url )],
 
-    "name": "firebase-worker",
+    "name": "firebase.worker",
     "target": "webworker",
     "mode": global.WEBPACK.MODE,
     "context": global.WEBPACK.CONTEXT,
