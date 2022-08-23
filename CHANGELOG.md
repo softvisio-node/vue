@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.7.5 (2022-08-23)
+
+Fixes:
+
+-   fix: firebase
+
 ### 6.7.4 (2022-08-23)
 
 Fixes:
