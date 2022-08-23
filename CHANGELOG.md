@@ -1,5 +1,12 @@
 # Changelog
 
+### 6.7.4 (2022-08-23)
+
+Fixes:
+
+-   fix: firebase
+-   fix: webpack config
+
 ### 6.7.3 (2022-08-20)
 
 Fixes:
