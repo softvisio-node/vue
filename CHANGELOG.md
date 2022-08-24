@@ -1,5 +1,14 @@
 # Changelog
 
+### 6.7.6 (2022-08-24)
+
+Fixes:
+
+-   fix: app env schema
+-   fix: bage api moved to app
+-   fix: firebase config
+-   fix: firebase refactored
+
 ### 6.7.5 (2022-08-23)
 
 Fixes:
