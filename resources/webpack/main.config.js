@@ -240,7 +240,6 @@ const config = {
         } ),
 
         new HtmlPlugin( {
-            "title": "rankrocket-ui",
             "scriptLoading": "defer",
             "template": "public/index.html",
             "templateParameters": process.env,
