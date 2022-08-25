@@ -1,5 +1,13 @@
 # Changelog
 
+### 6.7.7 (2022-08-25)
+
+Fixes:
+
+-   fix: api token refactored
+-   fix: token renamed to key
+-   fix: webpack trmplate builder
+
 ### 6.7.6 (2022-08-24)
 
 Fixes:
