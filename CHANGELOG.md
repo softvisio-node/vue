@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.7.8 (2022-08-28)
+
+Fixes:
+
+-   fix: cordova www location
+
 ### 6.7.7 (2022-08-25)
 
 Fixes:
