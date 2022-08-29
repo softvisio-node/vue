@@ -17,11 +17,11 @@ export default new WebpackConfig(
         return {
             "name": "firebase.worker",
             "target": "webworker",
-            "mode": global.WEBPACK.MODE,
-            "context": global.WEBPACK.CONTEXT,
+            "mode": options.mode,
+            "context": options.context,
             "devtool": env.isDevelopment ? "eval-source-map" : undefined,
             "experiments": { "topLevelAwait": true },
-            "cache": global.WEBPACK.CACHE_OPTIONS,
+            "cache": options.cacheOptions,
 
             "entry": {
                 "firebase": {
@@ -31,13 +31,13 @@ export default new WebpackConfig(
             },
 
             "output": {
-                "path": global.WEBPACK.TMP_PATH,
+                "path": options.tmpPath,
                 "publicPath": "auto",
             },
 
             "resolve": {
                 "alias": {
-                    ...global.WEBPACK.RESOLVE_ALIAS,
+                    ...options.resolveAlias,
                     "#vue": "@softvisio/vue",
                 },
 
@@ -48,13 +48,13 @@ export default new WebpackConfig(
 
                 "extensions": [".mjs", ".js", ".jsx", ".vue", ".json", ".wasm"],
 
-                "modules": global.WEBPACK.RESOLVE_MODULES,
+                "modules": options.resolveModules,
             },
 
-            "resolveLoader": { "modules": global.WEBPACK.RESOLVE_LOADER_MODULES },
+            "resolveLoader": { "modules": options.resolveLoaderModules },
 
             "optimization": {
-                "minimizer": [new TerserPlugin( global.WEBPACK.TERSER_OPTIONS )],
+                "minimizer": [new TerserPlugin( options.terserOptions )],
             },
 
             "module": {
@@ -67,15 +67,15 @@ export default new WebpackConfig(
                             "fullySpecified": false,
                         },
                         "loader": "babel-loader",
-                        "options": global.WEBPACK.BABEL_OPTIONS,
+                        "options": options.babelOptions,
                     },
                 ],
             },
 
             "plugins": [
                 new DefinePlugin( {
-                    "process.env": global.WEBPACK.ENV,
-                    "process.config": global.WEBPACK.CONFIG,
+                    "process.env": options.env,
+                    "process.config": options.config,
                 } ),
             ],
         };
