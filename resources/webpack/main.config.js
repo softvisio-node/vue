@@ -12,8 +12,9 @@ import { readConfig } from "#core/config";
 
 const DefinePlugin = webpack.DefinePlugin;
 
-export default new WebpackConfig(
-    options => {
+export default new WebpackConfig( {
+    "name": "main",
+    "generator": options => {
         return {
             "name": "main",
 
@@ -259,5 +260,5 @@ export default new WebpackConfig(
             ],
         };
     },
-    [new URL( "../schemas/env.main.schema.yaml", import.meta.url )]
-);
+    "schemas": [new URL( "../schemas/env.main.schema.yaml", import.meta.url )],
+} );
