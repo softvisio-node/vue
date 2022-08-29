@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import CLI from "#core/cli";
-import WebpackRunner from "#lib/webpack-runner";
+import Webpack from "#lib/webpack";
 
 const cli = {
     "title": "Webpack runner",
@@ -42,7 +42,7 @@ const cli = {
 
 await CLI.parse( cli );
 
-const webpackRunner = new WebpackRunner( {
+const webpack = new Webpack( {
     "command": process.cli.arguments.command,
     "mode": process.cli.options.mode,
     "cordova": process.cli.options.cordova,
@@ -50,4 +50,4 @@ const webpackRunner = new WebpackRunner( {
     "cache": process.cli.options.cache,
 } );
 
-webpackRunner.run();
+webpack.run();
