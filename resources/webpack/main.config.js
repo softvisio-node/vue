@@ -18,18 +18,18 @@ export default new WebpackConfig(
             "name": "main",
 
             // "target": "web", "browserslist",
-            "mode": global.WEBPACK.MODE,
-            "context": global.WEBPACK.CONTEXT,
+            "mode": options.mode,
+            "context": options.context,
             "devtool": env.isDevelopment ? "eval-source-map" : undefined,
             "experiments": { "topLevelAwait": true },
-            "cache": global.WEBPACK.CACHE_OPTIONS,
+            "cache": options.cacheOptions,
 
             "entry": {
                 "app": "./src",
             },
 
             "output": {
-                "path": global.WEBPACK.OUTPUT_PATH,
+                "path": options.outputPath,
                 "publicPath": "auto",
                 "filename": "js/[name].[contenthash].js",
                 "chunkFilename": "js/[name].[contenthash].js",
@@ -38,7 +38,7 @@ export default new WebpackConfig(
 
             "resolve": {
                 "alias": {
-                    ...global.WEBPACK.RESOLVE_ALIAS,
+                    ...options.resolveAlias,
                     "vue$": "vue/dist/vue.runtime.esm-bundler.js",
                     "#vue": "@softvisio/vue",
                 },
@@ -50,10 +50,10 @@ export default new WebpackConfig(
 
                 "extensions": [".mjs", ".js", ".jsx", ".vue", ".json", ".wasm", ".po", ".yaml"],
 
-                "modules": global.WEBPACK.RESOLVE_MODULES,
+                "modules": options.resolveModules,
             },
 
-            "resolveLoader": { "modules": global.WEBPACK.RESOLVE_LOADER_MODULES },
+            "resolveLoader": { "modules": options.resolveLoaderModules },
 
             "optimization": {
                 "splitChunks": {
@@ -75,7 +75,7 @@ export default new WebpackConfig(
                 },
 
                 "minimizer": [
-                    new TerserPlugin( global.WEBPACK.TERSER_OPTIONS ),
+                    new TerserPlugin( options.terserOptions ),
 
                     new CssMinimizerPlugin( {
                         "parallel": true,
@@ -116,7 +116,7 @@ export default new WebpackConfig(
                             // other *.js files
                             {
                                 "loader": "babel-loader",
-                                "options": global.WEBPACK.BABEL_OPTIONS,
+                                "options": options.babelOptions,
                             },
                         ],
                     },
@@ -236,8 +236,8 @@ export default new WebpackConfig(
                 new DefinePlugin( {
                     "__VUE_OPTIONS_API__": "true",
                     "__VUE_PROD_DEVTOOLS__": "false",
-                    "process.env": global.WEBPACK.ENV,
-                    "process.config": global.WEBPACK.CONFIG,
+                    "process.env": options.env,
+                    "process.config": options.config,
                 } ),
 
                 new HtmlPlugin( {
