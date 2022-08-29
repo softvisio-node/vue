@@ -1,5 +1,13 @@
 # Changelog
 
+### 6.7.9 (2022-08-29)
+
+Fixes:
+
+-   fix: app signupEnabled option
+-   fix: push notification event renamed
+-   fix: session signupEnabled option
+
 ### 6.7.8 (2022-08-28)
 
 Fixes:
