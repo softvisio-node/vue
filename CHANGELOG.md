@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.8.1 (2022-08-30)
+
+Fixes:
+
+-   fix: labelError function
+
 ### 6.8.0 (2022-08-30)
 
 Features:
