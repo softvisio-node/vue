@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.9.0 (2022-08-30)
+
+Features:
+
+-   feat: device id
+
 ### 6.8.3 (2022-08-30)
 
 Fixes:
