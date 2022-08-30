@@ -1,5 +1,17 @@
 # Changelog
 
+### 6.8.0 (2022-08-30)
+
+Features:
+
+-   feat: webpack config refactored
+
+Fixes:
+
+-   fix: app info
+-   fix: app signupEnabled option schema
+-   fix: git status
+
 ### 6.7.9 (2022-08-29)
 
 Fixes:
