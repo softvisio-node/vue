@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.8.2 (2022-08-30)
+
+Fixes:
+
+-   fix: app title dev label
+
 ### 6.8.1 (2022-08-30)
 
 Fixes:
