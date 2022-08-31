@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.9.1 (2022-08-31)
+
+Fixes:
+
+-   fix: password recovery
+
 ### 6.9.0 (2022-08-30)
 
 Features:
