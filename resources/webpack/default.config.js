@@ -1,6 +1,6 @@
 import main from "./main.config.js";
-import firebaseWorker from "./firebase.worker.config.js";
+import firebaseMessagingWorker from "./firebase-messaging.worker.config.js";
 
-main.add( firebaseWorker );
+main.add( firebaseMessagingWorker );
 
 export default main;
