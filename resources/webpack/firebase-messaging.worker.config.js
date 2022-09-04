@@ -84,7 +84,7 @@ const webpackConfig = new WebpackConfig().add( {
 
         //
         new URL( "../schemas/env.main.schema.yaml", import.meta.url ),
-        new URL( "../schemas/env.firebase.worker.schema.yaml", import.meta.url ),
+        new URL( "../schemas/env.firebase-messaging.worker.schema.yaml", import.meta.url ),
     ],
 } );
 
