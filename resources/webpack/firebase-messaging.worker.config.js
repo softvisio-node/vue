@@ -1,7 +1,3 @@
-// this.#worker = await navigator.serviceworker.register( new url( "#tmp/firebase-messaging.worker.js", import.meta.url ), {
-//     "scope": "/firebase-cloud-messaging-push-scope",
-// } );
-
 import WebpackConfig from "#lib/webpack/config";
 import env from "#core/env";
 import webpack from "webpack";
