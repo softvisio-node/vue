@@ -27,6 +27,8 @@ export class FirebaseMessagingWorker extends WebpackConfig {
     get isEnabled () {
         if ( !super.isEnabled ) return false;
 
+        if ( this.isCordova ) return false;
+
         if ( !this.config.firebase?.browser ) return false;
 
         return true;
