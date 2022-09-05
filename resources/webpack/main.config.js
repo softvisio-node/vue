@@ -1,5 +1,4 @@
 import WebpackConfig from "#lib/webpack/config";
-import env from "#core/env";
 import webpack from "webpack";
 import { VueLoaderPlugin } from "vue-loader";
 import HtmlPlugin from "html-webpack-plugin";
@@ -35,7 +34,7 @@ export class Main extends WebpackConfig {
             // "target": "web", "browserslist",
             "mode": options.mode,
             "context": this.context,
-            "devtool": env.isDevelopment ? "eval-source-map" : undefined,
+            "devtool": this.isDevelopment ? "eval-source-map" : undefined,
             "experiments": { "topLevelAwait": true },
             "cache": options.cacheOptions,
 

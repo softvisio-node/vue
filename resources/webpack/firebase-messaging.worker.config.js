@@ -1,5 +1,4 @@
 import WebpackConfig from "#lib/webpack/config";
-import env from "#core/env";
 import webpack from "webpack";
 import TerserPlugin from "terser-webpack-plugin";
 import { resolve } from "#core/utils";
@@ -43,9 +42,9 @@ export class FirebaseMessagingWorker extends WebpackConfig {
     _generate ( options ) {
         return {
             "target": "webworker",
-            "mode": options.mode,
+            "mode": this.mode,
             "context": this.context,
-            "devtool": env.isDevelopment ? "eval-source-map" : undefined,
+            "devtool": this.isDevelopment ? "eval-source-map" : undefined,
             "experiments": { "topLevelAwait": true },
             "cache": options.cacheOptions,
 
