@@ -241,7 +241,7 @@ export class Main extends WebpackConfig {
                     // .po
                     {
                         "test": /\.po$/,
-                        "loader": "@softvisio/vue/po-loader",
+                        "loader": "@softvisio/vue/webpack-po-loader",
                         "options": { PoFile },
                     },
 
