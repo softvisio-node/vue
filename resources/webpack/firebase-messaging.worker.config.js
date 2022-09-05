@@ -62,8 +62,16 @@ const webpackConfig = new WebpackConfig().add( {
                         "resolve": {
                             "fullySpecified": false,
                         },
-                        "loader": "babel-loader",
-                        "options": options.babelOptions,
+                        "use": [
+                            {
+                                "loader": "babel-loader",
+                                "options": options.babelOptions,
+                            },
+                            {
+                                "loader": "webpack-preprocessor-loader",
+                                "options": options.preprocessorOptions,
+                            },
+                        ],
                     },
                 ],
             },

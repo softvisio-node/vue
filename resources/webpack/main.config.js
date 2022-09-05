@@ -115,8 +115,16 @@ const webpackConfig = new WebpackConfig().add( {
 
                             // other *.js files
                             {
-                                "loader": "babel-loader",
-                                "options": options.babelOptions,
+                                "use": [
+                                    {
+                                        "loader": "babel-loader",
+                                        "options": options.babelOptions,
+                                    },
+                                    {
+                                        "loader": "webpack-preprocessor-loader",
+                                        "options": options.preprocessorOptions,
+                                    },
+                                ],
                             },
                         ],
                     },
@@ -124,14 +132,22 @@ const webpackConfig = new WebpackConfig().add( {
                     // vue
                     {
                         "test": /\.vue$/,
-                        "loader": "vue-loader",
-                        "options": {
+                        "use": [
+                            {
+                                "loader": "vue-loader",
+                                "options": {
 
-                            // XXX "babelParserPlugins": ["jsx", "classProperties", "decorators-legacy"],
-                            "compilerOptions": {
-                                "isCustomElement": tag => tag.startsWith( "ext-" ),
+                                    // XXX "babelParserPlugins": ["jsx", "classProperties", "decorators-legacy"],
+                                    "compilerOptions": {
+                                        "isCustomElement": tag => tag.startsWith( "ext-" ),
+                                    },
+                                },
                             },
-                        },
+                            {
+                                "loader": "webpack-preprocessor-loader",
+                                "options": options.preprocessorOptions,
+                            },
+                        ],
                     },
 
                     // images
