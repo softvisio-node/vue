@@ -34,7 +34,7 @@ export class FirebaseMessagingWorker extends WebpackConfig {
 
     // protected
     _prepare () {
-        super.prepare();
+        super._prepare();
 
         this.preprocessorParams.firebaseMessagingWorkerEnabled = this.isEnabled;
     }
