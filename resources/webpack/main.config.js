@@ -13,19 +13,15 @@ import { readConfig } from "#core/config";
 const DefinePlugin = webpack.DefinePlugin;
 
 export class Main extends WebpackConfig {
-    #schemas = [
+    constructor ( options ) {
+        super( options );
 
-        //
-        new URL( "../schemas/env.main.schema.yaml", import.meta.url ),
-    ];
+        this.addSchema( new URL( "../schemas/env.main.schema.yaml", import.meta.url ) );
+    }
 
     // properties
     get name () {
         return "main";
-    }
-
-    get schemas () {
-        return [...super.schemas, ...this.#schemas];
     }
 
     get isEnabled () {

@@ -9,19 +9,15 @@ const DefinePlugin = webpack.DefinePlugin;
 const worker = resolve( "#lib/firebase/firebase-messaging.worker", import.meta.url );
 
 export class FirebaseMessagingWorker extends WebpackConfig {
-    #schemas = [
+    constructor ( options ) {
+        super( options );
 
-        //
-        new URL( "../schemas/env.firebase-messaging.worker.schema.yaml", import.meta.url ),
-    ];
+        this.addSchema( new URL( "../schemas/env.firebase-messaging.worker.schema.yaml", import.meta.url ) );
+    }
 
     // properties
     get name () {
         return "firebaseMessagingWorker";
-    }
-
-    get schemas () {
-        return [...super.schemas, ...this.#schemas];
     }
 
     get isEnabled () {
