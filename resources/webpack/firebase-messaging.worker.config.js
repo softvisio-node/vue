@@ -8,13 +8,43 @@ const DefinePlugin = webpack.DefinePlugin;
 
 const worker = resolve( "#lib/firebase/firebase-messaging.worker", import.meta.url );
 
-const webpackConfig = new WebpackConfig().add( {
-    "name": "firebaseMessagingWorker",
-    "generator": options => {
+export class FirebaseMessagingWorker extends WebpackConfig {
+    #schemas = [
+
+        //
+        new URL( "../schemas/env.main.schema.yaml", import.meta.url ),
+        new URL( "../schemas/env.firebase-messaging.worker.schema.yaml", import.meta.url ),
+    ];
+
+    // properties
+    get name () {
+        return "firebaseMessagingWorker";
+    }
+
+    get schemas () {
+        return [...super.schemas, ...this.#schemas];
+    }
+
+    get isEnabled () {
+        if ( !super.isEnabled ) return false;
+
+        if ( !this.condig.firebase?.browser ) return false;
+
+        return true;
+    }
+
+    // public
+    prepare () {
+        super.prepare();
+
+        this.preprocessor.firebaseMessagingWorkerEnabled = this.isEnabled;
+    }
+
+    generate ( options ) {
         return {
             "target": "webworker",
             "mode": options.mode,
-            "context": options.context,
+            "context": this.context,
             "devtool": env.isDevelopment ? "eval-source-map" : undefined,
             "experiments": { "topLevelAwait": true },
             "cache": options.cacheOptions,
@@ -83,13 +113,5 @@ const webpackConfig = new WebpackConfig().add( {
                 } ),
             ],
         };
-    },
-    "schemas": [
-
-        //
-        new URL( "../schemas/env.main.schema.yaml", import.meta.url ),
-        new URL( "../schemas/env.firebase-messaging.worker.schema.yaml", import.meta.url ),
-    ],
-} );
-
-export default webpackConfig;
+    }
+}

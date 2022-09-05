@@ -12,14 +12,33 @@ import { readConfig } from "#core/config";
 
 const DefinePlugin = webpack.DefinePlugin;
 
-const webpackConfig = new WebpackConfig().add( {
-    "name": "main",
-    "generator": options => {
+export class Main extends WebpackConfig {
+    #schemas = [
+
+        //
+        new URL( "../schemas/env.main.schema.yaml", import.meta.url ),
+    ];
+
+    // properties
+    get name () {
+        return "main";
+    }
+
+    get schemas () {
+        return [...super.schemas, ...this.#schemas];
+    }
+
+    get isEnabled () {
+        return super.isEnabled;
+    }
+
+    // public
+    generate ( options ) {
         return {
 
             // "target": "web", "browserslist",
             "mode": options.mode,
-            "context": options.context,
+            "context": this.context,
             "devtool": env.isDevelopment ? "eval-source-map" : undefined,
             "experiments": { "topLevelAwait": true },
             "cache": options.cacheOptions,
@@ -274,12 +293,5 @@ const webpackConfig = new WebpackConfig().add( {
                 } ),
             ],
         };
-    },
-    "schemas": [
-
-        //
-        new URL( "../schemas/env.main.schema.yaml", import.meta.url ),
-    ],
-} );
-
-export default webpackConfig;
+    }
+}
