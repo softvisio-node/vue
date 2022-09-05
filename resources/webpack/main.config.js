@@ -201,7 +201,7 @@ export class Main extends WebpackConfig {
                     {
                         "test": /\.css$/,
                         "use": [
-                            process.env.WEBPACK_DEV_SERVER
+                            this.isDevServer
                                 ? {
                                     "loader": "vue-style-loader",
                                     "options": {
@@ -279,7 +279,7 @@ export class Main extends WebpackConfig {
                 new HtmlPlugin( {
                     "scriptLoading": "defer",
                     "template": "public/index.html",
-                    "templateParameters": process.env,
+                    "templateParameters": options.templateParams,
                 } ),
 
                 new CopyPlugin( {
