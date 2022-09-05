@@ -29,9 +29,9 @@
             "./lib/*.js",
             "./lib/*.vue"
         ],
-        "./webpack-json-loader": "./lib/webpack/config.loader.cjs",
+        "./webpack-json-loader": "./lib/webpack/json.loader.cjs",
         "./webpack-po-loader": "./lib/webpack/po.loader.cjs",
-        "./webpack-yaml-loader": "./lib/webpack/config.loader.cjs",
+        "./webpack-yaml-loader": "./lib/webpack/yaml.loader.cjs",
         "./resources/*": "./resources/*"
     },
     "bin": {
