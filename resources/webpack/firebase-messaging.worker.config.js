@@ -6,7 +6,7 @@ import { resolve } from "#core/utils";
 
 const DefinePlugin = webpack.DefinePlugin;
 
-const worker = resolve( "#lib/firebase/firebase-messaging.worker", import.meta.url );
+const worker = resolve( "#lib/firebase/messaging/browser.worker", import.meta.url );
 
 export class FirebaseMessagingWorker extends WebpackConfig {
     constructor ( options ) {
