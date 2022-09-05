@@ -32,8 +32,8 @@ export class Main extends WebpackConfig {
         return super.isEnabled;
     }
 
-    // public
-    generate ( options ) {
+    // protected
+    _generate ( options ) {
         return {
 
             // "target": "web", "browserslist",
