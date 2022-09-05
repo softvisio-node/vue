@@ -3,6 +3,7 @@ import env from "#core/env";
 import webpack from "webpack";
 import TerserPlugin from "terser-webpack-plugin";
 import { resolve } from "#core/utils";
+import fs from "node:fs";
 
 const DefinePlugin = webpack.DefinePlugin;
 
@@ -35,6 +36,8 @@ export class FirebaseMessagingWorker extends WebpackConfig {
         super._prepare();
 
         this.preprocessorParams.firebaseMessagingWorkerEnabled = this.isEnabled;
+
+        this.preprocessorParams.firebaseMessagingWorkerMixin = fs.existsSync( this.context + "/src/firebase-messaging.worker.js" ) ? true : false;
     }
 
     _generate ( options ) {
