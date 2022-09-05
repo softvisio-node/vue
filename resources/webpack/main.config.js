@@ -79,6 +79,12 @@ export class Main extends WebpackConfig {
                             "priority": -10,
                             "chunks": "initial",
                         },
+                        "firebase": {
+                            "name": "firebase",
+                            "test": /@firebase[\\/]/,
+                            "priority": -9,
+                            "chunks": "all",
+                        },
                         "common": {
                             "name": "common",
                             "minChunks": 2,
