@@ -32,7 +32,7 @@ export class Main extends WebpackConfig {
         return {
 
             // "target": "web", "browserslist",
-            "mode": options.mode,
+            "mode": this.mode,
             "context": this.context,
             "devtool": this.isDevelopment ? "eval-source-map" : undefined,
             "experiments": { "topLevelAwait": true },
