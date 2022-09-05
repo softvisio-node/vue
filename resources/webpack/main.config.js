@@ -243,14 +243,14 @@ export class Main extends WebpackConfig {
                     // .json
                     {
                         "test": /\.json$/,
-                        "loader": "@softvisio/vue/config-loader",
+                        "loader": "@softvisio/vue/webpack-json-loader",
                         "options": { readConfig, "type": "json" },
                     },
 
                     // .yaml
                     {
                         "test": /\.yaml$/,
-                        "loader": "@softvisio/vue/config-loader",
+                        "loader": "@softvisio/vue/webpack-yaml-loader",
                         "options": { readConfig, "type": "yaml" },
                     },
                 ],
