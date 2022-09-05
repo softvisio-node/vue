@@ -12,7 +12,6 @@ export class FirebaseMessagingWorker extends WebpackConfig {
     #schemas = [
 
         //
-        new URL( "../schemas/env.main.schema.yaml", import.meta.url ),
         new URL( "../schemas/env.firebase-messaging.worker.schema.yaml", import.meta.url ),
     ];
 
@@ -28,7 +27,7 @@ export class FirebaseMessagingWorker extends WebpackConfig {
     get isEnabled () {
         if ( !super.isEnabled ) return false;
 
-        if ( !this.condig.firebase?.browser ) return false;
+        if ( !this.config.firebase?.browser ) return false;
 
         return true;
     }
@@ -37,7 +36,7 @@ export class FirebaseMessagingWorker extends WebpackConfig {
     prepare () {
         super.prepare();
 
-        this.preprocessor.firebaseMessagingWorkerEnabled = this.isEnabled;
+        this.preprocessorParams.firebaseMessagingWorkerEnabled = this.isEnabled;
     }
 
     generate ( options ) {
