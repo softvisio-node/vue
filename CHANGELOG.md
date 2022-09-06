@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.10.3 (2022-09-06)
+
+Fixes:
+
+-   fix: dev server options
+
 ### 6.10.2 (2022-09-06)
 
 Fixes:
