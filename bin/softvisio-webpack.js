@@ -40,7 +40,7 @@ const cli = {
             "short": "p",
             "description": `Development server listen port. Default is 80.`,
             "default": 80,
-            "schema": { "type": "integer", "minimum": 1, "miximum": 65535 },
+            "schema": { "type": "integer", "minimum": 1, "maximum": 65535 },
         },
     },
     "arguments": {
