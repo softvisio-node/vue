@@ -1,5 +1,18 @@
 # Changelog
 
+### 6.10.0 (2022-09-06)
+
+Features:
+
+-   feat: webpack preprocessor
+
+Fixes:
+
+-   fix: firebase worker
+-   fix: typo
+-   fix: webpack config
+-   fix: webpack template options
+
 ### 6.9.1 (2022-08-31)
 
 Fixes:
