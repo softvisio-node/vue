@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.10.1 (2022-09-06)
+
+Fixes:
+
+-   fix: load env options
+
 ### 6.10.0 (2022-09-06)
 
 Features:
