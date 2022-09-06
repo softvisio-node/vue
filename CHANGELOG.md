@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.10.2 (2022-09-06)
+
+Fixes:
+
+-   fix: api key changed to token
+
 ### 6.10.1 (2022-09-06)
 
 Fixes:
