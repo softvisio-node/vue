@@ -30,6 +30,18 @@ const cli = {
             "default": true,
             "schema": { "type": "boolean" },
         },
+        "listen": {
+            "short": "l",
+            "description": `Development server listen address. Default is 0.0.0.0.`,
+            "default": "0.0.0.0",
+            "schema": { "type": "string", "format": "ip-address" },
+        },
+        "port": {
+            "short": "p",
+            "description": `Development server listen port. Default is 80.`,
+            "default": 80,
+            "schema": { "type": "integer", "minimum": 1, "miximum": 65535 },
+        },
     },
     "arguments": {
         "command": {
@@ -43,11 +55,13 @@ const cli = {
 await CLI.parse( cli );
 
 const webpack = new Webpack( {
-    "command": process.cli.arguments.command,
     "mode": process.cli.options.mode,
-    "cordova": process.cli.options.cordova,
+    "command": process.cli.arguments.command,
     "analyzer": process.cli.options.analyzer,
     "cache": process.cli.options.cache,
+    "cordova": process.cli.options.cordova,
+    "listen": process.cli.options.listen,
+    "port": process.cli.options.port,
 } );
 
 webpack.run();
