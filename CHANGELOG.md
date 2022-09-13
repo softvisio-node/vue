@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.11.0 (2022-09-13)
+
+Features:
+
+-   feat: user locale
+
 ### 6.10.3 (2022-09-06)
 
 Fixes:
