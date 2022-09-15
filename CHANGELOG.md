@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.11.1 (2022-09-15)
+
+Fixes:
+
+-   fix: device id renamed to device guid
+
 ### 6.11.0 (2022-09-13)
 
 Features:
