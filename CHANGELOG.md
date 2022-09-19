@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.11.6 (2022-09-19)
+
+Fixes:
+
+-   fix: cli schema
+
 ### 6.11.5 (2022-09-19)
 
 Fixes:
