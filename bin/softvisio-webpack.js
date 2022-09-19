@@ -32,15 +32,15 @@ const cli = {
         },
         "listen": {
             "short": "l",
-            "description": `Development server listen address. Default is 0.0.0.0.`,
+            "description": `Development server listen IP address.`,
             "default": "0.0.0.0",
             "schema": { "type": "string", "format": "ip-address" },
         },
         "port": {
             "short": "p",
-            "description": `Development server listen port. Default is 80.`,
+            "description": `Development server listen IP port.`,
             "default": 80,
-            "schema": { "type": "integer", "minimum": 1, "maximum": 65535 },
+            "schema": { "type": "number", "format": "ip-port" },
         },
     },
     "arguments": {
