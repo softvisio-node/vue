@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.12.0 (2022-09-23)
+
+Features:
+
+-   feat: firebase auth
+
 ### 6.11.6 (2022-09-19)
 
 Fixes:
