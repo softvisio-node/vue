@@ -42,6 +42,11 @@ const cli = {
             "default": 80,
             "schema": { "type": "number", "format": "ip-port" },
         },
+        "proxy-url": {
+            "short": null,
+            "description": `Proxy URL.`,
+            "schema": { "type": "string", "format": "uri" },
+        },
     },
     "arguments": {
         "command": {
@@ -62,6 +67,7 @@ const webpack = new Webpack( {
     "cordova": process.cli.options.cordova,
     "listen": process.cli.options.listen,
     "port": process.cli.options.port,
+    "proxyUrl": process.cli.options["proxy-url"],
 } );
 
 webpack.run();
