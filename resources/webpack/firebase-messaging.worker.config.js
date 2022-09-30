@@ -12,6 +12,7 @@ export class FirebaseMessagingWorker extends WebpackConfig {
     constructor ( options ) {
         super( options );
 
+        this.addSchema( new URL( "../schemas/env.common.schema.yaml", import.meta.url ) );
         this.addSchema( new URL( "../schemas/env.firebase-messaging.worker.schema.yaml", import.meta.url ) );
     }
 

@@ -15,6 +15,7 @@ export class Main extends WebpackConfig {
     constructor ( options ) {
         super( options );
 
+        this.addSchema( new URL( "../schemas/env.common.schema.yaml", import.meta.url ) );
         this.addSchema( new URL( "../schemas/env.main.schema.yaml", import.meta.url ) );
     }
 
