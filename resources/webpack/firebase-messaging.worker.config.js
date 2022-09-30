@@ -109,7 +109,7 @@ export class FirebaseMessagingWorker extends WebpackConfig {
             "plugins": [
                 new DefinePlugin( {
                     "process.env": options.processEnv,
-                    "process.config": options.processConfig,
+                    "process._APP_CONFIG_PLACEHOLDER": options.processConfig,
                 } ),
             ],
         };
