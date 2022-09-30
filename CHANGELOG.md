@@ -1,5 +1,20 @@
 # Changelog
 
+### 6.13.0 (2022-09-30)
+
+Features:
+
+-   feat: app config
+-   feat: oauth
+
+Fixes:
+
+-   fix: app env
+-   fix: frontend connfig
+-   fix: webpack log
+-   fix: webpack oauth proxy
+-   fix: webpack proxy
+
 ### 6.12.0 (2022-09-23)
 
 Features:
