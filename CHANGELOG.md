@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.13.1 (2022-10-01)
+
+Fixes:
+
+-   fix: common schema validator
+
 ### 6.13.0 (2022-09-30)
 
 Features:
