@@ -1,5 +1,11 @@
 # Changelog
 
+### 6.13.2 (2022-10-12)
+
+Fixes:
+
+-   fix: @firebase/auth removed
+
 ### 6.13.1 (2022-10-01)
 
 Fixes:
