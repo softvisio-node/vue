@@ -6,7 +6,7 @@ import fs from "node:fs";
 
 const DefinePlugin = webpack.DefinePlugin;
 
-const worker = resolve( "#lib/firebase/messaging/browser.worker", import.meta.url );
+const worker = resolve( "#lib/firebase/messaging/web.worker", import.meta.url );
 
 export class FirebaseMessagingWorker extends WebpackConfig {
     constructor ( options ) {
@@ -25,7 +25,7 @@ export class FirebaseMessagingWorker extends WebpackConfig {
 
         if ( this.isCordova ) return false;
 
-        if ( !this.env.firebase?.browser ) return false;
+        if ( !this.env.firebase?.web ) return false;
 
         return true;
     }

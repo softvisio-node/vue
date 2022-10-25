@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-08-23 03:50+0300\n"
+"POT-Creation-Date: 2022-10-25 07:49+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -11,17 +11,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Poedit-Basepath: ../..\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2\n"
 "X-Poedit-SearchPath-0: lib\n"
 
-#: lib/store/session.js:289:69 lib/store/session.js:309:69
+#: lib/store/session.js:386:49
+msgid "Authorization provider is not supported"
+msgstr "Провайдер авторизации не поддерживается"
+
+#: lib/store/session.js:423:44 lib/store/session.js:425:58
+#: lib/store/session.js:427:68
+msgid "Authorization cancelled"
+msgstr "Авторизация отменена"
+
+#: lib/store/session.js:462:69 lib/store/session.js:518:69
 msgid "Push notifications are not supported"
 msgstr "Push-уведомления не поддерживаются"
 
-#: lib/store/session.js:296:33
-msgid "Push notifications are disabled in browser settings"
+#: lib/store/session.js:470:33
+msgid "Push notifications are disabled in the browser settings"
 msgstr "Push-уведомления заблокированы в настройках браузера"
 
-#: lib/store/session.js:313:46
+#: lib/store/session.js:522:46
 msgid "Error disabling push notifications"
 msgstr "Ошибка при отключении push-уведомлений"
