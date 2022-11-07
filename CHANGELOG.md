@@ -1,5 +1,12 @@
 # Changelog
 
+### 6.13.3 (2022-11-07)
+
+Fixes:
+
+-   fix: deps update
+-   fix: firebase browser renamed to web
+
 ### 6.13.2 (2022-10-12)
 
 Fixes:
