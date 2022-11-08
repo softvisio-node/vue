@@ -4,12 +4,6 @@
 
 <script>
 export default {
-    "computed": {
-        isAuthenticated () {
-            return this.$store.session.isAuthenticated;
-        },
-    },
-
     async mounted () {
         this.init();
     },
