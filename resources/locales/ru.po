@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-10-25 07:49+0300\n"
+"POT-Creation-Date: 2022-11-09 07:01+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -14,23 +14,38 @@ msgstr ""
 "X-Generator: Poedit 3.2\n"
 "X-Poedit-SearchPath-0: lib\n"
 
-#: lib/store/session.js:386:49
+#: lib/index.js:369:33
+msgid "Unable to connect to the API server. Check, that you have internet connection."
+msgstr "Не удалось подключиться к серверу API. Проверьте, что у вас есть подключение к интернет."
+
+#: lib/index.js:370:21
+msgid "Connection error"
+msgstr "Ошибка подключения"
+
+#: lib/index.js:377:32
+msgid "Your session was terminated on the API server."
+msgstr "Ваша сессия былп прервана API серввером."
+
+#: lib/index.js:378:21
+msgid "Session closed"
+msgstr "Сессия закрыта"
+
+#: lib/index.js:453:49
 msgid "Authorization provider is not supported"
 msgstr "Провайдер авторизации не поддерживается"
 
-#: lib/store/session.js:423:44 lib/store/session.js:425:58
-#: lib/store/session.js:427:68
+#: lib/index.js:490:44 lib/index.js:492:58 lib/index.js:494:68
 msgid "Authorization cancelled"
 msgstr "Авторизация отменена"
 
-#: lib/store/session.js:462:69 lib/store/session.js:518:69
+#: lib/index.js:560:69 lib/index.js:616:69
 msgid "Push notifications are not supported"
 msgstr "Push-уведомления не поддерживаются"
 
-#: lib/store/session.js:470:33
+#: lib/index.js:568:33
 msgid "Push notifications are disabled in the browser settings"
 msgstr "Push-уведомления заблокированы в настройках браузера"
 
-#: lib/store/session.js:522:46
+#: lib/index.js:620:46
 msgid "Error disabling push notifications"
 msgstr "Ошибка при отключении push-уведомлений"
