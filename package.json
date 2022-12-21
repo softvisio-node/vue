@@ -61,6 +61,6 @@
         "webpack-preprocessor-loader": "^1.2.0"
     },
     "peerDependencies": {
-        "@softvisio/core": "^6.0.0"
+        "@softvisio/core": "^7.0.0"
     }
 }
