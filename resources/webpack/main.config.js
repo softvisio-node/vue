@@ -7,7 +7,7 @@ import TerserPlugin from "terser-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import PoFile from "#core/locale/po-file";
-import { readConfig } from "#core/config";
+import { parseJsonConfig, parseYamlConfig } from "#core/config";
 
 const DefinePlugin = webpack.DefinePlugin;
 
@@ -249,14 +249,14 @@ export class Main extends WebpackConfig {
                     {
                         "test": /\.json$/,
                         "loader": "@softvisio/vue/webpack-json-loader",
-                        "options": { readConfig, "type": "json" },
+                        "options": { parseJsonConfig },
                     },
 
                     // .yaml
                     {
                         "test": /\.yaml$/,
                         "loader": "@softvisio/vue/webpack-yaml-loader",
-                        "options": { readConfig, "type": "yaml" },
+                        "options": { parseYamlConfig },
                     },
                 ],
             },
