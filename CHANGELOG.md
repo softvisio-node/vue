@@ -1,5 +1,24 @@
 # Changelog
 
+### 7.0.0 (2022-12-21)
+
+Breaking changes:
+
+-   feat!: app refactored
+
+Features:
+
+-   feat: acl refactored
+-   feat: app components
+-   feat: file constructor buffer
+
+Fixes:
+
+-   fix: deps
+-   fix: statuses text
+
+Migration:
+
 ### 6.13.3 (2022-11-07)
 
 Fixes:
