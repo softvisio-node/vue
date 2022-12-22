@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.0.1 (2022-12-22)
+
+Fixes:
+
+-   fix: dev label remover from title
+
 ### 7.0.0 (2022-12-21)
 
 Breaking changes:
