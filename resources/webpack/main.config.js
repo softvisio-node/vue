@@ -272,8 +272,8 @@ export class Main extends WebpackConfig {
                 new DefinePlugin( {
                     "__VUE_OPTIONS_API__": "true",
                     "__VUE_PROD_DEVTOOLS__": "false",
-                    "process.env": options.processEnv,
-                    "process._APP_CONFIG_PLACEHOLDER": options.processConfig,
+                    "process.env": options.appEnv,
+                    "process._APP_CONFIG_PLACEHOLDER": options.appConfig,
                 } ),
 
                 new HtmlPlugin( {

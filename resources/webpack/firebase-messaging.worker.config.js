@@ -25,7 +25,7 @@ export class FirebaseMessagingWorker extends WebpackConfig {
 
         if ( this.isCordova ) return false;
 
-        if ( !this.env.firebase?.web ) return false;
+        if ( !this.appConfig.firebase?.web ) return false;
 
         return true;
     }
@@ -107,8 +107,8 @@ export class FirebaseMessagingWorker extends WebpackConfig {
 
             "plugins": [
                 new DefinePlugin( {
-                    "process.env": options.processEnv,
-                    "process._APP_CONFIG_PLACEHOLDER": options.processConfig,
+                    "process.env": options.appEnv,
+                    "process._APP_CONFIG_PLACEHOLDER": options.appConfig,
                 } ),
             ],
         };
