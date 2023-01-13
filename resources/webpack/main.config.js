@@ -1,4 +1,4 @@
-import WebpackConfig from "#lib/webpack/config";
+import WebpackConfig from "#src/webpack/config";
 import webpack from "webpack";
 import { VueLoaderPlugin } from "vue-loader";
 import HtmlPlugin from "html-webpack-plugin";

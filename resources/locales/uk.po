@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-11-09 07:02+0200\n"
+"POT-Creation-Date: 2023-01-13 08:31+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -11,41 +11,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Poedit-Basepath: ../..\n"
-"X-Generator: Poedit 3.2\n"
-"X-Poedit-SearchPath-0: lib\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-SearchPath-0: src\n"
 
-#: lib/index.js:369:33
+#: src/app.js:385:33
 msgid "Unable to connect to the API server. Check, that you have internet connection."
 msgstr "Не вдається підключитися до сервера API. Перевірте, чи є у вас підключення до Інтернету."
 
-#: lib/index.js:370:21
+#: src/app.js:386:21
 msgid "Connection error"
 msgstr "Помилка з'єднання"
 
-#: lib/index.js:377:32
+#: src/app.js:393:32
 msgid "Your session was terminated on the API server."
 msgstr "Ваша сесія був припинений на сервері API."
 
-#: lib/index.js:378:21
+#: src/app.js:394:21
 msgid "Session closed"
 msgstr "Сесія закрита"
 
-#: lib/index.js:453:49
+#: src/app.js:471:49
 msgid "Authorization provider is not supported"
 msgstr "Постачальник авторизації не підтримується"
 
-#: lib/index.js:490:44 lib/index.js:492:58 lib/index.js:494:68
+#: src/app.js:508:44 src/app.js:510:58 src/app.js:512:68
 msgid "Authorization cancelled"
 msgstr "Авторизацію скасовано"
 
-#: lib/index.js:560:69 lib/index.js:616:69
+#: src/app.js:586:69 src/app.js:642:69
 msgid "Push notifications are not supported"
 msgstr "Push-повідомлення не підтримуються"
 
-#: lib/index.js:568:33
+#: src/app.js:594:33
 msgid "Push notifications are disabled in the browser settings"
 msgstr "Push-повідомлення вимкнено в налаштуваннях браузера"
 
-#: lib/index.js:620:46
+#: src/app.js:646:46
 msgid "Error disabling push notifications"
 msgstr "Помилка вимкнення push-повідомлень"

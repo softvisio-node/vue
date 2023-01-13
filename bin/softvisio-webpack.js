@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import CLI from "#core/cli";
-import Webpack from "#lib/webpack";
+import Webpack from "#src/webpack";
 
 const cli = {
     "title": "Webpack runner",

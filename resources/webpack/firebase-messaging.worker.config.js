@@ -1,4 +1,4 @@
-import WebpackConfig from "#lib/webpack/config";
+import WebpackConfig from "#src/webpack/config";
 import webpack from "webpack";
 import TerserPlugin from "terser-webpack-plugin";
 import { resolve } from "#core/utils";
@@ -6,7 +6,7 @@ import fs from "node:fs";
 
 const DefinePlugin = webpack.DefinePlugin;
 
-const worker = resolve( "#lib/firebase/messaging/web.worker", import.meta.url );
+const worker = resolve( "#src/firebase/messaging/web.worker", import.meta.url );
 
 export class FirebaseMessagingWorker extends WebpackConfig {
     constructor ( options ) {

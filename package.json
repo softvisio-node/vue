@@ -20,18 +20,18 @@
     "type": "module",
     "imports": {
         "#core/*": "@softvisio/core/*",
-        "#lib/*": "./lib/*.js",
+        "#src/*": "./src/*.js",
         "#resources/*": "./resources/*"
     },
     "exports": {
-        ".": "./lib/app.js",
+        ".": "./src/app.js",
         "./*": [
-            "./lib/*.js",
-            "./lib/*.vue"
+            "./src/*.js",
+            "./src/*.vue"
         ],
-        "./webpack-json-loader": "./lib/webpack/json.loader.cjs",
-        "./webpack-po-loader": "./lib/webpack/po.loader.cjs",
-        "./webpack-yaml-loader": "./lib/webpack/yaml.loader.cjs",
+        "./webpack-json-loader": "./src/webpack/json.loader.cjs",
+        "./webpack-po-loader": "./src/webpack/po.loader.cjs",
+        "./webpack-yaml-loader": "./src/webpack/yaml.loader.cjs",
         "./resources/*": "./resources/*"
     },
     "bin": {

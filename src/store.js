@@ -1,5 +1,5 @@
 import Store from "@softvisio/vuex";
-import SessionStore from "#lib/store/session";
+import SessionStore from "#src/store/session";
 
 var INSTALLED;
 

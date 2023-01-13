@@ -1,10 +1,10 @@
-import locale from "#lib/locale";
+import locale from "#src/locale";
 import Events from "#core/events";
 import { createApp } from "vue";
 import Viewport from "@/viewport.vue";
 import Mutex from "#core/threads/mutex";
-import localePlugin from "#lib/plugins/locale";
-import mount from "#lib/plugins/mount";
+import localePlugin from "#src/plugins/locale";
+import mount from "#src/plugins/mount";
 import * as utils from "#vue/utils";
 import Store from "@/store";
 import config from "#vue/config";
@@ -13,7 +13,7 @@ import uuidv4 from "#core/uuid";
 import result from "#core/result";
 import constants from "#core/app/constants";
 import env from "#core/env";
-import firebase from "#lib/firebase";
+import firebase from "#src/firebase";
 
 const DEFAULT_MOUNT_SELECTOR = "#app",
     API_TOKEN_KEY = "apiToken",
