@@ -620,7 +620,7 @@ export default class App extends Events {
             }
         }
 
-        const res = await this.$api.call( "session/register-push-notifications-token", token );
+        const res = await this.#api.call( "session/register-push-notifications-token", token );
 
         if ( res.ok ) {
             this.#pushNotificationsData.tokenId = tokenId;
