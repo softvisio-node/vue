@@ -594,20 +594,19 @@ export default class App extends Events {
             return result( [500, window.i18nd( "vue", "Push notifications are disabled in the browser settings" )] );
         }
 
-        const tokenId = token.substring( token.length - 16 ),
-            userId = this.#pushNotificationsUserId;
+        const tokenId = this.#pushNotificationsUserId + "/" + this.#settings.push_notifications_prefix + "/" + token.substring( token.length - 16 );
 
-        // token not changed
-        if ( tokenId === this.#pushNotificationsData.tokenId ) {
+        // has old token
+        if ( this.#pushNotificationsData.tokenId ) {
 
-            // token is valid for current user
-            if ( userId === this.#pushNotificationsData.userId ) {
+            // token not changed and is valid
+            if ( tokenId === this.#pushNotificationsData.tokenId ) {
                 this.#store.session.pushNotificationsEnabled = true;
 
                 return result( 200 );
             }
 
-            // token is not valid for current user
+            // token changed or not valid
             else {
                 this.#store.session.pushNotificationsEnabled = false;
 
@@ -624,7 +623,6 @@ export default class App extends Events {
 
         if ( res.ok ) {
             this.#pushNotificationsData.tokenId = tokenId;
-            this.#pushNotificationsData.userId = this.#pushNotificationsUserId;
             this.#storePushNotificationsData();
 
             this.#store.session.pushNotificationsEnabled = true;
@@ -648,7 +646,6 @@ export default class App extends Events {
         this.#store.session.pushNotificationsEnabled = false;
 
         this.#pushNotificationsData.tokenId = null;
-        this.#pushNotificationsData.userId = null;
         this.#storePushNotificationsData();
 
         return result( 200 );
