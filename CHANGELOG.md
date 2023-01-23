@@ -1,5 +1,12 @@
 # Changelog
 
+### 7.0.4 (2023-01-23)
+
+Fixes:
+
+-   fix: push notifications
+-   fix: push notifications api call
+
 ### 7.0.3 (2023-01-18)
 
 Fixes:
