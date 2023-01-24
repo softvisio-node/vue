@@ -6,7 +6,7 @@
         "softvisio",
         "vue"
     ],
-    "homepage": "https://softvisio.github.io/vue/",
+    "homepage": "https://softvisio-node.github.io/vue/",
     "bugs": {
         "url": "https://github.com/softvisio-node/vue/issues",
         "email": "zdm <zdm@softvisio.net>"
