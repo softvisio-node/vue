@@ -1,6 +1,6 @@
-import { Main as Super } from "@softvisio/webpack/configs/main";
+import WebpackComponent from "@softvisio/webpack/components/main";
 
-export class Main extends Super {
+export default class extends WebpackComponent {
 
     // properties
     get resolveAlias () {

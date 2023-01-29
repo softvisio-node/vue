@@ -21,8 +21,7 @@
     "imports": {
         "#core/*": "@softvisio/core/*",
         "#src/*": "./src/*.js",
-        "#resources/*": "./resources/*",
-        "#webpack/*": "./resources/webpack/*/index.js"
+        "#resources/*": "./resources/*"
     },
     "exports": {
         "./*": [
@@ -30,7 +29,7 @@
             "./src/*.vue"
         ],
         "./resources/*": "./resources/*",
-        "./webpack/*": "./resources/webpack/*/index.js"
+        "./webpack-components/*": "./resources/webpack-components/*/index.js"
     },
     "peerDependencies": {
         "@softvisio/core": "^7.0.0",
