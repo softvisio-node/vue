@@ -14,8 +14,8 @@ export default class extends WebpackComponent {
     }
 
     // protected
-    _generate ( options ) {
-        const config = super._generate( options );
+    _buildWebpackConfig ( options ) {
+        const config = super._buildWebpackConfig( options );
 
         config.entry.firebase.import = worker;
 
