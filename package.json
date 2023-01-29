@@ -32,7 +32,6 @@
         "./webpack-components/*": "./resources/webpack-components/*/index.js"
     },
     "peerDependencies": {
-        "@softvisio/core": "^7.0.0",
         "@softvisio/vuex": "^4.0.0",
         "@softvisio/webpack": "^1.0.0"
     }
