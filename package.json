@@ -32,6 +32,7 @@
         "./webpack-components/*": "./resources/webpack-components/*/index.js"
     },
     "peerDependencies": {
+        "@firebase/messaging": "^0.12.0",
         "@softvisio/vuex": "^4.0.0",
         "@softvisio/webpack": "^1.0.0"
     }
