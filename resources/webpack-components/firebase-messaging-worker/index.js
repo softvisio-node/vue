@@ -1,4 +1,4 @@
-import WebpackComponent from "@softvisio/webpack/components/firebase-messaging-worker";
+import WebpackComponent from "@softvisio/webpack/webpack-components/firebase-messaging-worker";
 import { resolve } from "#core/utils";
 
 export default class extends WebpackComponent {
