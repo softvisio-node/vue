@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.0.11 (2023-01-30)
+
+Fixes:
+
+-   fix: webpack components
+
 ### 7.0.10 (2023-01-29)
 
 Fixes:
