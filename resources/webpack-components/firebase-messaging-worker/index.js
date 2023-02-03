@@ -33,9 +33,9 @@ export default class extends WebpackComponent {
         return "firebase-messaging.worker.js";
     }
 
-    get resolveAlias () {
+    get webpackResolveAlias () {
         return {
-            ...super.resolveAlias,
+            ...super.webpackResolveAlias,
             "#vue": "@softvisio/vue",
         };
     }

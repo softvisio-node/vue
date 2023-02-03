@@ -3,9 +3,9 @@ import WebpackComponent from "@softvisio/webpack/webpack-components/main";
 export default class extends WebpackComponent {
 
     // properties
-    get resolveAlias () {
+    get webpackResolveAlias () {
         return {
-            ...super.resolveAlias,
+            ...super.webpackResolveAlias,
             "vue$": "vue/dist/vue.runtime.esm-bundler.js",
             "#vue": "@softvisio/vue",
         };
