@@ -25,11 +25,11 @@ export default class extends WebpackComponent {
         return true;
     }
 
-    get entryImport () {
+    get webpackEntryImport () {
         return resolve( "#src/firebase/messaging/web.worker", import.meta.url );
     }
 
-    get entryFilename () {
+    get webpackEntryFilename () {
         return "firebase-messaging.worker.js";
     }
 
