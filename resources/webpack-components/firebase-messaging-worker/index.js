@@ -44,10 +44,10 @@ export default class extends WebpackComponent {
     _init () {
         super._init();
 
-        this.preprocessorParams.firebaseMessagingWorkerEnabled = this.isEnabled;
+        this.sharedPreprocessorParams.firebaseMessagingWorkerEnabled = this.isEnabled;
 
         if ( this.isEnabled ) {
-            this.preprocessorParams.firebaseMessagingWorkerMixin = fs.existsSync( path.join( this.context, "src/firebase-messaging.worker.js" ) );
+            this.sharedPreprocessorParams.firebaseMessagingWorkerMixin = fs.existsSync( path.join( this.context, "src/firebase-messaging.worker.js" ) );
 
             this.sharedResolveAlias["#firebaseMessagingWorker$"] = path.join( this.tmpPath, "firebase-messaging.worker.js" );
         }
