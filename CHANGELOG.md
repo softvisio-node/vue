@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.0.13 (2023-02-04)
+
+Fixes:
+
+-   fix: webpack config options
+
 ### 7.0.12 (2023-02-04)
 
 Fixes:
