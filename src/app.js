@@ -14,6 +14,7 @@ import result from "#core/result";
 import constants from "#core/app/constants";
 import env from "#core/env";
 import firebase from "#src/firebase";
+import sessionStore from "#vue/store1/session";
 
 const DEFAULT_MOUNT_SELECTOR = "#app",
     API_TOKEN_KEY = "apiToken",
@@ -24,7 +25,6 @@ export default class App extends Events {
     #deviceReady = false;
     #vue;
     #api;
-    #store;
     #settings = {};
     #user = {};
     #permissions = new Set();
@@ -152,7 +152,6 @@ export default class App extends Events {
 
         this.#vue.use( mount );
         this.#vue.use( Store );
-        this.#store = this.#vue.config.globalProperties.$store;
 
         this.setTitle( config.title );
     }
@@ -223,7 +222,7 @@ export default class App extends Events {
 
         if ( config.titleIcon ) title = config.titleIcon + " " + title;
 
-        this.#store.session.title = title;
+        sessionStore.title = title;
     }
 
     async authorize ( options ) {
@@ -589,7 +588,7 @@ export default class App extends Events {
 
         // unable to get token
         if ( !token ) {
-            this.#store.session.pushNotificationsEnabled = false;
+            sessionStore.pushNotificationsEnabled = false;
 
             return result( [500, window.i18nd( "vue", "Push notifications are disabled in the browser settings" )] );
         }
@@ -599,14 +598,14 @@ export default class App extends Events {
 
         // token not changed and is valid
         if ( tokenId === this.#pushNotificationsData.tokenId ) {
-            this.#store.session.pushNotificationsEnabled = true;
+            sessionStore.pushNotificationsEnabled = true;
 
             return result( 200 );
         }
 
         // token not changed but user or prefix changed
         else if ( this.#pushNotificationsData.tokenId?.endsWith( tokenHash ) ) {
-            this.#store.session.pushNotificationsEnabled = false;
+            sessionStore.pushNotificationsEnabled = false;
 
             // disable old token
             const disabled = await this.#disablePushNotifications();
@@ -622,12 +621,12 @@ export default class App extends Events {
             this.#pushNotificationsData.tokenId = tokenId;
             this.#storePushNotificationsData();
 
-            this.#store.session.pushNotificationsEnabled = true;
+            sessionStore.pushNotificationsEnabled = true;
         }
         else {
             await this.#disablePushNotifications();
 
-            this.#store.session.pushNotificationsEnabled = false;
+            sessionStore.pushNotificationsEnabled = false;
         }
 
         return res;
@@ -640,7 +639,7 @@ export default class App extends Events {
 
         if ( !disabled ) return result( [500, window.i18nd( "vue", "Error disabling push notifications" )] );
 
-        this.#store.session.pushNotificationsEnabled = false;
+        sessionStore.pushNotificationsEnabled = false;
 
         this.#pushNotificationsData.tokenId = null;
         this.#storePushNotificationsData();

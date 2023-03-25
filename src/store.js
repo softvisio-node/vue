@@ -1,5 +1,4 @@
 import Store from "@softvisio/vuex";
-import SessionStore from "#src/store/session";
 
 var INSTALLED;
 
@@ -41,7 +40,5 @@ export default class VueStore extends Store {
         app.config.globalProperties.$store = store;
     }
 
-    initMainStore () {
-        this.session ||= SessionStore.new();
-    }
+    initMainStore () {}
 }
