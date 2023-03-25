@@ -33,6 +33,7 @@
     },
     "peerDependencies": {
         "@firebase/messaging": "^0.12.0",
+        "@softvisio/vue-store": "^1.0.3",
         "@softvisio/vuex": "^4.0.0",
         "@softvisio/webpack": "^1.0.0"
     }
