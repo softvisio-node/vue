@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.1.0 (2023-03-25)
+
+Features:
+
+-   feat: store refactored
+
 ### 7.0.14 (2023-03-25)
 
 Fixes:
