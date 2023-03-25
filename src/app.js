@@ -6,7 +6,6 @@ import Mutex from "#core/threads/mutex";
 import localePlugin from "#src/plugins/locale";
 import mount from "#src/plugins/mount";
 import * as utils from "#vue/utils";
-import Store from "@/store";
 import config from "#vue/config";
 import Api from "#core/api";
 import uuidv4 from "#core/uuid";
@@ -14,7 +13,7 @@ import result from "#core/result";
 import constants from "#core/app/constants";
 import env from "#core/env";
 import firebase from "#src/firebase";
-import sessionStore from "#vue/store1/session";
+import sessionStore from "#vue/store/session";
 
 const DEFAULT_MOUNT_SELECTOR = "#app",
     API_TOKEN_KEY = "apiToken",
@@ -151,7 +150,6 @@ export default class App extends Events {
         this.#vue.config.globalProperties.$utils = this.utils;
 
         this.#vue.use( mount );
-        this.#vue.use( Store );
 
         this.setTitle( config.title );
     }

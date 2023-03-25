@@ -1,4 +1,4 @@
-import VueStore from "#vue/store1";
+import VueStore from "#vue/store";
 
 class Store extends VueStore {
     title;
