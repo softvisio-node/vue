@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.1.1 (2023-03-26)
+
+Fixes:
+
+-   fix: stores renamed
+
 ### 7.1.0 (2023-03-25)
 
 Features:
