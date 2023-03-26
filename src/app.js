@@ -13,7 +13,7 @@ import result from "#core/result";
 import constants from "#core/app/constants";
 import env from "#core/env";
 import firebase from "#src/firebase";
-import sessionStore from "#vue/store/session";
+import sessionStore from "#vue/stores/session";
 
 const DEFAULT_MOUNT_SELECTOR = "#app",
     API_TOKEN_KEY = "apiToken",
