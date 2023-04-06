@@ -40,12 +40,12 @@ msgstr "Авторизация отменена"
 
 #: src/app.js:586:69 src/app.js:642:69
 msgid "Push notifications are not supported"
-msgstr "Push-уведомления не поддерживаются"
+msgstr "Push уведомления не поддерживаются"
 
 #: src/app.js:594:33
 msgid "Push notifications are disabled in the browser settings"
-msgstr "Push-уведомления заблокированы в настройках браузера"
+msgstr "Push уведомления заблокированы в настройках браузера"
 
 #: src/app.js:646:46
 msgid "Error disabling push notifications"
-msgstr "Ошибка при отключении push-уведомлений"
+msgstr "Ошибка при отключении push уведомлений"

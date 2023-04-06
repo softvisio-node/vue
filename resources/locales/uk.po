@@ -40,12 +40,12 @@ msgstr "Авторизацію скасовано"
 
 #: src/app.js:586:69 src/app.js:642:69
 msgid "Push notifications are not supported"
-msgstr "Push-повідомлення не підтримуються"
+msgstr "Push повідомлення не підтримуються"
 
 #: src/app.js:594:33
 msgid "Push notifications are disabled in the browser settings"
-msgstr "Push-повідомлення вимкнено в налаштуваннях браузера"
+msgstr "Push повідомлення вимкнено в налаштуваннях браузера"
 
 #: src/app.js:646:46
 msgid "Error disabling push notifications"
-msgstr "Помилка вимкнення push-повідомлень"
+msgstr "Помилка вимкнення push повідомлень"
