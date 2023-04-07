@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.1.2 (2023-04-07)
+
+Fixes:
+
+-   fix: tramslations
+
 ### 7.1.1 (2023-03-26)
 
 Fixes:
