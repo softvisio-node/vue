@@ -591,7 +591,7 @@ export default class App extends Events {
             return result( [500, window.i18nd( "vue", "Push notifications are disabled in the browser settings" )] );
         }
 
-        const tokenHash = token.substring( token.length - 16 ),
+        const tokenHash = token.slice( -16 ),
             tokenId = [this.#pushNotificationsUserId, this.#settings.push_notifications_prefix, tokenHash].join( "/" );
 
         // token not changed and is valid
