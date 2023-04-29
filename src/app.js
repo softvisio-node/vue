@@ -158,6 +158,10 @@ export default class App extends Events {
         this.#vue = this.#vue.mount( selector || DEFAULT_MOUNT_SELECTOR );
     }
 
+    reload () {
+        window.location.reload();
+    }
+
     publish ( name, ...args ) {
         if ( name === "api" ) {
             name = args.shift();
@@ -259,7 +263,7 @@ export default class App extends Events {
             window.localStorage.setItem( API_TOKEN_KEY, res.data.token );
 
             // reload
-            window.location.reload();
+            this.reload();
         }
 
         return res;
@@ -292,7 +296,7 @@ export default class App extends Events {
             window.localStorage.setItem( API_TOKEN_KEY, res.data.token );
 
             // reload
-            window.location.reload();
+            this.reload();
         }
 
         return res;
@@ -532,7 +536,7 @@ export default class App extends Events {
         window.localStorage.removeItem( API_TOKEN_KEY );
 
         // reload
-        window.location.reload();
+        this.reload();
     }
 
     async #onAuthorization () {
