@@ -1,5 +1,15 @@
 # Changelog
 
+### 7.2.0 (2023-04-30)
+
+Features:
+
+-   feat: app .reload()
+
+Fixes:
+
+-   fix: substring optimized
+
 ### 7.1.2 (2023-04-07)
 
 Fixes:
