@@ -2,7 +2,7 @@ import locale from "#src/locale";
 import Events from "#core/events";
 import { createApp } from "vue";
 import Viewport from "@/viewport.vue";
-import Mutex from "#core/threads/mutex";
+import Mutex from "#core/threads/mutex1";
 import localePlugin from "#src/plugins/locale";
 import mount from "#src/plugins/mount";
 import * as utils from "#vue/utils";
@@ -540,22 +540,21 @@ export default class App extends Events {
     }
 
     async #onAuthorization () {
-        if ( !this.#authorizationMutex.tryDown() ) return await this.#authorizationMutex.signal.wait();
+        if ( !this.#authorizationMutex.tryLock() ) return this.#authorizationMutex.wait();
 
         const res = await this._onAuthorization();
 
-        this.#authorizationMutex.signal.broadcast( res );
-        this.#authorizationMutex.up();
+        this.#authorizationMutex.unlock( res );
 
         return res;
     }
 
     async #onInsufficientPermissions () {
-        if ( !this.#insufficientPermissionsMutex.tryDown() ) return;
+        if ( !this.#insufficientPermissionsMutex.tryLock() ) return;
 
         await this._onInsufficientPermissions();
 
-        this.#insufficientPermissionsMutex.up();
+        this.#insufficientPermissionsMutex.unlock();
     }
 
     get #pushNotificationsUserId () {
