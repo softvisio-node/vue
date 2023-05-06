@@ -2,7 +2,7 @@ import locale from "#src/locale";
 import Events from "#core/events";
 import { createApp } from "vue";
 import Viewport from "@/viewport.vue";
-import Mutex from "#core/threads/mutex1";
+import Mutex from "#core/threads/mutex";
 import localePlugin from "#src/plugins/locale";
 import mount from "#src/plugins/mount";
 import * as utils from "#vue/utils";
