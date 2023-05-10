@@ -47,6 +47,9 @@ export default {
                 component = await component.__asyncLoader();
             }
 
+            // defive cache
+            cache ??= true;
+
             // define cache key
             if ( cache && cache === true ) cache = component;
 
