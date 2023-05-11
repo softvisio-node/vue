@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.3.1 (2023-05-11)
+
+Fixes:
+
+-   fix: mount cache enabled by default
+
 ### 7.3.0 (2023-05-06)
 
 Features:
