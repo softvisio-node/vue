@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.3.2 (2023-05-12)
+
+Fixes:
+
+-   fix: app refactored
+
 ### 7.3.1 (2023-05-11)
 
 Fixes:
