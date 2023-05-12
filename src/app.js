@@ -112,7 +112,7 @@ export default class VueApp extends Events {
         this.#initialized = true;
 
         // theme
-        this.#theme = new Theme();
+        this.#theme = Theme.new( "theme" );
 
         // create viewport
         this.#viewport = new Viewport( this );
