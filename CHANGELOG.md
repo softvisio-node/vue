@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.3.3 (2023-05-12)
+
+Fixes:
+
+-   fix: webpack compoent validator
+
 ### 7.3.2 (2023-05-12)
 
 Fixes:
