@@ -100,20 +100,19 @@ export default class VueApp extends Events {
     }
 
     // public
-    // XXX
     async init () {
         if ( this.#initialized ) throw Error( `App is already initialized` );
 
         this.#initialized = true;
 
+        // create viewport
+        this.#viewport = new Viewport( this );
+        await this.#viewport.init();
+
         // init push notifications
         this.#pushNotificationsData = JSON.parse( window.localStorage.getItem( PUSH_NOTIFICATIONS_KEY ) ) || {
             "enabled": {},
         };
-
-        // create viewport
-        this.#viewport = new Viewport( this );
-        await this.#viewport.init();
 
         // wait for device ready under cordova
         if ( this.isCordova ) {
