@@ -111,8 +111,9 @@ export default class VueApp extends Events {
             "enabled": {},
         };
 
-        // XXX
-        // await this._initViewport();
+        // create viewport
+        this.#viewport = new Viewport( this );
+        await this.#viewport.init();
 
         // wait for device ready under cordova
         if ( this.isCordova ) {
@@ -132,10 +133,6 @@ export default class VueApp extends Events {
                 "onAuthorization": this.#onAuthorization.bind( this ),
             } );
         }
-
-        // create viewport
-        this.#viewport = new Viewport( this );
-        await this.#viewport.init();
 
         this.setTitle( config.title );
     }

@@ -23,26 +23,28 @@ export default class {
     }
 
     // public
-    async init () {
-        await this._initViewport();
-
-        this.#vue = createApp( Viewport );
-
-        this.#vue.config.globalProperties.$app = this.#app;
-
-        this.#vue.use( localePlugin );
-
-        this.#vue.config.globalProperties.$api = this.#app.api;
-
-        this.#vue.config.globalProperties.$utils = this.#app.utils;
-
-        this.#vue.use( mount );
-    }
+    async init () {}
 
     mount ( selector ) {
-        this.#vue = this.#vue.mount( selector || DEFAULT_MOUNT_SELECTOR );
+        const vue = this._createVauApp();
+
+        this.#vue = vue.mount( selector || DEFAULT_MOUNT_SELECTOR );
     }
 
     // protected
-    async _initViewport () {}
+    _createVauApp () {
+        const vue = createApp( Viewport );
+
+        vue.config.globalProperties.$app = this.#app;
+
+        vue.use( localePlugin );
+
+        vue.config.globalProperties.$api = this.#app.api;
+
+        vue.config.globalProperties.$utils = this.#app.utils;
+
+        vue.use( mount );
+
+        return vue;
+    }
 }
