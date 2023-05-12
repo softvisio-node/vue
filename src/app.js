@@ -10,7 +10,7 @@ import constants from "#core/app/constants";
 import env from "#core/env";
 import firebase from "#src/firebase";
 import sessionStore from "#vue/stores/session";
-import Viewport from "#vue/viewport1";
+import Viewport from "#vue/app/viewport";
 
 const API_TOKEN_KEY = "apiToken",
     PUSH_NOTIFICATIONS_KEY = "pushNotifications";

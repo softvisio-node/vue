@@ -1,6 +1,6 @@
 import { createApp } from "vue";
-import localePlugin from "#src/plugins/locale";
-import mount from "#src/plugins/mount";
+import localePlugin from "#src/app/viewport/locale";
+import mount from "#src/app/viewport/mount";
 import Viewport from "@/viewport.vue";
 
 const DEFAULT_MOUNT_SELECTOR = "#app";
