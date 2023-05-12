@@ -6,15 +6,6 @@ import path from "node:path";
 export default class extends WebpackComponent {
 
     // properties
-    get schemas () {
-        return [
-
-            //
-            ...super.schemas,
-            new URL( "env.schema.yaml", import.meta.url ),
-        ];
-    }
-
     get isEnabled () {
         if ( !super.isEnabled ) return false;
 
@@ -38,6 +29,11 @@ export default class extends WebpackComponent {
             ...super.webpackResolveAlias,
             "#vue": "@softvisio/vue",
         };
+    }
+
+    // public
+    validateEnv ( env ) {
+        return super.validateEnv( env ) || this._validateEnv( env, import.meta.url );
     }
 
     // protected
