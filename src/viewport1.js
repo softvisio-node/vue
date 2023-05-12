@@ -26,6 +26,8 @@ export default class {
     async init () {}
 
     mount ( selector ) {
+        if ( this.#vue ) throw Error( `Vue app is already mounted` );
+
         const vue = this._createVauApp();
 
         this.#vue = vue.mount( selector || DEFAULT_MOUNT_SELECTOR );
