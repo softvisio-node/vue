@@ -11,6 +11,7 @@ import env from "#core/env";
 import firebase from "#src/firebase";
 import sessionStore from "#vue/stores/session";
 import Viewport from "#vue/app/viewport";
+import Theme from "#src/app/theme";
 
 const API_TOKEN_KEY = "apiToken",
     PUSH_NOTIFICATIONS_KEY = "pushNotifications";
@@ -18,6 +19,7 @@ const API_TOKEN_KEY = "apiToken",
 export default class VueApp extends Events {
     #initialized;
     #deviceReady = false;
+    #theme;
     #api;
     #settings = {};
     #user = {};
@@ -45,6 +47,10 @@ export default class VueApp extends Events {
 
     get isDeviceReady () {
         return this.#deviceReady;
+    }
+
+    get theme () {
+        return this.#theme;
     }
 
     get utils () {
@@ -104,6 +110,9 @@ export default class VueApp extends Events {
         if ( this.#initialized ) throw Error( `App is already initialized` );
 
         this.#initialized = true;
+
+        // theme
+        this.#theme = new Theme();
 
         // create viewport
         this.#viewport = new Viewport( this );
