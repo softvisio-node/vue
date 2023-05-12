@@ -1,10 +1,6 @@
 import locale from "#src/locale";
 import Events from "#core/events";
-import { createApp } from "vue";
-import Viewport from "@/viewport.vue";
 import Mutex from "#core/threads/mutex";
-import localePlugin from "#src/plugins/locale";
-import mount from "#src/plugins/mount";
 import * as utils from "#vue/utils";
 import config from "#vue/config";
 import Api from "#core/api";
@@ -14,15 +10,14 @@ import constants from "#core/app/constants";
 import env from "#core/env";
 import firebase from "#src/firebase";
 import sessionStore from "#vue/stores/session";
+import Viewport from "#vue/viewport1";
 
-const DEFAULT_MOUNT_SELECTOR = "#app",
-    API_TOKEN_KEY = "apiToken",
+const API_TOKEN_KEY = "apiToken",
     PUSH_NOTIFICATIONS_KEY = "pushNotifications";
 
-export default class App extends Events {
+export default class VueApp extends Events {
     #initialized;
     #deviceReady = false;
-    #vue;
     #api;
     #settings = {};
     #user = {};
@@ -32,6 +27,7 @@ export default class App extends Events {
     #oauthWindow;
     #signingOut;
     #pushNotificationsData;
+    #viewport;
 
     // static
     static async new () {
@@ -49,10 +45,6 @@ export default class App extends Events {
 
     get isDeviceReady () {
         return this.#deviceReady;
-    }
-
-    get vue () {
-        return this.#vue;
     }
 
     get utils () {
@@ -108,6 +100,7 @@ export default class App extends Events {
     }
 
     // public
+    // XXX
     async init () {
         if ( this.#initialized ) throw Error( `App is already initialized` );
 
@@ -118,7 +111,8 @@ export default class App extends Events {
             "enabled": {},
         };
 
-        await this._initViewport();
+        // XXX
+        // await this._initViewport();
 
         // wait for device ready under cordova
         if ( this.isCordova ) {
@@ -131,31 +125,23 @@ export default class App extends Events {
 
         this._onDeviceReady();
 
-        this.#vue = createApp( Viewport );
-
-        this.#vue.config.globalProperties.$app = this;
-
-        this.#vue.use( localePlugin );
-
         // init api
         if ( config.apiUrl ) {
             this.#api = Api.new( config.apiUrl, {
                 "token": window.localStorage.getItem( API_TOKEN_KEY ),
                 "onAuthorization": this.#onAuthorization.bind( this ),
             } );
-
-            this.#vue.config.globalProperties.$api = this.#api;
         }
 
-        this.#vue.config.globalProperties.$utils = this.utils;
-
-        this.#vue.use( mount );
+        // create viewport
+        this.#viewport = new Viewport( this );
+        await this.#viewport.init();
 
         this.setTitle( config.title );
     }
 
     mount ( selector ) {
-        this.#vue = this.#vue.mount( selector || DEFAULT_MOUNT_SELECTOR );
+        this.#viewport.mount( selector );
     }
 
     reload () {
@@ -355,8 +341,6 @@ export default class App extends Events {
     }
 
     // protected
-    async _initViewport () {}
-
     _onDeviceReady () {
         this.#deviceReady = true;
 
