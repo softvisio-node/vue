@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.3.4 (2023-05-13)
+
+Fixes:
+
+-   fix: session store integrated to app
+
 ### 7.3.3 (2023-05-12)
 
 Fixes:
