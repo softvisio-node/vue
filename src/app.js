@@ -9,8 +9,8 @@ import result from "#core/result";
 import constants from "#core/app/constants";
 import env from "#core/env";
 import firebase from "#src/firebase";
-import sessionStore from "#vue/stores/session";
 import Viewport from "#vue/app/viewport";
+import Session from "#src/app/session";
 import Theme from "#src/app/theme";
 
 const API_TOKEN_KEY = "apiToken",
@@ -19,6 +19,7 @@ const API_TOKEN_KEY = "apiToken",
 export default class VueApp extends Events {
     #initialized;
     #deviceReady = false;
+    #session;
     #theme;
     #api;
     #settings = {};
@@ -47,6 +48,10 @@ export default class VueApp extends Events {
 
     get isDeviceReady () {
         return this.#deviceReady;
+    }
+
+    get session () {
+        return this.#session;
     }
 
     get theme () {
@@ -110,6 +115,9 @@ export default class VueApp extends Events {
         if ( this.#initialized ) throw Error( `App is already initialized` );
 
         this.#initialized = true;
+
+        // session
+        this.#session = Session.new( "session" );
 
         // theme
         this.#theme = Theme.new( "theme" );
@@ -215,7 +223,7 @@ export default class VueApp extends Events {
 
         if ( config.titleIcon ) title = config.titleIcon + " " + title;
 
-        sessionStore.title = title;
+        this.#session.title = title;
     }
 
     async authorize ( options ) {
@@ -578,7 +586,7 @@ export default class VueApp extends Events {
 
         // unable to get token
         if ( !token ) {
-            sessionStore.pushNotificationsEnabled = false;
+            this.#session.pushNotificationsEnabled = false;
 
             return result( [500, window.i18nd( "vue", "Push notifications are disabled in the browser settings" )] );
         }
@@ -588,14 +596,14 @@ export default class VueApp extends Events {
 
         // token not changed and is valid
         if ( tokenId === this.#pushNotificationsData.tokenId ) {
-            sessionStore.pushNotificationsEnabled = true;
+            this.#session.pushNotificationsEnabled = true;
 
             return result( 200 );
         }
 
         // token not changed but user or prefix changed
         else if ( this.#pushNotificationsData.tokenId?.endsWith( tokenHash ) ) {
-            sessionStore.pushNotificationsEnabled = false;
+            this.#session.pushNotificationsEnabled = false;
 
             // disable old token
             const disabled = await this.#disablePushNotifications();
@@ -611,12 +619,12 @@ export default class VueApp extends Events {
             this.#pushNotificationsData.tokenId = tokenId;
             this.#storePushNotificationsData();
 
-            sessionStore.pushNotificationsEnabled = true;
+            this.#session.pushNotificationsEnabled = true;
         }
         else {
             await this.#disablePushNotifications();
 
-            sessionStore.pushNotificationsEnabled = false;
+            this.#session.pushNotificationsEnabled = false;
         }
 
         return res;
@@ -629,7 +637,7 @@ export default class VueApp extends Events {
 
         if ( !disabled ) return result( [500, window.i18nd( "vue", "Error disabling push notifications" )] );
 
-        sessionStore.pushNotificationsEnabled = false;
+        this.#session.pushNotificationsEnabled = false;
 
         this.#pushNotificationsData.tokenId = null;
         this.#storePushNotificationsData();
