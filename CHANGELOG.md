@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.3.5 (2023-05-14)
+
+Fixes:
+
+-   fix: viewport mount
+
 ### 7.3.4 (2023-05-13)
 
 Fixes:
