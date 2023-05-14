@@ -1,5 +1,4 @@
 import { createApp } from "vue";
-import localePlugin from "#src/app/viewport/locale";
 import mount from "#src/app/viewport/mount";
 import Viewport from "@/viewport.vue";
 
@@ -39,7 +38,10 @@ export default class {
 
         vue.config.globalProperties.$app = this.#app;
 
-        vue.use( localePlugin );
+        // locale
+        vue.config.globalProperties.msgid = window.msgid;
+        vue.config.globalProperties.i18n = window.i18n;
+        vue.config.globalProperties.i18nd = window.i18nd;
 
         vue.config.globalProperties.$api = this.#app.api;
 
