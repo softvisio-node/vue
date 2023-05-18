@@ -12,6 +12,7 @@ import firebase from "#src/firebase";
 import Viewport from "#vue/app/viewport";
 import Session from "#src/app/session";
 import Theme from "#src/app/theme";
+import PushNotifications from "#src/app/push-notifications";
 
 const API_TOKEN_KEY = "apiToken",
     PUSH_NOTIFICATIONS_KEY = "pushNotifications";
@@ -21,6 +22,7 @@ export default class VueApp extends Events {
     #deviceReady = false;
     #session;
     #theme;
+    #pushNotifications;
     #api;
     #settings = {};
     #user = {};
@@ -56,6 +58,10 @@ export default class VueApp extends Events {
 
     get theme () {
         return this.#theme;
+    }
+
+    get pushNotifications () {
+        return this.#pushNotifications;
     }
 
     get utils () {
@@ -125,6 +131,8 @@ export default class VueApp extends Events {
 
         // theme
         this.#theme = Theme.new();
+
+        this.#pushNotifications = PushNotifications.new();
 
         // create viewport
         this.#viewport = new Viewport( this );

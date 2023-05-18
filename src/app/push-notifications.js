@@ -1,11 +1,11 @@
 import VueStore from "#vue/store";
 
-export default class Session extends VueStore {
+export default class PushNotifications extends VueStore {
     title;
     pushNotificationsEnabled = false;
 
     // static
     static new () {
-        return super.new( "session" );
+        return super.new( "push-notifications" );
     }
 }
