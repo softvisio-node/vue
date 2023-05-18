@@ -106,6 +106,10 @@ export default class VueApp extends Events {
         return id;
     }
 
+    get internalNotificationsEnabled () {
+        return this.#settings.internal_notifications_enabled;
+    }
+
     get pushNotificationsSupported () {
         return firebase.isSupported && !!this.#settings.push_notifications_supported;
     }
