@@ -3,7 +3,7 @@ import config from "#vue/config";
 import Events from "#core/events";
 
 const DARK_MODE_KEY = "darkMode";
-const SYSTEM_DARK_MODE_KEY = "systemDarkMode";
+const DEVICE_DARK_MODE_KEY = "deviceDarkMode";
 const THEME_KEY = "theme";
 const DEFAULT_THEME = {
     "base": config.theme.baseColor,
@@ -13,7 +13,7 @@ const DEFAULT_THEME = {
 export default class Theme extends Store {
 
     // state
-    _systemDarkMode;
+    _deviceDarkMode;
     _darkMode;
     _theme;
 
@@ -25,52 +25,52 @@ export default class Theme extends Store {
 
         this.#app = app;
 
-        // listen for system dark mode change
+        // listen for device dark mode change
         window.matchMedia( "(prefers-color-scheme: dark)" ).addEventListener( "change", e => {
-            if ( !this._systemDarkMode ) return;
+            if ( !this._deviceDarkMode ) return;
 
             this.#setDarkMode( e.matches );
         } );
 
         // darkMode
-        this._systemDarkMode = window.localStorage.getItem( SYSTEM_DARK_MODE_KEY );
+        this._deviceDarkMode = window.localStorage.getItem( DEVICE_DARK_MODE_KEY );
         this._darkMode = window.localStorage.getItem( DARK_MODE_KEY );
 
-        // system dark mode is not set
-        if ( this._systemDarkMode == null ) {
+        // device dark mode is not set
+        if ( this._deviceDarkMode == null ) {
 
             // user-defined dark mode is set
             if ( this._darkMode != null ) {
-                this._systemDarkMode = false;
+                this._deviceDarkMode = false;
             }
 
             // user-defined dark mode is not set
             else {
 
-                // follow system dark mode
+                // follow device dark mode
                 if ( config.theme.darkMode === "auto" ) {
-                    this._systemDarkMode = true;
+                    this._deviceDarkMode = true;
                 }
 
                 // use user-defined dark mode
                 else {
-                    this._systemDarkMode = false;
+                    this._deviceDarkMode = false;
                 }
             }
         }
         else {
-            this._systemDarkMode = !!JSON.parse( this._systemDarkMode );
+            this._deviceDarkMode = !!JSON.parse( this._deviceDarkMode );
         }
 
-        // follow system dark mode settings
-        if ( this._systemDarkMode ) {
-            this._darkMode = this.#getSystemDarkMode();
+        // follow device dark mode settings
+        if ( this._deviceDarkMode ) {
+            this._darkMode = this.#getDeviceDarkMode();
         }
 
         // user-defined dark mode is not set
         else if ( this._darkMode == null ) {
             if ( config.theme.darkMode === "auto" ) {
-                this._darkMode = this.#getSystemDarkMode();
+                this._darkMode = this.#getDeviceDarkMode();
             }
             else {
                 this._darkMode = !!config.theme.darkMode;
@@ -97,14 +97,18 @@ export default class Theme extends Store {
     }
 
     // properties
-    get systemDarkMode () {
-        return this._systemDarkMode;
+    get app () {
+        return this.#app;
     }
 
-    set systemDarkMode ( systemDarkMode ) {
-        this.#setSystemDarkMode( systemDarkMode );
+    get deviceDarkMode () {
+        return this._deviceDarkMode;
+    }
 
-        this.#setDarkMode( this.#getSystemDarkMode() );
+    set deviceDarkMode ( deviceDarkMode ) {
+        this.#setDeviceDarkMode( deviceDarkMode );
+
+        this.#setDarkMode( this.#getDeviceDarkMode() );
     }
 
     get darkMode () {
@@ -116,8 +120,8 @@ export default class Theme extends Store {
 
         if ( darkMode === this._darkMode ) return;
 
-        // turn off system dark mode
-        this.#setSystemDarkMode( false );
+        // turn off device dark mode
+        this.#setDeviceDarkMode( false );
 
         this.#setDarkMode( darkMode );
     }
@@ -161,19 +165,19 @@ export default class Theme extends Store {
     }
 
     // private
-    #getSystemDarkMode () {
+    #getDeviceDarkMode () {
         return window.matchMedia && window.matchMedia( "(prefers-color-scheme: dark)" ).matches;
     }
 
-    #setSystemDarkMode ( systemDarkMode ) {
-        systemDarkMode = !!systemDarkMode;
+    #setDeviceDarkMode ( deviceDarkMode ) {
+        deviceDarkMode = !!deviceDarkMode;
 
         // not changed
-        if ( systemDarkMode === this._systemDarkMode ) return;
+        if ( deviceDarkMode === this._deviceDarkMode ) return;
 
-        window.localStorage.setItem( SYSTEM_DARK_MODE_KEY, systemDarkMode );
+        window.localStorage.setItem( DEVICE_DARK_MODE_KEY, deviceDarkMode );
 
-        this._systemDarkMode = systemDarkMode;
+        this._deviceDarkMode = deviceDarkMode;
     }
 
     #setDarkMode ( darkMode ) {

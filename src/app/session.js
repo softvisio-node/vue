@@ -16,4 +16,9 @@ export default class Session extends Store {
     static new ( ...args ) {
         return super.new( "session", ...args );
     }
+
+    // properties
+    get app () {
+        return this.#app;
+    }
 }
