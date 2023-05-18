@@ -111,7 +111,7 @@ export default class VueApp extends Events {
     }
 
     get pushNotificationsEnabled () {
-        return firebase.isSupported && !!this.#settings.push_notifications_enabed;
+        return firebase.isSupported && this.#settings.push_notifications_enabled;
     }
 
     // public
