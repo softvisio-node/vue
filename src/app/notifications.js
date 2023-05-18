@@ -1,7 +1,6 @@
-import VueStore from "#vue/store";
+import Store from "#vue/store";
 
-export default class PushNotifications extends VueStore {
-    title;
+export default class Notifications extends Store {
     pushNotificationsEnabled = false;
 
     #app;
