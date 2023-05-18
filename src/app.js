@@ -22,13 +22,13 @@ export default class VueApp extends Events {
     #theme;
     #notifications;
     #api;
-    #settings = {};
+    #viewport;
     #user;
+    #settings = {};
     #authorizationMutex = new Mutex();
     #insufficientPermissionsMutex = new Mutex();
     #oauthWindow;
     #signingOut;
-    #viewport;
 
     // static
     static async new () {
@@ -48,6 +48,14 @@ export default class VueApp extends Events {
         return this.#deviceReady;
     }
 
+    get utils () {
+        return utils;
+    }
+
+    get config () {
+        return config;
+    }
+
     get session () {
         return this.#session;
     }
@@ -60,24 +68,16 @@ export default class VueApp extends Events {
         return this.#notifications;
     }
 
-    get utils () {
-        return utils;
-    }
-
     get api () {
         return this.#api;
     }
 
-    get config () {
-        return config;
+    get user () {
+        return this.#user;
     }
 
     get settings () {
         return this.#settings;
-    }
-
-    get user () {
-        return this.#user;
     }
 
     get signupEnabled () {
