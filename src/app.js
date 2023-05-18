@@ -257,7 +257,7 @@ export default class VueApp extends Events {
         if ( res.data?.token ) {
 
             // drop push notifications token on auth change
-            await this.#notifications._disablePushNotifications();
+            await this.#notifications.disablePushNotifications( false );
 
             // store api token
             window.localStorage.setItem( API_TOKEN_KEY, res.data.token );
@@ -290,7 +290,7 @@ export default class VueApp extends Events {
         if ( res.data?.token ) {
 
             // drop push notifications token on auth change
-            await this.#notifications._disablePushNotifications();
+            await this.#notifications.disablePushNotifications( false );
 
             // store api token
             window.localStorage.setItem( API_TOKEN_KEY, res.data.token );
@@ -501,7 +501,7 @@ export default class VueApp extends Events {
         if ( showAlert ) await this._onSignout( res );
 
         // disable push notifications
-        await this.#notifications._disablePushNotifications();
+        await this.#notifications.disablePushNotifications( false );
 
         // sign out
         if ( doSignOut ) await this.#api.call( "session/signout" );

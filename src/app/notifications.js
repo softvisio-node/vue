@@ -53,7 +53,7 @@ export default class VueNotifications extends Store {
             this.#enablePushNotifications();
         }
         else {
-            this._disablePushNotifications();
+            this.disablePushNotifications( false );
         }
     }
 
@@ -69,19 +69,7 @@ export default class VueNotifications extends Store {
         return res;
     }
 
-    async disablePushNotifications () {
-        const res = await this._disablePushNotifications();
-
-        if ( !res.ok ) return res;
-
-        this.#pushNotificationsData.enabled[this.#pushNotificationsUserId] = false;
-
-        this.#storePushNotificationsData();
-
-        return res;
-    }
-
-    async _disablePushNotifications () {
+    async disablePushNotifications ( user = true ) {
         if ( !this.pushNotificationsSupported ) return result( [500, window.i18nd( "vue", "Push notifications are not supported" )] );
 
         const disabled = await firebase.disable();
@@ -91,6 +79,7 @@ export default class VueNotifications extends Store {
         this.pushNotificationsEnabled = false;
 
         this.#pushNotificationsData.tokenId = null;
+        if ( user ) this.#pushNotificationsData.enabled[this.#pushNotificationsUserId] = false;
         this.#storePushNotificationsData();
 
         return result( 200 );
@@ -128,7 +117,7 @@ export default class VueNotifications extends Store {
             this.pushNotificationsEnabled = false;
 
             // disable old token
-            const disabled = await this._disablePushNotifications();
+            const disabled = await this.disablePushNotifications( false );
 
             if ( !disabled.ok ) return disabled;
 
@@ -144,7 +133,7 @@ export default class VueNotifications extends Store {
             this.pushNotificationsEnabled = true;
         }
         else {
-            await this._disablePushNotifications();
+            await this.disablePushNotifications( false );
 
             this.pushNotificationsEnabled = false;
         }
