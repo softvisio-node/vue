@@ -13,8 +13,8 @@ export default class PushNotifications extends VueStore {
     }
 
     // static
-    static new () {
-        return super.new( "push-notifications" );
+    static new ( ...args ) {
+        return super.new( "push-notifications", ...args );
     }
 
     // properties
