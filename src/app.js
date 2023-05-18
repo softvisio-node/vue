@@ -106,8 +106,8 @@ export default class VueApp extends Events {
         return id;
     }
 
-    get internalNotificationsEnabled () {
-        return this.#settings.internal_notifications_enabled;
+    get internalChannelEnabled () {
+        return this.#settings.internal_channel_enabled;
     }
 
     get pushNotificationsSupported () {
