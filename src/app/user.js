@@ -5,7 +5,7 @@ export default class User {
     #id;
     #email;
     #avatar;
-    #permissions = new Set();
+    #permissions;
 
     constructor ( app, data = {}, permissions ) {
         this.#app = app;
