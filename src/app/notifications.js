@@ -37,7 +37,24 @@ export default class VueNotifications extends Store {
 
     // public
     initPushNotifications () {
-        return this.#initPushNotifications();
+        var enable = this.#pushNotificationsData.enabled[this.#pushNotificationsUserId];
+
+        if ( enable == null ) {
+            if ( this.isAuthenticated ) {
+                enable = this.app.config.pushNotifications.userEnabled;
+            }
+            else {
+                enable = this.app.config.pushNotifications.guestEnabled;
+            }
+        }
+
+        // subscribe to the push notifications
+        if ( enable ) {
+            this.#enablePushNotifications();
+        }
+        else {
+            this._disablePushNotifications();
+        }
     }
 
     async enablePushNotifications () {
@@ -64,30 +81,24 @@ export default class VueNotifications extends Store {
         return res;
     }
 
+    async _disablePushNotifications () {
+        if ( !this.pushNotificationsSupported ) return result( [500, window.i18nd( "vue", "Push notifications are not supported" )] );
+
+        const disabled = await firebase.disable();
+
+        if ( !disabled ) return result( [500, window.i18nd( "vue", "Error disabling push notifications" )] );
+
+        this.pushNotificationsEnabled = false;
+
+        this.#pushNotificationsData.tokenId = null;
+        this.#storePushNotificationsData();
+
+        return result( 200 );
+    }
+
     // private
     get #pushNotificationsUserId () {
         return this.app.user.id || "guest";
-    }
-
-    #initPushNotifications () {
-        var enable = this.#pushNotificationsData.enabled[this.#pushNotificationsUserId];
-
-        if ( enable == null ) {
-            if ( this.isAuthenticated ) {
-                enable = this.app.config.pushNotifications.userEnabled;
-            }
-            else {
-                enable = this.app.config.pushNotifications.guestEnabled;
-            }
-        }
-
-        // subscribe to the push notifications
-        if ( enable ) {
-            this.#enablePushNotifications();
-        }
-        else {
-            this._disablePushNotifications();
-        }
     }
 
     async #enablePushNotifications () {
@@ -139,22 +150,6 @@ export default class VueNotifications extends Store {
         }
 
         return res;
-    }
-
-    // XXX
-    async _disablePushNotifications () {
-        if ( !this.pushNotificationsSupported ) return result( [500, window.i18nd( "vue", "Push notifications are not supported" )] );
-
-        const disabled = await firebase.disable();
-
-        if ( !disabled ) return result( [500, window.i18nd( "vue", "Error disabling push notifications" )] );
-
-        this.pushNotificationsEnabled = false;
-
-        this.#pushNotificationsData.tokenId = null;
-        this.#storePushNotificationsData();
-
-        return result( 200 );
     }
 
     #storePushNotificationsData () {
