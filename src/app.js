@@ -12,7 +12,7 @@ import firebase from "#src/firebase";
 import Viewport from "#vue/app/viewport";
 import Session from "#src/app/session";
 import Theme from "#src/app/theme";
-import Notifications from "#src/app/notifications";
+import Notifications from "#vue/app/notifications";
 
 const API_TOKEN_KEY = "apiToken",
     PUSH_NOTIFICATIONS_KEY = "pushNotifications";
