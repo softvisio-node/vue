@@ -8,14 +8,12 @@ import uuidv4 from "#core/uuid";
 import result from "#core/result";
 import constants from "#core/app/constants";
 import env from "#core/env";
-import firebase from "#src/firebase";
 import Viewport from "#vue/app/viewport";
 import Session from "#src/app/session";
 import Theme from "#src/app/theme";
 import Notifications from "#vue/app/notifications";
 
-const API_TOKEN_KEY = "apiToken",
-    PUSH_NOTIFICATIONS_KEY = "pushNotifications";
+const API_TOKEN_KEY = "apiToken";
 
 export default class VueApp extends Events {
     #initialized;
@@ -31,7 +29,6 @@ export default class VueApp extends Events {
     #insufficientPermissionsMutex = new Mutex();
     #oauthWindow;
     #signingOut;
-    #pushNotificationsData;
     #viewport;
 
     // static
@@ -116,10 +113,6 @@ export default class VueApp extends Events {
         return this.#settings.internal_notifications_enabled;
     }
 
-    get pushNotificationsEnabled () {
-        return firebase.isSupported && this.#settings.push_notifications_enabled;
-    }
-
     // public
     async init () {
         if ( this.#initialized ) throw Error( `App is already initialized` );
@@ -138,11 +131,6 @@ export default class VueApp extends Events {
         // create viewport
         this.#viewport = new Viewport( this );
         await this.#viewport.init();
-
-        // init push notifications
-        this.#pushNotificationsData = JSON.parse( window.localStorage.getItem( PUSH_NOTIFICATIONS_KEY ) ) || {
-            "enabled": {},
-        };
 
         // wait for device ready under cordova
         if ( this.isCordova ) {
@@ -214,7 +202,7 @@ export default class VueApp extends Events {
         this.#api.on( "sessionDeleted", this.#signout.bind( this, { "showAlert": true } ) );
         this.#api.on( "insufficientPermissions", this.#onInsufficientPermissions.bind( this ) );
 
-        this.#initPushNotifications();
+        this.#notifications.initPushNotifications();
     }
 
     hasPermissions ( permissions ) {
@@ -269,7 +257,7 @@ export default class VueApp extends Events {
         if ( res.data?.token ) {
 
             // drop push notifications token on auth change
-            await this.#disablePushNotifications();
+            await this.#notifications._disablePushNotifications();
 
             // store api token
             window.localStorage.setItem( API_TOKEN_KEY, res.data.token );
@@ -302,7 +290,7 @@ export default class VueApp extends Events {
         if ( res.data?.token ) {
 
             // drop push notifications token on auth change
-            await this.#disablePushNotifications();
+            await this.#notifications._disablePushNotifications();
 
             // store api token
             window.localStorage.setItem( API_TOKEN_KEY, res.data.token );
@@ -324,30 +312,6 @@ export default class VueApp extends Events {
         locale.setLocale( localeId );
 
         return result( 200 );
-    }
-
-    async enablePushNotifications () {
-        const res = await this.#enablePushNotifications();
-
-        if ( !res.ok ) return res;
-
-        this.#pushNotificationsData.enabled[this.#pushNotificationsUserId] = true;
-
-        this.#storePushNotificationsData();
-
-        return res;
-    }
-
-    async disablePushNotifications () {
-        const res = await this.#disablePushNotifications();
-
-        if ( !res.ok ) return res;
-
-        this.#pushNotificationsData.enabled[this.#pushNotificationsUserId] = false;
-
-        this.#storePushNotificationsData();
-
-        return res;
     }
 
     getBadgeNumber () {
@@ -537,7 +501,7 @@ export default class VueApp extends Events {
         if ( showAlert ) await this._onSignout( res );
 
         // disable push notifications
-        await this.#disablePushNotifications();
+        await this.#notifications._disablePushNotifications();
 
         // sign out
         if ( doSignOut ) await this.#api.call( "session/signout" );
@@ -565,100 +529,5 @@ export default class VueApp extends Events {
         await this._onInsufficientPermissions();
 
         this.#insufficientPermissionsMutex.unlock();
-    }
-
-    get #pushNotificationsUserId () {
-        return this.#user.id || "guest";
-    }
-
-    #initPushNotifications () {
-        var enable = this.#pushNotificationsData.enabled[this.#pushNotificationsUserId];
-
-        if ( enable == null ) {
-            if ( this.isAuthenticated ) {
-                enable = config.pushNotifications.userEnabled;
-            }
-            else {
-                enable = config.pushNotifications.guestEnabled;
-            }
-        }
-
-        // subscribe to the push notifications
-        if ( enable ) {
-            this.#enablePushNotifications();
-        }
-        else {
-            this.#disablePushNotifications();
-        }
-    }
-
-    async #enablePushNotifications () {
-        if ( !this.pushNotificationsEnabled ) return result( [500, window.i18nd( "vue", "Push notifications are not supported" )] );
-
-        const token = await firebase.enable();
-
-        // unable to get token
-        if ( !token ) {
-            this.#session.pushNotificationsEnabled = false;
-
-            return result( [500, window.i18nd( "vue", "Push notifications are disabled in the browser settings" )] );
-        }
-
-        const tokenHash = token.slice( -16 ),
-            tokenId = [this.#pushNotificationsUserId, this.#settings.push_notifications_prefix, tokenHash].join( "/" );
-
-        // token not changed and is valid
-        if ( tokenId === this.#pushNotificationsData.tokenId ) {
-            this.#session.pushNotificationsEnabled = true;
-
-            return result( 200 );
-        }
-
-        // token not changed but user or prefix changed
-        else if ( this.#pushNotificationsData.tokenId?.endsWith( tokenHash ) ) {
-            this.#session.pushNotificationsEnabled = false;
-
-            // disable old token
-            const disabled = await this.#disablePushNotifications();
-
-            if ( !disabled.ok ) return disabled;
-
-            return this.#enablePushNotifications();
-        }
-
-        const res = await this.#api.call( "session/register-push-notifications-token", token );
-
-        if ( res.ok ) {
-            this.#pushNotificationsData.tokenId = tokenId;
-            this.#storePushNotificationsData();
-
-            this.#session.pushNotificationsEnabled = true;
-        }
-        else {
-            await this.#disablePushNotifications();
-
-            this.#session.pushNotificationsEnabled = false;
-        }
-
-        return res;
-    }
-
-    async #disablePushNotifications () {
-        if ( !this.pushNotificationsEnabled ) return result( [500, window.i18nd( "vue", "Push notifications are not supported" )] );
-
-        const disabled = await firebase.disable();
-
-        if ( !disabled ) return result( [500, window.i18nd( "vue", "Error disabling push notifications" )] );
-
-        this.#session.pushNotificationsEnabled = false;
-
-        this.#pushNotificationsData.tokenId = null;
-        this.#storePushNotificationsData();
-
-        return result( 200 );
-    }
-
-    #storePushNotificationsData () {
-        window.localStorage.setItem( PUSH_NOTIFICATIONS_KEY, JSON.stringify( this.#pushNotificationsData ) );
     }
 }
