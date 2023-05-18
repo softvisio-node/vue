@@ -16,7 +16,6 @@ export default class Theme extends VueStore {
     _systemDarkMode;
     _darkMode;
     _theme;
-
     #events = new Events( { "maxListeners": Infinity } );
 
     constructor () {
@@ -86,6 +85,11 @@ export default class Theme extends VueStore {
         else {
             this._theme = { ...DEFAULT_THEME, ...JSON.parse( this._theme ) };
         }
+    }
+
+    // static
+    static new () {
+        return super.new( "theme" );
     }
 
     // properties

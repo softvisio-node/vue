@@ -121,10 +121,10 @@ export default class VueApp extends Events {
         this.#initialized = true;
 
         // session
-        this.#session = Session.new( "session" );
+        this.#session = Session.new();
 
         // theme
-        this.#theme = Theme.new( "theme" );
+        this.#theme = Theme.new();
 
         // create viewport
         this.#viewport = new Viewport( this );
