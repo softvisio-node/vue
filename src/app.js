@@ -6,12 +6,12 @@ import config from "#vue/config";
 import Api from "#core/api";
 import uuidv4 from "#core/uuid";
 import result from "#core/result";
-import constants from "#core/app/constants";
 import env from "#core/env";
 import Viewport from "#vue/app/viewport";
 import Session from "#src/app/session";
 import Theme from "#src/app/theme";
 import Notifications from "#vue/app/notifications";
+import User from "#src/app/user";
 
 const API_TOKEN_KEY = "apiToken";
 
@@ -23,8 +23,7 @@ export default class VueApp extends Events {
     #notifications;
     #api;
     #settings = {};
-    #user = {};
-    #permissions = new Set();
+    #user = new User( this );
     #authorizationMutex = new Mutex();
     #insufficientPermissionsMutex = new Mutex();
     #oauthWindow;
@@ -79,14 +78,6 @@ export default class VueApp extends Events {
 
     get user () {
         return this.#user;
-    }
-
-    get isAuthenticated () {
-        return !!this.#user.id;
-    }
-
-    get isRoot () {
-        return this.#user.id === constants.rootUserId;
     }
 
     get signupEnabled () {
@@ -182,8 +173,7 @@ export default class VueApp extends Events {
             else if ( res.ok ) {
                 this.#settings = res.data.settings;
 
-                this.#user = res.data.user || {};
-                this.#permissions = new Set( res.data.permissions );
+                this.#user = new User( res.data.user, res.data.permissions );
 
                 break;
             }
@@ -199,20 +189,6 @@ export default class VueApp extends Events {
         this.#api.on( "insufficientPermissions", this.#onInsufficientPermissions.bind( this ) );
 
         this.#notifications.init();
-    }
-
-    hasPermissions ( permissions ) {
-        if ( !this.isAuthenticated ) return false;
-
-        if ( this.isRoot ) return true;
-
-        if ( !Array.isArray( permissions ) ) permissions = [permissions];
-
-        for ( const permission of permissions ) {
-            if ( this.#permissions.has( permission ) ) return true;
-        }
-
-        return false;
     }
 
     setTitle ( title ) {
@@ -299,7 +275,7 @@ export default class VueApp extends Events {
     }
 
     async setLocale ( localeId ) {
-        if ( this.isAuthenticated ) {
+        if ( this.user.isAuthenticated ) {
             const res = await this.#api.call( "account/set-locale", localeId );
 
             if ( !res.ok ) return res;
