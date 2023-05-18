@@ -127,10 +127,10 @@ export default class VueApp extends Events {
         this.#initialized = true;
 
         // session
-        this.#session = Session.new();
+        this.#session = Session.new( this );
 
         // theme
-        this.#theme = Theme.new();
+        this.#theme = Theme.new( this );
 
         // push notifications
         this.#pushNotifications = PushNotifications.new( this );

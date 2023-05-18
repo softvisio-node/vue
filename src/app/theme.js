@@ -16,10 +16,14 @@ export default class Theme extends Store {
     _systemDarkMode;
     _darkMode;
     _theme;
+
+    #app;
     #events = new Events( { "maxListeners": Infinity } );
 
-    constructor () {
+    constructor ( app ) {
         super();
+
+        this.#app = app;
 
         // listen for system dark mode change
         window.matchMedia( "(prefers-color-scheme: dark)" ).addEventListener( "change", e => {
