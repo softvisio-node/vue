@@ -1,4 +1,4 @@
-import VueStore from "#vue/store";
+import Store from "#vue/store";
 import config from "#vue/config";
 import Events from "#core/events";
 
@@ -10,7 +10,7 @@ const DEFAULT_THEME = {
     "accent": config.theme.accentColor,
 };
 
-export default class Theme extends VueStore {
+export default class Theme extends Store {
 
     // state
     _systemDarkMode;
@@ -88,8 +88,8 @@ export default class Theme extends VueStore {
     }
 
     // static
-    static new () {
-        return super.new( "theme" );
+    static new ( ...args ) {
+        return super.new( "theme", ...args );
     }
 
     // properties

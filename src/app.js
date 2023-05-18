@@ -132,7 +132,8 @@ export default class VueApp extends Events {
         // theme
         this.#theme = Theme.new();
 
-        this.#pushNotifications = PushNotifications.new();
+        // push notifications
+        this.#pushNotifications = PushNotifications.new( this );
 
         // create viewport
         this.#viewport = new Viewport( this );
