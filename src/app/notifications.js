@@ -1,11 +1,14 @@
 import result from "#core/result";
 import Store from "#vue/store";
 import firebase from "#src/firebase";
+import locale from "#vue/locale";
 
 const PUSH_NOTIFICATIONS_KEY = "pushNotifications";
 
 export default class VueNotifications extends Store {
     _pushNotificationsEnabled = false;
+    _totalInbox = 0;
+    _totalDone = 0;
 
     #app;
     #pushNotificationsData;
@@ -39,8 +42,26 @@ export default class VueNotifications extends Store {
         return this._pushNotificationsEnabled;
     }
 
+    get internalNotificationsEnabled () {
+        return this.#app.settings.internal_notifications_enabled;
+    }
+
+    get totalInbox () {
+        return this._totalInbox;
+    }
+
+    get totalDone () {
+        return this._totalDone;
+    }
+
     // public
-    initPushNotifications () {
+    init () {
+        if ( this.internalNotificationsEnabled ) {
+            this.#app.api.on( "connect", this.refresh.bind( this ) );
+
+            this.#app.api.on( "notifications/update", this.refresh.bind( this ) );
+        }
+
         var enable = this.#pushNotificationsData.enabled[this.#pushNotificationsUserId];
 
         if ( enable == null ) {
@@ -87,6 +108,37 @@ export default class VueNotifications extends Store {
         this.#storePushNotificationsData();
 
         return result( 200 );
+    }
+
+    refresh ( { inbox, done } = {} ) {}
+
+    refreshRelativeTime () {}
+
+    async updateNotifications ( options ) {
+        const res = await this.#app.api.call( "account/notifications/update", options );
+
+        if ( !res.ok ) {
+            this.#app.utils.toast( res );
+        }
+        else {
+            this.refresh( res.data );
+        }
+    }
+
+    async deleteNotification ( options ) {
+        const res = await this.#app.api.call( "account/notifications/delete", options );
+
+        if ( !res.ok ) {
+            this.#app.utils.toast( res );
+        }
+        else {
+            this.refresh( res.data );
+        }
+    }
+
+    // protected
+    _getRelativeTime ( date ) {
+        return locale.formatRelativeTime( date, "style:short" );
     }
 
     // private

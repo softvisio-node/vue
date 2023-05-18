@@ -109,10 +109,6 @@ export default class VueApp extends Events {
         return id;
     }
 
-    get internalNotificationsEnabled () {
-        return this.#settings.internal_notifications_enabled;
-    }
-
     // public
     async init () {
         if ( this.#initialized ) throw Error( `App is already initialized` );
@@ -202,7 +198,7 @@ export default class VueApp extends Events {
         this.#api.on( "sessionDeleted", this.#signout.bind( this, { "showAlert": true } ) );
         this.#api.on( "insufficientPermissions", this.#onInsufficientPermissions.bind( this ) );
 
-        this.#notifications.initPushNotifications();
+        this.#notifications.init();
     }
 
     hasPermissions ( permissions ) {
