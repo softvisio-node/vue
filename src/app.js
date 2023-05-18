@@ -107,11 +107,11 @@ export default class VueApp extends Events {
     }
 
     get internalChannelEnabled () {
-        return this.#settings.internal_channel_enabled;
+        return this.#settings.internal_notifications_channel_enabled;
     }
 
-    get pushNotificationsSupported () {
-        return firebase.isSupported && !!this.#settings.push_notifications_supported;
+    get pushNotificationsEnabled () {
+        return firebase.isSupported && !!this.#settings.push_notifications_enabed;
     }
 
     // public
@@ -584,7 +584,7 @@ export default class VueApp extends Events {
     }
 
     async #enablePushNotifications () {
-        if ( !this.pushNotificationsSupported ) return result( [500, window.i18nd( "vue", "Push notifications are not supported" )] );
+        if ( !this.pushNotificationsEnabled ) return result( [500, window.i18nd( "vue", "Push notifications are not supported" )] );
 
         const token = await firebase.enable();
 
@@ -635,7 +635,7 @@ export default class VueApp extends Events {
     }
 
     async #disablePushNotifications () {
-        if ( !this.pushNotificationsSupported ) return result( [500, window.i18nd( "vue", "Push notifications are not supported" )] );
+        if ( !this.pushNotificationsEnabled ) return result( [500, window.i18nd( "vue", "Push notifications are not supported" )] );
 
         const disabled = await firebase.disable();
 
