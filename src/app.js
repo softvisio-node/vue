@@ -23,7 +23,7 @@ export default class VueApp extends Events {
     #notifications;
     #api;
     #settings = {};
-    #user = new User( this );
+    #user;
     #authorizationMutex = new Mutex();
     #insufficientPermissionsMutex = new Mutex();
     #oauthWindow;
@@ -173,7 +173,7 @@ export default class VueApp extends Events {
             else if ( res.ok ) {
                 this.#settings = res.data.settings;
 
-                this.#user = new User( res.data.user, res.data.permissions );
+                this.#user = new User( this, res.data.user, res.data.permissions );
 
                 break;
             }

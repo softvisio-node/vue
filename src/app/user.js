@@ -7,11 +7,11 @@ export default class User {
     #avatar;
     #permissions;
 
-    constructor ( app, data = {}, permissions ) {
+    constructor ( app, data, permissions ) {
         this.#app = app;
-        this.#id = data.id;
-        this.#email = data.email;
-        this.#avatar = data.avatar;
+        this.#id = data?.id;
+        this.#email = data?.email;
+        this.#avatar = data?.avatar;
         this.#permissions = new Set( permissions );
     }
 
