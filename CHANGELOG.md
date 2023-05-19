@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.3.7 (2023-05-19)
+
+Fixes:
+
+-   fix: app settings
+
 ### 7.3.6 (2023-05-18)
 
 Fixes:
