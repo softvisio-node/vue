@@ -7,7 +7,7 @@ import Api from "#core/api";
 import uuidv4 from "#core/uuid";
 import result from "#core/result";
 import Viewport from "#vue/app/viewport";
-import Settings from "#src/app/settings";
+import Settings from "#vue/app/settings";
 import Theme from "#src/app/theme";
 import Notifications from "#vue/app/notifications";
 import User from "#src/app/user";
