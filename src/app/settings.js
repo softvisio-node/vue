@@ -59,12 +59,12 @@ export default class Settings extends Store {
         return this.#settings.oauth_facebook_client_id;
     }
 
-    get pushNotificationsEnabled () {
-        return this.#settings.push_notifications_enabled;
-    }
-
     get internalNotificationsEnabled () {
         return this.#settings.internal_notifications_enabled;
+    }
+
+    get pushNotificationsEnabled () {
+        return this.#settings.push_notifications_enabled;
     }
 
     get pushNotificationsPrefix () {
