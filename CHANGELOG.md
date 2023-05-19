@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.3.8 (2023-05-19)
+
+Fixes:
+
+-   fix: translations
+
 ### 7.3.7 (2023-05-19)
 
 Fixes:
