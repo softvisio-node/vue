@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2023-04-06 07:55+0300\n"
+"POT-Creation-Date: 2023-05-19 13:09+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -11,41 +11,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Poedit-Basepath: ../..\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.1\n"
 "X-Poedit-SearchPath-0: src\n"
 
-#: src/app.js:382:33
+#: src/app.js:295:33
 msgid "Unable to connect to the API server. Check, that you have internet connection."
 msgstr "Не удалось подключиться к серверу API. Проверьте, что у вас есть подключение к интернет."
 
-#: src/app.js:383:21
+#: src/app.js:296:21
 msgid "Connection error"
 msgstr "Ошибка подключения"
 
-#: src/app.js:390:32
+#: src/app.js:303:32
 msgid "Your session was terminated on the API server."
 msgstr "Ваша сессия былп прервана API серввером."
 
-#: src/app.js:391:21
+#: src/app.js:304:21
 msgid "Session closed"
 msgstr "Сессия закрыта"
 
-#: src/app.js:468:49
+#: src/app.js:381:49
 msgid "Authorization provider is not supported"
 msgstr "Провайдер авторизации не поддерживается"
 
-#: src/app.js:505:44 src/app.js:507:58 src/app.js:509:68
+#: src/app.js:418:44 src/app.js:420:58 src/app.js:422:68
 msgid "Authorization cancelled"
 msgstr "Авторизация отменена"
 
-#: src/app.js:583:69 src/app.js:634:69
+#: src/app/notifications.js:98:69 src/app/notifications.js:150:69
 msgid "Push notifications are not supported"
 msgstr "Push уведомления не поддерживаются"
 
-#: src/app.js:591:33
-msgid "Push notifications are disabled in the browser settings"
-msgstr "Push уведомления заблокированы в настройках браузера"
-
-#: src/app.js:638:46
+#: src/app/notifications.js:102:46
 msgid "Error disabling push notifications"
 msgstr "Ошибка при отключении push уведомлений"
+
+#: src/app/notifications.js:158:33
+msgid "Push notifications are disabled in the browser settings"
+msgstr "Push уведомления заблокированы в настройках браузера"
