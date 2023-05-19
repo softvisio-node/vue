@@ -35,7 +35,7 @@ export default class VueNotifications extends Store {
     }
 
     get pushNotificationsSupported () {
-        return firebase.isSupported && this.app.settings.push_notifications_enabled;
+        return firebase.isSupported && this.app.settings.pushNotificationsEnabled;
     }
 
     get pushNotificationsEnabled () {
@@ -43,7 +43,7 @@ export default class VueNotifications extends Store {
     }
 
     get internalNotificationsEnabled () {
-        return this.#app.settings.internal_notifications_enabled;
+        return this.#app.settings.internalNotificationsEnabled;
     }
 
     get totalInbox () {
@@ -159,7 +159,7 @@ export default class VueNotifications extends Store {
         }
 
         const tokenHash = token.slice( -16 ),
-            tokenId = [this.#pushNotificationsUserId, this.app.settings.push_notifications_prefix, tokenHash].join( "/" );
+            tokenId = [this.#pushNotificationsUserId, this.app.settings.pushNotificationsPrefix, tokenHash].join( "/" );
 
         // token not changed and is valid
         if ( tokenId === this.#pushNotificationsData.tokenId ) {

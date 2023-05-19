@@ -55,6 +55,18 @@ export default class Settings extends Store {
         return this.#settings.oauth_github_client_id;
     }
 
+    get pushNotificationsEnabled () {
+        return this.#settings.push_notifications_enabled;
+    }
+
+    get internalNotificationsEnabled () {
+        return this.#settings.internal_notifications_enabled;
+    }
+
+    get pushNotificationsPrefix () {
+        return this.#settings.push_notifications_prefix;
+    }
+
     // public
     set ( settings ) {
         this.#settings = settings || {};
