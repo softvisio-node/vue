@@ -109,7 +109,7 @@ export default class VueApp extends Events {
             } );
         }
 
-        this.setTitle( config.title );
+        this.#settings.setTitle( config.title );
     }
 
     mount ( selector ) {
