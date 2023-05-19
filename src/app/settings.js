@@ -67,6 +67,10 @@ export default class Settings extends Store {
         return this.#settings.push_notifications_prefix;
     }
 
+    get passwordsStrength () {
+        return this.#settings.passwordsStrength;
+    }
+
     // public
     set ( settings ) {
         this.#settings = settings || {};
