@@ -6,9 +6,8 @@ import config from "#vue/config";
 import Api from "#core/api";
 import uuidv4 from "#core/uuid";
 import result from "#core/result";
-import env from "#core/env";
 import Viewport from "#vue/app/viewport";
-import Session from "#src/app/session";
+import Settings from "#src/app/settings";
 import Theme from "#src/app/theme";
 import Notifications from "#vue/app/notifications";
 import User from "#src/app/user";
@@ -18,13 +17,12 @@ const API_TOKEN_KEY = "apiToken";
 export default class VueApp extends Events {
     #initialized;
     #deviceReady = false;
-    #session;
     #theme;
     #notifications;
     #api;
     #viewport;
     #user;
-    #settings = {};
+    #settings = new Settings( this );
     #authorizationMutex = new Mutex();
     #insufficientPermissionsMutex = new Mutex();
     #oauthWindow;
@@ -56,10 +54,6 @@ export default class VueApp extends Events {
         return config;
     }
 
-    get session () {
-        return this.#session;
-    }
-
     get theme () {
         return this.#theme;
     }
@@ -80,34 +74,11 @@ export default class VueApp extends Events {
         return this.#settings;
     }
 
-    get signupEnabled () {
-        return !!( this.#settings.signup_enabled && config.signupEnabled );
-    }
-
-    get frontendGitId () {
-        const id = env.getGitId() || {};
-
-        id.mode = env.mode;
-
-        return id;
-    }
-
-    get backendGitId () {
-        const id = this.#settings.backend_git_id;
-
-        id.mode = this.#settings.backend_mode;
-
-        return id;
-    }
-
     // public
     async init () {
         if ( this.#initialized ) throw Error( `App is already initialized` );
 
         this.#initialized = true;
-
-        // session
-        this.#session = Session.new( this );
 
         // theme
         this.#theme = Theme.new( this );
@@ -171,7 +142,7 @@ export default class VueApp extends Events {
 
             // connected
             else if ( res.ok ) {
-                this.#settings = res.data.settings;
+                this.#settings.set( res.data.settings );
 
                 this.#user = new User( this, res.data.user, res.data.permissions );
 
@@ -189,14 +160,6 @@ export default class VueApp extends Events {
         this.#api.on( "insufficientPermissions", this.#onInsufficientPermissions.bind( this ) );
 
         this.#notifications.init();
-    }
-
-    setTitle ( title ) {
-        document.title = title;
-
-        if ( config.titleIcon ) title = config.titleIcon + " " + title;
-
-        this.#session.title = title;
     }
 
     async authorize ( options ) {
@@ -377,7 +340,7 @@ export default class VueApp extends Events {
             providerUrl = new URL( "https://accounts.google.com/o/oauth2/auth" );
 
             providerUrl.searchParams.set( "state", state );
-            providerUrl.searchParams.set( "client_id", this.settings.oauth_google_client_id );
+            providerUrl.searchParams.set( "client_id", this.settings.oauthGoogleClientId );
             providerUrl.searchParams.set( "redirect_uri", oauthUrl.href );
 
             if ( email ) providerUrl.searchParams.set( "login_hint", email );
@@ -400,7 +363,7 @@ export default class VueApp extends Events {
             providerUrl = new URL( "https://github.com/login/oauth/authorize" );
 
             providerUrl.searchParams.set( "state", state );
-            providerUrl.searchParams.set( "client_id", this.settings.oauth_github_client_id );
+            providerUrl.searchParams.set( "client_id", this.settings.oauthGithubClientId );
             providerUrl.searchParams.set( "redirect_uri", oauthUrl.href );
 
             if ( email ) providerUrl.searchParams.set( "login", email );
