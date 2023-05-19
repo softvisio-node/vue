@@ -76,7 +76,7 @@ export default class Settings extends Store {
     }
 
     // public
-    set ( settings ) {
+    setBackendSettings ( settings ) {
         this.#settings = settings || {};
     }
 

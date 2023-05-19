@@ -142,7 +142,7 @@ export default class VueApp extends Events {
 
             // connected
             else if ( res.ok ) {
-                this.#settings.set( res.data.settings );
+                this.#settings.setBackendSettings( res.data.settings );
 
                 this.#user = new User( this, res.data.user, res.data.permissions );
 
