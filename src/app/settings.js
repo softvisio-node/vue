@@ -2,7 +2,7 @@ import Store from "#vue/store";
 import env from "#core/env";
 
 export default class Settings extends Store {
-    title;
+    _title;
 
     #app;
     #settings;
@@ -21,6 +21,10 @@ export default class Settings extends Store {
     // properties
     get app () {
         return this.#app;
+    }
+
+    get title () {
+        return this._title;
     }
 
     get signupEnabled () {
@@ -61,6 +65,6 @@ export default class Settings extends Store {
 
         if ( this.app.config.titleIcon ) title = this.app.config.titleIcon + " " + title;
 
-        this.title = title;
+        this._title = title;
     }
 }
