@@ -55,6 +55,10 @@ export default class Settings extends Store {
         return this.#settings.oauth_github_client_id;
     }
 
+    get oauthFacebookClientId () {
+        return this.#settings.oauth_facebook_client_id;
+    }
+
     get pushNotificationsEnabled () {
         return this.#settings.push_notifications_enabled;
     }
