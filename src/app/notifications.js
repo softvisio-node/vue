@@ -35,7 +35,7 @@ export default class VueNotifications extends Store {
     }
 
     get pushNotificationsSupported () {
-        return firebase.isSupported && this.app.settings.pushNotificationsEnabled;
+        return firebase.isSupported && this.app.settings.pushNotificationsSupported;
     }
 
     get pushNotificationsEnabled () {

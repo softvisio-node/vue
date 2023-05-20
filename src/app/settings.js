@@ -63,8 +63,8 @@ export default class Settings extends Store {
         return this.#settings.internal_notifications_enabled;
     }
 
-    get pushNotificationsEnabled () {
-        return this.#settings.push_notifications_enabled;
+    get pushNotificationsSupported () {
+        return this.#settings.push_notifications_supported;
     }
 
     get pushNotificationsPrefix () {
