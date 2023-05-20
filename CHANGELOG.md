@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.3.9 (2023-05-20)
+
+Fixes:
+
+-   fix: notifications
+
 ### 7.3.8 (2023-05-19)
 
 Fixes:
