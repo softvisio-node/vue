@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.4.0 (2023-05-23)
+
+Features:
+
+-   feat: utils clickUrl
+
 ### 7.3.11 (2023-05-23)
 
 Fixes:
