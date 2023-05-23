@@ -5,7 +5,7 @@ export default class Settings extends Store {
     _title;
 
     #app;
-    #settings = {};
+    #settings;
 
     constructor ( app ) {
         super();
@@ -72,7 +72,7 @@ export default class Settings extends Store {
     }
 
     get passwordsStrength () {
-        return this.#settings.passwordsStrength;
+        return this.#settings.passwords_strength;
     }
 
     // public
