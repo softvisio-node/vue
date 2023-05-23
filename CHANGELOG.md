@@ -1,5 +1,12 @@
 # Changelog
 
+### 7.3.11 (2023-05-23)
+
+Fixes:
+
+-   fix: push notifications
+-   fix: typo
+
 ### 7.3.10 (2023-05-23)
 
 Fixes:
