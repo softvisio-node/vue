@@ -5,7 +5,7 @@ export default class Settings extends Store {
     _title;
 
     #app;
-    #settings;
+    #settings = {};
 
     constructor ( app ) {
         super();
