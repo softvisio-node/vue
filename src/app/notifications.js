@@ -95,7 +95,7 @@ export default class VueNotifications extends Store {
     }
 
     async disablePushNotifications ( user = true ) {
-        if ( !this.pushNotificationsSupported ) return result( [500, window.i18nd( "vue", "Push notifications are not supported" )] );
+        if ( !firebase.isSupported ) return result( [500, window.i18nd( "vue", "Push notifications are not supported" )] );
 
         const disabled = await firebase.disable();
 
