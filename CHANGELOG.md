@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.3.10 (2023-05-23)
+
+Fixes:
+
+-   fix: settings
+
 ### 7.3.9 (2023-05-20)
 
 Fixes:
