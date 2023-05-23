@@ -13,6 +13,22 @@ export function copyToClipboard ( str ) {
     document.body.removeChild( el );
 }
 
+export function clickUrl ( url ) {
+    if ( typeof url === "string" ) url = new URL( url );
+
+    const el = document.createElement( "a" );
+
+    el.setAttribute( "target", "_blank" );
+    el.setAttribute( "href", url.href );
+
+    el.style.display = "none";
+    document.body.appendChild( el );
+
+    el.click();
+
+    document.body.removeChild( el );
+}
+
 export function saveAs ( url ) {
     var name, type, content;
 
