@@ -205,7 +205,7 @@ export default class VueApp extends Events {
     }
 
     async signOut () {
-        this.#signOut( { "doSignOut": true } );
+        this.#signOut( { "doSignout": true } );
     }
 
     async signUp ( email, fields ) {
@@ -428,7 +428,7 @@ export default class VueApp extends Events {
         } );
     }
 
-    async #signOut ( { res, showAlert, doSignOut } = {} ) {
+    async #signOut ( { res, showAlert, doSignout } = {} ) {
         if ( this.#signingOut ) return;
 
         this.#signingOut = true;
@@ -439,7 +439,7 @@ export default class VueApp extends Events {
         await this.#notifications.disablePushNotifications( false );
 
         // sign out
-        if ( doSignOut ) await this.#api.call( "session/sign-out" );
+        if ( doSignout ) await this.#api.call( "session/sign-out" );
 
         // drop api token
         window.localStorage.removeItem( API_TOKEN_KEY );
