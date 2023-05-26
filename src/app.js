@@ -137,7 +137,7 @@ export default class VueApp extends Events {
 
             // context is disabled or deleted
             if ( res.status === -32813 || res.status === -32815 ) {
-                await this.#signout( { res, "showAlert": true } );
+                await this.#signOut( { res, "showAlert": true } );
             }
 
             // connected
@@ -155,8 +155,8 @@ export default class VueApp extends Events {
             }
         }
 
-        this.#api.on( "sessionDisabled", this.#signout.bind( this, { "showAlert": true } ) );
-        this.#api.on( "sessionDeleted", this.#signout.bind( this, { "showAlert": true } ) );
+        this.#api.on( "sessionDisabled", this.#signOut.bind( this, { "showAlert": true } ) );
+        this.#api.on( "sessionDeleted", this.#signOut.bind( this, { "showAlert": true } ) );
         this.#api.on( "insufficientPermissions", this.#onInsufficientPermissions.bind( this ) );
 
         this.#notifications.init();
@@ -176,7 +176,7 @@ export default class VueApp extends Events {
         return this.#api.call( "session/authorize", options );
     }
 
-    async signin ( credentials ) {
+    async signIn ( credentials ) {
 
         // oauth
         if ( credentials.oauthProvider ) {
@@ -204,11 +204,11 @@ export default class VueApp extends Events {
         return res;
     }
 
-    async signout () {
-        this.#signout( { "doSignOut": true } );
+    async signOut () {
+        this.#signOut( { "doSignOut": true } );
     }
 
-    async signup ( email, fields ) {
+    async signUp ( email, fields ) {
 
         // oauth
         if ( email.oauthProvider ) {
@@ -428,7 +428,7 @@ export default class VueApp extends Events {
         } );
     }
 
-    async #signout ( { res, showAlert, doSignOut } = {} ) {
+    async #signOut ( { res, showAlert, doSignOut } = {} ) {
         if ( this.#signingOut ) return;
 
         this.#signingOut = true;

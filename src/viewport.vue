@@ -14,7 +14,7 @@ export default {
 
             // init session
             while ( true ) {
-                const res = await this.$app.signin();
+                const res = await this.$app.signIn();
 
                 // connection ok
                 if ( res.ok ) break;
