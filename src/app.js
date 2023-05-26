@@ -187,7 +187,7 @@ export default class VueApp extends Events {
             credentials = res.data;
         }
 
-        const res = await this.#api.call( "session/signin", credentials );
+        const res = await this.#api.call( "session/sign-in", credentials );
 
         if ( res.data?.token ) {
 
@@ -219,7 +219,7 @@ export default class VueApp extends Events {
             email = res.data;
         }
 
-        const res = await this.#api.call( "session/signup", email, fields );
+        const res = await this.#api.call( "session/sign-up", email, fields );
 
         // signed up and signed in
         if ( res.data?.token ) {
@@ -439,7 +439,7 @@ export default class VueApp extends Events {
         await this.#notifications.disablePushNotifications( false );
 
         // sign out
-        if ( doSignOut ) await this.#api.call( "session/signout" );
+        if ( doSignOut ) await this.#api.call( "session/sign-out" );
 
         // drop api token
         window.localStorage.removeItem( API_TOKEN_KEY );
