@@ -38,6 +38,9 @@ class Locale extends CoreLocale {
         }
 
         if ( domain ) {
+            locale.id = this.id;
+            locale.currency = this.currency;
+
             this.domains.add( domain, locale );
         }
         else {
