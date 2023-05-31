@@ -91,11 +91,6 @@ export default class Theme extends Store {
         }
     }
 
-    // static
-    static new ( ...args ) {
-        return super.new( "theme", ...args );
-    }
-
     // properties
     get app () {
         return this.#app;

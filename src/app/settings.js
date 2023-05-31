@@ -13,11 +13,6 @@ export default class Settings extends Store {
         this.#app = app;
     }
 
-    // static
-    static new ( ...args ) {
-        return super.new( "settings", ...args );
-    }
-
     // properties
     get app () {
         return this.#app;

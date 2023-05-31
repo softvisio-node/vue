@@ -24,11 +24,6 @@ export default class VueNotifications extends Store {
         };
     }
 
-    // static
-    static new ( ...args ) {
-        return super.new( "notifications", ...args );
-    }
-
     // properties
     get app () {
         return this.#app;
