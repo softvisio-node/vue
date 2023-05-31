@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.5.0 (2023-05-31)
+
+Features:
+
+-   feat: store id removed
+
 ### 7.4.2 (2023-05-31)
 
 Fixes:
