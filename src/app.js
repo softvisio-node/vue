@@ -1,4 +1,4 @@
-import Locale from "#src/app/locale";
+import locale from "#vue/locale";
 import Events from "#core/events";
 import Mutex from "#core/threads/mutex";
 import * as utils from "#vue/utils";
@@ -17,7 +17,6 @@ const API_TOKEN_KEY = "apiToken";
 export default class VueApp extends Events {
     #initialized;
     #deviceReady = false;
-    #locale;
     #theme;
     #notifications;
     #api;
@@ -56,7 +55,7 @@ export default class VueApp extends Events {
     }
 
     get locale () {
-        return this.#locale;
+        return locale;
     }
 
     get theme () {
@@ -85,7 +84,7 @@ export default class VueApp extends Events {
 
         this.#initialized = true;
 
-        this.#locale = new Locale( this );
+        this.locale.setApp( this );
 
         // theme
         this.#theme = Theme.new( this );

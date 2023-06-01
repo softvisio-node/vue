@@ -15,9 +15,14 @@ if ( config.locales ) {
 }
 
 class Locale extends CoreLocale {
+    #app;
     #hasLocales;
 
     // properties
+    get app () {
+        return this.#app;
+    }
+
     get hasLocales () {
         this.#hasLocales ??= Object.keys( LOCALES ).length > 1;
 
@@ -48,10 +53,20 @@ class Locale extends CoreLocale {
         }
     }
 
-    setLocale ( locale ) {
+    setApp ( app ) {
+        this.#app = app;
+    }
+
+    async setLocale ( locale ) {
         if ( this.id === locale ) return;
 
         if ( !LOCALES[locale] ) return false;
+
+        if ( this.app.user.isAuthenticated ) {
+            const res = await this.app.api.call( "account/set-locale", localeId );
+
+            if ( !res.ok ) return res;
+        }
 
         window.localStorage.setItem( PARAMETER_NAME, locale );
 
@@ -67,7 +82,7 @@ class Locale extends CoreLocale {
             }
         }
 
-        window.location.reload();
+        this.app.reload();
     }
 }
 
