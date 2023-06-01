@@ -1,4 +1,4 @@
-import locale from "#src/locale";
+import locale from "#vue/locale";
 import Events from "#core/events";
 import Mutex from "#core/threads/mutex";
 import * as utils from "#vue/utils";
