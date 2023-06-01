@@ -1,3 +1,4 @@
+import result from "#core/result";
 import CoreLocale from "#core/locale";
 import config from "#vue/config";
 
@@ -58,9 +59,9 @@ class Locale extends CoreLocale {
     }
 
     async setLocale ( localeId ) {
-        if ( this.id === localeId ) return;
+        if ( this.id === localeId ) return result( 2000 );
 
-        if ( !LOCALES[localeId] ) return false;
+        if ( !LOCALES[localeId] ) return result( 400 );
 
         // set user locale
         if ( this.app.user.isAuthenticated && this.app.user.locale !== localeId ) {
@@ -79,11 +80,13 @@ class Locale extends CoreLocale {
 
                 window.location.href = url;
 
-                return;
+                return result( 200 );
             }
         }
 
         this.app.reload();
+
+        return result( 200 );
     }
 }
 
