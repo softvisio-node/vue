@@ -79,8 +79,6 @@ class Locale extends CoreLocale {
                 url.searchParams.set( PARAMETER_NAME, localeId );
 
                 window.location.href = url;
-
-                return result( 200 );
             }
         }
 
