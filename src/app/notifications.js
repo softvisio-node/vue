@@ -1,7 +1,6 @@
 import result from "#core/result";
 import Store from "#vue/store";
 import firebase from "#src/firebase";
-import locale from "#vue/locale";
 
 const PUSH_NOTIFICATIONS_KEY = "pushNotifications";
 
@@ -133,7 +132,7 @@ export default class VueNotifications extends Store {
 
     // protected
     _getRelativeTime ( date ) {
-        return locale.formatRelativeTime( date, "style:short" );
+        return this.app.locale.formatRelativeTime( date, "style:short" );
     }
 
     // private
