@@ -132,7 +132,7 @@ export default class VueApp extends Events {
     }
 
     async initSession () {
-        while ( 1 ) {
+        while ( true ) {
             const res = await this.#api.call( "session/check-authorization" );
 
             // context is disabled or deleted
@@ -145,6 +145,9 @@ export default class VueApp extends Events {
                 this.#settings.setBackendSettings( res.data.settings );
 
                 this.#user = new User( this, res.data.user, res.data.permissions );
+
+                // switch to the user locale
+                locale.setLocale( this.#user.locale );
 
                 break;
             }

@@ -4,6 +4,7 @@ export default class User {
     #app;
     #id;
     #email;
+    #locale;
     #avatar;
     #permissions;
 
@@ -11,6 +12,7 @@ export default class User {
         this.#app = app;
         this.#id = data?.id;
         this.#email = data?.email;
+        this.#locale = data?.locale;
         this.#avatar = data?.avatar;
         this.#permissions = new Set( permissions );
     }
@@ -22,6 +24,10 @@ export default class User {
 
     get email () {
         return this.#email;
+    }
+
+    get locale () {
+        return this.#locale;
     }
 
     get avatar () {
