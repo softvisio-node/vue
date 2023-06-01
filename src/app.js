@@ -54,6 +54,10 @@ export default class VueApp extends Events {
         return config;
     }
 
+    get locale () {
+        return locale;
+    }
+
     get theme () {
         return this.#theme;
     }
@@ -147,7 +151,7 @@ export default class VueApp extends Events {
                 this.#user = new User( this, res.data.user, res.data.permissions );
 
                 // switch to the user locale
-                locale.setLocale( this.#user.locale );
+                this.locale.setLocale( this.#user.locale );
 
                 break;
             }
@@ -247,7 +251,7 @@ export default class VueApp extends Events {
             if ( !res.ok ) return res;
         }
 
-        locale.setLocale( localeId );
+        this.locale.setLocale( localeId );
 
         return result( 200 );
     }
