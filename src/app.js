@@ -1,4 +1,4 @@
-import locale from "#vue/locale";
+import Locale from "#src/app/locale";
 import Events from "#core/events";
 import Mutex from "#core/threads/mutex";
 import * as utils from "#vue/utils";
@@ -17,6 +17,7 @@ const API_TOKEN_KEY = "apiToken";
 export default class VueApp extends Events {
     #initialized;
     #deviceReady = false;
+    #locale;
     #theme;
     #notifications;
     #api;
@@ -55,7 +56,7 @@ export default class VueApp extends Events {
     }
 
     get locale () {
-        return locale;
+        return this.#locale;
     }
 
     get theme () {
@@ -83,6 +84,8 @@ export default class VueApp extends Events {
         if ( this.#initialized ) throw Error( `App is already initialized` );
 
         this.#initialized = true;
+
+        this.#locale = new Locale( this );
 
         // theme
         this.#theme = Theme.new( this );
@@ -242,18 +245,6 @@ export default class VueApp extends Events {
         }
 
         return res;
-    }
-
-    async setLocale ( localeId ) {
-        if ( this.user.isAuthenticated ) {
-            const res = await this.#api.call( "account/set-locale", localeId );
-
-            if ( !res.ok ) return res;
-        }
-
-        this.locale.setLocale( localeId );
-
-        return result( 200 );
     }
 
     getBadgeNumber () {
