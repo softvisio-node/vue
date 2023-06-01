@@ -57,24 +57,25 @@ class Locale extends CoreLocale {
         this.#app = app;
     }
 
-    async setLocale ( locale ) {
-        if ( this.id === locale ) return;
+    async setLocale ( localeId ) {
+        if ( this.id === localeId ) return;
 
-        if ( !LOCALES[locale] ) return false;
+        if ( !LOCALES[localeId] ) return false;
 
-        if ( this.app.user.isAuthenticated ) {
+        // set user locale
+        if ( this.app.user.isAuthenticated && this.app.user.locale !== localeId ) {
             const res = await this.app.api.call( "account/set-locale", localeId );
 
             if ( !res.ok ) return res;
         }
 
-        window.localStorage.setItem( PARAMETER_NAME, locale );
+        window.localStorage.setItem( PARAMETER_NAME, localeId );
 
         if ( window.location.search ) {
             const url = new URL( window.location.href );
 
             if ( url.searchParams.has( PARAMETER_NAME ) ) {
-                url.searchParams.set( PARAMETER_NAME, locale );
+                url.searchParams.set( PARAMETER_NAME, localeId );
 
                 window.location.href = url;
 
