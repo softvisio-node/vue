@@ -36,6 +36,8 @@ class Locale extends CoreLocale {
 
     // public
     async add ( locale, domain ) {
+        if ( !locale ) return;
+
         if ( typeof locale === "function" ) {
             try {
                 locale = ( await locale( this.language ) ).default;
