@@ -88,6 +88,16 @@ class Locale extends CoreLocale {
 
         return result( 200 );
     }
+
+    // XXX
+    async update ( { locales, defaultLocale, currency, userLocale, backendLocale } ) {
+
+        // switch to the user locale
+        this.setLocale( userLocale );
+
+        // add backend domain
+        await this.add( backendLocale, "backend" );
+    }
 }
 
 var localeId = new URLSearchParams( window.location.search ).get( PARAMETER_NAME ) || window.localStorage.getItem( PARAMETER_NAME );

@@ -152,11 +152,14 @@ export default class VueApp extends Events {
 
                 this.#user = new User( this, res.data.user, res.data.permissions );
 
-                // switch to the user locale
-                this.locale.setLocale( this.#user.locale );
-
-                // add backend domain
-                await this.locale.add( res.data.locale, "backend" );
+                // update locale
+                await this.locale.update( {
+                    "locales": this.#settings.locales,
+                    "defaultLocale": this.#settings.defaultLocale,
+                    "currency": this.#settings.currency,
+                    "userLocale": this.#user.locale,
+                    "backendLocale": res.data.locale,
+                } );
 
                 break;
             }
