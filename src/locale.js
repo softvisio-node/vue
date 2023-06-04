@@ -119,6 +119,10 @@ export default locale;
 // register globally
 window.i18n = locale.i18n.bind( locale );
 window.i18nd = locale.i18nd.bind( locale );
+window.i18nt = locale.i18nt.bind( locale );
 
-await locale.add( language => import( /* webpackChunkName: "locales/[request]" */ "#resources/locales/" + language + ".po" ), "vue" );
-await locale.add( language => import( /* webpackChunkName: "locales/[request]" */ "@resources/locales/" + language + ".po" ) );
+// add "vue" domain
+await locale.add( language => import( /* webpackChunkName: "locales/[request]" */ `#resources/locales/${language}.po` ), "vue" );
+
+// add app locale
+await locale.add( language => import( /* webpackChunkName: "locales/[request]" */ `@resources/locales/${language}.po` ) );
