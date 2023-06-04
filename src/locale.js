@@ -128,12 +128,18 @@ localeId ||= window.localStorage.getItem( PARAMETER_NAME );
 
 // use default locale
 if ( !LOCALES[localeId] ) {
+
+    // use config default locale
     if ( config.defaultLocale && LOCALES[config.defaultLocale] ) {
         localeId = config.defaultLocale;
     }
+
+    // use first locale
     else if ( Object.keys( LOCALES ).length === 1 ) {
         localeId = Object.keys( LOCALES )[0];
     }
+
+    // use global default locale
     else {
         localeId = DEFAULT_LOCALE.id;
     }
