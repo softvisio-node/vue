@@ -7,6 +7,8 @@ const PARAMETER_NAME = "locale",
     DEFAULT_CURRENCY = "USD",
     LOCALES = {};
 
+var CURRENCY = DEFAULT_CURRENCY;
+
 if ( config.locales ) {
     for ( let locale of config.locales ) {
         locale = new CoreLocale( locale );
@@ -15,7 +17,15 @@ if ( config.locales ) {
     }
 }
 
-class Locale extends CoreLocale {
+class BaseLocale extends CoreLocale {
+
+    // properties
+    get currency () {
+        return CURRENCY;
+    }
+}
+
+class Locale extends BaseLocale {
     #app;
     #hasLocales;
 
@@ -89,6 +99,8 @@ class Locale extends CoreLocale {
     async init ( app, { locales, defaultLocale, currency, userLocale, backendLocale } ) {
         this.#app = app;
 
+        CURRENCY = currency || DEFAULT_CURRENCY;
+
         // switch to the user locale
         this.setLocale( userLocale );
 
@@ -113,7 +125,7 @@ if ( !LOCALES[localeId] ) {
     }
 }
 
-const locale = new Locale( { "id": localeId, "currency": config.defaultCurrency || DEFAULT_CURRENCY } );
+const locale = new Locale( { "id": localeId } );
 
 export default locale;
 
