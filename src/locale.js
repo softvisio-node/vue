@@ -56,10 +56,6 @@ class Locale extends CoreLocale {
         }
     }
 
-    setApp ( app ) {
-        this.#app = app;
-    }
-
     async setLocale ( localeId ) {
         if ( this.id === localeId ) return result( 2000 );
 
@@ -90,7 +86,8 @@ class Locale extends CoreLocale {
     }
 
     // XXX
-    async update ( { locales, defaultLocale, currency, userLocale, backendLocale } ) {
+    async init ( app, { locales, defaultLocale, currency, userLocale, backendLocale } ) {
+        this.#app = app;
 
         // switch to the user locale
         this.setLocale( userLocale );

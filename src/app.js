@@ -84,8 +84,6 @@ export default class VueApp extends Events {
 
         this.#initialized = true;
 
-        this.locale.setApp( this );
-
         // theme
         this.#theme = Theme.new( this );
 
@@ -153,7 +151,7 @@ export default class VueApp extends Events {
                 this.#user = new User( this, res.data.user, res.data.permissions );
 
                 // update locale
-                await this.locale.update( {
+                await this.locale.init( this, {
                     "locales": this.#settings.locales,
                     "defaultLocale": this.#settings.defaultLocale,
                     "currency": this.#settings.currency,
