@@ -97,6 +97,8 @@ class Locale extends BaseLocale {
     async setLocale ( localeId ) {
         if ( this.id === localeId ) return result( 2000 );
 
+        if ( !this.hasLocales ) return result( 400 );
+
         if ( !LOCALES[localeId] ) return result( 400 );
 
         // set user locale
