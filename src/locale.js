@@ -54,6 +54,7 @@ class Locale extends BaseLocale {
         this.#app = app;
 
         locales = new Set( locales );
+        this.#hasLocales = null;
 
         // delete locales, not supported on backend
         for ( const locale of LOCALES.values() ) {
