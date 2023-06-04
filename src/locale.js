@@ -97,7 +97,8 @@ class Locale extends CoreLocale {
     }
 }
 
-var localeId = new URLSearchParams( window.location.search ).get( PARAMETER_NAME ) || window.localStorage.getItem( PARAMETER_NAME );
+var localeId = new URLSearchParams( window.location.search ).get( PARAMETER_NAME );
+localeId ||= window.localStorage.getItem( PARAMETER_NAME );
 
 // use default locale
 if ( !LOCALES[localeId] ) {
