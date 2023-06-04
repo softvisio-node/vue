@@ -26,6 +26,7 @@ class BaseLocale extends CoreLocale {
 }
 
 class Locale extends BaseLocale {
+    #initialized;
     #app;
     #hasLocales;
 
@@ -45,6 +46,30 @@ class Locale extends BaseLocale {
     }
 
     // public
+    async init ( app, { locales, currency, userLocale, backendLocale } ) {
+        if ( this.#initialized ) return;
+
+        this.#initialized = true;
+
+        this.#app = app;
+
+        locales = new Set( locales );
+
+        // delete locales, not supported on backend
+        for ( const locale of LOCALES.values() ) {
+            if ( !locales.has( locale.id ) ) delete LOCALES[locale.id];
+        }
+
+        // set default currency
+        if ( currency ) CURRENCY = currency;
+
+        // switch to the user locale
+        this.setLocale( userLocale );
+
+        // add backend domain
+        await this.add( backendLocale, "backend" );
+    }
+
     async add ( locale, domain ) {
         if ( !locale ) return;
 
@@ -93,19 +118,6 @@ class Locale extends BaseLocale {
         this.app.reload();
 
         return result( 200 );
-    }
-
-    // XXX
-    async init ( app, { locales, currency, userLocale, backendLocale } ) {
-        this.#app = app;
-
-        CURRENCY = currency || DEFAULT_CURRENCY;
-
-        // switch to the user locale
-        this.setLocale( userLocale );
-
-        // add backend domain
-        await this.add( backendLocale, "backend" );
     }
 }
 
