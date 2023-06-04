@@ -153,7 +153,6 @@ export default class VueApp extends Events {
                 // update locale
                 await this.locale.init( this, {
                     "locales": this.#settings.locales,
-                    "defaultLocale": this.#settings.defaultLocale,
                     "currency": this.#settings.currency,
                     "userLocale": this.#user.locale,
                     "backendLocale": res.data.locale,

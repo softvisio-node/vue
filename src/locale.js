@@ -96,7 +96,7 @@ class Locale extends BaseLocale {
     }
 
     // XXX
-    async init ( app, { locales, defaultLocale, currency, userLocale, backendLocale } ) {
+    async init ( app, { locales, currency, userLocale, backendLocale } ) {
         this.#app = app;
 
         CURRENCY = currency || DEFAULT_CURRENCY;

@@ -46,10 +46,6 @@ export default class Settings extends Store {
         return this.#settings.locales;
     }
 
-    get defaultLocales () {
-        return this.#settings.default_locale;
-    }
-
     get currency () {
         return this.#settings.currency;
     }
