@@ -57,7 +57,7 @@ class Locale extends BaseLocale {
         this.#hasLocales = null;
 
         // delete locales, not supported on backend
-        for ( const locale of LOCALES.values() ) {
+        for ( const locale of Object.values( LOCALES ) ) {
             if ( !locales.has( locale.id ) ) delete LOCALES[locale.id];
         }
 
@@ -137,7 +137,7 @@ if ( !LOCALES[localeId] ) {
         localeId = config.defaultLocale;
     }
 
-    // use first locale
+    // use first allowed locale
     else if ( Object.keys( LOCALES ).length === 1 ) {
         localeId = Object.keys( LOCALES )[0];
     }
