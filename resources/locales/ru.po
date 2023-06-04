@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2023-05-19 13:10+0300\n"
+"POT-Creation-Date: 2023-06-04 12:00+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -38,14 +38,14 @@ msgstr "Провайдер авторизации не поддерживает�
 msgid "Authorization cancelled"
 msgstr "Авторизация отменена"
 
-#: src/app/notifications.js:98:69 src/app/notifications.js:150:69
+#: src/app/notifications.js:92:58 src/app/notifications.js:144:69
 msgid "Push notifications are not supported"
 msgstr "Push уведомления не поддерживаются"
 
-#: src/app/notifications.js:102:46
+#: src/app/notifications.js:96:46
 msgid "Error disabling push notifications"
 msgstr "Ошибка при отключении push уведомлений"
 
-#: src/app/notifications.js:158:33
+#: src/app/notifications.js:152:33
 msgid "Push notifications are disabled in the browser settings"
 msgstr "Push уведомления заблокированы в настройках браузера"
