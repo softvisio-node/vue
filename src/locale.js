@@ -71,6 +71,7 @@ class Locale extends BaseLocale {
         await this.add( backendLocale, "backend" );
     }
 
+    // XXX base locale
     async add ( locale, domain ) {
         if ( !locale ) return;
 
