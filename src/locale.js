@@ -83,7 +83,7 @@ class Locale extends BaseLocale {
 
         if ( domain ) {
             locale.id = this.id;
-            locale.currency = this.currency;
+            locale = new BaseLocale( locale );
 
             this.domains.add( domain, locale );
         }
