@@ -17,6 +17,32 @@ if ( config.locales ) {
     }
 }
 
+function getLocaleId () {
+    var id = new URLSearchParams( window.location.search ).get( PARAMETER_NAME );
+    id ||= window.localStorage.getItem( PARAMETER_NAME );
+
+    // use default locale
+    if ( !LOCALES[id] ) {
+
+        // use config default locale
+        if ( config.defaultLocale && LOCALES[config.defaultLocale] ) {
+            id = config.defaultLocale;
+        }
+
+        // use first allowed locale
+        else if ( Object.keys( LOCALES ).length === 1 ) {
+            id = Object.keys( LOCALES )[0];
+        }
+
+        // use global default locale
+        else {
+            id = DEFAULT_LOCALE.id;
+        }
+    }
+
+    return id;
+}
+
 class BaseLocale extends CoreLocale {
 
     // properties
@@ -65,7 +91,12 @@ class Locale extends BaseLocale {
         if ( currency ) CURRENCY = currency;
 
         // switch to the user locale
-        this.setLocale( userLocale );
+        if ( userLocale && LOCALES[userLocale] && userLocale !== this.id ) {
+            await this.setLocale( userLocale );
+        }
+        else if ( !LOCALES[this.id] ) {
+            await this.setLocale( getLocaleId() );
+        }
 
         // add backend domain
         await this.add( backendLocale, "backend" );
@@ -126,29 +157,7 @@ class Locale extends BaseLocale {
     }
 }
 
-var localeId = new URLSearchParams( window.location.search ).get( PARAMETER_NAME );
-localeId ||= window.localStorage.getItem( PARAMETER_NAME );
-
-// use default locale
-if ( !LOCALES[localeId] ) {
-
-    // use config default locale
-    if ( config.defaultLocale && LOCALES[config.defaultLocale] ) {
-        localeId = config.defaultLocale;
-    }
-
-    // use first allowed locale
-    else if ( Object.keys( LOCALES ).length === 1 ) {
-        localeId = Object.keys( LOCALES )[0];
-    }
-
-    // use global default locale
-    else {
-        localeId = DEFAULT_LOCALE.id;
-    }
-}
-
-const locale = new Locale( { "id": localeId } );
+const locale = new Locale( { "id": getLocaleId() } );
 
 export default locale;
 
