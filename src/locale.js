@@ -159,27 +159,27 @@ class Locale extends BaseLocale {
         }
     }
 
-    async setLocale ( localeId ) {
+    async setLocale ( locale ) {
 
         // already set
-        if ( this.id === localeId ) return result( 2000 );
+        if ( this.id === locale ) return result( 2000 );
 
         if ( !registry.canSetLocale( locale ) ) return result( 400 );
 
         // set user locale
-        if ( this.app?.user.isAuthenticated && this.app.user.locale !== localeId ) {
-            const res = await this.app.api.call( "account/set-locale", localeId );
+        if ( this.app?.user.isAuthenticated && this.app.user.locale !== locale ) {
+            const res = await this.app.api.call( "account/set-locale", locale );
 
             if ( !res.ok ) return res;
         }
 
-        window.localStorage.setItem( PARAMETER_NAME, localeId );
+        window.localStorage.setItem( PARAMETER_NAME, locale );
 
         if ( window.location.search ) {
             const url = new URL( window.location.href );
 
             if ( url.searchParams.has( PARAMETER_NAME ) ) {
-                url.searchParams.set( PARAMETER_NAME, localeId );
+                url.searchParams.set( PARAMETER_NAME, locale );
 
                 window.location.href = url;
             }
