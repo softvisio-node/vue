@@ -115,7 +115,7 @@ class Locale extends BaseLocale {
     }
 
     // public
-    async init ( app, { locales, currency, userLocale, backendLocale } ) {
+    async init ( app, { locales, backendLocale } ) {
         if ( this.#initialized ) return;
         this.#initialized = true;
 
@@ -125,14 +125,11 @@ class Locale extends BaseLocale {
         registry.setBackendLocales( locales );
 
         // set default currency
-        registry.currency = currency;
+        registry.currency = backendLocale.currency;
 
         // switch locale
-        if ( userLocale && registry.canSetLocale( userLocale ) ) {
-            await this.setLocale( userLocale );
-        }
-        else if ( registry.locale !== this.id ) {
-            await this.setLocale( registry.locale );
+        if ( backendLocale.id !== this.id ) {
+            await this.setLocale( backendLocale.id );
         }
 
         // add backend domain

@@ -46,10 +46,6 @@ export default class Settings extends Store {
         return this.#settings.locales;
     }
 
-    get currency () {
-        return this.#settings.currency;
-    }
-
     get oauthGoogleClientId () {
         return this.#settings.oauth_google_client_id;
     }

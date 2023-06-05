@@ -137,7 +137,10 @@ export default class VueApp extends Events {
 
     async initSession () {
         while ( true ) {
-            const res = await this.#api.call( "session/init-session", { "locale": this.locale.id } );
+            const res = await this.#api.call( "session/init-session", {
+                "locale": this.locale.id,
+                "locales": this.locale.locales.map( local => locale.id ),
+            } );
 
             // context is disabled or deleted
             if ( res.status === -32813 || res.status === -32815 ) {
@@ -153,8 +156,6 @@ export default class VueApp extends Events {
                 // update locale
                 await this.locale.init( this, {
                     "locales": this.#settings.locales,
-                    "currency": this.#settings.currency,
-                    "userLocale": this.#user.locale,
                     "backendLocale": res.data.locale,
                 } );
 
