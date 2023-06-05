@@ -231,6 +231,8 @@ export default class VueApp extends Events {
             email = res.data;
         }
 
+        fields = { "locale": this.locale.id, ...fields };
+
         const res = await this.#api.call( "session/sign-up", email, fields );
 
         // signed up and signed in
