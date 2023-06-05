@@ -2,59 +2,99 @@ import result from "#core/result";
 import CoreLocale from "#core/locale";
 import config from "#vue/config";
 
-const PARAMETER_NAME = "locale",
-    DEFAULT_LOCALE = new CoreLocale(),
-    DEFAULT_CURRENCY = "USD",
-    LOCALES = {};
+const PARAMETER_NAME = "locale";
 
-var CURRENCY = DEFAULT_CURRENCY;
+class Registry {
+    #locale;
+    #locales = new Map();
+    #currency = "USD";
+    #defaultLocale = new CoreLocale().id;
 
-if ( config.locales ) {
-    for ( let locale of config.locales ) {
-        locale = new CoreLocale( locale );
+    constructor () {
+        if ( config.locales ) {
+            for ( let locale of config.locales ) {
+                locale = new CoreLocale( locale );
 
-        LOCALES[locale.id] = locale.name;
-    }
-}
-
-function getLocaleId () {
-    var id = new URLSearchParams( window.location.search ).get( PARAMETER_NAME );
-    id ||= window.localStorage.getItem( PARAMETER_NAME );
-
-    // use default locale
-    if ( !LOCALES[id] ) {
-
-        // use config default locale
-        if ( config.defaultLocale && LOCALES[config.defaultLocale] ) {
-            id = config.defaultLocale;
-        }
-
-        // use first allowed locale
-        else if ( Object.keys( LOCALES ).length === 1 ) {
-            id = Object.keys( LOCALES )[0];
-        }
-
-        // use global default locale
-        else {
-            id = DEFAULT_LOCALE.id;
+                this.#locales.set( locale.id, locale.name );
+            }
         }
     }
 
-    return id;
+    // properties
+    get locale () {
+        if ( !this.#locale ) {
+            var id = new URLSearchParams( window.location.search ).get( PARAMETER_NAME );
+            id ||= window.localStorage.getItem( PARAMETER_NAME );
+            id ||= config.defaultLocale;
+
+            if ( this.hasLocale( id ) ) {
+                this.#locale = id;
+            }
+            else {
+                this.#locale = this.#defaultLocale;
+            }
+        }
+
+        return this.#locale;
+    }
+
+    hasLocales () {
+        return this.#locales > 1;
+    }
+
+    get locales () {
+        return this.#locales;
+    }
+
+    get currency () {
+        return this.#currency;
+    }
+
+    set currency ( value ) {
+        if ( value ) this.#currency = value;
+    }
+
+    // public
+    hasLocale ( locale ) {
+        return this.#locales.has( locale );
+    }
+
+    setBackendLocales ( locales ) {
+        locales = new Set( locales );
+
+        for ( const locale of this.locales.keys() ) {
+            if ( !locales.has( locale ) ) {
+                this.locales.delete( locale );
+
+                if ( this.#locale === locale ) {
+                    this.#locale = null;
+                }
+            }
+        }
+    }
+
+    canSetLocale ( locale ) {
+        if ( this.hasLocale( locale ) ) return true;
+
+        if ( locale === this.#defaultLocale ) return true;
+
+        return false;
+    }
 }
+
+const registry = new Registry();
 
 class BaseLocale extends CoreLocale {
 
     // properties
     get currency () {
-        return CURRENCY;
+        return registry.currency;
     }
 }
 
 class Locale extends BaseLocale {
     #initialized;
     #app;
-    #hasLocales;
 
     // properties
     get app () {
@@ -62,40 +102,34 @@ class Locale extends BaseLocale {
     }
 
     get hasLocales () {
-        this.#hasLocales ??= Object.keys( LOCALES ).length > 1;
-
-        return this.#hasLocales;
+        return registry.hasLocales;
     }
 
     get locales () {
-        return LOCALES;
+        return [...registry.locales.entries()].map( ( [id, name] ) => {
+            return { id, name };
+        } );
     }
 
     // public
     async init ( app, { locales, currency, userLocale, backendLocale } ) {
         if ( this.#initialized ) return;
-
         this.#initialized = true;
 
         this.#app = app;
 
-        locales = new Set( locales );
-        this.#hasLocales = null;
-
         // delete locales, not supported on backend
-        for ( const locale of Object.values( LOCALES ) ) {
-            if ( !locales.has( locale.id ) ) delete LOCALES[locale.id];
-        }
+        registry.setBackendLocales( locales );
 
         // set default currency
-        if ( currency ) CURRENCY = currency;
+        registry.currency = currency;
 
-        // switch to the user locale
-        if ( userLocale && LOCALES[userLocale] && userLocale !== this.id ) {
+        // switch locale
+        if ( userLocale && registry.canSetLocale( userLocale ) ) {
             await this.setLocale( userLocale );
         }
-        else if ( !LOCALES[this.id] ) {
-            await this.setLocale( getLocaleId() );
+        else if ( registry.locale !== this.id ) {
+            await this.setLocale( registry.locale );
         }
 
         // add backend domain
@@ -126,11 +160,11 @@ class Locale extends BaseLocale {
     }
 
     async setLocale ( localeId ) {
+
+        // already set
         if ( this.id === localeId ) return result( 2000 );
 
-        if ( !this.hasLocales ) return result( 400 );
-
-        if ( !LOCALES[localeId] ) return result( 400 );
+        if ( !registry.canSetLocale( locale ) ) return result( 400 );
 
         // set user locale
         if ( this.app?.user.isAuthenticated && this.app.user.locale !== localeId ) {
@@ -157,7 +191,7 @@ class Locale extends BaseLocale {
     }
 }
 
-const locale = new Locale( { "id": getLocaleId() } );
+const locale = new Locale( { "id": registry.locale } );
 
 export default locale;
 
