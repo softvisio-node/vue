@@ -68,10 +68,6 @@ class Registry {
         for ( const locale of this.locales.keys() ) {
             if ( !locales.has( locale ) ) {
                 this.locales.delete( locale );
-
-                if ( this.#locale === locale ) {
-                    this.#locale = null;
-                }
             }
         }
     }
