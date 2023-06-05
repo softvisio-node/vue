@@ -1,5 +1,13 @@
 # Changelog
 
+### 7.5.4 (2023-06-05)
+
+Fixes:
+
+-   fix: localization
+-   fix: send locale on signup
+-   fix: user creation
+
 ### 7.5.3 (2023-06-05)
 
 Fixes:
