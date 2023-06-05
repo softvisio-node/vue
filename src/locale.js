@@ -57,10 +57,6 @@ class Registry {
         return this.#localeIsSet;
     }
 
-    get isSet () {
-        return registry.localeIsSet;
-    }
-
     // public
     getUrlLocale () {
         return new URLSearchParams( window.location.search ).get( PARAMETER_NAME );
@@ -116,6 +112,10 @@ class Locale extends BaseLocale {
         return [...registry.locales.entries()].map( ( [id, name] ) => {
             return { id, name };
         } );
+    }
+
+    get isSet () {
+        return registry.localeIsSet;
     }
 
     // public
