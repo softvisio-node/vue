@@ -23,7 +23,7 @@ class Registry {
     // properties
     get locale () {
         if ( !this.#locale ) {
-            var id = new URLSearchParams( window.location.search ).get( PARAMETER_NAME );
+            var id = this.getUrlLocale();
             id ||= window.localStorage.getItem( PARAMETER_NAME );
 
             if ( this.hasLocale( id ) ) {
@@ -54,6 +54,10 @@ class Registry {
     }
 
     // public
+    getUrlLocale () {
+        return new URLSearchParams( window.location.search ).get( PARAMETER_NAME );
+    }
+
     hasLocale ( locale ) {
         return this.#locales.has( locale );
     }
@@ -174,17 +178,14 @@ class Locale extends BaseLocale {
 
         window.localStorage.setItem( PARAMETER_NAME, locale );
 
-        if ( window.location.search ) {
+        if ( registry.getUrlLocale() ) {
             const url = new URL( window.location.href );
-
-            if ( url.searchParams.has( PARAMETER_NAME ) ) {
-                url.searchParams.delete( PARAMETER_NAME );
-
-                window.location.href = url;
-            }
+            url.searchParams.delete( PARAMETER_NAME );
+            window.location.href = url;
         }
-
-        this.app.reload();
+        else {
+            this.app.reload();
+        }
 
         return result( 200 );
     }
