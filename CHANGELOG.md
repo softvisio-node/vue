@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.5.6 (2023-06-05)
+
+Fixes:
+
+-   fix: user creation
+
 ### 7.5.5 (2023-06-05)
 
 Fixes:
