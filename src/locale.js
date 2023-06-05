@@ -9,6 +9,7 @@ class Registry {
     #locales = new Map();
     #currency = "USD";
     #defaultLocale = new CoreLocale().id;
+    #localeIsSet = false;
 
     constructor () {
         if ( config.locales ) {
@@ -17,23 +18,22 @@ class Registry {
 
                 this.#locales.set( locale.id, locale.name );
             }
-        }
-    }
 
-    // properties
-    get locale () {
-        if ( !this.#locale ) {
-            var id = this.getUrlLocale();
-            id ||= window.localStorage.getItem( PARAMETER_NAME );
+            var locale = this.getUrlLocale();
+            locale ||= window.localStorage.getItem( PARAMETER_NAME );
 
-            if ( this.hasLocale( id ) ) {
-                this.#locale = id;
+            if ( this.hasLocale( locale ) ) {
+                this.#locale = locale;
+                this.#localeIsSet = true;
             }
             else {
                 this.#locale = this.#defaultLocale;
             }
         }
+    }
 
+    // properties
+    get locale () {
         return this.#locale;
     }
 
@@ -51,6 +51,14 @@ class Registry {
 
     set currency ( value ) {
         if ( value ) this.#currency = value;
+    }
+
+    get localeIsSet () {
+        return this.#localeIsSet;
+    }
+
+    get isSet () {
+        return registry.localeIsSet;
     }
 
     // public
