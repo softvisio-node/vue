@@ -83,6 +83,10 @@ class Registry {
 
         return false;
     }
+
+    setLocale ( locale ) {
+        window.localStorage.setItem( PARAMETER_NAME, locale );
+    }
 }
 
 const registry = new Registry();
@@ -135,6 +139,9 @@ class Locale extends BaseLocale {
         if ( backendLocale.id !== this.id ) {
             await this.setLocale( backendLocale.id );
         }
+        else if ( !this.isSet ) {
+            registry.setLocale( this.id );
+        }
 
         // add backend domain
         await this.add( backendLocale, "backend" );
@@ -177,7 +184,7 @@ class Locale extends BaseLocale {
             if ( !res.ok ) return res;
         }
 
-        window.localStorage.setItem( PARAMETER_NAME, locale );
+        registry.setLocale( locale );
 
         if ( registry.getUrlLocale() ) {
             const url = new URL( window.location.href );
