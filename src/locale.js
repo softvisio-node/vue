@@ -25,7 +25,6 @@ class Registry {
         if ( !this.#locale ) {
             var id = new URLSearchParams( window.location.search ).get( PARAMETER_NAME );
             id ||= window.localStorage.getItem( PARAMETER_NAME );
-            id ||= config.defaultLocale;
 
             if ( this.hasLocale( id ) ) {
                 this.#locale = id;
@@ -179,7 +178,7 @@ class Locale extends BaseLocale {
             const url = new URL( window.location.href );
 
             if ( url.searchParams.has( PARAMETER_NAME ) ) {
-                url.searchParams.set( PARAMETER_NAME, locale );
+                url.searchParams.delete( PARAMETER_NAME );
 
                 window.location.href = url;
             }
