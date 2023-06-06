@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.5.8 (2023-06-06)
+
+Fixes:
+
+-   fix: configs
+
 ### 7.5.7 (2023-06-06)
 
 Fixes:
