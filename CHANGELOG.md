@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.5.9 (2023-06-06)
+
+Fixes:
+
+-   fix: publish methods removed
+
 ### 7.5.8 (2023-06-06)
 
 Fixes:
