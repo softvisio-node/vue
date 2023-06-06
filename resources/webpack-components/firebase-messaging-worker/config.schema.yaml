@@ -1,40 +1,40 @@
-type: object
-properties:
-  env:
-    type: object
-    properties: {}
+- $id: env
+  type: object
+  properties: {}
+  required: []
 
-    required: []
+- $id: config
+  type: object
+  properties:
+    build:
+      type: object
+      properties: {}
 
-  build:
-    type: object
-    properties: {}
+      required: []
 
-    required: []
+    config:
+      type: object
+      properties:
+        firebase:
+          anyOf:
+            - { type: "null" }
+            - type: object
+              properties:
+                web:
+                  anyOf:
+                    - type: "null"
+                    - type: object
+                      properties:
+                        apiKey: { type: string }
+                        authDomain: { type: string }
+                        projectId: { type: string }
+                        storageBucket: { type: string }
+                        messagingSenderId: { type: string }
+                        appId: { type: string }
 
-  config:
-    type: object
-    properties:
-      firebase:
-        anyOf:
-          - { type: "null" }
-          - type: object
-            properties:
-              web:
-                anyOf:
-                  - type: "null"
-                  - type: object
-                    properties:
-                      apiKey: { type: string }
-                      authDomain: { type: string }
-                      projectId: { type: string }
-                      storageBucket: { type: string }
-                      messagingSenderId: { type: string }
-                      appId: { type: string }
+                      additionalProperties: false
+                      required: [apiKey, authDomain, projectId, storageBucket, messagingSenderId, appId]
 
-                    additionalProperties: false
-                    required: [apiKey, authDomain, projectId, storageBucket, messagingSenderId, appId]
+              additionalProperties: false
 
-            additionalProperties: false
-
-required: [env, build, config]
+  required: [build, config]
