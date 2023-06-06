@@ -3,38 +3,32 @@
   properties: {}
   required: []
 
+- $id: build
+  type: object
+  properties: {}
+  required: []
+
 - $id: config
   type: object
   properties:
-    build:
-      type: object
-      properties: {}
+    firebase:
+      anyOf:
+        - { type: "null" }
+        - type: object
+          properties:
+            web:
+              anyOf:
+                - type: "null"
+                - type: object
+                  properties:
+                    apiKey: { type: string }
+                    authDomain: { type: string }
+                    projectId: { type: string }
+                    storageBucket: { type: string }
+                    messagingSenderId: { type: string }
+                    appId: { type: string }
 
-      required: []
+                  additionalProperties: false
+                  required: [apiKey, authDomain, projectId, storageBucket, messagingSenderId, appId]
 
-    config:
-      type: object
-      properties:
-        firebase:
-          anyOf:
-            - { type: "null" }
-            - type: object
-              properties:
-                web:
-                  anyOf:
-                    - type: "null"
-                    - type: object
-                      properties:
-                        apiKey: { type: string }
-                        authDomain: { type: string }
-                        projectId: { type: string }
-                        storageBucket: { type: string }
-                        messagingSenderId: { type: string }
-                        appId: { type: string }
-
-                      additionalProperties: false
-                      required: [apiKey, authDomain, projectId, storageBucket, messagingSenderId, appId]
-
-              additionalProperties: false
-
-  required: [build, config]
+          additionalProperties: false
