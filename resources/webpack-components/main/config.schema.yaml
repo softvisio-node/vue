@@ -9,6 +9,25 @@
   required: []
 
 - $id: config
+  config:
   type: object
-  properties: {}
-  required: []
+  properties:
+    title: { type: string }
+    titleIcon: { type: string }
+
+    apiUrl: { type: string, format: uri-reference }
+
+    signupEnabled: { type: boolean }
+
+    locales: { type: array, items: { type: string } }
+
+    pushNotifications:
+      type: object
+      properties:
+        guestEnabled: { type: boolean }
+        userEnabled: { type: boolean }
+
+      additionalProperties: false
+      required: [guestEnabled, userEnabled]
+
+  required: [title, signupEnabled]

@@ -3,3 +3,5 @@ env:
 build:
 
 config:
+  apiUrl: /api/
+  signupEnabled: true
