@@ -124,17 +124,6 @@ export default class VueApp extends Events {
         window.location.reload();
     }
 
-    publish ( name, ...args ) {
-        if ( name === "api" ) {
-            name = args.shift();
-
-            this.#api.publish( name, ...args );
-        }
-        else {
-            this.emit( name, ...args );
-        }
-    }
-
     async initSession () {
         while ( true ) {
             const res = await this.#api.call( "session/init-session", {
