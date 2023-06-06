@@ -29,7 +29,7 @@
             "./src/*.vue"
         ],
         "./resources/*": "./resources/*",
-        "./webpack-components/*": "./resources/webpack-components/*/index.js"
+        "./webpack-components/*": "./resources/webpack-components/*/component.js"
     },
     "dependencies": {
         "@softvisio/vue-store": "^1.0.3"
