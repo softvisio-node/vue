@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.6.1 (2023-06-26)
+
+Fixes:
+
+-   fix: .pot remplates
+
 ### 7.6.0 (2023-06-25)
 
 Features:
