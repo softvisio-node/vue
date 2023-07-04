@@ -39,10 +39,6 @@ class Registry {
         return this.#currency;
     }
 
-    set currency ( value ) {
-        if ( value ) this.#currency = value;
-    }
-
     get localeIsSet () {
         return this.#localeIsSet;
     }
@@ -60,8 +56,10 @@ class Registry {
         return this.#locales.has( locale );
     }
 
-    setBackendLocales ( locales ) {
+    update ( locales, currency ) {
         this.#locales = new Locales( locales );
+
+        this.#currency = currency;
     }
 
     canSetLocale ( locale ) {
@@ -115,11 +113,8 @@ class Locale extends BaseLocale {
 
         this.#app = app;
 
-        // delete locales, not supported on backend
-        registry.setBackendLocales( locales );
-
-        // set default currency
-        registry.currency = backendLocale.currency;
+        // set backend data
+        registry.update( locales, backendLocale.currency );
 
         // switch locale
         if ( backendLocale.id !== this.id ) {
