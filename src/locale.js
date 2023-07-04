@@ -1,34 +1,28 @@
 import result from "#core/result";
 import CoreLocale from "#core/locale";
 import config from "#vue/config";
+import Locales from "#core/locale/locales";
 
 const PARAMETER_NAME = "locale";
 
 class Registry {
     #locale;
-    #locales = new Map();
+    #locales;
     #currency = "USD";
-    #defaultLocale = new CoreLocale().id;
     #localeIsSet = false;
 
     constructor () {
-        if ( config.locales ) {
-            for ( let locale of config.locales ) {
-                locale = new CoreLocale( locale );
+        this.#locales = new Locales( config.locales );
 
-                this.#locales.set( locale.id, locale.name );
-            }
+        var locale = this.getUrlLocale();
+        locale ||= window.localStorage.getItem( PARAMETER_NAME );
 
-            var locale = this.getUrlLocale();
-            locale ||= window.localStorage.getItem( PARAMETER_NAME );
-
-            if ( this.hasLocale( locale ) ) {
-                this.#locale = locale;
-                this.#localeIsSet = true;
-            }
-            else {
-                this.#locale = this.#defaultLocale;
-            }
+        if ( this.hasLocale( locale ) ) {
+            this.#locale = locale;
+            this.#localeIsSet = true;
+        }
+        else {
+            this.#locale = this.#locales.defaultLocale;
         }
     }
 
@@ -38,11 +32,7 @@ class Registry {
     }
 
     hasLocales () {
-        return this.#locales > 1;
-    }
-
-    get locales () {
-        return this.#locales;
+        return this.#locales.hasLocales;
     }
 
     get currency () {
@@ -57,6 +47,10 @@ class Registry {
         return this.#localeIsSet;
     }
 
+    get locales () {
+        return this.#locales;
+    }
+
     // public
     getUrlLocale () {
         return new URLSearchParams( window.location.search ).get( PARAMETER_NAME );
@@ -67,19 +61,13 @@ class Registry {
     }
 
     setBackendLocales ( locales ) {
-        locales = new Set( locales );
-
-        for ( const locale of this.locales.keys() ) {
-            if ( !locales.has( locale ) ) {
-                this.locales.delete( locale );
-            }
-        }
+        this.#locales = new Locales( locales );
     }
 
     canSetLocale ( locale ) {
         if ( this.hasLocale( locale ) ) return true;
 
-        if ( locale === this.#defaultLocale ) return true;
+        if ( locale === this.#locales.defaultLocale ) return true;
 
         return false;
     }
@@ -113,9 +101,7 @@ class Locale extends BaseLocale {
     }
 
     get locales () {
-        return [...registry.locales.entries()].map( ( [id, name] ) => {
-            return { id, name };
-        } );
+        return registry.locales;
     }
 
     get isSet () {
