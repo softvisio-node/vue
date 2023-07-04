@@ -44,6 +44,7 @@ class Registry {
     }
 
     // public
+    // XXX
     getUrlLocale () {
         return new URLSearchParams( window.location.search ).get( PARAMETER_NAME );
     }
