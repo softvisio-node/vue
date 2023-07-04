@@ -19,7 +19,7 @@
 
     signupEnabled: { type: boolean }
 
-    locales: { type: array, items: { type: string } }
+    locales: { type: array, items: { type: string, format: locale }, uniqueItems: true }
 
     pushNotifications:
       type: object
