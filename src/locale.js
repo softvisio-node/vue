@@ -53,7 +53,7 @@ class Registry {
     }
 
     hasLocale ( locale ) {
-        return this.#locales.has( locale );
+        return this.#locales.hasLocale( locale );
     }
 
     update ( locales, currency ) {
