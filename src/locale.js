@@ -31,10 +31,6 @@ class Registry {
         return this.#locale;
     }
 
-    hasLocales () {
-        return this.#locales.hasLocales;
-    }
-
     get currency () {
         return this.#currency;
     }
@@ -95,7 +91,7 @@ class Locale extends BaseLocale {
     }
 
     get hasLocales () {
-        return registry.hasLocales;
+        return registry.locales.hasLocales;
     }
 
     get locales () {
