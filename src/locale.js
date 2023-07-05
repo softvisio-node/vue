@@ -58,14 +58,6 @@ class Registry {
         this.#currency = currency;
     }
 
-    canSetLocale ( locale ) {
-        if ( this.hasLocale( locale ) ) return true;
-
-        if ( locale === this.#locales.defaultLocale ) return true;
-
-        return false;
-    }
-
     setLocale ( locale ) {
         window.localStorage.setItem( PARAMETER_NAME, locale );
     }
@@ -114,7 +106,7 @@ class Locale extends BaseLocale {
 
         // switch locale
         if ( backendLocale.id !== this.id ) {
-            await this.setLocale( backendLocale.id );
+            await this.#setLocale( backendLocale.id );
         }
         else if ( !this.isDefined ) {
             registry.setLocale( this.id );
@@ -152,7 +144,7 @@ class Locale extends BaseLocale {
         // already set
         if ( this.id === locale ) return result( 2000 );
 
-        if ( !registry.canSetLocale( locale ) ) return result( 400 );
+        if ( !registry.hasLocale( locale ) ) return result( 400 );
 
         // set user locale
         if ( this.app?.user.isAuthenticated && this.app.user.locale !== locale ) {
@@ -161,6 +153,11 @@ class Locale extends BaseLocale {
             if ( !res.ok ) return res;
         }
 
+        return this.#setLocale( locale );
+    }
+
+    // private
+    async #setLocale ( locale ) {
         registry.setLocale( locale );
 
         if ( registry.getUrlLocale() ) {
