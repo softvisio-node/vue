@@ -9,12 +9,15 @@ class Registry {
     #locale;
     #locales;
     #currency = "USD";
+    #isDefined = false;
 
     constructor () {
         this.#locales = new Locales( config.locales );
 
         var locale = this.#urlLocale;
         locale ||= window.localStorage.getItem( PARAMETER_NAME );
+
+        if ( locale ) this.#isDefined = true;
 
         if ( this.hasLocale( locale ) ) {
             this.#locale = locale;
@@ -35,6 +38,10 @@ class Registry {
 
     get locales () {
         return this.#locales;
+    }
+
+    get isDefined () {
+        return this.#isDefined;
     }
 
     // public
@@ -98,6 +105,10 @@ class Locale extends BaseLocale {
 
     get locales () {
         return registry.locales;
+    }
+
+    get isDefined () {
+        return registry.isDefined;
     }
 
     // public
