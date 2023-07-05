@@ -44,7 +44,6 @@ class Registry {
     }
 
     // public
-    // XXX
     getUrlLocale () {
         return new URLSearchParams( window.location.search ).get( PARAMETER_NAME );
     }
@@ -67,7 +66,6 @@ class Registry {
         return false;
     }
 
-    // XXX
     setLocale ( locale ) {
         window.localStorage.setItem( PARAMETER_NAME, locale );
     }
@@ -174,7 +172,7 @@ class Locale extends BaseLocale {
             this.app.reload();
         }
 
-        return result( 200 );
+        return new Promise( resolve => {} );
     }
 }
 
