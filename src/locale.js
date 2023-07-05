@@ -92,8 +92,8 @@ class Locale extends BaseLocale {
         return this.#app;
     }
 
-    get hasLocales () {
-        return registry.locales.hasLocales;
+    get canChangeLocale () {
+        return registry.locales.canChangeLocale;
     }
 
     get locales () {
