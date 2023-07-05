@@ -9,7 +9,7 @@ class Registry {
     #locale;
     #locales;
     #currency = "USD";
-    #localeIsSet = false;
+    #localeIsDefined = false;
 
     constructor () {
         this.#locales = new Locales( config.locales );
@@ -19,7 +19,7 @@ class Registry {
 
         if ( this.hasLocale( locale ) ) {
             this.#locale = locale;
-            this.#localeIsSet = true;
+            this.#localeIsDefined = true;
         }
         else {
             this.#locale = this.#locales.defaultLocale;
@@ -35,8 +35,8 @@ class Registry {
         return this.#currency;
     }
 
-    get localeIsSet () {
-        return this.#localeIsSet;
+    get localeIsDefined () {
+        return this.#localeIsDefined;
     }
 
     get locales () {
@@ -100,8 +100,8 @@ class Locale extends BaseLocale {
         return registry.locales;
     }
 
-    get isSet () {
-        return registry.localeIsSet;
+    get isDefined () {
+        return registry.localeIsDefined;
     }
 
     // public
@@ -118,7 +118,7 @@ class Locale extends BaseLocale {
         if ( backendLocale.id !== this.id ) {
             await this.setLocale( backendLocale.id );
         }
-        else if ( !this.isSet ) {
+        else if ( !this.isDefined ) {
             registry.setLocale( this.id );
         }
 
