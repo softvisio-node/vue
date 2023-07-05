@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.7.0 (2023-07-05)
+
+Features:
+
+-   feat: locales
+
 ### 7.6.1 (2023-06-26)
 
 Fixes:
