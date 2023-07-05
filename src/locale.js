@@ -43,13 +43,7 @@ class Registry {
     }
 
     update ( locales, currency ) {
-        locales = new Set( locales );
-
-        for ( const locale of locales ) {
-            if ( !this.hasLocale( locale ) ) locales.delete( locale );
-        }
-
-        this.#locales = new Locales( [...locales] );
+        this.#locales = new Locales( this.#locales.merge( locales ) );
 
         this.#currency = currency;
     }
