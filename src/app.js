@@ -120,8 +120,10 @@ export default class VueApp extends Events {
         this.#viewport.mount( selector );
     }
 
-    reload () {
+    async reload () {
         window.location.reload();
+
+        return new Promise( resolve => {} );
     }
 
     async initSession () {

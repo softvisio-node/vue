@@ -14,7 +14,7 @@ class Registry {
     constructor () {
         this.#locales = new Locales( config.locales );
 
-        var locale = this.getUrlLocale();
+        var locale = this.#urlLocale;
         locale ||= window.localStorage.getItem( PARAMETER_NAME );
 
         if ( this.hasLocale( locale ) ) {
@@ -44,10 +44,6 @@ class Registry {
     }
 
     // public
-    getUrlLocale () {
-        return new URLSearchParams( window.location.search ).get( PARAMETER_NAME );
-    }
-
     hasLocale ( locale ) {
         return this.#locales.hasLocale( locale );
     }
@@ -58,8 +54,28 @@ class Registry {
         this.#currency = currency;
     }
 
-    setLocale ( locale ) {
+    async setLocale ( app, locale ) {
         window.localStorage.setItem( PARAMETER_NAME, locale );
+
+        if ( this.#locale === locale ) return;
+
+        this.#locale = locale;
+
+        if ( this.#urlLocale ) {
+            const url = new URL( window.location.href );
+            url.searchParams.delete( PARAMETER_NAME );
+            window.location.href = url;
+        }
+        else {
+            app.reload();
+        }
+
+        return new Promise( resolve => {} );
+    }
+
+    // private
+    get #urlLocale () {
+        return new URLSearchParams( window.location.search ).get( PARAMETER_NAME );
     }
 }
 
@@ -101,16 +117,11 @@ class Locale extends BaseLocale {
 
         this.#app = app;
 
+        // switch locale
+        await registry.setLocale( this.app, backendLocale.id );
+
         // set backend data
         registry.update( locales, backendLocale.currency );
-
-        // switch locale
-        if ( backendLocale.id !== this.id ) {
-            await this.#setLocale( backendLocale.id );
-        }
-        else if ( !this.isDefined ) {
-            registry.setLocale( this.id );
-        }
 
         // add backend domain
         await this.add( backendLocale, "backend" );
@@ -153,23 +164,7 @@ class Locale extends BaseLocale {
             if ( !res.ok ) return res;
         }
 
-        return this.#setLocale( locale );
-    }
-
-    // private
-    async #setLocale ( locale ) {
-        registry.setLocale( locale );
-
-        if ( registry.getUrlLocale() ) {
-            const url = new URL( window.location.href );
-            url.searchParams.delete( PARAMETER_NAME );
-            window.location.href = url;
-        }
-        else {
-            this.app.reload();
-        }
-
-        return new Promise( resolve => {} );
+        return registry.setLocale( this.app, locale );
     }
 }
 
