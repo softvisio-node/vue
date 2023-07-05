@@ -67,6 +67,7 @@ class Registry {
         return false;
     }
 
+    // XXX
     setLocale ( locale ) {
         window.localStorage.setItem( PARAMETER_NAME, locale );
     }
