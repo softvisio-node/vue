@@ -10,6 +10,7 @@ class Registry {
     #locales;
     #currency = "USD";
     #isDefined = false;
+    #canChangeLocale;
 
     constructor () {
         this.#locales = new Locales( config.locales );
@@ -50,6 +51,8 @@ class Registry {
     }
 
     update ( locales, currency ) {
+        this.#canChangeLocale = null;
+
         this.#locales = new Locales( this.#locales.merge( locales ) );
 
         this.#currency = currency;
@@ -72,6 +75,22 @@ class Registry {
         }
 
         return new Promise( resolve => {} );
+    }
+
+    get canChangeLocale () {
+        if ( this.#canChangeLocale == null ) {
+            if ( !this.#locales.size ) {
+                this.#canChangeLocale = false;
+            }
+            else if ( this.#locales.size > 1 ) {
+                this.#canChangeLocale = true;
+            }
+            else {
+                this.#canChangeLocale = !this.#locales.has( this.id );
+            }
+        }
+
+        return this.#canChangeLocale;
     }
 
     // private
@@ -99,15 +118,8 @@ class Locale extends BaseLocale {
         return this.#app;
     }
 
-    // XXX
     get canChangeLocale () {
-        const locales = new Set( [...registry.locales.locales] );
-
-        if ( this.id === this.locales.defaultLocale ) {
-            locales.delete( this.id );
-        }
-
-        return locales.size > 1;
+        return registry.canChangeLocale;
     }
 
     get locales () {
