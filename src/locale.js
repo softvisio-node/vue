@@ -9,7 +9,6 @@ class Registry {
     #locale;
     #locales;
     #currency = "USD";
-    #localeIsDefined = false;
 
     constructor () {
         this.#locales = new Locales( config.locales );
@@ -19,7 +18,6 @@ class Registry {
 
         if ( this.hasLocale( locale ) ) {
             this.#locale = locale;
-            this.#localeIsDefined = true;
         }
         else {
             this.#locale = this.#locales.defaultLocale;
@@ -33,10 +31,6 @@ class Registry {
 
     get currency () {
         return this.#currency;
-    }
-
-    get localeIsDefined () {
-        return this.#localeIsDefined;
     }
 
     get locales () {
@@ -104,10 +98,6 @@ class Locale extends BaseLocale {
 
     get locales () {
         return registry.locales;
-    }
-
-    get isDefined () {
-        return registry.localeIsDefined;
     }
 
     // public

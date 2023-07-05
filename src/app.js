@@ -129,7 +129,7 @@ export default class VueApp extends Events {
     async initSession () {
         while ( true ) {
             const res = await this.#api.call( "session/init-session", {
-                "locale": this.locale.isDefined ? this.locale.id : null,
+                "locale": this.locale.id,
                 "locales": this.locale.locales,
             } );
 
