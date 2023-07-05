@@ -99,8 +99,15 @@ class Locale extends BaseLocale {
         return this.#app;
     }
 
+    // XXX
     get canChangeLocale () {
-        return registry.locales.canChangeLocale;
+        const locales = new Set( [...registry.locales.locales] );
+
+        if ( this.id === this.locales.defaultLocale ) {
+            locales.delete( this.id );
+        }
+
+        return locales.size > 1;
     }
 
     get locales () {
