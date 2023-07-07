@@ -10,7 +10,6 @@ class Registry {
     #locales;
     #currency = "USD";
     #isDefined = false;
-    #canChangeLocale;
 
     constructor () {
         this.#locales = new Locales( config.locales );
@@ -45,14 +44,16 @@ class Registry {
         return this.#isDefined;
     }
 
+    get canChangeLocale () {
+        return this.#locales.canChangeLocale( this.#locale );
+    }
+
     // public
     hasLocale ( locale ) {
         return this.#locales.has( locale );
     }
 
     update ( locales, currency ) {
-        this.#canChangeLocale = null;
-
         this.#locales = new Locales( this.#locales.merge( locales ) );
 
         this.#currency = currency;
@@ -75,22 +76,6 @@ class Registry {
         }
 
         return new Promise( resolve => {} );
-    }
-
-    get canChangeLocale () {
-        if ( this.#canChangeLocale == null ) {
-            if ( !this.#locales.size ) {
-                this.#canChangeLocale = false;
-            }
-            else if ( this.#locales.size > 1 ) {
-                this.#canChangeLocale = true;
-            }
-            else {
-                this.#canChangeLocale = !this.#locales.has( this.id );
-            }
-        }
-
-        return this.#canChangeLocale;
     }
 
     // private
