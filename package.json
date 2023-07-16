@@ -31,6 +31,12 @@
         "./resources/*": "./resources/*",
         "./webpack-components/*": "./resources/webpack-components/*/component.js"
     },
+    "files": [
+        "/bin",
+        "/lib",
+        "/resources",
+        "/src"
+    ],
     "dependencies": {
         "@softvisio/vue-store": "^1.0.3"
     },
