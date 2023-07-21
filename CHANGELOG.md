@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.7.4 (2023-07-21)
+
+Fixes:
+
+-   fix: notifications profile
+
 ### 7.7.3 (2023-07-16)
 
 Fixes:
