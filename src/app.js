@@ -58,6 +58,10 @@ export default class VueApp extends Events {
         return locale;
     }
 
+    get viewport () {
+        return this.#viewport;
+    }
+
     get theme () {
         return this.#theme;
     }
