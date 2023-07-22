@@ -290,16 +290,16 @@ export default class VueApp extends Events {
     async _onConnectionError ( res ) {
         if ( res ) this.utils.toast( res );
 
-        return this.utils.alert( window.i18nd( `vue`, `Unable to connect to the API server. Check, that you have internet connection.` ), {
-            "title": window.i18nd( `vue`, `Connection error` ),
+        return this.utils.alert( window.l10nd( `vue`, `Unable to connect to the API server. Check, that you have internet connection.` ), {
+            "title": window.l10nd( `vue`, `Connection error` ),
         } );
     }
 
     async _onSignout ( res ) {
         if ( res ) this.utils.toast( res );
 
-        await this.utils.alert( window.i18nd( `vue`, `Your session was terminated on the API server.` ), {
-            "title": window.i18nd( `vue`, `Session closed` ),
+        await this.utils.alert( window.l10nd( `vue`, `Your session was terminated on the API server.` ), {
+            "title": window.l10nd( `vue`, `Session closed` ),
         } );
 
         Ext.Viewport.mask();
@@ -376,7 +376,7 @@ export default class VueApp extends Events {
             );
         }
 
-        if ( !providerUrl ) return result( [400, window.i18nd( `vue`, `Authorization provider is not supported` )] );
+        if ( !providerUrl ) return result( [400, window.l10nd( `vue`, `Authorization provider is not supported` )] );
 
         const oauthWindow = ( this.#oauthWindow = window.open( oauthUrl, null, "toolbar=no, menubar=no, width=600, height=700" ) );
         oauthWindow.focus();
@@ -413,11 +413,11 @@ export default class VueApp extends Events {
             } );
         } );
 
-        if ( !params ) return result( [400, window.i18nd( "vue", "Authorization cancelled" )] );
+        if ( !params ) return result( [400, window.l10nd( "vue", "Authorization cancelled" )] );
 
-        if ( !params.get( "code" ) ) return result( [400, window.i18nd( "vue", "Authorization cancelled" )] );
+        if ( !params.get( "code" ) ) return result( [400, window.l10nd( "vue", "Authorization cancelled" )] );
 
-        if ( params.get( "state" ) !== state ) return result( [400, window.i18nd( "vue", "Authorization cancelled" )] );
+        if ( params.get( "state" ) !== state ) return result( [400, window.l10nd( "vue", "Authorization cancelled" )] );
 
         return result( 200, {
             "oauth_provider": oauthProvider,

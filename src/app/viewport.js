@@ -40,8 +40,8 @@ export default class {
 
         // locale
         vue.config.globalProperties.msgid = window.msgid;
-        vue.config.globalProperties.i18n = window.i18n;
-        vue.config.globalProperties.i18nd = window.i18nd;
+        vue.config.globalProperties.l10n = window.l10n;
+        vue.config.globalProperties.l10nd = window.l10nd;
 
         vue.config.globalProperties.$api = this.#app.api;
 

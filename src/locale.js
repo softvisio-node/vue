@@ -178,9 +178,9 @@ const locale = new Locale( { "id": registry.locale } );
 export default locale;
 
 // register globally
-window.i18n = locale.i18n.bind( locale );
-window.i18nd = locale.i18nd.bind( locale );
-window.i18nt = locale.i18nt.bind( locale );
+window.l10n = locale.l10n.bind( locale );
+window.l10nd = locale.l10nd.bind( locale );
+window.l10nt = locale.l10nt.bind( locale );
 
 // add "vue" domain
 await locale.add( language => import( /* webpackChunkName: "locales/[request]" */ `#resources/locales/${language}.po` ), "vue" );
