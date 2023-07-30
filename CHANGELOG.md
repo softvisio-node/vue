@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.1 (2023-07-30)
+
+Fixes:
+
+-   fix: app config
+
 ### 7.8.0 (2023-07-22)
 
 Features:
