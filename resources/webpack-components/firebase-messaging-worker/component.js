@@ -11,7 +11,7 @@ export default class extends WebpackComponent {
 
         if ( this.isCordova ) return false;
 
-        if ( !this.appConfig.firebase?.web ) return false;
+        if ( !this.appConfig?.firebase?.web ) return false;
 
         return true;
     }
