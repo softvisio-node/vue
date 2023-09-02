@@ -6,6 +6,7 @@ export default class Settings extends Store {
 
     #app;
     #settings;
+    #components;
 
     constructor ( app ) {
         super();
@@ -72,6 +73,10 @@ export default class Settings extends Store {
 
     get passwordsStrength () {
         return this.#settings.passwords_strength;
+    }
+
+    get components () {
+        return ( this.#components ??= new Set( this.#settings.components ) );
     }
 
     // public
