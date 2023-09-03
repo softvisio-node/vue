@@ -8,6 +8,7 @@ export default class extends WebpackComponent {
             ...super.webpackResolveAlias,
             "vue$": "vue/dist/vue.runtime.esm-bundler.js",
             "#vue": "@softvisio/vue",
+            "#app": "@softvisio/vue/app-instance",
         };
     }
 
