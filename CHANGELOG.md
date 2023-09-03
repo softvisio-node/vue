@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.4 (2023-09-03)
+
+Fixes:
+
+-   fix: #app alias
+
 ### 7.8.3 (2023-09-02)
 
 Fixes:
