@@ -1,20 +1,23 @@
 import result from "#core/result";
-import Store from "#vue/store";
 import firebase from "#src/firebase";
+import { reactive } from "vue";
 
 const PUSH_NOTIFICATIONS_KEY = "pushNotifications";
 
-export default class VueNotifications extends Store {
+export default class VueNotifications {
     _pushNotificationsEnabled = false;
-    _totalInbox = 0;
     _totalDone = 0;
+
+    _reactive = reactive( {
+        "pushNotificationsEnabled": false,
+        "totalInbox": 0,
+        "totalDone": 0,
+    } );
 
     #app;
     #pushNotificationsData;
 
     constructor ( app ) {
-        super();
-
         this.#app = app;
 
         // init push notifications
@@ -41,7 +44,7 @@ export default class VueNotifications extends Store {
     }
 
     get totalInbox () {
-        return this._totalInbox;
+        return this._reactive.totalInbox;
     }
 
     get totalDone () {

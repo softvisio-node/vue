@@ -92,7 +92,7 @@ export default class VueApp extends Events {
         this.#theme = new Theme( this );
 
         // notifications
-        this.#notifications = Notifications.new( this );
+        this.#notifications = new Notifications( this );
 
         // create viewport
         this.#viewport = new Viewport( this );
