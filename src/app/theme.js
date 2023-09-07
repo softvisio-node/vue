@@ -1,6 +1,6 @@
-import Store from "#vue/store";
 import config from "#vue/config";
 import Events from "#core/events";
+import { reactive } from "vue";
 
 const DARK_MODE_KEY = "darkMode";
 const DEVICE_DARK_MODE_KEY = "deviceDarkMode";
@@ -10,38 +10,35 @@ const DEFAULT_THEME = {
     "accent": config.theme.accentColor,
 };
 
-export default class Theme extends Store {
-
-    // state
-    _deviceDarkMode;
-    _darkMode;
-    _theme;
-
+export default class Theme {
     #app;
     #events = new Events( { "maxListeners": Infinity } );
+    #reactive = reactive( {
+        "deviceDarkMode": null,
+        "darkMode": null,
+        "theme": null,
+    } );
 
     constructor ( app ) {
-        super();
-
         this.#app = app;
 
         // listen for device dark mode change
         window.matchMedia( "(prefers-color-scheme: dark)" ).addEventListener( "change", e => {
-            if ( !this._deviceDarkMode ) return;
+            if ( !this.#reactive.deviceDarkMode ) return;
 
             this.#setDarkMode( e.matches );
         } );
 
         // darkMode
-        this._deviceDarkMode = window.localStorage.getItem( DEVICE_DARK_MODE_KEY );
-        this._darkMode = window.localStorage.getItem( DARK_MODE_KEY );
+        this.#reactive.deviceDarkMode = window.localStorage.getItem( DEVICE_DARK_MODE_KEY );
+        this.#reactive.darkMode = window.localStorage.getItem( DARK_MODE_KEY );
 
         // device dark mode is not set
-        if ( this._deviceDarkMode == null ) {
+        if ( this.#reactive.deviceDarkMode == null ) {
 
             // user-defined dark mode is set
-            if ( this._darkMode != null ) {
-                this._deviceDarkMode = false;
+            if ( this.#reactive.darkMode != null ) {
+                this.#reactive.deviceDarkMode = false;
             }
 
             // user-defined dark mode is not set
@@ -49,45 +46,45 @@ export default class Theme extends Store {
 
                 // follow device dark mode
                 if ( config.theme.darkMode === "auto" ) {
-                    this._deviceDarkMode = true;
+                    this.#reactive.deviceDarkMode = true;
                 }
 
                 // use user-defined dark mode
                 else {
-                    this._deviceDarkMode = false;
+                    this.vdeviceDarkMode = false;
                 }
             }
         }
         else {
-            this._deviceDarkMode = !!JSON.parse( this._deviceDarkMode );
+            this.#reactive.deviceDarkMode = !!JSON.parse( this.#reactive.deviceDarkMode );
         }
 
         // follow device dark mode settings
-        if ( this._deviceDarkMode ) {
-            this._darkMode = this.#getDeviceDarkMode();
+        if ( this.#reactive.deviceDarkMode ) {
+            this.#reactive.darkMode = this.#getDeviceDarkMode();
         }
 
         // user-defined dark mode is not set
-        else if ( this._darkMode == null ) {
+        else if ( this.#reactive.darkMode == null ) {
             if ( config.theme.darkMode === "auto" ) {
-                this._darkMode = this.#getDeviceDarkMode();
+                this.#reactive.darkMode = this.#getDeviceDarkMode();
             }
             else {
-                this._darkMode = !!config.theme.darkMode;
+                this.#reactive.darkMode = !!config.theme.darkMode;
             }
         }
         else {
-            this._darkMode = !!JSON.parse( this._darkMode );
+            this.#reactive.darkMode = !!JSON.parse( this.#reactive.darkMode );
         }
 
         // theme
-        this._theme = window.localStorage.getItem( THEME_KEY );
+        this.#reactive.theme = window.localStorage.getItem( THEME_KEY );
 
-        if ( this._theme == null ) {
-            this._theme = DEFAULT_THEME;
+        if ( this.#reactive.theme == null ) {
+            this.#reactive.theme = DEFAULT_THEME;
         }
         else {
-            this._theme = { ...DEFAULT_THEME, ...JSON.parse( this._theme ) };
+            this.#reactive.theme = { ...DEFAULT_THEME, ...JSON.parse( this.#reactive.theme ) };
         }
     }
 
@@ -97,7 +94,7 @@ export default class Theme extends Store {
     }
 
     get deviceDarkMode () {
-        return this._deviceDarkMode;
+        return this.#reactive.deviceDarkMode;
     }
 
     set deviceDarkMode ( deviceDarkMode ) {
@@ -107,13 +104,13 @@ export default class Theme extends Store {
     }
 
     get darkMode () {
-        return this._darkMode;
+        return this.#reactive.darkMode;
     }
 
     set darkMode ( darkMode ) {
         darkMode = !!darkMode;
 
-        if ( darkMode === this._darkMode ) return;
+        if ( darkMode === this.#reactive.darkMode ) return;
 
         // turn off device dark mode
         this.#setDeviceDarkMode( false );
@@ -122,22 +119,22 @@ export default class Theme extends Store {
     }
 
     get theme () {
-        return this._theme;
+        return this.#reactive.theme;
     }
 
     set theme ( { base, accent } = {} ) {
-        base ||= this._theme.base;
-        accent ||= this._theme.accent;
+        base ||= this.#reactive.theme.base;
+        accent ||= this.#reactive.theme.accent;
 
         // not changed
-        if ( base === this._theme.base && accent === this._theme.accent ) return;
+        if ( base === this.#reactive.theme.base && accent === this.#reactive.theme.accent ) return;
 
-        this._theme.base = base;
-        this._theme.accent = accent;
+        this.#reactive.theme.base = base;
+        this.#reactive.theme.accent = accent;
 
-        window.localStorage.setItem( THEME_KEY, JSON.stringify( this._theme ) );
+        window.localStorage.setItem( THEME_KEY, JSON.stringify( this.#reactive.theme ) );
 
-        this.#events.emit( "themeChange", this._theme );
+        this.#events.emit( "themeChange", this.#reactive.theme );
     }
 
     // public
@@ -168,23 +165,23 @@ export default class Theme extends Store {
         deviceDarkMode = !!deviceDarkMode;
 
         // not changed
-        if ( deviceDarkMode === this._deviceDarkMode ) return;
+        if ( deviceDarkMode === this.#reactive.deviceDarkMode ) return;
 
         window.localStorage.setItem( DEVICE_DARK_MODE_KEY, deviceDarkMode );
 
-        this._deviceDarkMode = deviceDarkMode;
+        this.#reactive.deviceDarkMode = deviceDarkMode;
     }
 
     #setDarkMode ( darkMode ) {
         darkMode = !!darkMode;
 
         // not changed
-        if ( darkMode === this._darkMode ) return;
+        if ( darkMode === this.#reactive.darkMode ) return;
 
         window.localStorage.setItem( DARK_MODE_KEY, darkMode );
 
-        this._darkMode = darkMode;
+        this.#reactive.darkMode = darkMode;
 
-        this.#events.emit( "darkModeChange", this._darkMode );
+        this.#events.emit( "darkModeChange", this.#reactive.darkMode );
     }
 }
