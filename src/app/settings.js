@@ -1,16 +1,15 @@
-import Store from "#vue/store";
 import env from "#core/env";
+import { reactive } from "vue";
 
-export default class Settings extends Store {
-    _title;
-
+export default class Settings {
     #app;
     #settings;
     #components;
+    #reactive = reactive( {
+        "title": "",
+    } );
 
     constructor ( app ) {
-        super();
-
         this.#app = app;
     }
 
@@ -20,7 +19,7 @@ export default class Settings extends Store {
     }
 
     get title () {
-        return this._title;
+        return this.#reactive.title;
     }
 
     get signupEnabled () {
@@ -89,6 +88,6 @@ export default class Settings extends Store {
 
         if ( this.app.config.titleIcon ) title = this.app.config.titleIcon + " " + title;
 
-        this._title = title;
+        this.#reactive.title = title;
     }
 }

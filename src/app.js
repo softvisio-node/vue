@@ -22,7 +22,7 @@ export default class VueApp extends Events {
     #api;
     #viewport;
     #user;
-    #settings = Settings.new( this );
+    #settings = new Settings( this );
     #authorizationMutex = new Mutex();
     #insufficientPermissionsMutex = new Mutex();
     #oauthWindow;
