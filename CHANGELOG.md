@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.5 (2023-09-07)
+
+Fixes:
+
+-   fix: store replaced with reactive
+
 ### 7.8.4 (2023-09-03)
 
 Fixes:
