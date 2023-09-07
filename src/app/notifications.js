@@ -5,8 +5,6 @@ import { reactive } from "vue";
 const PUSH_NOTIFICATIONS_KEY = "pushNotifications";
 
 export default class VueNotifications {
-    _pushNotificationsEnabled = false;
-
     _reactive = reactive( {
         "pushNotificationsEnabled": false,
         "totalInbox": 0,
@@ -35,7 +33,7 @@ export default class VueNotifications {
     }
 
     get pushNotificationsEnabled () {
-        return this._pushNotificationsEnabled;
+        return this._reactive.pushNotificationsEnabled;
     }
 
     get internalNotificationsEnabled () {
@@ -97,7 +95,7 @@ export default class VueNotifications {
 
         if ( !disabled ) return result( [500, window.l10nd( "vue", "Error disabling push notifications" )] );
 
-        this._pushNotificationsEnabled = false;
+        this._reactive.pushNotificationsEnabled = false;
 
         this.#pushNotificationsData.tokenId = null;
         if ( user ) this.#pushNotificationsData.enabled[this.#pushNotificationsUserId] = false;
@@ -149,7 +147,7 @@ export default class VueNotifications {
 
         // unable to get token
         if ( !token ) {
-            this._pushNotificationsEnabled = false;
+            this._reactive.pushNotificationsEnabled = false;
 
             return result( [500, window.l10nd( "vue", "Push notifications are disabled in the browser settings" )] );
         }
@@ -159,14 +157,14 @@ export default class VueNotifications {
 
         // token not changed and is valid
         if ( tokenId === this.#pushNotificationsData.tokenId ) {
-            this._pushNotificationsEnabled = true;
+            this._reactive.pushNotificationsEnabled = true;
 
             return result( 200 );
         }
 
         // token not changed but user or prefix changed
         else if ( this.#pushNotificationsData.tokenId?.endsWith( tokenHash ) ) {
-            this._pushNotificationsEnabled = false;
+            this._reactive.pushNotificationsEnabled = false;
 
             // disable old token
             const disabled = await this.disablePushNotifications( false );
@@ -182,12 +180,12 @@ export default class VueNotifications {
             this.#pushNotificationsData.tokenId = tokenId;
             this.#storePushNotificationsData();
 
-            this._pushNotificationsEnabled = true;
+            this._reactive.pushNotificationsEnabled = true;
         }
         else {
             await this.disablePushNotifications( false );
 
-            this._pushNotificationsEnabled = false;
+            this._reactive.pushNotificationsEnabled = false;
         }
 
         return res;
