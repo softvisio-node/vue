@@ -37,9 +37,6 @@
         "/resources",
         "/src"
     ],
-    "dependencies": {
-        "@softvisio/vue-store": "^1.0.3"
-    },
     "peerDependencies": {
         "@firebase/messaging": "^0.12.0",
         "@softvisio/webpack": "^1.0.0"
