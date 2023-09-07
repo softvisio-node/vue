@@ -6,7 +6,6 @@ const PUSH_NOTIFICATIONS_KEY = "pushNotifications";
 
 export default class VueNotifications {
     _pushNotificationsEnabled = false;
-    _totalDone = 0;
 
     _reactive = reactive( {
         "pushNotificationsEnabled": false,
@@ -48,7 +47,7 @@ export default class VueNotifications {
     }
 
     get totalDone () {
-        return this._totalDone;
+        return this._reactive.totalDone;
     }
 
     // public
