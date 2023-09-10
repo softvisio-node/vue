@@ -141,6 +141,12 @@ class Locale extends BaseLocale {
             }
         }
 
+        if ( locale.domains ) {
+            for ( const domain of Object.values( locale.domains ) ) {
+                domain.id = this.id;
+            }
+        }
+
         super.add( locale );
     }
 
