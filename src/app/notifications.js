@@ -141,7 +141,7 @@ export default class VueNotifications {
     }
 
     async #enablePushNotifications () {
-        if ( !this.pushNotificationsSupported ) return result( [500, window.l10n( "vue", "Push notifications are not supported", { "domain": "vue" } )] );
+        if ( !this.pushNotificationsSupported ) return result( [500, window.l10n( "Push notifications are not supported", { "domain": "vue" } )] );
 
         const token = await firebase.enable();
 
