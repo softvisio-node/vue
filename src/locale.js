@@ -127,9 +127,6 @@ class Locale extends BaseLocale {
 
         // set backend data
         registry.update( locales, backendLocale.currency );
-
-        // add backend domain
-        await this.add( backendLocale, "backend" );
     }
 
     async add ( locale, domain ) {
