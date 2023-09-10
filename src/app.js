@@ -417,7 +417,7 @@ export default class VueApp extends Events {
 
         if ( !params.get( "code" ) ) return result( [400, window.l10n( "Authorization cancelled", { "domain": "vue" } )] );
 
-        if ( params.get( "state" ) !== state ) return result( [400, window.l10n( "vue", "Authorization cancelled", { "domain": "vue" } )] );
+        if ( params.get( "state" ) !== state ) return result( [400, window.l10n( "Authorization cancelled", { "domain": "vue" } )] );
 
         return result( 200, {
             "oauth_provider": oauthProvider,
