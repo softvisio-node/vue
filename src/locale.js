@@ -179,7 +179,6 @@ export default locale;
 
 // register globally
 window.l10n = locale.l10n.bind( locale );
-window.l10nd = locale.l10nd.bind( locale );
 window.l10nt = locale.l10nt.bind( locale );
 
 // add "vue" domain
