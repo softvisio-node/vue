@@ -129,7 +129,7 @@ class Locale extends BaseLocale {
         registry.update( locales, backendLocale.currency );
     }
 
-    async add ( locale, domain ) {
+    async add ( locale ) {
         if ( !locale ) return;
 
         if ( typeof locale === "function" ) {
@@ -141,15 +141,7 @@ class Locale extends BaseLocale {
             }
         }
 
-        if ( domain ) {
-            locale.id = this.id;
-            locale = new BaseLocale( locale );
-
-            this.domains.add( domain, locale );
-        }
-        else {
-            super.add( locale );
-        }
+        super.add( locale );
     }
 
     async setLocale ( locale ) {
@@ -179,7 +171,7 @@ window.l10n = locale.l10n.bind( locale );
 window.l10nt = locale.l10nt.bind( locale );
 
 // add "vue" domain
-await locale.add( language => import( /* webpackChunkName: "locales/[request]" */ `#resources/locales/${language}.po` ), "vue" );
+await locale.add( language => import( /* webpackChunkName: "locales/[request]" */ `#resources/locales/${language}.po` ) );
 
 // add app locale
 await locale.add( language => import( /* webpackChunkName: "locales/[request]" */ `@resources/locales/${language}.po` ) );
