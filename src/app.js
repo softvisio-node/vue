@@ -112,6 +112,7 @@ export default class VueApp extends Events {
         // init api
         if ( config.apiUrl ) {
             this.#api = Api.new( config.apiUrl, {
+                "locale": locale.id,
                 "token": window.localStorage.getItem( API_TOKEN_KEY ),
                 "onAuthorization": this.#onAuthorization.bind( this ),
             } );
