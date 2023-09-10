@@ -13,47 +13,38 @@ msgstr ""
 "X-Search-Path: /src/**\n"
 "X-Generator: Poedit 3.3.1\n"
 
-#. !domains: vue
-#: src/app.js:416:44 src/app.js:418:58 src/app.js:420:68
+#: src/app.js:417:44 src/app.js:419:58 src/app.js:421:68
 msgid "Authorization cancelled"
 msgstr "Авторизация отменена"
 
-#. !domains: vue
-#: src/app.js:379:49
+#: src/app.js:380:49
 msgid "Authorization provider is not supported"
 msgstr "Провайдер авторизации не поддерживается"
 
-#. !domains: vue
-#: src/app.js:294:21
+#: src/app.js:295:21
 msgid "Connection error"
 msgstr "Ошибка подключения"
 
-#. !domains: vue
 #: src/app/notifications.js:96:46
 msgid "Error disabling push notifications"
 msgstr "Ошибка при отключении push уведомлений"
 
-#. !domains: vue
 #: src/app/notifications.js:152:33
 msgid "Push notifications are disabled in the browser settings"
 msgstr "Push уведомления заблокированы в настройках браузера"
 
-#. !domains: vue
 #: src/app/notifications.js:144:69 src/app/notifications.js:92:58
 msgid "Push notifications are not supported"
 msgstr "Push уведомления не поддерживаются"
 
-#. !domains: vue
-#: src/app.js:302:21
+#: src/app.js:303:21
 msgid "Session closed"
 msgstr "Сессия закрыта"
 
-#. !domains: vue
-#: src/app.js:293:33
+#: src/app.js:294:33
 msgid "Unable to connect to the API server. Check, that you have internet connection."
 msgstr "Не удалось подключиться к серверу API. Проверьте, что у вас есть подключение к интернет."
 
-#. !domains: vue
-#: src/app.js:301:32
+#: src/app.js:302:32
 msgid "Your session was terminated on the API server."
 msgstr "Ваша сессия былп прервана API серввером."
