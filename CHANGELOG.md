@@ -1,5 +1,12 @@
 # Changelog
 
+### 7.8.9 (2023-09-10)
+
+Fixes:
+
+-   fix: api client locale
+-   fix: backend locale removed
+
 ### 7.8.8 (2023-09-10)
 
 Fixes:
