@@ -291,16 +291,16 @@ export default class VueApp extends Events {
     async _onConnectionError ( res ) {
         if ( res ) this.utils.toast( res );
 
-        return this.utils.alert( window.l10n( `Unable to connect to the API server. Check, that you have internet connection.`, { "domain": "vue" } ), {
-            "title": window.l10n( `Connection error`, { "domain": "vue" } ),
+        return this.utils.alert( window.l10n( `Unable to connect to the API server. Check, that you have internet connection.` ), {
+            "title": window.l10n( `Connection error` ),
         } );
     }
 
     async _onSignout ( res ) {
         if ( res ) this.utils.toast( res );
 
-        await this.utils.alert( window.l10n( `Your session was terminated on the API server.`, { "domain": "vue" } ), {
-            "title": window.l10n( `Session closed`, { "domain": "vue" } ),
+        await this.utils.alert( window.l10n( `Your session was terminated on the API server.` ), {
+            "title": window.l10n( `Session closed` ),
         } );
 
         Ext.Viewport.mask();
@@ -377,7 +377,7 @@ export default class VueApp extends Events {
             );
         }
 
-        if ( !providerUrl ) return result( [400, window.l10n( `Authorization provider is not supported`, { "domain": "vue" } )] );
+        if ( !providerUrl ) return result( [400, window.l10n( `Authorization provider is not supported` )] );
 
         const oauthWindow = ( this.#oauthWindow = window.open( oauthUrl, null, "toolbar=no, menubar=no, width=600, height=700" ) );
         oauthWindow.focus();
@@ -414,11 +414,11 @@ export default class VueApp extends Events {
             } );
         } );
 
-        if ( !params ) return result( [400, window.l10n( "Authorization cancelled", { "domain": "vue" } )] );
+        if ( !params ) return result( [400, window.l10n( "Authorization cancelled" )] );
 
-        if ( !params.get( "code" ) ) return result( [400, window.l10n( "Authorization cancelled", { "domain": "vue" } )] );
+        if ( !params.get( "code" ) ) return result( [400, window.l10n( "Authorization cancelled" )] );
 
-        if ( params.get( "state" ) !== state ) return result( [400, window.l10n( "Authorization cancelled", { "domain": "vue" } )] );
+        if ( params.get( "state" ) !== state ) return result( [400, window.l10n( "Authorization cancelled" )] );
 
         return result( 200, {
             "oauth_provider": oauthProvider,

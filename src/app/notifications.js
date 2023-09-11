@@ -89,11 +89,11 @@ export default class VueNotifications {
     }
 
     async disablePushNotifications ( user = true ) {
-        if ( !firebase.isSupported ) return result( [500, window.l10n( "Push notifications are not supported", { "domain": "vue" } )] );
+        if ( !firebase.isSupported ) return result( [500, window.l10n( "Push notifications are not supported" )] );
 
         const disabled = await firebase.disable();
 
-        if ( !disabled ) return result( [500, window.l10n( "Error disabling push notifications", { "domain": "vue" } )] );
+        if ( !disabled ) return result( [500, window.l10n( "Error disabling push notifications" )] );
 
         this._reactive.pushNotificationsEnabled = false;
 
@@ -141,7 +141,7 @@ export default class VueNotifications {
     }
 
     async #enablePushNotifications () {
-        if ( !this.pushNotificationsSupported ) return result( [500, window.l10n( "Push notifications are not supported", { "domain": "vue" } )] );
+        if ( !this.pushNotificationsSupported ) return result( [500, window.l10n( "Push notifications are not supported" )] );
 
         const token = await firebase.enable();
 
@@ -149,7 +149,7 @@ export default class VueNotifications {
         if ( !token ) {
             this._reactive.pushNotificationsEnabled = false;
 
-            return result( [500, window.l10n( "Push notifications are disabled in the browser settings", { "domain": "vue" } )] );
+            return result( [500, window.l10n( "Push notifications are disabled in the browser settings" )] );
         }
 
         const tokenHash = token.slice( -16 ),

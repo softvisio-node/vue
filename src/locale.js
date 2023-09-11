@@ -141,12 +141,6 @@ class Locale extends BaseLocale {
             }
         }
 
-        if ( locale.domains ) {
-            for ( const domain of Object.values( locale.domains ) ) {
-                domain.id = this.id;
-            }
-        }
-
         super.add( locale );
     }
 
@@ -176,7 +170,7 @@ export default locale;
 window.l10n = locale.l10n.bind( locale );
 window.l10nt = locale.l10nt.bind( locale );
 
-// add "vue" domain
+// add "vue" translations
 await locale.add( language => import( /* webpackChunkName: "locales/[request]" */ `#resources/locales/${language}.po` ) );
 
 // add app locale
