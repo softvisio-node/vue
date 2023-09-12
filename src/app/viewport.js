@@ -46,6 +46,7 @@ export default class {
         vue.config.globalProperties.$api = this.#app.api;
 
         vue.config.globalProperties.$utils = this.#app.utils;
+        vue.config.globalProperties.$toast = this.#app.utils.toast;
 
         vue.use( mount );
 
