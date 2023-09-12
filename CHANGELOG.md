@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.16 (2023-09-12)
+
+Fixes:
+
+-   fix: uuidv4 renamed
+
 ### 7.8.15 (2023-09-12)
 
 Fixes:
