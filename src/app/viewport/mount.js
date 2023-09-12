@@ -41,6 +41,11 @@ export default {
 
                 if ( isEsModule( component ) ) component = component.default;
             }
+            else if ( component instanceof Promise ) {
+                component = await component;
+
+                if ( isEsModule( component ) ) component = component.default;
+            }
 
             // vue3 async component
             else if ( component.name === "AsyncComponentWrapper" ) {
