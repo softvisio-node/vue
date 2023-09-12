@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.14 (2023-09-12)
+
+Fixes:
+
+-   fix: mount promise
+
 ### 7.8.13 (2023-09-11)
 
 Fixes:
