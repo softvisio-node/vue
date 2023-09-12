@@ -4,7 +4,7 @@ import Mutex from "#core/threads/mutex";
 import * as utils from "#vue/utils";
 import config from "#vue/config";
 import Api from "#core/api";
-import uuidv4 from "#core/uuid";
+import uuid from "#core/uuid";
 import result from "#core/result";
 import Viewport from "#vue/app/viewport";
 import Settings from "#vue/app/settings";
@@ -330,7 +330,7 @@ export default class VueApp extends Events {
         oauthUrl.search = "";
         oauthUrl.hash = "";
 
-        const state = uuidv4();
+        const state = uuid();
 
         var providerUrl;
 
