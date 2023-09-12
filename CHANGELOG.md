@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.15 (2023-09-12)
+
+Fixes:
+
+-   fix: vue $toast
+
 ### 7.8.14 (2023-09-12)
 
 Fixes:
