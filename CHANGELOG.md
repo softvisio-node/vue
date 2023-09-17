@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.17 (2023-09-17)
+
+Fixes:
+
+-   fix: formatRelativeTime
+
 ### 7.8.16 (2023-09-12)
 
 Fixes:
