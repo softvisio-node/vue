@@ -131,7 +131,7 @@ export default class VueNotifications {
     }
 
     // protected
-    _getRelativeTime ( date ) {
+    _getRelativeDate ( date ) {
         return this.app.locale.formatRelativeDate( date, "style:short" );
     }
 
