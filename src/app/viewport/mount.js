@@ -110,7 +110,7 @@ export default {
 
             // cache component instance
             if ( cache ) {
-                if ( COMPONENTS_CACHE.has( component ) ) {
+                if ( !COMPONENTS_CACHE.has( component ) ) {
                     COMPONENTS_CACHE.set( component, new Map() );
                 }
 
