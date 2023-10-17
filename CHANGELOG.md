@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.18 (2023-10-17)
+
+Fixes:
+
+-   fix: mount cache
+
 ### 7.8.17 (2023-09-17)
 
 Fixes:
