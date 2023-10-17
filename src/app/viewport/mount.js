@@ -52,14 +52,12 @@ export default {
                 component = await component.__asyncLoader();
             }
 
-            // defive cache
-            cache ??= true;
+            // check cache key
+            if ( cache ) {
+                const cachedComponent = COMPONENTS_CACHE.get( component )?.get( cache );
 
-            // define cache key
-            if ( cache && cache === true ) cache = component;
-
-            // component cached, return from cache
-            if ( cache && COMPONENTS_CACHE.has( cache ) ) return COMPONENTS_CACHE.get( cache );
+                if ( cachedComponent ) return cachedComponent;
+            }
 
             // create vnode
             const vnode = createVnode( component, props, children );
@@ -79,7 +77,13 @@ export default {
                     render( null, { "_vnode": this } );
 
                     // remove component from cache, if was cached
-                    if ( cache ) COMPONENTS_CACHE.delete( cache );
+                    if ( cache ) {
+                        COMPONENTS_CACHE.get( component )?.delete( cache );
+
+                        if ( !COMPONENTS_CACHE.get( component )?.size ) {
+                            COMPONENTS_CACHE.delete( component );
+                        }
+                    }
                 }
             };
 
@@ -105,7 +109,13 @@ export default {
             const instance = vnode.component.proxy;
 
             // cache component instance
-            if ( cache ) COMPONENTS_CACHE.set( cache, instance );
+            if ( cache ) {
+                if ( COMPONENTS_CACHE.has( component ) ) {
+                    COMPONENTS_CACHE.set( component, new Map() );
+                }
+
+                COMPONENTS_CACHE.get( component ).set( cache, instance );
+            }
 
             if ( vnode.el.tagName.substring( 0, 4 ) === "EXT-" ) {
                 return new Promise( resolve => {
