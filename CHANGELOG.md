@@ -1,5 +1,12 @@
 # Changelog
 
+### 7.8.20 (2023-10-21)
+
+Fixes:
+
+-   fix: api connection status events
+-   fix: telegram
+
 ### 7.8.19 (2023-10-20)
 
 Fixes:
