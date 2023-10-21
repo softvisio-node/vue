@@ -169,7 +169,7 @@ export default class VueApp extends Events {
         this.#api.on( "insufficientPermissions", this.#onInsufficientPermissions.bind( this ) );
 
         if ( this.#user.isAuthenticated ) {
-            this.#api.on( "connect", () => this.#api.call( "session/check-session" ) );
+            this.#api.on( "connect", () => this.#api.call( "session/check-authentication" ) );
         }
 
         this.#notifications.init();
