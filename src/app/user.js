@@ -39,8 +39,7 @@ export default class User {
         return this.#locale;
     }
 
-    // XXX
-    get avatar () {
+    get avatarUrl () {
         return this.#avatarUrl;
     }
 
