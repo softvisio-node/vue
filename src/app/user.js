@@ -1,19 +1,24 @@
 import constants from "#core/app/constants";
+import { reactive } from "vue";
 
 export default class User {
     #app;
     #id;
     #email;
     #locale;
-    #avatar;
+    #avatarUrl;
     #permissions;
+    #reactive = reactive( {
+        "emailConfirmed": false,
+    } );
 
     constructor ( app, data, permissions ) {
         this.#app = app;
         this.#id = data?.id;
         this.#email = data?.email;
+        this.#reactive.emailConfirmed = data?.email_confirmed ?? false;
         this.#locale = data?.locale;
-        this.#avatar = data?.avatar;
+        this.#avatarUrl = data?.avatar_url;
         this.#permissions = new Set( permissions );
     }
 
@@ -26,12 +31,17 @@ export default class User {
         return this.#email;
     }
 
+    get isEmailConfirmed () {
+        return this.#reactive.emailConfirmed;
+    }
+
     get locale () {
         return this.#locale;
     }
 
+    // XXX
     get avatar () {
-        return this.#avatar;
+        return this.#avatarUrl;
     }
 
     get isAuthenticated () {
@@ -40,6 +50,11 @@ export default class User {
 
     get isRoot () {
         return this.#id === constants.rootUserId;
+    }
+
+    // public
+    setEmailConfirmed ( value ) {
+        this.#reactive.emailConfirmed = !!value;
     }
 
     // public
