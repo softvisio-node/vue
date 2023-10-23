@@ -24,7 +24,7 @@ export default class VueApp extends Events {
     #user;
     #settings = new Settings( this );
     #authorizationMutex = new Mutex();
-    #insufficientPermissionsMutex = new Mutex();
+    #accessDeniedMutex = new Mutex();
     #oauthWindow;
     #signingOut;
 
@@ -166,7 +166,7 @@ export default class VueApp extends Events {
 
         this.#api.on( "sessionDisable", this.#signOut.bind( this, { "showAlert": true } ) );
         this.#api.on( "sessionDelete", this.#signOut.bind( this, { "showAlert": true } ) );
-        this.#api.on( "insufficientPermissions", this.#onInsufficientPermissions.bind( this ) );
+        this.#api.on( "accessDenied", this.#onAccessDenied.bind( this ) );
 
         if ( this.#user.isAuthenticated ) {
             this.#api.on( "connect", () => this.#api.call( "session/check-authentication" ) );
@@ -317,7 +317,7 @@ export default class VueApp extends Events {
         return false;
     }
 
-    async _onInsufficientPermissions () {}
+    async _onAccessDenied () {}
 
     // private
     async #oauth ( oauthProvider, email ) {
@@ -461,11 +461,11 @@ export default class VueApp extends Events {
         return res;
     }
 
-    async #onInsufficientPermissions () {
-        if ( !this.#insufficientPermissionsMutex.tryLock() ) return;
+    async #onAccessDenied () {
+        if ( !this.#accessDeniedMutex.tryLock() ) return;
 
-        await this._onInsufficientPermissions();
+        await this._onAccessDenied();
 
-        this.#insufficientPermissionsMutex.unlock();
+        this.#accessDeniedMutex.unlock();
     }
 }
