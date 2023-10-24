@@ -130,7 +130,9 @@ export default class VueNotifications {
             this._reactive.pushNotificationsEnabled = false;
 
             this.#pushNotificationsData.tokenId = null;
+
             if ( user ) this.#pushNotificationsData.enabled[this.#pushNotificationsUserId] = false;
+
             this.#storePushNotificationsData();
 
             res = result( 200 );
