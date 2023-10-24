@@ -12,7 +12,7 @@ export default class VueNotifications {
         "totalInbox": 0,
         "totalDone": 0,
     } );
-    #counter = new Counter().on( "start", ( this._reactive.pushNotificationsUpdating = true ) ).on( "finish", ( this._reactive.pushNotificationsUpdating = false ) );
+    #counter;
     #app;
     #pushNotificationsData;
 
@@ -23,6 +23,14 @@ export default class VueNotifications {
         this.#pushNotificationsData = JSON.parse( window.localStorage.getItem( PUSH_NOTIFICATIONS_KEY ) ) || {
             "enabled": {},
         };
+
+        this.#counter = new Counter()
+            .on( "start", () => {
+                this._reactive.pushNotificationsUpdating = true;
+            } )
+            .on( "finish", () => {
+                this._reactive.pushNotificationsUpdating = false;
+            } );
     }
 
     // properties
