@@ -1,6 +1,7 @@
 import result from "#core/result";
 import firebase from "#src/firebase";
 import { reactive } from "vue";
+import Counter from "#core/threads/counter";
 
 const PUSH_NOTIFICATIONS_KEY = "pushNotifications";
 
@@ -11,7 +12,7 @@ export default class VueNotifications {
         "totalInbox": 0,
         "totalDone": 0,
     } );
-
+    #counter = new Counter().on( "start", ( this._reactive.pushNotificationsUpdating = true ) ).on( "finish", ( this._reactive.pushNotificationsUpdating = false ) );
     #app;
     #pushNotificationsData;
 
@@ -96,7 +97,7 @@ export default class VueNotifications {
     async disablePushNotifications ( user = true ) {
         var res;
 
-        this._reactive.pushNotificationsUpdating = true;
+        this.#counter.value++;
 
         try {
             if ( !firebase.isSupported ) throw result( [500, window.l10n( "Push notifications are not supported" )] );
@@ -117,7 +118,7 @@ export default class VueNotifications {
             res = e;
         }
 
-        this._reactive.pushNotificationsUpdating = false;
+        this.#counter.value--;
 
         return res;
     }
