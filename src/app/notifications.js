@@ -73,6 +73,8 @@ export default class VueNotifications {
             }
         }
 
+        this.#counter.value++;
+
         // subscribe to the push notifications
         if ( enable ) {
             this.#enablePushNotifications();
@@ -80,6 +82,8 @@ export default class VueNotifications {
         else {
             this.disablePushNotifications( false );
         }
+
+        this.#counter.value--;
     }
 
     async enablePushNotifications () {
