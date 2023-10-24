@@ -83,13 +83,22 @@ export default class VueNotifications {
     }
 
     async enablePushNotifications () {
-        const res = await this.#enablePushNotifications();
+        var res;
 
-        if ( !res.ok ) return res;
+        this.#counter.value++;
 
-        this.#pushNotificationsData.enabled[this.#pushNotificationsUserId] = true;
+        try {
+            res = await this.#enablePushNotifications();
 
-        this.#storePushNotificationsData();
+            if ( !res.ok ) throw res;
+
+            this.#pushNotificationsData.enabled[this.#pushNotificationsUserId] = true;
+
+            this.#storePushNotificationsData();
+        }
+        catch ( e ) {}
+
+        this.#counter.value--;
 
         return res;
     }
