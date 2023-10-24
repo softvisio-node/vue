@@ -6,6 +6,7 @@ const PUSH_NOTIFICATIONS_KEY = "pushNotifications";
 
 export default class VueNotifications {
     _reactive = reactive( {
+        "pushNotificationsUpdating": false,
         "pushNotificationsEnabled": false,
         "totalInbox": 0,
         "totalDone": 0,
@@ -30,6 +31,10 @@ export default class VueNotifications {
 
     get pushNotificationsSupported () {
         return firebase.isSupported && this.app.settings.pushNotificationsSupported;
+    }
+
+    get pushNotificationsUpdating () {
+        return this._reactive.pushNotificationsUpdating;
     }
 
     get pushNotificationsEnabled () {
@@ -89,19 +94,32 @@ export default class VueNotifications {
     }
 
     async disablePushNotifications ( user = true ) {
-        if ( !firebase.isSupported ) return result( [500, window.l10n( "Push notifications are not supported" )] );
+        var res;
 
-        const disabled = await firebase.disable();
+        this._reactive.pushNotificationsUpdating = true;
 
-        if ( !disabled ) return result( [500, window.l10n( "Error disabling push notifications" )] );
+        try {
+            if ( !firebase.isSupported ) throw result( [500, window.l10n( "Push notifications are not supported" )] );
 
-        this._reactive.pushNotificationsEnabled = false;
+            const disabled = await firebase.disable();
 
-        this.#pushNotificationsData.tokenId = null;
-        if ( user ) this.#pushNotificationsData.enabled[this.#pushNotificationsUserId] = false;
-        this.#storePushNotificationsData();
+            if ( !disabled ) throw result( [500, window.l10n( "Error disabling push notifications" )] );
 
-        return result( 200 );
+            this._reactive.pushNotificationsEnabled = false;
+
+            this.#pushNotificationsData.tokenId = null;
+            if ( user ) this.#pushNotificationsData.enabled[this.#pushNotificationsUserId] = false;
+            this.#storePushNotificationsData();
+
+            res = result( 200 );
+        }
+        catch ( e ) {
+            res = e;
+        }
+
+        this._reactive.pushNotificationsUpdating = false;
+
+        return res;
     }
 
     refresh ( { inbox, done } = {} ) {}
