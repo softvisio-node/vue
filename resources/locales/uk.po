@@ -13,38 +13,38 @@ msgstr ""
 "X-Search-Path: /src/**\n"
 "X-Generator: Poedit 3.3.1\n"
 
-#: ../../src/app.js:417:44 ../../src/app.js:419:58 ../../src/app.js:421:68
+#: ../../src/app.js:421:44 ../../src/app.js:423:58 ../../src/app.js:425:68
 msgid "Authorization cancelled"
 msgstr "Авторизацію скасовано"
 
-#: ../../src/app.js:380:49
+#: ../../src/app.js:384:49
 msgid "Authorization provider is not supported"
 msgstr "Постачальник авторизації не підтримується"
 
-#: ../../src/app.js:295:21
+#: ../../src/app.js:299:21
 msgid "Connection error"
 msgstr "Помилка з'єднання"
 
-#: ../../src/app/notifications.js:96:46
+#: ../../src/app/notifications.js:128:49
 msgid "Error disabling push notifications"
 msgstr "Помилка вимкнення push повідомлень"
 
-#: ../../src/app/notifications.js:152:33
+#: ../../src/app/notifications.js:194:33
 msgid "Push notifications are disabled in the browser settings"
 msgstr "Push повідомлення вимкнено в налаштуваннях браузера"
 
-#: ../../src/app/notifications.js:144:69 ../../src/app/notifications.js:92:58
+#: ../../src/app/notifications.js:124:61 ../../src/app/notifications.js:186:69
 msgid "Push notifications are not supported"
 msgstr "Push повідомлення не підтримуються"
 
-#: ../../src/app.js:303:21
+#: ../../src/app.js:307:21
 msgid "Session closed"
 msgstr "Сесія закрита"
 
-#: ../../src/app.js:294:33
+#: ../../src/app.js:298:33
 msgid "Unable to connect to the API server. Check, that you have internet connection."
 msgstr "Не вдається підключитися до сервера API. Перевірте, чи є у вас підключення до Інтернету."
 
-#: ../../src/app.js:302:32
+#: ../../src/app.js:306:32
 msgid "Your session was terminated on the API server."
 msgstr "Ваша сесія був припинений на сервері API."
