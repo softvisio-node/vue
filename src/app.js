@@ -326,7 +326,7 @@ export default class VueApp extends Events {
     async _onAccessDenied () {}
 
     // private
-    async #oauth ( oauthProvider, email ) {
+    async #oauth ( oauthProvider, emailHint ) {
 
         // close pending oauth
         if ( this.#oauthWindow ) {
@@ -352,7 +352,7 @@ export default class VueApp extends Events {
             providerUrl.searchParams.set( "client_id", this.settings.oauthGoogleClientId );
             providerUrl.searchParams.set( "redirect_uri", oauthUrl.href );
 
-            if ( email ) providerUrl.searchParams.set( "login_hint", email );
+            if ( emailHint ) providerUrl.searchParams.set( "login_hint", emailHint );
 
             providerUrl.searchParams.set( "response_type", "code" );
 
@@ -375,7 +375,8 @@ export default class VueApp extends Events {
             providerUrl.searchParams.set( "client_id", this.settings.oauthGithubClientId );
             providerUrl.searchParams.set( "redirect_uri", oauthUrl.href );
 
-            if ( email ) providerUrl.searchParams.set( "login", email );
+            // NOTE github displays useless permissions request
+            // if ( emailHint ) providerUrl.searchParams.set( "login", emailHint );
 
             providerUrl.searchParams.set(
                 "scope",
