@@ -10,7 +10,6 @@ export default {
 
     "methods": {
         async init () {
-            console.log( "--- MOUN 1" );
 
             // init session
             while ( true ) {
