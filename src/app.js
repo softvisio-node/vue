@@ -166,6 +166,7 @@ export default class VueApp extends Events {
 
         this.#api.on( "sessionDisable", this.#signOut.bind( this, { "showAlert": true } ) );
         this.#api.on( "sessionDelete", this.#signOut.bind( this, { "showAlert": true } ) );
+        this.#api.on( "sessionReload", this.reload.bind( this ) );
         this.#api.on( "accessDenied", this.#onAccessDenied.bind( this ) );
 
         if ( this.#user.isAuthenticated ) {
