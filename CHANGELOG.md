@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.24 (2023-10-27)
+
+Fixes:
+
+-   fix: actopn token
+
 ### 7.8.23 (2023-10-25)
 
 Fixes:
