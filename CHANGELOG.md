@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.26 (2023-10-27)
+
+Fixes:
+
+-   fix: github oauth
+
 ### 7.8.25 (2023-10-27)
 
 Fixes:
