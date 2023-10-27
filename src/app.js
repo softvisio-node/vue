@@ -175,18 +175,23 @@ export default class VueApp extends Events {
         this.#notifications.init();
     }
 
-    async authorize ( options ) {
+    async authorize ( options, { emailHint = true, doAuthorization = true } = {} ) {
 
         // oauth
         if ( options.oauthProvider ) {
-            const res = await this.#oauth( options.oauthProvider, this.email );
+            const res = await this.#oauth( options.oauthProvider, emailHint ? this.user.email : null );
 
             if ( !res.ok ) return res;
 
             options = res.data;
         }
 
-        return this.#api.call( "session/authorize", options );
+        if ( !doAuthorization ) {
+            return result( 200, options );
+        }
+        else {
+            return this.#api.call( "session/authorize", options );
+        }
     }
 
     async signIn ( credentials ) {
