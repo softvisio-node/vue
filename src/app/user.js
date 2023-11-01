@@ -20,7 +20,7 @@ export default class User {
         this.#reactive.emailConfirmed = data?.email_confirmed ?? false;
         this.#locale = data?.locale;
         this.#avatarUrl = data?.avatar_url;
-        this.#permissions = new Permissions( permissions, { "checkAppUserPermissions": false } );
+        this.#permissions = new Permissions( this, permissions );
     }
 
     // properties
@@ -61,7 +61,9 @@ export default class User {
         this.#reactive.emailConfirmed = !!value;
     }
 
-    createPermissions ( permissions, options ) {
-        return new Permissions( permissions, options );
+    createPermissions ( permissions, { oarentPermissions = true } = {} ) {
+        if ( oarentPermissions === true ) oarentPermissions = this.permissions;
+
+        return new Permissions( this, permissions, { oarentPermissions } );
     }
 }

@@ -1,19 +1,19 @@
-import app from "#app";
-
 export default class {
-    #checkAppUserPermissions;
+    #user;
+    #oarentPermissions;
     #permissions;
 
-    constructor ( permissions, { checkAppUserPermissions = true } = {} ) {
-        this.#checkAppUserPermissions = !!checkAppUserPermissions;
+    constructor ( user, permissions, { oarentPermissions } = {} ) {
+        this.#user = user;
+        this.#oarentPermissions = oarentPermissions;
         this.#permissions = new Set( permissions );
     }
 
     // public
     has ( permissions ) {
-        if ( !app.user.isAuthenticated ) return false;
+        if ( !this.#user.isAuthenticated ) return false;
 
-        if ( app.user.isRoot ) return true;
+        if ( this.#user.isRoot ) return true;
 
         if ( !Array.isArray( permissions ) ) permissions = [permissions];
 
@@ -21,8 +21,8 @@ export default class {
             if ( this.#permissions.has( permission ) ) return true;
         }
 
-        if ( this.#checkAppUserPermissions ) {
-            return app.user.permissions.has( permissions );
+        if ( this.#oarentPermissions ) {
+            return this.#oarentPermissions.has( permissions );
         }
         else {
             return false;
