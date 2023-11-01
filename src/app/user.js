@@ -1,5 +1,6 @@
 import constants from "#core/app/constants";
 import { reactive } from "vue";
+import Permissions from "./user/permissions";
 
 export default class User {
     #app;
@@ -19,7 +20,7 @@ export default class User {
         this.#reactive.emailConfirmed = data?.email_confirmed ?? false;
         this.#locale = data?.locale;
         this.#avatarUrl = data?.avatar_url;
-        this.#permissions = new Set( permissions );
+        this.#permissions = new Permissions( permissions, { "checkAppUserPermissions": false } );
     }
 
     // properties
@@ -51,23 +52,16 @@ export default class User {
         return this.#id === constants.rootUserId;
     }
 
+    get permissions () {
+        return this.#permissions;
+    }
+
     // public
     setEmailConfirmed ( value ) {
         this.#reactive.emailConfirmed = !!value;
     }
 
-    // public
-    hasPermissions ( permissions ) {
-        if ( !this.isAuthenticated ) return false;
-
-        if ( this.isRoot ) return true;
-
-        if ( !Array.isArray( permissions ) ) permissions = [permissions];
-
-        for ( const permission of permissions ) {
-            if ( this.#permissions.has( permission ) ) return true;
-        }
-
-        return false;
+    createPermissions ( permissions, options ) {
+        return new Permissions( permissions, options );
     }
 }
