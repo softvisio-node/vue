@@ -9,6 +9,14 @@ export default class {
         this.#permissions = new Set( permissions );
     }
 
+    hasAll ( permissions ) {
+        for ( const permission of permissions ) {
+            if ( !this.has( permission ) ) return false;
+        }
+
+        return true;
+    }
+
     // public
     has ( permissions ) {
         if ( !this.#user.isAuthenticated ) return false;
