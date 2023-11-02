@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.29 (2023-11-02)
+
+Fixes:
+
+-   fix: permissions
+
 ### 7.8.28 (2023-11-01)
 
 Fixes:
