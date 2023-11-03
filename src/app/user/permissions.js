@@ -1,27 +1,21 @@
+import app from "#app";
+
 export default class {
-    #user;
-    #oarentPermissions;
+    #parentPermissions;
     #permissions;
 
-    constructor ( user, permissions, { oarentPermissions } = {} ) {
-        this.#user = user;
-        this.#oarentPermissions = oarentPermissions;
+    constructor ( permissions, { parentPermissions = true } = {} ) {
+        if ( parentPermissions === true ) parentPermissions = app.user.permissions;
+
+        this.#parentPermissions = parentPermissions;
         this.#permissions = new Set( permissions );
-    }
-
-    hasAll ( permissions ) {
-        for ( const permission of permissions ) {
-            if ( !this.has( permission ) ) return false;
-        }
-
-        return true;
     }
 
     // public
     has ( permissions ) {
-        if ( !this.#user.isAuthenticated ) return false;
+        if ( !app.user.isAuthenticated ) return false;
 
-        if ( this.#user.isRoot ) return true;
+        if ( app.user.isRoot ) return true;
 
         if ( Array.isArray( permissions ) ) {
             for ( const permission of permissions ) {
@@ -32,11 +26,19 @@ export default class {
             return true;
         }
 
-        if ( this.#oarentPermissions ) {
-            return this.#oarentPermissions.has( permissions );
+        if ( this.#parentPermissions ) {
+            return this.#parentPermissions.has( permissions );
         }
         else {
             return false;
         }
+    }
+
+    hasAll ( permissions ) {
+        for ( const permission of permissions ) {
+            if ( !this.has( permission ) ) return false;
+        }
+
+        return true;
     }
 }
