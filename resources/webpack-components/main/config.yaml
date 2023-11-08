@@ -5,3 +5,7 @@ build:
 config:
   apiUrl: /api/
   signupEnabled: true
+
+  pushNotifications:
+    guestEnabled: false
+    userEnabled: false
