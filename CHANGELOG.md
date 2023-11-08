@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.31 (2023-11-08)
+
+Fixes:
+
+-   fix: default congig
+
 ### 7.8.30 (2023-11-03)
 
 Fixes:
