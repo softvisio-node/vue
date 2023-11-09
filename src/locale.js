@@ -12,7 +12,9 @@ class Registry {
     #isDefined = false;
 
     constructor () {
-        this.#locales = new Locales( config.locales );
+        this.#locales = new Locales( config.locales, {
+            "defaultLocale": config.defaultLocale,
+        } );
 
         var locale = this.#urlLocale;
         locale ||= window.localStorage.getItem( PARAMETER_NAME );

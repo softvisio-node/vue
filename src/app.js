@@ -136,6 +136,8 @@ export default class VueApp extends Events {
             const res = await this.#api.call( "session/init-session", {
                 "locale": this.locale.isDefined ? this.locale.id : null,
                 "locales": this.locale.locales,
+                "defaultLocale": this.locale.locales.defaultLocale,
+                "useIpAddressCountry": this.config.useIpAddressCountry,
             } );
 
             // context is disabled or deleted
