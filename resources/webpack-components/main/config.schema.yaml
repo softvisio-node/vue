@@ -24,7 +24,7 @@
       antOf:
         - type: "null"
         - { type: string, format: locale }
-    defineLocaleByIpAddress: { type: boolean }
+    detectLocaleByClientIpAddress: { type: boolean }
 
     pushNotifications:
       type: object

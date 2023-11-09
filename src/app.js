@@ -137,7 +137,7 @@ export default class VueApp extends Events {
                 "locale": this.locale.isDefined ? this.locale.id : null,
                 "locales": this.locale.locales,
                 "defaultLocale": this.locale.locales.defaultLocale,
-                "useIpAddressCountry": this.config.useIpAddressCountry,
+                "detectLocaleByClientIpAddress": this.config.detectLocaleByClientIpAddress,
             } );
 
             // context is disabled or deleted

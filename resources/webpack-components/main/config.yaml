@@ -4,7 +4,7 @@ build:
 
 config:
   defaultLocale: ~
-  defineLocaleByIpAddress: true
+  detectLocaleByClientIpAddress: true
 
   apiUrl: /api/
   signupEnabled: true
