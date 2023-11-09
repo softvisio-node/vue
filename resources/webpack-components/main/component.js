@@ -14,6 +14,14 @@ export default class extends WebpackComponent {
 
     // public
     validateEnv ( env ) {
-        return super.validateEnv( env ) || this._validateEnv( env, import.meta.url );
+        const errors = super.validateEnv( env ) || this._validateEnv( env, import.meta.url );
+
+        if ( errors ) return errors;
+
+        if ( env.config.defaultLocale && !env.config.locales.includes( env.config.defaultLocale ) ) {
+            return [`Default locale is not valid`];
+        }
+
+        return errors;
     }
 }
