@@ -3,6 +3,9 @@ env:
 build:
 
 config:
+  defaultLocale: ~
+  defineLocaleByIpAddress: true
+
   apiUrl: /api/
   signupEnabled: true
 

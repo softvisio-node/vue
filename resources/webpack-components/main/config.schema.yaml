@@ -20,6 +20,11 @@
     signupEnabled: { type: boolean }
 
     locales: { type: array, items: { type: string, format: locale }, uniqueItems: true }
+    defaultLocale:
+      antOf:
+        - type: "null"
+        - { type: string, format: locale }
+    defineLocaleByIpAddress: { type: boolean }
 
     pushNotifications:
       type: object
