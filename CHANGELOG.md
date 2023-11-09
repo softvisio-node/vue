@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.32 (2023-11-09)
+
+Fixes:
+
+-   fix: locales
+
 ### 7.8.31 (2023-11-08)
 
 Fixes:
