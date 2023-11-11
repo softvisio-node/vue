@@ -23,7 +23,7 @@ export default class Settings {
     }
 
     get signupEnabled () {
-        return !!( this.#settings.signup_enabled && this.app.config.signupEnabled );
+        return !!this.#settings.signup_enabled;
     }
 
     get frontendGitId () {

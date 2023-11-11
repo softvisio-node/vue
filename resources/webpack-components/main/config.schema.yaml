@@ -12,12 +12,10 @@
   config:
   type: object
   properties:
-    title: { type: string }
-    titleIcon: { type: string }
-
     apiUrl: { type: string, format: uri-reference }
 
-    signupEnabled: { type: boolean }
+    title: { type: string }
+    titleIcon: { type: ["null", string] }
 
     locales: { type: array, items: { type: string, format: locale }, uniqueItems: true }
     defaultLocale:
@@ -35,4 +33,4 @@
       additionalProperties: false
       required: [guestEnabled, userEnabled]
 
-  required: [title, signupEnabled]
+  required: [title]
