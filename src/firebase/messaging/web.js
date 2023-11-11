@@ -23,9 +23,14 @@ export default class extends Events {
 
         this.#messaging = getMessaging( initializeApp( config.firebase.web ) );
 
-        this.#worker = await navigator.serviceWorker.register( firebaseMessagingWorker, {
-            "scope": "/firebase-cloud-messaging-push-scope",
-        } );
+        try {
+            this.#worker = await navigator.serviceWorker.register( firebaseMessagingWorker, {
+                "scope": "/firebase-cloud-messaging-push-scope",
+            } );
+        }
+        catch ( e ) {
+            console.log( e + "" );
+        }
 
         return this;
     }
