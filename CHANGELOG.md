@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.33 (2023-11-11)
+
+Fixes:
+
+-   fix: signupEnabled removed
+
 ### 7.8.32 (2023-11-09)
 
 Fixes:
