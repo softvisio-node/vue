@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.34 (2023-11-11)
+
+Fixes:
+
+-   fix: push notifications from self signed ssl
+
 ### 7.8.33 (2023-11-11)
 
 Fixes:
