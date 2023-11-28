@@ -1,6 +1,6 @@
 var loaded = false;
 
-export default async function () {
+export default async function loadTelegram () {
     if ( loaded ) return;
 
     loaded = true;
