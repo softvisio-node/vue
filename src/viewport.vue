@@ -26,6 +26,10 @@ export default {
         async onInitFailure () {
             alert( `Server connection error. Press "OK" to try again.` );
         },
+
+        mask () {},
+
+        unmask () {},
     },
 };
 </script>

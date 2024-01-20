@@ -276,6 +276,14 @@ export default class VueApp extends Events {
         window.FirebasePlugin?.clearAllNotifications();
     }
 
+    mask () {
+        this.#viewport?.mask();
+    }
+
+    unmask () {
+        this.#viewport?.unmask();
+    }
+
     // protected
     _onDeviceReady () {
         this.#deviceReady = true;
@@ -315,7 +323,7 @@ export default class VueApp extends Events {
             "title": window.l10n( `Session closed` ),
         } );
 
-        Ext.Viewport.mask();
+        this.mask();
     }
 
     // NOTE return true to prevent app unload, e.returnValue = true;

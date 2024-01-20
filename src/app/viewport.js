@@ -32,6 +32,14 @@ export default class {
         this.#vue = vue.mount( selector || DEFAULT_MOUNT_SELECTOR );
     }
 
+    mask () {
+        this.#vue?.mask();
+    }
+
+    unmask () {
+        this.#vue?.unmask();
+    }
+
     // protected
     _createVauApp () {
         const vue = createApp( Viewport );
