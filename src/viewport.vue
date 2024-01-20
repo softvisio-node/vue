@@ -4,12 +4,12 @@
 
 <script>
 export default {
-    async mounted () {
-        this.init();
+    mounted () {
+        this._ready();
     },
 
     "methods": {
-        async init () {
+        async _ready () {
 
             // init session
             while ( true ) {
