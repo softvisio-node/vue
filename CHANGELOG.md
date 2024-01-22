@@ -1,5 +1,13 @@
 # Changelog
 
+### 7.8.38 (2024-01-22)
+
+Fixes:
+
+-   fix: app mask
+-   fix: exp app
+-   fix: translations
+
 ### 7.8.37 (2023-11-28)
 
 Fixes:
