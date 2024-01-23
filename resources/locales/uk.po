@@ -13,11 +13,11 @@ msgstr ""
 "X-Search-Path: /src/**\n"
 "X-Generator: Poedit 3.3.1\n"
 
-#: ../../src/app.js:438:44 ../../src/app.js:440:58 ../../src/app.js:442:68
+#: ../../src/app.js:438:45 ../../src/app.js:440:59 ../../src/app.js:442:69
 msgid "Authorization cancelled"
 msgstr "Авторизацію скасовано"
 
-#: ../../src/app.js:401:49
+#: ../../src/app.js:401:50
 msgid "Authorization provider is not supported"
 msgstr "Постачальник авторизації не підтримується"
 
@@ -25,15 +25,15 @@ msgstr "Постачальник авторизації не підтримує�
 msgid "Connection error"
 msgstr "Помилка з'єднання"
 
-#: ../../src/app/notifications.js:128:49
+#: ../../src/app/notifications.js:128:50
 msgid "Error disabling push notifications"
 msgstr "Помилка вимкнення push повідомлень"
 
-#: ../../src/app/notifications.js:194:33
+#: ../../src/app/notifications.js:194:34
 msgid "Push notifications are disabled in the browser settings"
 msgstr "Push повідомлення вимкнено в налаштуваннях браузера"
 
-#: ../../src/app/notifications.js:124:61 ../../src/app/notifications.js:186:69
+#: ../../src/app/notifications.js:124:62 ../../src/app/notifications.js:186:70
 msgid "Push notifications are not supported"
 msgstr "Push повідомлення не підтримуються"
 
