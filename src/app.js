@@ -398,7 +398,7 @@ export default class VueApp extends Events {
             );
         }
 
-        if ( !providerUrl ) return result( [400, window.l10n( `Authorization provider is not supported` )] );
+        if ( !providerUrl ) return result( [ 400, window.l10n( `Authorization provider is not supported` ) ] );
 
         const oauthWindow = ( this.#oauthWindow = window.open( oauthUrl, null, "toolbar=no, menubar=no, width=600, height=700" ) );
         oauthWindow.focus();
@@ -435,11 +435,11 @@ export default class VueApp extends Events {
             } );
         } );
 
-        if ( !params ) return result( [400, window.l10n( "Authorization cancelled" )] );
+        if ( !params ) return result( [ 400, window.l10n( "Authorization cancelled" ) ] );
 
-        if ( !params.get( "code" ) ) return result( [400, window.l10n( "Authorization cancelled" )] );
+        if ( !params.get( "code" ) ) return result( [ 400, window.l10n( "Authorization cancelled" ) ] );
 
-        if ( params.get( "state" ) !== state ) return result( [400, window.l10n( "Authorization cancelled" )] );
+        if ( params.get( "state" ) !== state ) return result( [ 400, window.l10n( "Authorization cancelled" ) ] );
 
         return result( 200, {
             "oauth_provider": oauthProvider,

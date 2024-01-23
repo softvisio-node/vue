@@ -19,7 +19,7 @@ export default class extends WebpackComponent {
         if ( errors ) return errors;
 
         if ( env.config.defaultLocale && !env.config.locales.includes( env.config.defaultLocale ) ) {
-            return [`Default locale is not valid`];
+            return [ `Default locale is not valid` ];
         }
 
         return errors;

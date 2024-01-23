@@ -121,11 +121,11 @@ export default class VueNotifications {
         this.#counter.value++;
 
         try {
-            if ( !firebase.isSupported ) throw result( [500, window.l10n( "Push notifications are not supported" )] );
+            if ( !firebase.isSupported ) throw result( [ 500, window.l10n( "Push notifications are not supported" ) ] );
 
             const disabled = await firebase.disable();
 
-            if ( !disabled ) throw result( [500, window.l10n( "Error disabling push notifications" )] );
+            if ( !disabled ) throw result( [ 500, window.l10n( "Error disabling push notifications" ) ] );
 
             this._reactive.pushNotificationsEnabled = false;
 
@@ -183,7 +183,7 @@ export default class VueNotifications {
     }
 
     async #enablePushNotifications () {
-        if ( !this.pushNotificationsSupported ) return result( [500, window.l10n( "Push notifications are not supported" )] );
+        if ( !this.pushNotificationsSupported ) return result( [ 500, window.l10n( "Push notifications are not supported" ) ] );
 
         const token = await firebase.enable();
 
@@ -191,11 +191,11 @@ export default class VueNotifications {
         if ( !token ) {
             this._reactive.pushNotificationsEnabled = false;
 
-            return result( [500, window.l10n( "Push notifications are disabled in the browser settings" )] );
+            return result( [ 500, window.l10n( "Push notifications are disabled in the browser settings" ) ] );
         }
 
         const tokenHash = token.slice( -16 ),
-            tokenId = [this.#pushNotificationsUserId, this.app.settings.pushNotificationsPrefix, tokenHash].join( "/" );
+            tokenId = [ this.#pushNotificationsUserId, this.app.settings.pushNotificationsPrefix, tokenHash ].join( "/" );
 
         // token not changed and is valid
         if ( tokenId === this.#pushNotificationsData.tokenId ) {
