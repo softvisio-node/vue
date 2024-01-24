@@ -66,13 +66,13 @@ export function saveAs ( url ) {
 }
 
 export async function alert ( message, { title } = {} ) {
-    if ( title ) message = `${title}\n\n${message}`;
+    if ( title ) message = `${ title }\n\n${ message }`;
 
     alert( message );
 }
 
 export async function confirm ( message, { title } = {} ) {
-    if ( title ) message = `${title}\n\n${message}`;
+    if ( title ) message = `${ title }\n\n${ message }`;
 
     return confirm( message );
 }
@@ -84,5 +84,5 @@ export function toast ( msg, timeout ) {
 }
 
 export function labelError ( text ) {
-    return `<span style="background-color:red;color:white">&nbsp;${text}&nbsp;</span>`;
+    return `<span style="background-color:red;color:white">&nbsp;${ text }&nbsp;</span>`;
 }

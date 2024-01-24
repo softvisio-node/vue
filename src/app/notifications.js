@@ -70,7 +70,7 @@ export default class VueNotifications {
             this.#app.api.on( "notifications/update", this.refresh.bind( this ) );
         }
 
-        var enable = this.#pushNotificationsData.enabled[this.#pushNotificationsUserId];
+        var enable = this.#pushNotificationsData.enabled[ this.#pushNotificationsUserId ];
 
         if ( enable == null ) {
             if ( this.app.user.isAuthenticated ) {
@@ -104,7 +104,7 @@ export default class VueNotifications {
 
             if ( !res.ok ) throw res;
 
-            this.#pushNotificationsData.enabled[this.#pushNotificationsUserId] = true;
+            this.#pushNotificationsData.enabled[ this.#pushNotificationsUserId ] = true;
 
             this.#storePushNotificationsData();
         }
@@ -131,7 +131,7 @@ export default class VueNotifications {
 
             this.#pushNotificationsData.tokenId = null;
 
-            if ( user ) this.#pushNotificationsData.enabled[this.#pushNotificationsUserId] = false;
+            if ( user ) this.#pushNotificationsData.enabled[ this.#pushNotificationsUserId ] = false;
 
             this.#storePushNotificationsData();
 

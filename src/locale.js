@@ -173,7 +173,7 @@ window.l10n = locale.l10n.bind( locale );
 window.l10nt = locale.l10nt.bind( locale );
 
 // add "vue" translations
-await locale.add( language => import( /* webpackChunkName: "locales/[request]" */ `#resources/locales/${language}.po` ) );
+await locale.add( language => import( /* webpackChunkName: "locales/[request]" */ `#resources/locales/${ language }.po` ) );
 
 // add app locale
-await locale.add( language => import( /* webpackChunkName: "locales/[request]" */ `@resources/locales/${language}.po` ) );
+await locale.add( language => import( /* webpackChunkName: "locales/[request]" */ `@resources/locales/${ language }.po` ) );

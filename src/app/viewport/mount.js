@@ -5,7 +5,7 @@ const hasSymbol = typeof Symbol === "function" && typeof Symbol.toStringTag === 
 const COMPONENTS_CACHE = new Map();
 
 function isEsModule ( obj ) {
-    return obj.__esModule || ( hasSymbol && obj[Symbol.toStringTag] === "Module" );
+    return obj.__esModule || ( hasSymbol && obj[ Symbol.toStringTag ] === "Module" );
 }
 
 export default {
