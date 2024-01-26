@@ -60,8 +60,4 @@ export default class User {
     setEmailConfirmed ( value ) {
         this.#reactive.emailConfirmed = !!value;
     }
-
-    createPermissions ( permissions ) {
-        return this.#permissions.add( permissions );
-    }
 }
