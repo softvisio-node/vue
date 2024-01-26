@@ -1,6 +1,6 @@
 import constants from "#core/app/constants";
 import { reactive } from "vue";
-import Permissions from "./user/permissions";
+import Permissions from "#core/app/user/permissions";
 
 export default class User {
     #app;
@@ -20,7 +20,7 @@ export default class User {
         this.#reactive.emailConfirmed = data?.email_confirmed ?? false;
         this.#locale = data?.locale;
         this.#avatarUrl = data?.avatar_url;
-        this.#permissions = new Permissions( permissions, { "parentPermissions": false } );
+        this.#permissions = new Permissions( this.#id, permissions );
     }
 
     // properties
@@ -61,7 +61,7 @@ export default class User {
         this.#reactive.emailConfirmed = !!value;
     }
 
-    createPermissions ( permissions, { parentPermissions = true } = {} ) {
-        return new Permissions( permissions, { parentPermissions } );
+    createPermissions ( permissions ) {
+        return this.#permissions.add( permissions );
     }
 }
