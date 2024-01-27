@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.41 (2024-01-27)
+
+Fixes:
+
+-   fix: permissions
+
 ### 7.8.40 (2024-01-24)
 
 Fixes:
