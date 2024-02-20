@@ -9,6 +9,7 @@ class Registry {
     #locale;
     #locales;
     #currency = "USD";
+    #forceLocale = false;
     #isDefined = false;
 
     constructor () {
@@ -16,13 +17,22 @@ class Registry {
             "defaultLocale": config.defaultLocale,
         } );
 
-        var locale = this.#urlLocale;
-        locale ||= window.localStorage.getItem( PARAMETER_NAME );
+        // get locale from url parameter
+        this.#locale = this.#urlLocale;
 
-        if ( locale ) this.#isDefined = true;
+        if ( this.hasLocale( this.#locale ) ) {
+            this.#forceLocale = true;
+        }
+        else {
 
-        if ( this.hasLocale( locale ) ) {
-            this.#locale = locale;
+            // get locale from storage
+            this.#locale = window.localStorage.getItem( PARAMETER_NAME );
+
+            if ( !this.hasLocale( this.#locale ) ) this.#locale = null;
+        }
+
+        if ( this.#locale ) {
+            this.#isDefined = true;
         }
         else {
             this.#locale = this.#locales.defaultLocale;
@@ -40,6 +50,10 @@ class Registry {
 
     get locales () {
         return this.#locales;
+    }
+
+    get forceLocale () {
+        return this.#forceLocale;
     }
 
     get isDefined () {
@@ -111,6 +125,10 @@ class Locale extends BaseLocale {
 
     get locales () {
         return registry.locales;
+    }
+
+    get forceLocale () {
+        return registry.forceLocale;
     }
 
     get isDefined () {
