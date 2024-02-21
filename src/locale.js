@@ -70,7 +70,7 @@ class Registry {
     }
 
     update ( locales, currency ) {
-        this.#locales = new Locales( this.#locales.merge( locales ) );
+        this.#locales = this.#locales.merge( locales );
 
         this.#currency = currency;
     }
