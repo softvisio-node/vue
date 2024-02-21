@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.46 (2024-02-21)
+
+Fixes:
+
+-   fix: locales
+
 ### 7.8.45 (2024-02-20)
 
 Fixes:
