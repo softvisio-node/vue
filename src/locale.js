@@ -131,6 +131,10 @@ class Locale extends CoreLocale {
         return registry.isDefined;
     }
 
+    get displayName () {
+        return this.locales.get( this.id )?.displayName || this.name;
+    }
+
     // public
     async init ( app, { locales, backendLocale } ) {
         if ( this.#initialized ) return;
