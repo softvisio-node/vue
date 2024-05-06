@@ -102,21 +102,17 @@ class Registry {
 
 const registry = new Registry();
 
-class BaseLocale extends CoreLocale {
-
-    // properties
-    get currency () {
-        return registry.currency;
-    }
-}
-
-class Locale extends BaseLocale {
+class Locale extends CoreLocale {
     #initialized;
     #app;
 
     // properties
     get app () {
         return this.#app;
+    }
+
+    get currency () {
+        return registry.currency;
     }
 
     get canChangeLocale () {
