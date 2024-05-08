@@ -220,10 +220,11 @@ export default class VueApp extends Events {
             window.localStorage.setItem( API_TOKEN_KEY, res.data.token );
 
             // reload
-            this.reload();
+            return this.reload();
         }
-
-        return res;
+        else {
+            return res;
+        }
     }
 
     async signOut () {
