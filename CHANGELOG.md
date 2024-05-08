@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.49 (2024-05-08)
+
+Fixes:
+
+-   fix: sign in reload
+
 ### 7.8.48 (2024-05-06)
 
 Fixes:
