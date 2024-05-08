@@ -220,7 +220,7 @@ export default class VueApp extends Events {
             window.localStorage.setItem( API_TOKEN_KEY, res.data.token );
 
             // reload
-            return this.reload();
+            await this.reload();
         }
         else {
             return res;
@@ -256,10 +256,11 @@ export default class VueApp extends Events {
             window.localStorage.setItem( API_TOKEN_KEY, res.data.token );
 
             // reload
-            this.reload();
+            await this.reload();
         }
-
-        return res;
+        else {
+            return res;
+        }
     }
 
     getBadgeNumber () {
@@ -467,7 +468,7 @@ export default class VueApp extends Events {
         window.localStorage.removeItem( API_TOKEN_KEY );
 
         // reload
-        this.reload();
+        await this.reload();
     }
 
     async #onAuthorization () {

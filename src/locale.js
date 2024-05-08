@@ -88,7 +88,7 @@ class Registry {
             window.location.href = url;
         }
         else {
-            app.reload();
+            await app.reload();
         }
 
         return new Promise( resolve => {} );
