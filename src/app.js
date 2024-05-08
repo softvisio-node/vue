@@ -125,8 +125,13 @@ export default class VueApp extends Events {
         this.#viewport.mount( selector );
     }
 
-    async reload () {
-        window.location.reload();
+    async reload ( url ) {
+        if ( url ) {
+            window.location.href = new URL( url, window.location.href );
+        }
+        else {
+            window.location.reload();
+        }
 
         return new Promise( resolve => {} );
     }

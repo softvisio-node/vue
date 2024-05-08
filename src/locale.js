@@ -84,14 +84,14 @@ class Registry {
 
         if ( this.#urlLocale ) {
             const url = new URL( window.location.href );
+
             url.searchParams.delete( PARAMETER_NAME );
-            window.location.href = url;
+
+            await app.reload( url );
         }
         else {
             await app.reload();
         }
-
-        return new Promise( resolve => {} );
     }
 
     // private
