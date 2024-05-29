@@ -378,9 +378,10 @@ export default class VueApp extends Events {
                 "scope",
                 [
 
-                    //
+                    // https://developers.google.com/identity/protocols/oauth2/scopes
                     "https://www.googleapis.com/auth/userinfo.email", // access email
                     "https://www.googleapis.com/auth/userinfo.profile", // access profile
+                    "https://www.googleapis.com/auth/user.emails.read", // see all email addresses
                 ].join( " " )
             );
         }
