@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.51 (2024-05-30)
+
+Fixes:
+
+-   fix: google oauth
+
 ### 7.8.50 (2024-05-29)
 
 Fixes:
