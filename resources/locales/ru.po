@@ -13,11 +13,11 @@ msgstr ""
 "X-Search-Path: /src/**\n"
 "X-Generator: Poedit 3.3.1\n"
 
-#: ../../src/app.js:447:45 ../../src/app.js:449:59 ../../src/app.js:451:69
+#: ../../src/app.js:446:45 ../../src/app.js:448:59 ../../src/app.js:450:69
 msgid "Authorization cancelled"
 msgstr "Авторизация отменена"
 
-#: ../../src/app.js:410:50
+#: ../../src/app.js:409:50
 msgid "Authorization provider is not supported"
 msgstr "Провайдер авторизации не поддерживается"
 
