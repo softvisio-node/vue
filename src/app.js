@@ -125,8 +125,7 @@ export default class VueApp extends Events {
         this.#router = new Router( this );
 
         // init telegram
-        this.#telegram = new Telegram( this );
-        await this.#telegram.init();
+        this.#telegram = await Telegram.new( this );
 
         // init api
         if ( config.apiUrl ) {
