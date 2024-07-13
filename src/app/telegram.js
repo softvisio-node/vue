@@ -3,6 +3,7 @@ export default class {
     #telegramBotId;
     #telegramBotType;
     #webAppType;
+    #data;
     #token;
 
     constructor ( app, data ) {
@@ -11,6 +12,7 @@ export default class {
         this.#telegramBotId = data.telegramBotId;
         this.#telegramBotType = data.telegramBotType;
         this.#webAppType = data.webAppType;
+        this.#data = data.data;
     }
 
     // static
@@ -62,6 +64,10 @@ export default class {
 
     get webAppType () {
         return this.#webAppType;
+    }
+
+    get data () {
+        return this.#data;
     }
 
     // XXX
