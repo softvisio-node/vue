@@ -4,6 +4,7 @@ import Mutex from "#core/threads/mutex";
 import * as utils from "#vue/utils";
 import config from "#vue/config";
 import Api from "#core/api";
+import Telegram from "#src/app/telegram";
 import uuid from "#core/uuid";
 import result from "#core/result";
 import Viewport from "#vue/app/viewport";
@@ -19,6 +20,7 @@ export default class VueApp extends Events {
     #deviceReady = false;
     #theme;
     #notifications;
+    #telegram;
     #api;
     #viewport;
     #user;
@@ -70,6 +72,10 @@ export default class VueApp extends Events {
         return this.#notifications;
     }
 
+    get telegram () {
+        return this.#telegram;
+    }
+
     get api () {
         return this.#api;
     }
@@ -109,11 +115,15 @@ export default class VueApp extends Events {
 
         this._onDeviceReady();
 
+        // init telegram
+        this.#telegram = new Telegram( this );
+        await this.#telegram.init();
+
         // init api
         if ( config.apiUrl ) {
             this.#api = Api.new( config.apiUrl, {
                 "locale": locale.id,
-                "token": window.localStorage.getItem( API_TOKEN_KEY ),
+                "token": this.telegram?.token || window.localStorage.getItem( API_TOKEN_KEY ),
                 "onAuthorization": this.#onAuthorization.bind( this ),
             } );
         }
