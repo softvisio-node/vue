@@ -13,15 +13,15 @@ msgstr ""
 "X-Search-Path: /src/**\n"
 "X-Generator: Poedit 3.3.1\n"
 
-#: ../../src/app.js:446:45 ../../src/app.js:448:59 ../../src/app.js:450:69
+#: ../../src/app.js:464:45 ../../src/app.js:466:59 ../../src/app.js:468:69
 msgid "Authorization cancelled"
 msgstr "Авторизацію скасовано"
 
-#: ../../src/app.js:409:50
+#: ../../src/app.js:427:50
 msgid "Authorization provider is not supported"
 msgstr "Постачальник авторизації не підтримується"
 
-#: ../../src/app.js:323:21
+#: ../../src/app.js:341:21
 msgid "Connection error"
 msgstr "Помилка з'єднання"
 
@@ -37,14 +37,14 @@ msgstr "Push повідомлення вимкнено в налаштуванн
 msgid "Push notifications are not supported"
 msgstr "Push повідомлення не підтримуються"
 
-#: ../../src/app.js:331:21
+#: ../../src/app.js:349:21
 msgid "Session closed"
 msgstr "Сесія закрита"
 
-#: ../../src/app.js:322:33
+#: ../../src/app.js:340:33
 msgid "Unable to connect to the API server. Check, that you have internet connection."
 msgstr "Не вдається підключитися до сервера API. Перевірте, чи є у вас підключення до Інтернету."
 
-#: ../../src/app.js:330:32
+#: ../../src/app.js:348:32
 msgid "Your session was terminated on the API server."
 msgstr "Ваша сесія був припинений на сервері API."
