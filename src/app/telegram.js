@@ -31,7 +31,7 @@ export default class {
             script.onload = resolve;
         } );
 
-        if ( !window.Telegram?.WebApp ) return;
+        if ( !window.Telegram.WebApp.initData ) return;
 
         // decode init data
         try {
