@@ -12,6 +12,7 @@ import Settings from "#vue/app/settings";
 import Theme from "#src/app/theme";
 import Notifications from "#vue/app/notifications";
 import User from "#src/app/user";
+import Router from "#src/app/router";
 
 const API_TOKEN_KEY = "apiToken";
 
@@ -20,6 +21,7 @@ export default class VueApp extends Events {
     #deviceReady = false;
     #theme;
     #notifications;
+    #router;
     #telegram;
     #api;
     #viewport;
@@ -72,6 +74,10 @@ export default class VueApp extends Events {
         return this.#notifications;
     }
 
+    get router () {
+        return this.#router;
+    }
+
     get telegram () {
         return this.#telegram;
     }
@@ -114,6 +120,9 @@ export default class VueApp extends Events {
         }
 
         this._onDeviceReady();
+
+        // init router
+        this.#router = new Router( this );
 
         // init telegram
         this.#telegram = new Telegram( this );
