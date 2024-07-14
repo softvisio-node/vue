@@ -1,5 +1,12 @@
 # Changelog
 
+### 7.8.52 (2024-07-14)
+
+Fixes:
+
+-   fix: router moved
+-   fix: telegram app
+
 ### 7.8.51 (2024-05-30)
 
 Fixes:
