@@ -1,7 +1,51 @@
+class TelegramBot {
+    #id;
+    #type;
+
+    constructor ( { id, type } ) {
+        this.#id = id;
+        this.#type = type;
+    }
+
+    // properties
+    get id () {
+        return this.#id;
+    }
+
+    get type () {
+        return this.#type;
+    }
+}
+
+class TelegramBotUser {
+    #bot;
+    #id;
+    #username;
+
+    constructor ( bot, { id, username } ) {
+        this.#bot = bot;
+        this.#id = id;
+        this.#username = username;
+    }
+
+    // properties
+    get bot () {
+        return this.#bot;
+    }
+
+    get id () {
+        return this.#id;
+    }
+
+    get username () {
+        return this.#username;
+    }
+}
+
 export default class {
     #app;
-    #telegramBotId;
-    #telegramBotType;
+    #bot;
+    #user;
     #webAppType;
     #data;
     #token;
@@ -9,8 +53,13 @@ export default class {
     constructor ( app, data ) {
         this.#app = app;
 
-        this.#telegramBotId = data.telegramBotId;
-        this.#telegramBotType = data.telegramBotType;
+        this.#bot = new TelegramBot( {
+            "id": data.telegramBotId,
+            "type": data.telegramBotType,
+        } );
+
+        this.#user = new TelegramBotUser( this.#bot, window.Telegram.WebApp.initDataUnsafe.user );
+
         this.#webAppType = data.webAppType;
         this.#data = data.data;
     }
@@ -54,12 +103,12 @@ export default class {
         return this.#app;
     }
 
-    get telegramBotId () {
-        return this.#telegramBotId;
+    get bot () {
+        return this.#bot;
     }
 
-    get telegramBotType () {
-        return this.#telegramBotType;
+    get user () {
+        return this.#user;
     }
 
     get webAppType () {
@@ -77,7 +126,7 @@ export default class {
             if ( window.Telegram.WebApp.initData ) {
                 this.#token = encodeURIComponent( "telegram:" +
                         JSON.stringify( {
-                            "telegram_bot_id": this.telegramBotId,
+                            "telegram_bot_id": this.bot.id,
                             "telegram_webapp_init_data": window.Telegram.WebApp.initData,
                         } ) );
             }
