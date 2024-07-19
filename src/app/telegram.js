@@ -1,13 +1,19 @@
 class TelegramBot {
+    #app;
     #id;
     #type;
 
-    constructor ( { id, type } ) {
+    constructor ( app, { id, type } ) {
+        this.#app = app;
         this.#id = id;
         this.#type = type;
     }
 
     // properties
+    get app () {
+        return this.#app;
+    }
+
     get id () {
         return this.#id;
     }
@@ -29,6 +35,10 @@ class TelegramBotUser {
     }
 
     // properties
+    get app () {
+        return this.#bot.app;
+    }
+
     get bot () {
         return this.#bot;
     }
@@ -53,7 +63,7 @@ export default class {
     constructor ( app, data ) {
         this.#app = app;
 
-        this.#bot = new TelegramBot( {
+        this.#bot = new TelegramBot( this.#app, {
             "id": data.telegramBotId,
             "type": data.telegramBotType,
         } );
