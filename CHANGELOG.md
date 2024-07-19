@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.53 (2024-07-19)
+
+Fixes:
+
+-   fix: telegram app
+
 ### 7.8.52 (2024-07-14)
 
 Fixes:
