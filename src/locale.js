@@ -172,7 +172,7 @@ class Locale extends CoreLocale {
         if ( !registry.hasLocale( locale ) ) return result( 400 );
 
         // set user locale
-        if ( this.app.user.isAuthenticated && this.app.user.locale !== locale ) {
+        if ( this.app.user && this.app.user.locale !== locale ) {
             const res = await this.app.api.call( "account/set-locale", locale );
 
             if ( !res.ok ) return res;

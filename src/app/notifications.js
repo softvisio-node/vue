@@ -73,7 +73,7 @@ export default class VueNotifications {
         var enable = this.#pushNotificationsData.enabled[ this.#pushNotificationsUserId ];
 
         if ( enable == null ) {
-            if ( this.app.user.isAuthenticated ) {
+            if ( this.app.user ) {
                 enable = this.app.config.pushNotifications.userEnabled;
             }
             else {

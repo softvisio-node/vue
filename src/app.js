@@ -173,7 +173,10 @@ export default class VueApp extends Events {
             else if ( res.ok ) {
                 this.#settings.setBackendSettings( res.data.settings );
 
-                this.#user = new User( this, res.data.user, res.data.permissions );
+                // create user
+                if ( res.data.user ) {
+                    this.#user = new User( this, res.data.user, res.data.permissions );
+                }
 
                 // update locale
                 await this.locale.init( this, {
@@ -195,7 +198,7 @@ export default class VueApp extends Events {
         this.#api.on( "sessionReload", this.reload.bind( this ) );
         this.#api.on( "accessDenied", this.#onAccessDenied.bind( this ) );
 
-        if ( this.#user.isAuthenticated ) {
+        if ( this.user ) {
             this.#api.on( "connect", () => this.#api.call( "session/check-authentication" ) );
         }
 
@@ -206,7 +209,7 @@ export default class VueApp extends Events {
 
         // oauth
         if ( options.oauthProvider ) {
-            const res = await this.#oauth( options.oauthProvider, emailHint ? this.user.email : null );
+            const res = await this.#oauth( options.oauthProvider, emailHint ? this.user?.email : null );
 
             if ( !res.ok ) return res;
 

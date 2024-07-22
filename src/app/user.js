@@ -44,10 +44,6 @@ export default class User {
         return this.#avatarUrl;
     }
 
-    get isAuthenticated () {
-        return !!this.#id;
-    }
-
     get isRoot () {
         return this.#id === constants.rootUserId;
     }
