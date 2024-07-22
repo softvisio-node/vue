@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.55 (2024-07-22)
+
+Fixes:
+
+-   fix: user isAuthenticated
+
 ### 7.8.54 (2024-07-22)
 
 Fixes:
