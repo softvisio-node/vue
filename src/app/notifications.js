@@ -179,7 +179,7 @@ export default class VueNotifications {
 
     // private
     get #pushNotificationsUserId () {
-        return this.app.user.id || "guest";
+        return this.app.user?.id || "guest";
     }
 
     async #enablePushNotifications () {
