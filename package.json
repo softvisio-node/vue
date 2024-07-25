@@ -20,14 +20,17 @@
     "type": "module",
     "imports": {
         "#core/*": "@softvisio/core/*",
-        "#src/*": "./src/*.js",
-        "#resources/*": "./resources/*"
+        "#resources/*": "./resources/*",
+        "#src/*": {
+            "browser": "./src/*",
+            "node": "./src/*.js"
+        }
     },
     "exports": {
-        "./*": [
-            "./src/*.js",
-            "./src/*.vue"
-        ],
+        "./*": {
+            "browser": "./src/*",
+            "node": "./src/*.js"
+        },
         "./resources/*": "./resources/*",
         "./webpack-components/*": "./resources/webpack-components/*/component.js"
     },
