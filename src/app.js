@@ -166,12 +166,7 @@ export default class VueApp extends Events {
 
             // context is disabled or deleted
             if ( res.status === -32813 || res.status === -32815 ) {
-                if ( this.telegram ) {
-                    this.telegram.close();
-                }
-                else {
-                    await this.#signOut( { res, "showAlert": false } );
-                }
+                await this.#signOut( { res, "showAlert": false } );
             }
 
             // connected
@@ -492,14 +487,23 @@ export default class VueApp extends Events {
         // disable push notifications
         await this.#notifications.disablePushNotifications( false );
 
-        // sign out
-        if ( doSignout ) await this.#api.call( "session/sign-out" );
+        // telegram
+        if ( this.telegram ) {
+            this.telegram.close();
+        }
 
-        // drop api token
-        window.localStorage.removeItem( API_TOKEN_KEY );
+        // api
+        else {
 
-        // reload
-        await this.reload();
+            // sign out
+            if ( doSignout ) await this.#api.call( "session/sign-out" );
+
+            // drop api token
+            window.localStorage.removeItem( API_TOKEN_KEY );
+
+            // reload
+            await this.reload();
+        }
     }
 
     async #onAuthorization () {
