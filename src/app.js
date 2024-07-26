@@ -166,7 +166,12 @@ export default class VueApp extends Events {
 
             // context is disabled or deleted
             if ( res.status === -32813 || res.status === -32815 ) {
-                await this.#signOut( { res, "showAlert": false } );
+                if ( this.telegram ) {
+                    this.telegram.close();
+                }
+                else {
+                    await this.#signOut( { res, "showAlert": false } );
+                }
             }
 
             // connected
