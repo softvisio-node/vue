@@ -145,8 +145,78 @@ export default class {
         return this.#token;
     }
 
+    get platform () {
+        return window.Telegram.WebApp.platform;
+    }
+
+    get isExpanded () {
+        return window.Telegram.WebApp.isExpanded;
+    }
+
+    get isClosingConfirmationEnabled () {
+        return window.Telegram.WebApp.isClosingConfirmationEnabled;
+    }
+
+    get isVerticalSwipesEnabled () {
+        return window.Telegram.WebApp.isVerticalSwipesEnabled;
+    }
+
+    get backButton () {
+        return window.Telegram.WebApp.backButton;
+    }
+
+    get mainButton () {
+        return window.Telegram.WebApp.mainButton;
+    }
+
+    get settingsButton () {
+        return window.Telegram.WebApp.settingsButton;
+    }
+
     // public
+    ready () {
+        window.Telegram.WebApp.ready();
+    }
+
+    expand () {
+        window.Telegram.WebApp.expand();
+    }
+
     close () {
         window.Telegram.WebApp.close();
+    }
+
+    openLink ( url, { tryInstantView } = {} ) {
+        window.Telegram.WebApp.openLink( url, { "try_instant_view": tryInstantView } );
+    }
+
+    openTelegramLink ( url ) {
+        window.Telegram.WebApp.openTelegramLink( url );
+    }
+
+    async openInvoice ( url ) {
+        return new Promise( resolve => window.Telegram.WebApp.openInvoice( url, resolve ) );
+    }
+
+    async requestContact () {
+        return new Promise( resolve => window.Telegram.WebApp.requestContact( resolve ) );
+    }
+
+    setClosingConfirmationEnabled ( value ) {
+        if ( value ) {
+            window.Telegram.WebApp.enableClosingConfirmation();
+        }
+        else {
+            window.Telegram.WebApp.disableClosingConfirmation();
+        }
+    }
+
+    setVerticalSwipesEnabled ( value ) {
+        if ( value ) {
+            window.Telegram.WebApp.enableVerticalSwipes();
+        }
+        else {
+            window.Telegram.WebApp.disableVerticalSwipes();
+        }
     }
 }
