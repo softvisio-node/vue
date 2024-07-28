@@ -1,5 +1,12 @@
 # Changelog
 
+### 7.8.57 (2024-07-28)
+
+Fixes:
+
+-   fix: telegram app methods
+-   fix: telegram user enabled
+
 ### 7.8.56 (2024-07-25)
 
 Fixes:
