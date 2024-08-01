@@ -24,6 +24,10 @@ export default class User {
     }
 
     // properties
+    get app () {
+        return this.#app;
+    }
+
     get id () {
         return this.#id;
     }
