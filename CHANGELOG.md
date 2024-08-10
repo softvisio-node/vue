@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.59 (2024-08-10)
+
+Fixes:
+
+-   fix: .softvisio-cli.yaml renamed to .cli.yaml
+
 ### 7.8.58 (2024-08-01)
 
 Fixes:
