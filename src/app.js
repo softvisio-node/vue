@@ -129,7 +129,7 @@ export default class VueApp extends Events {
 
         // init api
         if ( config.apiUrl ) {
-            this.#api = Api.new( config.apiUrl, {
+            this.#api = new Api( config.apiUrl, {
                 "locale": locale.id,
                 "token": this.telegram?.token || window.localStorage.getItem( API_TOKEN_KEY ),
                 "onAuthorization": this.#onAuthorization.bind( this ),

@@ -5,6 +5,7 @@ var api;
 // #!if firebaseMessagingWorkerEnabled === true
 
 import WebApi from "./firebase/messaging/web.js";
+
 api = await WebApi.new();
 
 // #!elseif isCordova === true
