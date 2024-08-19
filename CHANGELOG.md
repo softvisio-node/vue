@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.8.61 (2024-08-19)
+
+Fixes:
+
+-   fix: api client constructor
+
 ### 7.8.60 (2024-08-14)
 
 No notable changes since the previous release.
