@@ -84,7 +84,7 @@ export default class {
         script.setAttribute( "src", "https://telegram.org/js/telegram-web-app.js" );
         script.setAttribute( "async", "" );
         script.setAttribute( "defer", "" );
-        document.body.appendChild( script );
+        document.body.append( script );
 
         await new Promise( resolve => {
             script.onload = resolve;

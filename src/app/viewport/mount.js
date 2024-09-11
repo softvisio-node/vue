@@ -100,10 +100,10 @@ export default {
 
             // append to the dom
             if ( window.Ext && el instanceof Ext.Component ) {
-                el.el.dom.appendChild( vnode.el );
+                el.el.dom.append( vnode.el );
             }
             else {
-                el.appendChild( vnode.el );
+                el.append( vnode.el );
             }
 
             const instance = vnode.component.proxy;

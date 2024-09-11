@@ -5,12 +5,12 @@ export function copyToClipboard ( str ) {
 
     el.value = str;
 
-    document.body.appendChild( el );
+    document.body.append( el );
 
     el.select();
     document.execCommand( "copy" );
 
-    document.body.removeChild( el );
+    el.remove();
 }
 
 export function clickUrl ( url ) {
@@ -22,11 +22,11 @@ export function clickUrl ( url ) {
     el.setAttribute( "href", url.href );
 
     el.style.display = "none";
-    document.body.appendChild( el );
+    document.body.append( el );
 
     el.click();
 
-    document.body.removeChild( el );
+    el.remove();
 }
 
 export function saveAs ( url ) {
@@ -58,11 +58,11 @@ export function saveAs ( url ) {
     el.setAttribute( "href", url );
 
     el.style.display = "none";
-    document.body.appendChild( el );
+    document.body.append( el );
 
     el.click();
 
-    document.body.removeChild( el );
+    el.remove();
 }
 
 export async function alert ( message, { title } = {} ) {
