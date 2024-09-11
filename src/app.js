@@ -165,7 +165,7 @@ export default class VueApp extends Events {
             } );
 
             // context is disabled or deleted
-            if ( res.status === -32813 || res.status === -32815 ) {
+            if ( res.status === -32_813 || res.status === -32_815 ) {
                 await this.#signOut( { res, "showAlert": true } );
             }
 
