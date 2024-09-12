@@ -9,7 +9,7 @@ export default class Router {
         // window.onhashchange = this.reload.bind( this );
 
         try {
-            const url = new URL( window.location.hash.substring( 1 ), "http://local/" );
+            const url = new URL( window.location.hash.slice( 1 ), "http://local/" );
 
             this.#path = url.pathname;
             this.#searchParams = url.searchParams;

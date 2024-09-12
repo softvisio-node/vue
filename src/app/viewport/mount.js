@@ -117,7 +117,7 @@ export default {
                 COMPONENTS_CACHE.get( component ).set( cache, instance );
             }
 
-            if ( vnode.el.tagName.substring( 0, 4 ) === "EXT-" ) {
+            if ( vnode.el.tagName.slice( 0, 4 ) === "EXT-" ) {
                 return new Promise( resolve => {
                     vnode.el.addEventListener(
                         "ready",
