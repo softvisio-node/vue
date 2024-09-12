@@ -53,7 +53,9 @@ export default class Router {
 
     // private
     #setHash ( hash, { replace, silent } = {} ) {
-        if ( hash.charAt( 0 ) !== "#" ) hash = "#" + hash;
+        if ( !hash.startsWith( "#" ) ) {
+            hash = "#" + hash;
+        }
 
         if ( replace ) {
             if ( silent && window.history.replaceState ) {
