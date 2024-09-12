@@ -96,7 +96,7 @@ export default class VueApp extends Events {
 
     // public
     async init () {
-        if ( this.#initialized ) throw Error( `App is already initialized` );
+        if ( this.#initialized ) throw new Error( `App is already initialized` );
 
         this.#initialized = true;
 
