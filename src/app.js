@@ -157,7 +157,9 @@ export default class VueApp extends Events {
     async initSession () {
         while ( true ) {
             const res = await this.#api.call( "session/init-session", {
-                "locale": this.locale.isDefined ? this.locale.id : null,
+                "locale": this.locale.isDefined
+                    ? this.locale.id
+                    : null,
                 "locales": this.locale.locales,
                 "defaultLocale": this.locale.locales.defaultLocale,
                 "forceLocale": this.locale.forceLocale,
@@ -209,7 +211,9 @@ export default class VueApp extends Events {
 
         // oauth
         if ( options.oauthProvider ) {
-            const res = await this.#oauth( options.oauthProvider, emailHint ? this.user?.email : null );
+            const res = await this.#oauth( options.oauthProvider, emailHint
+                ? this.user?.email
+                : null );
 
             if ( !res.ok ) return res;
 
@@ -452,7 +456,9 @@ export default class VueApp extends Events {
 
                     oauthWindow.close();
 
-                    resolve( e.data?.params ? new URLSearchParams( e.data.params ) : false );
+                    resolve( e.data?.params
+                        ? new URLSearchParams( e.data.params )
+                        : false );
                 }
                 else {
                     clearInterval( interval );
