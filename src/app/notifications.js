@@ -108,7 +108,7 @@ export default class VueNotifications {
 
             this.#storePushNotificationsData();
         }
-        catch ( e ) {}
+        catch {}
 
         this.#counter.value--;
 

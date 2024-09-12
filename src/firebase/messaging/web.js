@@ -45,7 +45,7 @@ export default class extends Events {
 
             return token;
         }
-        catch ( e ) {
+        catch {
 
             // no permissions, push notification are disabled
             return;
@@ -56,6 +56,6 @@ export default class extends Events {
         try {
             return await deleteToken( this.#messaging );
         }
-        catch ( e ) {}
+        catch {}
     }
 }

@@ -96,7 +96,7 @@ export default class {
         try {
             var data = JSON.parse( app.router.searchParams.get( "data" ) );
         }
-        catch ( e ) {}
+        catch {}
 
         // init data is not valid
         if ( !data ) {

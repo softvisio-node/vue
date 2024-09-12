@@ -156,7 +156,7 @@ class Locale extends CoreLocale {
             try {
                 locale = ( await locale( this.language ) ).default;
             }
-            catch ( e ) {
+            catch {
                 return;
             }
         }
