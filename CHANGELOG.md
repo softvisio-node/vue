@@ -1,5 +1,9 @@
 # Changelog
 
+### 7.8.65 (2024-09-13)
+
+No notable changes since the previous release.
+
 ### 7.8.64 (2024-09-11)
 
 No notable changes since the previous release.
