@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.9.0 (2024-09-14)
+
+Features:
+
+-   feat: app
+
 ### 7.8.65 (2024-09-13)
 
 No notable changes since the previous release.
