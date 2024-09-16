@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.9.1 (2024-09-16)
+
+Fixes:
+
+-   fix: app
+
 ### 7.9.0 (2024-09-14)
 
 Features:
