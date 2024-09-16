@@ -1,6 +1,6 @@
-import constants from "@softvisio/app/constants";
+import constants from "#core/app/constants";
 import { reactive } from "vue";
-import Permissions from "@softvisio/app/user/permissions";
+import Permissions from "#core/app/user/permissions";
 
 export default class User {
     #app;
