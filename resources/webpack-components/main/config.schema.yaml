@@ -9,7 +9,6 @@
   required: []
 
 - $id: config
-  config:
   type: object
   properties:
     apiUrl: { type: string, format: uri-reference }
