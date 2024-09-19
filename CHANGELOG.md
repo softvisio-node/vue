@@ -1,5 +1,12 @@
 # Changelog
 
+### 7.9.2 (2024-09-19)
+
+Fixes:
+
+-   fix: web component
+-   fix: webpack config
+
 ### 7.9.1 (2024-09-16)
 
 Fixes:
