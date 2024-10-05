@@ -1,18 +1,18 @@
-import locale from "#vue/locale";
-import Events from "#core/events";
-import Mutex from "#core/threads/mutex";
-import * as utils from "#vue/utils";
-import config from "#vue/config";
 import Api from "#core/api";
-import Telegram from "#src/app/telegram";
-import uuid from "#core/uuid";
+import Events from "#core/events";
 import result from "#core/result";
-import Viewport from "#vue/app/viewport";
-import Settings from "#vue/app/settings";
-import Theme from "#src/app/theme";
-import Notifications from "#vue/app/notifications";
-import User from "#src/app/user";
+import Mutex from "#core/threads/mutex";
+import uuid from "#core/uuid";
 import Router from "#src/app/router";
+import Telegram from "#src/app/telegram";
+import Theme from "#src/app/theme";
+import User from "#src/app/user";
+import Notifications from "#vue/app/notifications";
+import Settings from "#vue/app/settings";
+import Viewport from "#vue/app/viewport";
+import config from "#vue/config";
+import locale from "#vue/locale";
+import * as utils from "#vue/utils";
 
 const API_TOKEN_KEY = "apiToken";
 

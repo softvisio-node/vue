@@ -1,6 +1,6 @@
-import config from "#vue/config";
-import Events from "#core/events";
 import { reactive } from "vue";
+import Events from "#core/events";
+import config from "#vue/config";
 
 const DARK_MODE_KEY = "darkMode";
 const DEVICE_DARK_MODE_KEY = "deviceDarkMode";

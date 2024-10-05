@@ -4,13 +4,14 @@ var api;
 
 // #!if firebaseMessagingWorkerEnabled === true
 
-import WebApi from "./firebase/messaging/web.js";
+const { "default": WebApi } = await import( "./firebase/messaging/web.js" );
 
 api = await WebApi.new();
 
 // #!elseif isCordova === true
 
-import CordovaApi from "./firebase/messaging/cordova.js";
+const { "default": CordovaApi } = await import( "./firebase/messaging/cordova.js" );
+
 api = await CordovaApi.new();
 
 // #!else

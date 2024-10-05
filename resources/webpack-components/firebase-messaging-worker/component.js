@@ -1,7 +1,7 @@
-import WebpackComponent from "@softvisio/webpack/webpack-components/web-worker";
-import { resolve } from "#core/utils";
 import fs from "node:fs";
 import path from "node:path";
+import WebpackComponent from "@softvisio/webpack/webpack-components/web-worker";
+import { resolve } from "#core/utils";
 
 export default class extends WebpackComponent {
 

@@ -1,7 +1,7 @@
-import result from "#core/result";
-import firebase from "#src/firebase";
 import { reactive } from "vue";
+import result from "#core/result";
 import Counter from "#core/threads/counter";
+import firebase from "#src/firebase";
 
 const PUSH_NOTIFICATIONS_KEY = "pushNotifications";
 

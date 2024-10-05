@@ -1,6 +1,6 @@
-import Events from "#core/events";
 import { initializeApp } from "@firebase/app";
-import { getMessaging, getToken, deleteToken, onMessage, isSupported } from "@firebase/messaging";
+import { deleteToken, getMessaging, getToken, isSupported, onMessage } from "@firebase/messaging";
+import Events from "#core/events";
 import firebaseMessagingWorker from "#firebaseMessagingWorker";
 import config from "#vue/config";
 

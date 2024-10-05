@@ -1,7 +1,7 @@
-import result from "#core/result";
 import CoreLocale from "#core/locale";
-import config from "#vue/config";
 import Locales from "#core/locale/locales";
+import result from "#core/result";
+import config from "#vue/config";
 
 const PARAMETER_NAME = "locale";
 

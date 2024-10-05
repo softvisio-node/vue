@@ -1,6 +1,6 @@
 import { createApp } from "vue";
-import mount from "#src/app/viewport/mount";
 import Viewport from "@/viewport.vue";
+import mount from "#src/app/viewport/mount";
 
 const DEFAULT_MOUNT_SELECTOR = "#app";
 

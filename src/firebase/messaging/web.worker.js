@@ -61,7 +61,7 @@ var handler;
 
 // #!if firebaseMessagingWorkerMixin === true
 
-import HandlerMixin from "@/firebase-messaging.worker.js";
+const { "default": HandlerMixin } = await import( "@/firebase-messaging.worker.js" );
 handler = new ( class extends HandlerMixin( Handler ) {} )();
 
 // #!else

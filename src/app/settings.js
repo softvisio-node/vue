@@ -1,5 +1,5 @@
-import env from "#core/env";
 import { reactive } from "vue";
+import env from "#core/env";
 
 export default class Settings {
     #app;
