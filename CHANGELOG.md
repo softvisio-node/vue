@@ -1,5 +1,12 @@
 # Changelog
 
+### 7.9.3 (2024-10-09)
+
+Fixes:
+
+-   fix: conditional imports
+-   fix: dependabot
+
 ### 7.9.2 (2024-09-19)
 
 Fixes:
