@@ -1,3 +1,5 @@
+/* eslint-disable import/first  */
+
 import { initializeApp } from "@firebase/app";
 import { getMessaging, onBackgroundMessage } from "@firebase/messaging/sw";
 import config from "#vue/config";
@@ -61,7 +63,8 @@ var handler;
 
 // #!if firebaseMessagingWorkerMixin === true
 
-const { "default": HandlerMixin } = await import( "@/firebase-messaging.worker.js" );
+import HandlerMixin from "@/firebase-messaging.worker.js";
+
 handler = new ( class extends HandlerMixin( Handler ) {} )();
 
 // #!else

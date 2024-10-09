@@ -1,16 +1,18 @@
+/* eslint-disable import/first  */
+
 import Events from "#core/events";
 
 var api;
 
 // #!if firebaseMessagingWorkerEnabled === true
 
-const { "default": WebApi } = await import( "./firebase/messaging/web.js" );
+import WebApi from "./firebase/messaging/web.js";
 
 api = await WebApi.new();
 
 // #!elseif isCordova === true
 
-const { "default": CordovaApi } = await import( "./firebase/messaging/cordova.js" );
+import CordovaApi from "./firebase/messaging/cordova.js";
 
 api = await CordovaApi.new();
 
