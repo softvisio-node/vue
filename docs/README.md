@@ -5,9 +5,5 @@
 ## Install
 
 ```shell
-npm i @softvisio/vue
+npm install @softvisio/vue
 ```
-
-## Usage
-
-<!-- Tell about how to use the project, give code examples -->
