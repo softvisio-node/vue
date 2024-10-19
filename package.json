@@ -40,9 +40,6 @@
         "/resources",
         "/src"
     ],
-    "scripts": {
-        "release": "softvisio-cli package release"
-    },
     "peerDependencies": {
         "@firebase/messaging": "^0.12.0",
         "@softvisio/webpack": "^1.0.0"
