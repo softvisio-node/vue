@@ -1,5 +1,11 @@
 # Changelog
 
+### 7.9.6 (2024-10-20)
+
+No notable changes since the previous release.
+
+[Full list of the changes](https://github.com/softvisio-node/vue/compare/v7.9.5...v7.9.6)
+
 ### 7.9.5 (2024-10-16)
 
 No notable changes since the previous release.
