@@ -1862,7 +1862,7 @@ Changed:
 Changed:
 
 -   vue exports added;
--   web[ack alias prefix set to ":";
+-   web\[ack alias prefix set to ":";
 -   webpack5 top-level await enabled;
 -   require replaced with import;
 
