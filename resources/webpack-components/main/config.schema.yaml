@@ -11,25 +11,25 @@
 - $id: config
   type: object
   properties:
-    apiUrl: { type: string, format: uri-reference }
+      apiUrl: { type: string, format: uri-reference }
 
-    title: { type: string }
-    titleIcon: { type: ["null", string] }
+      title: { type: string }
+      titleIcon: { type: ["null", string] }
 
-    locales: { type: array, items: { type: string, format: locale }, uniqueItems: true }
-    defaultLocale:
-      antOf:
-        - type: "null"
-        - { type: string, format: locale }
-    detectLocaleByClientIpAddress: { type: boolean }
+      locales: { type: array, items: { type: string, format: locale }, uniqueItems: true }
+      defaultLocale:
+          antOf:
+              - type: "null"
+              - { type: string, format: locale }
+      detectLocaleByClientIpAddress: { type: boolean }
 
-    pushNotifications:
-      type: object
-      properties:
-        guestEnabled: { type: boolean }
-        userEnabled: { type: boolean }
+      pushNotifications:
+          type: object
+          properties:
+              guestEnabled: { type: boolean }
+              userEnabled: { type: boolean }
 
-      additionalProperties: false
-      required: [guestEnabled, userEnabled]
+          additionalProperties: false
+          required: [guestEnabled, userEnabled]
 
   required: [title]

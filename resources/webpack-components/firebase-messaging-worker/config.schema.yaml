@@ -11,24 +11,24 @@
 - $id: config
   type: object
   properties:
-    firebase:
-      anyOf:
-        - { type: "null" }
-        - type: object
-          properties:
-            web:
-              anyOf:
-                - type: "null"
-                - type: object
-                  properties:
-                    apiKey: { type: string }
-                    authDomain: { type: string }
-                    projectId: { type: string }
-                    storageBucket: { type: string }
-                    messagingSenderId: { type: string }
-                    appId: { type: string }
+      firebase:
+          anyOf:
+              - { type: "null" }
+              - type: object
+                properties:
+                    web:
+                        anyOf:
+                            - type: "null"
+                            - type: object
+                              properties:
+                                  apiKey: { type: string }
+                                  authDomain: { type: string }
+                                  projectId: { type: string }
+                                  storageBucket: { type: string }
+                                  messagingSenderId: { type: string }
+                                  appId: { type: string }
 
-                  additionalProperties: false
-                  required: [apiKey, authDomain, projectId, storageBucket, messagingSenderId, appId]
+                              additionalProperties: false
+                              required: [apiKey, authDomain, projectId, storageBucket, messagingSenderId, appId]
 
-          additionalProperties: false
+                additionalProperties: false
