@@ -1,5 +1,13 @@
 # Changelog
 
+### 7.9.11 (2024-12-07)
+
+Other changes:
+
+- chore: set yaml indent to 4 spaces
+
+[Compare with the previous release: v7.9.10 ... v7.9.11](https://github.com/softvisio-node/vue/compare/v7.9.10...v7.9.11)
+
 ### 7.9.10 (2024-11-27)
 
 Other changes:
