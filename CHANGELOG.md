@@ -1,5 +1,13 @@
 # Changelog
 
+### 7.9.12 (2025-01-08)
+
+Other changes:
+
+- chore: update package metadata
+
+[Compare with the previous release: v7.9.11 ... v7.9.12](https://github.com/softvisio-node/vue/compare/v7.9.11...v7.9.12)
+
 ### 7.9.11 (2024-12-07)
 
 Other changes:
