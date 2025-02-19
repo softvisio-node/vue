@@ -1,5 +1,13 @@
 # Changelog
 
+### 7.9.13 (2025-02-19)
+
+Other changes:
+
+- chore: update cli config
+
+Compare with the previous release: [`v7.9.12...v7.9.13`](https://github.com/softvisio-node/vue/compare/v7.9.12...v7.9.13)
+
 ### 7.9.12 (2025-01-08)
 
 Other changes:
