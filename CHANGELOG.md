@@ -1,5 +1,13 @@
 # Changelog
 
+### 7.9.15 (2025-02-27)
+
+Other changes:
+
+- chore: add editorconfig yaml
+
+Compare with the previous release: [`v7.9.14...v7.9.15`](https://github.com/softvisio-node/vue/compare/v7.9.14...v7.9.15)
+
 ### 7.9.14 (2025-02-26)
 
 Other changes:
