@@ -3,15 +3,15 @@ env:
 build:
 
 config:
-    apiUrl: /api/
+  apiUrl: /api/
 
-    title: ~
-    titleIcon: ~
+  title: ~
+  titleIcon: ~
 
-    locales: ~
-    defaultLocale: ~
-    detectLocaleByClientIpAddress: true
+  locales: ~
+  defaultLocale: ~
+  detectLocaleByClientIpAddress: true
 
-    pushNotifications:
-        guestEnabled: false
-        userEnabled: false
+  pushNotifications:
+    guestEnabled: false
+    userEnabled: false
