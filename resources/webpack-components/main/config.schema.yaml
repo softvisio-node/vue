@@ -18,7 +18,7 @@
 
     locales: { type: array, items: { type: string, format: locale }, uniqueItems: true }
     defaultLocale:
-      antOf:
+      anyOf:
         - type: "null"
         - { type: string, format: locale }
     detectLocaleByClientIpAddress: { type: boolean }
