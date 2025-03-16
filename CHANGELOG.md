@@ -1,5 +1,13 @@
 # Changelog
 
+### 7.9.18 (2025-03-16)
+
+Other changes:
+
+- chore: enabled ajv strict mode
+
+Compare with the previous release: [`v7.9.17...v7.9.18`](https://github.com/softvisio-node/vue/compare/v7.9.17...v7.9.18)
+
 ### 7.9.17 (2025-03-04)
 
 Other changes:
