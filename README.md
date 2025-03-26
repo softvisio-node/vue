@@ -8,6 +8,6 @@
 
 ## Install
 
-```shell
+```sh
 npm install @softvisio/vue
 ```
