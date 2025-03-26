@@ -1,5 +1,13 @@
 # Changelog
 
+### 7.9.19 (2025-03-26)
+
+Other changes:
+
+- chore: update markdown code tags
+
+Compare with the previous release: [`v7.9.18...v7.9.19`](https://github.com/softvisio-node/vue/compare/v7.9.18...v7.9.19)
+
 ### 7.9.18 (2025-03-16)
 
 Other changes:
