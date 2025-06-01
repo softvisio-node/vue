@@ -1,5 +1,13 @@
 # Changelog
 
+### v7.9.20 (2025-06-01)
+
+**Other changes:**
+
+- \[PATCH] chore: update docs (👬 zdm)
+
+Compare with the previous release: [v7.9.19](https://github.com/softvisio-node/vue/compare/v7.9.19...v7.9.20)
+
 ### 7.9.19 (2025-03-26)
 
 Other changes:
