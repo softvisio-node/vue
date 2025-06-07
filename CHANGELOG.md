@@ -1,5 +1,13 @@
 # Changelog
 
+### v7.9.21 (2025-06-07)
+
+**Other changes:**
+
+- \[PATCH] chore: update cli config (👬 zdm)
+
+Compare with the previous release: [v7.9.20](https://github.com/softvisio-node/vue/compare/v7.9.20...v7.9.21)
+
 ### v7.9.20 (2025-06-01)
 
 **Other changes:**
