@@ -26,20 +26,18 @@ export default class Settings {
         return !!this.#settings.signup_enabled;
     }
 
-    get frontendGitId () {
-        const id = env.getGitId() || {};
-
-        id.mode = env.mode;
-
-        return id;
+    get frontendId () {
+        return {
+            "buildVersion": env.getBuildVersion(),
+            "mode": env.mode,
+        };
     }
 
-    get backendGitId () {
-        const id = this.#settings.backend_git_id;
-
-        id.mode = this.#settings.backend_mode;
-
-        return id;
+    get backendId () {
+        return {
+            "buildVersion": this.#settings.backend_build_version,
+            "mode": this.#settings.backend_mode,
+        };
     }
 
     get locales () {
