@@ -1,5 +1,13 @@
 # Changelog
 
+### v7.9.22 (2025-06-09)
+
+**Other changes:**
+
+- \[PATCH] chore: refactor build versions (👬 zdm)
+
+Compare with the previous release: [v7.9.21](https://github.com/softvisio-node/vue/compare/v7.9.21...v7.9.22)
+
 ### v7.9.21 (2025-06-07)
 
 **Other changes:**
