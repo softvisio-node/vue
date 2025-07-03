@@ -479,7 +479,7 @@ export default class VueApp extends Events {
         return result( 200, {
             "oauth_provider": oauthProvider,
             "oauth_code": params.get( "code" ),
-            "oauth_redirect_uri": oauthUrl.href,
+            "oauth_redirect_url": oauthUrl.href,
         } );
     }
 
