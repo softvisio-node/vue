@@ -1,5 +1,13 @@
 # Changelog
 
+### v7.9.23 (2025-07-03)
+
+**Code refactoring:**
+
+- \[PATCH] refactor: use url instead of uri (● [d66aee9](https://github.com/softvisio-node/vue/commit/d66aee9); 👬 zdm)
+
+Compare with the previous release: [v7.9.22](https://github.com/softvisio-node/vue/compare/v7.9.22...v7.9.23)
+
 ### v7.9.22 (2025-06-09)
 
 **Other changes:**
