@@ -1,5 +1,13 @@
 # Changelog
 
+### v7.9.24 (2025-07-16)
+
+**Other changes:**
+
+- docs: update (● [6b6a1a4](https://github.com/softvisio-node/vue/commit/6b6a1a4); 👬 zdm)
+
+Compare with the previous release: [v7.9.23](https://github.com/softvisio-node/vue/compare/v7.9.23...v7.9.24)
+
 ### v7.9.23 (2025-07-03)
 
 **Code refactoring:**
