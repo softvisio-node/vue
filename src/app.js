@@ -96,7 +96,7 @@ export default class VueApp extends Events {
 
     // public
     async init () {
-        if ( this.#initialized ) throw new Error( `App is already initialized` );
+        if ( this.#initialized ) throw new Error( "App is already initialized" );
 
         this.#initialized = true;
 
@@ -344,16 +344,16 @@ export default class VueApp extends Events {
     async _onConnectionError ( res ) {
         if ( res ) this.utils.toast( res );
 
-        return this.utils.alert( l10n( `Unable to connect to the API server. Check, that you have internet connection.` ), {
-            "title": l10n( `Connection error` ),
+        return this.utils.alert( l10n( "Unable to connect to the API server. Check, that you have internet connection." ), {
+            "title": l10n( "Connection error" ),
         } );
     }
 
     async _onSignout ( res ) {
         if ( res ) this.utils.toast( res );
 
-        await this.utils.alert( l10n( `Your session was terminated on the API server.` ), {
-            "title": l10n( `Session closed` ),
+        await this.utils.alert( l10n( "Your session was terminated on the API server." ), {
+            "title": l10n( "Session closed" ),
         } );
 
         this.mask();
@@ -431,7 +431,7 @@ export default class VueApp extends Events {
             );
         }
 
-        if ( !providerUrl ) return result( [ 400, l10n( `Authorization provider is not supported` ) ] );
+        if ( !providerUrl ) return result( [ 400, l10n( "Authorization provider is not supported" ) ] );
 
         const oauthWindow = ( this.#oauthWindow = window.open( oauthUrl, null, "toolbar=no, menubar=no, width=600, height=700" ) );
         oauthWindow.focus();
