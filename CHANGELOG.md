@@ -1,5 +1,13 @@
 # Changelog
 
+### v7.9.26 (2025-07-22)
+
+**Bug fixes:**
+
+- \[PATCH] fix: fix editorconfig (● [0a81d16](https://github.com/softvisio-node/vue/commit/0a81d16); 👬 zdm)
+
+Compare with the previous release: [v7.9.25](https://github.com/softvisio-node/vue/compare/v7.9.25...v7.9.26)
+
 ### v7.9.25 (2025-07-16)
 
 **Other changes:**
