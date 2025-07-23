@@ -1,5 +1,13 @@
 # Changelog
 
+### v7.9.28 (2025-07-23)
+
+**Other changes:**
+
+- style: update .npmrc (● [f853629](https://github.com/softvisio-node/vue/commit/f853629); 👬 zdm)
+
+Compare with the previous release: [v7.9.27](https://github.com/softvisio-node/vue/compare/v7.9.27...v7.9.28)
+
 ### v7.9.27 (2025-07-23)
 
 **Bug fixes:**
