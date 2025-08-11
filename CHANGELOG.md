@@ -1,5 +1,13 @@
 # Changelog
 
+### v7.9.29 (2025-08-11)
+
+**Bug fixes:**
+
+- \[PATCH] fix: fix viewport import (● [7ef35d2](https://github.com/softvisio-node/vue/commit/7ef35d2), [c8a55a3](https://github.com/softvisio-node/vue/commit/c8a55a3); 👬 zdm)
+
+Compare with the previous release: [v7.9.28](https://github.com/softvisio-node/vue/compare/v7.9.28...v7.9.29)
+
 ### v7.9.28 (2025-07-23)
 
 **Other changes:**
