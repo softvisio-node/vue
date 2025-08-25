@@ -1,5 +1,13 @@
 # Changelog
 
+### v7.9.30 (2025-08-25)
+
+**Bug fixes:**
+
+- \[PATCH] fix: fix import (● [63f3db6](https://github.com/softvisio-node/vue/commit/63f3db6); 👬 zdm)
+
+Compare with the previous release: [v7.9.29](https://github.com/softvisio-node/vue/compare/v7.9.29...v7.9.30)
+
 ### v7.9.29 (2025-08-11)
 
 **Bug fixes:**
