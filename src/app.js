@@ -9,11 +9,10 @@ import Theme from "#src/app/theme";
 import User from "#src/app/user";
 import Notifications from "#vue/app/notifications";
 import Settings from "#vue/app/settings";
+import Viewport from "#vue/app/viewport";
 import config from "#vue/config";
 import locale from "#vue/locale";
 import * as utils from "#vue/utils";
-
-const { "default": Viewport } = await import( /* webpackChunkName: "viewport" */ "#vue/app/viewport" );
 
 const API_TOKEN_KEY = "apiToken";
 
